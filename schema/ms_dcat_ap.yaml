@@ -9914,7 +9914,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-04-17T11:26:02'
+source_file_date: '2026-04-17T10:14:43'
 source_file_size: 7013
-generation_date: '2026-04-17T12:05:32'
+generation_date: '2026-04-17T10:14:51'
 
