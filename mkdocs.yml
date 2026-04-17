@@ -1,5 +1,5 @@
 ---
-site_name: "ms-dcat-ap"
+site_name: "ms_dcat_ap"
 theme:
   # https://www.mkdocs.org/user-guide/configuration/#theme
   name: material
@@ -57,8 +57,8 @@ nav:
 exclude_docs: |
   /templates-linkml/
 
-site_url: https://meier-rene.github.io/ms-dcat-ap
-repo_url: https://github.com/meier-rene/ms-dcat-ap
+site_url: https://NFDI4Chem.github.io/ms_dcat_ap
+repo_url: https://github.com/NFDI4Chem/ms_dcat_ap
 
 # Uncomment this block to enable use of Google Analytics.
 # Replace the property value with your own ID.
