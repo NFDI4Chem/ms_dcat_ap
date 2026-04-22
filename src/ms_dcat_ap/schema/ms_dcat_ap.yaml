@@ -1,8 +1,8 @@
 id: https://w3id.org/NFDI4Chem/ms-dcat-ap
 name: ms-dcat-ap
 title: ms-dcat-ap
-description: |-
-  A dcat ap implementing the recommendations for the MS MIChI.
+description: |
+  A DCAT-AP profile for mass spectrometry (MS) implementing MIChI recommendations.
 license: MIT
 see_also:
   - https://NFDI4Chem.github.io/ms-dcat-ap
@@ -11,41 +11,77 @@ prefixes:
   MS: http://purl.obolibrary.org/obo/MS_
   material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
   chemdcatap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-  chemical_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-  chemical_reaction_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
   dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   dcat: http://www.w3.org/ns/dcat#
   CHMO: http://purl.obolibrary.org/obo/CHMO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
 
 imports:
   - linkml:types
-  - chemdcatap:latest/schema/chem_dcat_ap
+  - chemdcatap:dev/schema/chem_dcat_ap
 
 classes:
-
-  MSAssay:
-    # no inheritance, as chemdcatap:Assay does not exist
-    description: Mass spectrometry assay (OBI:0000470) for liquid samples according to MIChI.
+  MSDataset:
+    is_a: dcat:Dataset
+    class_uri: OBI:0000070
+    description: A dataset that is the result of a MSAssay of a MSSample.
     slots:
-      - ms_sample
-      - instrument
-      - software
-      - acquisition_parameters
-      - data_processing
+      - title
+      - description
+      - was_generated_by
+      - is_about_entity
+      - creator
+      - created
+      - attribution
+    slot_usage:
+      was_generated_by:
+        range: MSAssay
+        required: true
+      is_about_entity:
+        range: MSSample
+        required: true
 
   MSSample:
-    is_a: SubstanceSample
-    description: Sample that has been investigated by a chemical analysis by mass spectrometry.
+    is_a: chemdcatap:MaterialSample
+    description: >
+      A sample that has been investigated by Mass Spectrometry.
+      Recommended types are MaterialSample and SubstanceSample (subclass of MaterialSample).
     slots:
       - analysed_compound
       - sample_id
       - concentration_of_analyte
       - solvent
       - injection_volume
+      - notes
+
+  MSAssay:
+    description: Mass spectrometry assay (OBI:0000470) for liquid samples according to MIChI.
+    class_uri: OBI:0000470
+    slots:
+      - ms_sample
+      - instrument
+      - software
+      - acquisition_parameters
+      - data_processing
+      - date
+    slot_usage:
+      ms_sample:
+        range: MSSample
+        required: true
+      instrument:
+        range: MSInstrument
+        required: true
+      software:
+        range: MSSoftware
+        multivalued: true
+      acquisition_parameters:
+        range: MSAcquisitionParameters
+      data_processing:
+        range: MSDataProcessing
 
   MSInstrument:
-    # no inheritance, as chemdcatap:Instrument does not exist
     description: Mass spectrometer and associated components.
+    class_uri: MS:1000031
     slots:
       - manufacturer
       - model
@@ -55,8 +91,8 @@ classes:
       - notes
 
   MSSoftware:
-    # no inheritance, as chemdcatap:Software does not exist
     description: Software used for MS experiments.
+    class_uri: OBI:0000072
     slots:
       - software_purpose
       - software_name
@@ -80,6 +116,7 @@ classes:
       - spectrum_representation
       - base_peak_mz
       - base_peak_intensity
+      - notes
 
 slots:
   ms_sample:
@@ -177,6 +214,10 @@ slots:
   base_peak_intensity:
     range: string
     description: Intensity of the base peak.
+  # title, description, creator, created, attribution werden aus chemdcatap/dcatapplus importiert
+  date:
+    range: datetime
+    description: Date of the assay or event.
 
 #classes:
 #  MSAnalysisDataset:
@@ -234,3 +275,4 @@ enums:
       positive_scan:
         text: positive_scan
         meaning: MS:1000130
+  # Add further enums as needed, e.g. for instrument types, acquisition modes, etc.
