@@ -1,16 +1,18 @@
 name: ms-dcat-ap
-description: A dcat ap implementing the recommendations for the MS MIChI.
+description: 'A DCAT-AP profile for mass spectrometry (MS) implementing MIChI recommendations.
+
+  '
 title: ms-dcat-ap
 see_also:
 - https://NFDI4Chem.github.io/ms-dcat-ap
 id: https://w3id.org/NFDI4Chem/ms-dcat-ap
 imports:
 - linkml:types
-- chemdcatap:latest/schema/chem_dcat_ap
+- chem_dcat_ap
+- material_entities_ap
 - dcatapplus:latest/schema/dcat_ap_plus
-- chemical_entities_ap:latest/schema/chemical_entities_ap
-- chemical_reaction_ap:latest/schema/chemical_reaction_ap
-- material_entities_ap:latest/schema/material_entities_ap
+- chemical_entities_ap
+- chemical_reaction_ap
 license: MIT
 prefixes:
   linkml:
@@ -22,15 +24,6 @@ prefixes:
   material_entities_ap:
     prefix_prefix: material_entities_ap
     prefix_reference: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-  chemdcatap:
-    prefix_prefix: chemdcatap
-    prefix_reference: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-  chemical_entities_ap:
-    prefix_prefix: chemical_entities_ap
-    prefix_reference: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-  chemical_reaction_ap:
-    prefix_prefix: chemical_reaction_ap
-    prefix_reference: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
   dcatapplus:
     prefix_prefix: dcatapplus
     prefix_reference: https://w3id.org/nfdi-de/dcat-ap-plus/
@@ -40,6 +33,9 @@ prefixes:
   CHMO:
     prefix_prefix: CHMO
     prefix_reference: http://purl.obolibrary.org/obo/CHMO_
+  OBI:
+    prefix_prefix: OBI
+    prefix_reference: http://purl.obolibrary.org/obo/OBI_
 default_prefix: https://w3id.org/NFDI4Chem/ms-dcat-ap/
 default_range: string
 subsets:
@@ -357,6 +353,33 @@ enums:
       positive_scan:
         text: positive_scan
         meaning: MS:1000130
+  PhysicalStateEnum:
+    name: PhysicalStateEnum
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/PhysicalStateEnum
+    implements:
+    - owl:NamedIndividual
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    permissible_values:
+      SOLID:
+        text: SOLID
+        description: A state of matter in which molecules are closely packed and cannot
+          move past each other.
+        meaning: PATO:0001736
+      LIQUID:
+        text: LIQUID
+        description: A state of matter with a definite volume but no fixed shape.
+          Liquids adapt to the shape of their container and are nearly incompressible,
+          maintaining their volume even under pressure.
+        meaning: PATO:0001735
+      GASEOUS:
+        text: GASEOUS
+        description: A state of matter with neither fixed volume nor fixed shape.
+        meaning: PATO:0001737
+      PLASMA:
+        text: PLASMA
+        description: A state of matter in which a gas becomes ionized and conducts
+          electricity, often found in high-energy environments such as stars or lightning.
+        meaning: PATO:0015012
   DatasetThemes:
     name: DatasetThemes
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/DatasetThemes
@@ -492,348 +515,149 @@ enums:
       relationship_types:
       - rdf:type
       is_direct: true
-  PhysicalStateEnum:
-    name: PhysicalStateEnum
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/PhysicalStateEnum
-    implements:
-    - owl:NamedIndividual
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    permissible_values:
-      SOLID:
-        text: SOLID
-        description: A state of matter in which molecules are closely packed and cannot
-          move past each other.
-        meaning: PATO:0001736
-      CRYSTAL:
-        text: CRYSTAL
-        description: A solid state of matter whose constituents (such as atoms, molecules,
-          or ions) are arranged in a highly ordered microscopic structure, forming
-          a crystal lattice that extends in all directions.
-        meaning: PATO:0002066
-      LIQUID:
-        text: LIQUID
-        description: A state of matter with a definite volume but no fixed shape.
-          Liquids adapt to the shape of their container and are nearly incompressible,
-          maintaining their volume even under pressure.
-        meaning: PATO:0001735
-      GASEOUS:
-        text: GASEOUS
-        description: A state of matter with neither fixed volume nor fixed shape.
-        meaning: PATO:0001737
 slots:
-  ms_sample:
-    name: ms_sample
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ms_sample
-    description: The investigated sample.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ms_sample
-    owner: MSAssay
+  alternative_label:
+    name: alternative_label
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/alternative_label
+    description: The slot to specify an alternative label, name or title for a MaterialEntity.
+    todos:
+    - Should probably rather declared on Entity or in some common metadata mixin instead.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - skos:altLabel
+    slot_uri: skos:altLabel
+    owner: MaterialisticMixin
     domain_of:
-    - MSAssay
-    range: MSSample
-  instrument:
-    name: instrument
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/instrument
-    description: The mass spectrometer used.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/instrument
-    owner: MSAssay
+    - MaterialisticMixin
+    range: string
+  has_physical_state:
+    name: has_physical_state
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_physical_state
+    description: The slot to specify the physical state of a MaterialEntity.
+    todos:
+    - Find out how to make this a subproperty of has_qualitative_attribute, as it
+      currently throws the error 'physical_state enumerations cannot be inlined' due
+      to the fact that we are using an enum here.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - SIO:000008
+    slot_uri: SIO:000008
+    owner: MaterialisticMixin
     domain_of:
-    - MSAssay
-    range: MSInstrument
-    inlined: true
-    inlined_as_list: true
-  software:
-    name: software
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software
-    description: Software used.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software
-    owner: MSAssay
+    - MaterialisticMixin
+    range: PhysicalStateEnum
+    multivalued: false
+    inlined: false
+  has_temperature:
+    name: has_temperature
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature
+    description: The slot to provide the Temperature of a MaterialEntity or an Activity,
+      whereas the temperature of the Activity is ontologically rooted in the temperature
+      of the material entities that participate in the Activity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - SIO:000008
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    owner: ChemicalReaction
     domain_of:
-    - MSAssay
-    range: MSSoftware
+    - MaterialisticMixin
+    - ChemicalReaction
+    range: Temperature
+    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-  acquisition_parameters:
-    name: acquisition_parameters
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/acquisition_parameters
-    description: Data acquisition parameters.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/acquisition_parameters
-    owner: MSAssay
+  has_mass:
+    name: has_mass
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_mass
+    description: The slot to provide the Mass of a MaterialEntity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - SIO:000008
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    owner: MaterialisticMixin
     domain_of:
-    - MSAssay
-    range: MSAcquisitionParameters
+    - MaterialisticMixin
+    range: Mass
+    recommended: true
+    multivalued: true
     inlined: true
     inlined_as_list: true
-  data_processing:
-    name: data_processing
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/data_processing
-    description: Data processing steps for MS data.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/data_processing
-    owner: MSAssay
+  has_volume:
+    name: has_volume
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_volume
+    description: The slot to provide the Volume of a MaterialEntity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - SIO:000008
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    owner: MaterialisticMixin
     domain_of:
-    - MSAssay
-    range: MSDataProcessing
+    - MaterialisticMixin
+    range: Volume
+    recommended: true
+    multivalued: true
     inlined: true
     inlined_as_list: true
-  analysed_compound:
-    name: analysed_compound
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/analysed_compound
-    description: Analysed compound (ChEBI ID, PubChem ID, etc.).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/analysed_compound
-    owner: MSSample
+  has_density:
+    name: has_density
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_density
+    description: The slot to provide the Density of a MaterialEntity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - SIO:000008
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    owner: MaterialisticMixin
     domain_of:
-    - MSSample
-    range: string
+    - MaterialisticMixin
+    range: Density
+    recommended: true
     multivalued: true
-  sample_id:
-    name: sample_id
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/sample_id
-    description: URI that uniquely identifies the sample.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/sample_id
-    owner: MSSample
+    inlined: true
+    inlined_as_list: true
+  has_pressure:
+    name: has_pressure
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure
+    description: The slot to provide data about the pressure of a MaterialEntity or
+      an Activity, whereas the Pressure of an Activity is ontologically a quality
+      borne by the material entities participating in the Activity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - SIO:000008
+    is_a: has_quantitative_attribute
+    slot_uri: SIO:000008
+    owner: ChemicalReaction
     domain_of:
-    - MSSample
-    range: uriorcurie
+    - MaterialisticMixin
+    - ChemicalReaction
+    range: Pressure
+    recommended: true
     multivalued: true
-  concentration_of_analyte:
-    name: concentration_of_analyte
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/concentration_of_analyte
-    description: Concentration of the analysed compound (with unit).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/concentration_of_analyte
-    owner: MSSample
+    inlined: true
+    inlined_as_list: true
+  derived_from:
+    name: derived_from
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from
+    description: The slot to specify the Entity from which a Sample was derived.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - prov:wasDerivedFrom
+    exact_mappings:
+    - SIO:000244
+    close_mappings:
+    - BFO:0000050
+    - dcterms:partOf
+    slot_uri: prov:wasDerivedFrom
+    owner: MaterialSample
     domain_of:
-    - MSSample
-    range: string
-    multivalued: true
-  solvent:
-    name: solvent
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/solvent
-    description: Solvent used (ChEBI ID or IRI).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/solvent
-    owner: MSSample
-    domain_of:
-    - MSSample
-    range: string
-    multivalued: true
-  injection_volume:
-    name: injection_volume
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/injection_volume
-    description: Injection volume (with unit).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/injection_volume
-    owner: MSSample
-    domain_of:
-    - MSSample
-    range: string
-  manufacturer:
-    name: manufacturer
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/manufacturer
-    description: Manufacturer of the instrument.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/manufacturer
-    owner: MSInstrument
-    domain_of:
-    - MSInstrument
-    range: string
-  model:
-    name: model
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/model
-    description: Model designation of the instrument.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/model
-    owner: MSInstrument
-    domain_of:
-    - MSInstrument
-    range: string
-  mass_analyzer_type:
-    name: mass_analyzer_type
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/mass_analyzer_type
-    description: Type of mass analyzer (MS ID).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/mass_analyzer_type
-    owner: MSInstrument
-    domain_of:
-    - MSInstrument
-    range: string
-  ionization_type:
-    name: ionization_type
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ionization_type
-    description: Ionization type (MS ID).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ionization_type
-    owner: MSInstrument
-    domain_of:
-    - MSInstrument
-    range: string
-  detector_type:
-    name: detector_type
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/detector_type
-    description: Detector type (MS ID).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/detector_type
-    owner: MSInstrument
-    domain_of:
-    - MSInstrument
-    range: string
-  notes:
-    name: notes
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/notes
-    description: Free text for instrument details.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/notes
-    owner: MSInstrument
-    domain_of:
-    - MSInstrument
-    range: string
-  software_purpose:
-    name: software_purpose
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software_purpose
-    description: Purpose of the software (e.g. analysis, acquisition).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software_purpose
-    owner: MSSoftware
-    domain_of:
-    - MSSoftware
-    range: string
-  software_name:
-    name: software_name
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software_name
-    description: Name of the software.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software_name
-    owner: MSSoftware
-    domain_of:
-    - MSSoftware
-    range: string
-  software_version:
-    name: software_version
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software_version
-    description: Version of the software.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/software_version
-    owner: MSSoftware
-    domain_of:
-    - MSSoftware
-    range: string
-  acquisition_mode:
-    name: acquisition_mode
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/acquisition_mode
-    description: Mode of data acquisition.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/acquisition_mode
-    owner: MSAcquisitionParameters
-    domain_of:
-    - MSAcquisitionParameters
-    range: string
-  scan_polarity:
-    name: scan_polarity
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_polarity
-    description: Scan polarity.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_polarity
-    owner: MSAcquisitionParameters
-    domain_of:
-    - MSAcquisitionParameters
-    range: ScanPolarityEnum
-  scan_window_lower_limit:
-    name: scan_window_lower_limit
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_lower_limit
-    description: Lower limit of the scan window (m/z).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_lower_limit
-    owner: MSAcquisitionParameters
-    domain_of:
-    - MSAcquisitionParameters
-    range: string
-  scan_window_upper_limit:
-    name: scan_window_upper_limit
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit
-    description: Upper limit of the scan window (m/z).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit
-    owner: MSAcquisitionParameters
-    domain_of:
-    - MSAcquisitionParameters
-    range: string
-  ms1_median_cycle_frequency:
-    name: ms1_median_cycle_frequency
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ms1_median_cycle_frequency
-    description: MS1 cycle frequency (Hz).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ms1_median_cycle_frequency
-    owner: MSAcquisitionParameters
-    domain_of:
-    - MSAcquisitionParameters
-    range: string
-  peak_thresholding:
-    name: peak_thresholding
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/peak_thresholding
-    description: Threshold for peaks.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/peak_thresholding
-    owner: MSDataProcessing
-    domain_of:
-    - MSDataProcessing
-    range: string
-  level_of_identification_confidence:
-    name: level_of_identification_confidence
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/level_of_identification_confidence
-    description: Level of identification confidence.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/level_of_identification_confidence
-    owner: MSDataProcessing
-    domain_of:
-    - MSDataProcessing
-    range: string
-  level_of_identification_confidence_standard:
-    name: level_of_identification_confidence_standard
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/level_of_identification_confidence_standard
-    description: Source of the identification confidence standard.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/level_of_identification_confidence_standard
-    owner: MSDataProcessing
-    domain_of:
-    - MSDataProcessing
-    range: uriorcurie
-  spectrum_representation:
-    name: spectrum_representation
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/spectrum_representation
-    description: Type of spectrum representation (MS ID).
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/spectrum_representation
-    owner: MSDataProcessing
-    domain_of:
-    - MSDataProcessing
-    range: string
-  base_peak_mz:
-    name: base_peak_mz
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/base_peak_mz
-    description: m/z of the base peak.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/base_peak_mz
-    owner: MSDataProcessing
-    domain_of:
-    - MSDataProcessing
-    range: string
-  base_peak_intensity:
-    name: base_peak_intensity
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/base_peak_intensity
-    description: Intensity of the base peak.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/base_peak_intensity
-    owner: MSDataProcessing
-    domain_of:
-    - MSDataProcessing
-    range: string
+    - MaterialSample
+    range: Entity
+    inlined: true
+    inlined_as_list: false
   access_URL:
     name: access_URL
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/access_URL
@@ -2312,9 +2136,9 @@ slots:
     - AFX:0000940
     is_a: has_part
     slot_uri: BFO:0000051
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: ChemicalEntity
     recommended: true
     multivalued: true
@@ -2329,9 +2153,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: Concentration
     recommended: true
     multivalued: true
@@ -2346,9 +2170,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: AmountOfSubstance
     recommended: true
     multivalued: true
@@ -2363,9 +2187,9 @@ slots:
     - SIO:000008
     is_a: has_quantitative_attribute
     slot_uri: SIO:000008
-    owner: ChemicalSubstance
+    owner: ChemicalSubstanceMixin
     domain_of:
-    - ChemicalSubstance
+    - ChemicalSubstanceMixin
     range: PHValue
     recommended: true
     multivalued: true
@@ -2476,7 +2300,7 @@ slots:
   used_starting_material:
     name: used_starting_material
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/used_starting_material
-    description: The slot to specify the Reagent(s) of a ChemicalReaction.
+    description: The slot to specify the StartingMaterial(s) of a ChemicalReaction.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RO:0004009
@@ -2510,7 +2334,7 @@ slots:
   generated_product:
     name: generated_product
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/generated_product
-    description: The slot to specify the Product of a ChemicalReaction.
+    description: The slot to specify the Product(s) of a ChemicalReaction.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - RO:0004008
@@ -2619,7 +2443,6 @@ slots:
     slot_uri: SIO:000008
     owner: Catalyst
     domain_of:
-    - ChemicalSubstance
     - StartingMaterial
     - Reagent
     - Catalyst
@@ -2641,7 +2464,6 @@ slots:
     slot_uri: SIO:000008
     owner: DissolvingSubstance
     domain_of:
-    - ChemicalSubstance
     - DissolvingSubstance
     range: PercentageOfTotal
     recommended: true
@@ -2662,144 +2484,9 @@ slots:
     domain_of:
     - ChemicalReaction
     range: ChemicalReaction
-  alternative_label:
-    name: alternative_label
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/alternative_label
-    description: The slot to specify an alternative label, name or title for a MaterialEntity.
-    todos:
-    - Should probably rather declared on Entity or in some common metadata mixin instead.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - skos:altLabel
-    slot_uri: skos:altLabel
-    owner: Materialistic
-    domain_of:
-    - Materialistic
-    range: string
-  has_physical_state:
-    name: has_physical_state
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_physical_state
-    description: The slot to specify the physical state of a MaterialEntity.
-    todos:
-    - Find out how to make this a subproperty of has_qualitative_attribute, as it
-      currently throws the error 'physical_state enumerations cannot be inlined' due
-      to the fact that we are using an enum here.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - SIO:000008
-    slot_uri: SIO:000008
-    owner: Materialistic
-    domain_of:
-    - Materialistic
-    range: PhysicalStateEnum
-    multivalued: false
-    inlined: false
-  has_temperature:
-    name: has_temperature
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_temperature
-    description: The slot to provide the Temperature of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - SIO:000008
-    is_a: has_quantitative_attribute
-    slot_uri: SIO:000008
-    owner: Materialistic
-    domain_of:
-    - ChemicalReaction
-    - Materialistic
-    range: Temperature
-    recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-  has_mass:
-    name: has_mass
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_mass
-    description: The slot to provide the Mass of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - SIO:000008
-    is_a: has_quantitative_attribute
-    slot_uri: SIO:000008
-    owner: Materialistic
-    domain_of:
-    - Materialistic
-    range: Mass
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_volume:
-    name: has_volume
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_volume
-    description: The slot to provide the Volume of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - SIO:000008
-    is_a: has_quantitative_attribute
-    slot_uri: SIO:000008
-    owner: Materialistic
-    domain_of:
-    - Materialistic
-    range: Volume
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_density:
-    name: has_density
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_density
-    description: The slot to provide the Density of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - SIO:000008
-    is_a: has_quantitative_attribute
-    slot_uri: SIO:000008
-    owner: Materialistic
-    domain_of:
-    - Materialistic
-    range: Density
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  has_pressure:
-    name: has_pressure
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/has_pressure
-    description: The slot to provide the Pressure of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - SIO:000008
-    is_a: has_quantitative_attribute
-    slot_uri: SIO:000008
-    owner: Materialistic
-    domain_of:
-    - ChemicalReaction
-    - Materialistic
-    range: Pressure
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  derived_from:
-    name: derived_from
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from
-    description: The slot to specify the Entity from which a Sample was derived.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - prov:wasDerivedFrom
-    exact_mappings:
-    - SIO:000244
-    close_mappings:
-    - BFO:0000050
-    - dcterms:partOf
-    slot_uri: prov:wasDerivedFrom
-    owner: MaterialSample
-    domain_of:
-    - MaterialSample
-    range: Entity
-    inlined: true
-    inlined_as_list: false
   definedTerm__from_CV:
     name: definedTerm__from_CV
     description: The URL of the controlled vocabulary.
@@ -2852,6 +2539,220 @@ slots:
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
     recommended: true
+  MSSample_id:
+    name: MSSample_id
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/id
+    description: Analysed Compound and/or Sample ID
+    comments:
+    - 'Analysed Compound : A compound analysed in an mass spectrometry (MS) Sample
+      using data acquired from an mass spectrometry (MS) analysis.
+
+      '
+    - 'Sample ID: The URI identifying a sample and leading to the sample history including
+      its preparation.
+
+      '
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - MS:1000777
+    is_a: id
+    domain: MSSample
+    slot_uri: MS:1000777
+    identifier: true
+    alias: id
+    owner: MSSample
+    domain_of:
+    - MSSample
+    is_usage_slot: true
+    usage_slot_name: id
+    range: uriorcurie
+    required: true
+  SubstanceSampleCharacterizationDataset_was_generated_by:
+    name: SubstanceSampleCharacterizationDataset_was_generated_by
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
+    description: The slot to specify the SubstanceCharacterization activity that produced
+      this dataset.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:wasGeneratedBy
+    is_a: was_generated_by
+    domain: SubstanceSampleCharacterizationDataset
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: SubstanceSampleCharacterizationDataset
+    domain_of:
+    - SubstanceSampleCharacterizationDataset
+    is_usage_slot: true
+    usage_slot_name: was_generated_by
+    range: SubstanceSampleCharacterization
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  SubstanceSampleCharacterizationDataset_is_about_entity:
+    name: SubstanceSampleCharacterizationDataset_is_about_entity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/is_about_entity
+    description: The slot to specify the SubstanceSample this dataset is about.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - dcterms:subject
+    exact_mappings:
+    - IAO:0000136
+    is_a: is_about_entity
+    domain: SubstanceSampleCharacterizationDataset
+    slot_uri: dcterms:subject
+    alias: is_about_entity
+    owner: SubstanceSampleCharacterizationDataset
+    domain_of:
+    - SubstanceSampleCharacterizationDataset
+    is_usage_slot: true
+    usage_slot_name: is_about_entity
+    range: SubstanceSample
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ReactionMonitoringDataset_was_generated_by:
+    name: ReactionMonitoringDataset_was_generated_by
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
+    description: The slot to specify the ReactionMonitoring activity that produced
+      this dataset.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:wasGeneratedBy
+    is_a: was_generated_by
+    domain: ReactionMonitoringDataset
+    slot_uri: prov:wasGeneratedBy
+    alias: was_generated_by
+    owner: ReactionMonitoringDataset
+    domain_of:
+    - ReactionMonitoringDataset
+    is_usage_slot: true
+    usage_slot_name: was_generated_by
+    range: ReactionMonitoring
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ReactionMonitoringDataset_is_about_activity:
+    name: ReactionMonitoringDataset_is_about_activity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/is_about_activity
+    description: The slot to specify the ChemicalReaction this dataset is about.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - dcterms:subject
+    exact_mappings:
+    - IAO:0000136
+    is_a: is_about_activity
+    domain: ReactionMonitoringDataset
+    slot_uri: dcterms:subject
+    alias: is_about_activity
+    owner: ReactionMonitoringDataset
+    domain_of:
+    - ReactionMonitoringDataset
+    is_usage_slot: true
+    usage_slot_name: is_about_activity
+    range: ChemicalReaction
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  SubstanceSampleCharacterization_evaluated_entity:
+    name: SubstanceSampleCharacterization_evaluated_entity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/evaluated_entity
+    description: The slot to specify the SubstanceSample being characterized.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:used
+    is_a: evaluated_entity
+    domain: SubstanceSampleCharacterization
+    slot_uri: prov:used
+    alias: evaluated_entity
+    owner: SubstanceSampleCharacterization
+    domain_of:
+    - SubstanceSampleCharacterization
+    is_usage_slot: true
+    usage_slot_name: evaluated_entity
+    range: SubstanceSample
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  ReactionMonitoring_evaluated_activity:
+    name: ReactionMonitoring_evaluated_activity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/evaluated_activity
+    description: The slot to specify the ChemicalReaction being recorded.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:wasInformedBy
+    is_a: evaluated_activity
+    domain: ReactionMonitoring
+    slot_uri: prov:wasInformedBy
+    alias: evaluated_activity
+    owner: ReactionMonitoring
+    domain_of:
+    - ReactionMonitoring
+    is_usage_slot: true
+    usage_slot_name: evaluated_activity
+    range: ChemicalReaction
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  MaterialEntity_has_part:
+    name: MaterialEntity_has_part
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/has_part
+    description: The slot to provide the parts of a MaterialEntity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - BFO:0000051
+    is_a: has_part
+    domain: MaterialEntity
+    slot_uri: BFO:0000051
+    alias: has_part
+    owner: MaterialEntity
+    domain_of:
+    - MaterialEntity
+    is_usage_slot: true
+    usage_slot_name: has_part
+    range: MaterialEntity
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+  MaterialSample_derived_from:
+    name: MaterialSample_derived_from
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from
+    description: The slot to specify the MaterialEntity or MaterialSample from which
+      the MaterialSample was created.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - prov:wasDerivedFrom
+    exact_mappings:
+    - SIO:000244
+    close_mappings:
+    - BFO:0000050
+    - dcterms:partOf
+    is_a: derived_from
+    domain: MaterialSample
+    slot_uri: prov:wasDerivedFrom
+    alias: derived_from
+    owner: MaterialSample
+    domain_of:
+    - MaterialSample
+    is_usage_slot: true
+    usage_slot_name: derived_from
+    range: Entity
+    inlined: true
+    inlined_as_list: false
   Activity_title:
     name: Activity_title
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/title
@@ -6387,6 +6288,27 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  ChemicalEntity_has_part:
+    name: ChemicalEntity_has_part
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/has_part
+    description: The slot to provide the parts of a ChemicalEntity that are themself
+      chemical entities.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - BFO:0000051
+    is_a: Entity_has_part
+    domain: ChemicalEntity
+    slot_uri: BFO:0000051
+    alias: has_part
+    owner: ChemicalEntity
+    domain_of:
+    - ChemicalEntity
+    is_usage_slot: true
+    usage_slot_name: has_part
+    range: ChemicalEntity
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   Atom_rdf_type:
     name: Atom_rdf_type
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/rdf_type
@@ -6475,168 +6397,17 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  MaterialEntity_has_part:
-    name: MaterialEntity_has_part
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/has_part
-    description: The slot to provide the parts of a MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
-    mappings:
-    - BFO:0000051
-    is_a: Entity_has_part
-    domain: MaterialEntity
-    slot_uri: BFO:0000051
-    alias: has_part
-    owner: MaterialEntity
-    domain_of:
-    - MaterialEntity
-    is_usage_slot: true
-    usage_slot_name: has_part
-    range: MaterialEntity
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  MaterialSample_derived_from:
-    name: MaterialSample_derived_from
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/derived_from
-    description: The slot to specify the MaterialEntity or MaterialSample from which
-      the MaterialSample was created.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - prov:wasDerivedFrom
-    exact_mappings:
-    - SIO:000244
-    close_mappings:
-    - BFO:0000050
-    - dcterms:partOf
-    is_a: derived_from
-    domain: MaterialSample
-    slot_uri: prov:wasDerivedFrom
-    alias: derived_from
-    owner: MaterialSample
-    domain_of:
-    - MaterialSample
-    is_usage_slot: true
-    usage_slot_name: derived_from
-    range: Entity
-    inlined: true
-    inlined_as_list: false
 classes:
-  MSAssay:
-    name: MSAssay
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSAssay
-    description: Mass spectrometry assay (OBI:0000470) for liquid samples according
-      to MIChI.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slots:
-    - ms_sample
-    - instrument
-    - software
-    - acquisition_parameters
-    - data_processing
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSAssay
   MSSample:
     name: MSSample
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
-    description: Sample that has been investigated by a chemical analysis by mass
-      spectrometry.
+    description: A sample prepared for and investigated by Mass Spectrometry (MS),
+      following recommendations of "Liquid MS MIChI".
     from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: SubstanceSample
-    slots:
-    - id
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_has_part
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - EvaluatedEntity_was_generated_by
-    - EvaluatedEntity_title
-    - EvaluatedEntity_description
-    - EvaluatedEntity_other_identifier
-    - MaterialSample_derived_from
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    - has_concentration
-    - has_ph_value
-    - composed_of
-    - has_molar_equivalent
-    - has_amount
-    - has_percentage_of_total
-    - analysed_compound
-    - sample_id
-    - concentration_of_analyte
-    - solvent
-    - injection_volume
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
-  MSInstrument:
-    name: MSInstrument
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSInstrument
-    description: Mass spectrometer and associated components.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slots:
-    - manufacturer
-    - model
-    - mass_analyzer_type
-    - ionization_type
-    - detector_type
-    - notes
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSInstrument
-  MSSoftware:
-    name: MSSoftware
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSoftware
-    description: Software used for MS experiments.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slots:
-    - software_purpose
-    - software_name
-    - software_version
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSoftware
-  MSAcquisitionParameters:
-    name: MSAcquisitionParameters
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSAcquisitionParameters
-    description: Parameters used during data acquisition in mass spectrometry.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slots:
-    - acquisition_mode
-    - scan_polarity
-    - scan_window_lower_limit
-    - scan_window_upper_limit
-    - ms1_median_cycle_frequency
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSAcquisitionParameters
-  MSDataProcessing:
-    name: MSDataProcessing
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSDataProcessing
-    description: Processing steps and evaluation parameters for MS data.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slots:
-    - peak_thresholding
-    - level_of_identification_confidence
-    - level_of_identification_confidence_standard
-    - spectrum_representation
-    - base_peak_mz
-    - base_peak_intensity
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSDataProcessing
-  SubstanceSample:
-    name: SubstanceSample
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSample
-    description: A MaterialSample derived from a ChemicalSubstance that is of interest
-      in an analytical procedure.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
-    aliases:
-    - analyte
     mappings:
-    - SIO:001378
+    - MS:1000457
     is_a: MaterialSample
-    mixins:
-    - ChemicalSubstance
     slots:
-    - id
     - has_qualitative_attribute
     - has_quantitative_attribute
     - Entity_has_part
@@ -6655,53 +6426,240 @@ classes:
     - has_volume
     - has_density
     - has_pressure
-    - has_concentration
-    - has_ph_value
-    - composed_of
-    - has_molar_equivalent
-    - has_amount
-    - has_percentage_of_total
-    class_uri: SIO:001378
-  PolymerSample:
-    name: PolymerSample
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/PolymerSample
-    description: A SubstanceSample derived from a Polymer.
-    todos:
-    - Find a better mapping, as it is currently mapped to same ontology class as its
-      parent.
+    - MSSample_id
+    slot_usage:
+      id:
+        name: id
+        description: Analysed Compound and/or Sample ID
+        comments:
+        - 'Analysed Compound : A compound analysed in an mass spectrometry (MS) Sample
+          using data acquired from an mass spectrometry (MS) analysis.
+
+          '
+        - 'Sample ID: The URI identifying a sample and leading to the sample history
+          including its preparation.
+
+          '
+        slot_uri: MS:1000777
+    class_uri: MS:1000457
+  SubstanceSampleCharacterizationDataset:
+    name: SubstanceSampleCharacterizationDataset
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterizationDataset
+    description: A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization
+      activity. This is a coarse-grained convenience shape that conflates measurement
+      and analysis into a single data-generating activity. Domain-specific sub-profiles
+      that need to distinguish raw measurement from post-processing or structure assignment
+      should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset
+      chain instead of reusing this class.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
     mappings:
-    - SIO:001378
-    is_a: SubstanceSample
-    mixins:
-    - Polymer
+    - dcat:Dataset
+    is_a: Dataset
+    slots:
+    - Dataset_access_rights
+    - Dataset_applicable_legislation
+    - Dataset_conforms_to
+    - Dataset_contact_point
+    - Dataset_creator
+    - Dataset_dataset_distribution
+    - Dataset_description
+    - Dataset_documentation
+    - Dataset_frequency
+    - Dataset_geographical_coverage
+    - Dataset_has_version
+    - Dataset_identifier
+    - Dataset_in_series
+    - Dataset_is_referenced_by
+    - Dataset_keyword
+    - Dataset_landing_page
+    - Dataset_language
+    - Dataset_modification_date
+    - Dataset_other_identifier
+    - Dataset_provenance
+    - Dataset_publisher
+    - Dataset_qualified_attribution
+    - Dataset_qualified_relation
+    - Dataset_related_resource
+    - Dataset_release_date
+    - Dataset_sample
+    - Dataset_source
+    - Dataset_spatial_resolution
+    - Dataset_temporal_coverage
+    - Dataset_temporal_resolution
+    - Dataset_theme
+    - Dataset_title
+    - Dataset_type
+    - Dataset_version
+    - Dataset_version_notes
+    - id
+    - is_about_activity
+    - SubstanceSampleCharacterizationDataset_was_generated_by
+    - SubstanceSampleCharacterizationDataset_is_about_entity
+    slot_usage:
+      was_generated_by:
+        name: was_generated_by
+        description: The slot to specify the SubstanceCharacterization activity that
+          produced this dataset.
+        range: SubstanceSampleCharacterization
+        multivalued: true
+        inlined_as_list: true
+      is_about_entity:
+        name: is_about_entity
+        description: The slot to specify the SubstanceSample this dataset is about.
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+    class_uri: dcat:Dataset
+  ReactionMonitoringDataset:
+    name: ReactionMonitoringDataset
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoringDataset
+    description: A Dataset about a ChemicalReaction that was produced by a ReactionMonitoring
+      activity. This is a coarse-grained convenience shape that conflates experimental
+      documentation and analysis into a single data-generating activity. Domain-specific
+      sub-profiles that need to distinguish reaction monitoring from subsequent data
+      evaluation should define their own Dataset subclasses, potentially using the
+      DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+    mappings:
+    - dcat:Dataset
+    is_a: Dataset
+    slots:
+    - Dataset_access_rights
+    - Dataset_applicable_legislation
+    - Dataset_conforms_to
+    - Dataset_contact_point
+    - Dataset_creator
+    - Dataset_dataset_distribution
+    - Dataset_description
+    - Dataset_documentation
+    - Dataset_frequency
+    - Dataset_geographical_coverage
+    - Dataset_has_version
+    - Dataset_identifier
+    - Dataset_in_series
+    - Dataset_is_referenced_by
+    - Dataset_keyword
+    - Dataset_landing_page
+    - Dataset_language
+    - Dataset_modification_date
+    - Dataset_other_identifier
+    - Dataset_provenance
+    - Dataset_publisher
+    - Dataset_qualified_attribution
+    - Dataset_qualified_relation
+    - Dataset_related_resource
+    - Dataset_release_date
+    - Dataset_sample
+    - Dataset_source
+    - Dataset_spatial_resolution
+    - Dataset_temporal_coverage
+    - Dataset_temporal_resolution
+    - Dataset_theme
+    - Dataset_title
+    - Dataset_type
+    - Dataset_version
+    - Dataset_version_notes
+    - id
+    - is_about_entity
+    - ReactionMonitoringDataset_was_generated_by
+    - ReactionMonitoringDataset_is_about_activity
+    slot_usage:
+      was_generated_by:
+        name: was_generated_by
+        description: The slot to specify the ReactionMonitoring activity that produced
+          this dataset.
+        range: ReactionMonitoring
+        multivalued: true
+        inlined_as_list: true
+      is_about_activity:
+        name: is_about_activity
+        description: The slot to specify the ChemicalReaction this dataset is about.
+        range: ChemicalReaction
+    class_uri: dcat:Dataset
+  SubstanceSampleCharacterization:
+    name: SubstanceSampleCharacterization
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterization
+    description: A DataGeneratingActivity that produces data about a SubstanceSample,
+      such as a spectroscopic measurement, a physical property determination, or a
+      combined measurement-and-analysis workflow. This is a coarse-grained convenience
+      shape that does not distinguish between raw data acquisition and subsequent
+      data processing or analysis. Domain-specific sub-profiles that need this distinction
+      should define their own DataGeneratingActivity subclasses and use the DCAT-AP+
+      DataAnalysis chain to separate raw measurement from derived results.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+    mappings:
+    - prov:Activity
+    broad_mappings:
+    - OBI:0000070
+    is_a: DataGeneratingActivity
     slots:
     - id
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_has_part
-    - Entity_part_of
+    - Activity_title
+    - Activity_description
+    - Activity_other_identifier
+    - Activity_has_part
+    - Activity_had_input_entity
+    - Activity_had_output_entity
+    - Activity_had_input_activity
+    - Activity_carried_out_by
+    - Activity_has_qualitative_attribute
+    - Activity_has_quantitative_attribute
+    - Activity_part_of
     - ClassifierMixin_type
     - rdf_type
-    - EvaluatedEntity_was_generated_by
-    - EvaluatedEntity_title
-    - EvaluatedEntity_description
-    - EvaluatedEntity_other_identifier
-    - MaterialSample_derived_from
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    - has_concentration
-    - has_ph_value
-    - composed_of
-    - has_molar_equivalent
-    - has_amount
-    - has_percentage_of_total
-    class_uri: SIO:001378
+    - evaluated_activity
+    - realized_plan
+    - occurred_in
+    - SubstanceSampleCharacterization_evaluated_entity
+    slot_usage:
+      evaluated_entity:
+        name: evaluated_entity
+        description: The slot to specify the SubstanceSample being characterized.
+        range: SubstanceSample
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Activity
+  ReactionMonitoring:
+    name: ReactionMonitoring
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ReactionMonitoring
+    description: A DataGeneratingActivity that produces data about a ChemicalReaction,
+      such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation
+      workflow. This is a coarse-grained convenience shape that does not distinguish
+      between raw experimental recording and subsequent data evaluation. Domain-specific
+      sub-profiles that need this distinction should define their own DataGeneratingActivity
+      subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from
+      derived results.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/
+    mappings:
+    - prov:Activity
+    is_a: DataGeneratingActivity
+    slots:
+    - id
+    - Activity_title
+    - Activity_description
+    - Activity_other_identifier
+    - Activity_has_part
+    - Activity_had_input_entity
+    - Activity_had_output_entity
+    - Activity_had_input_activity
+    - Activity_carried_out_by
+    - Activity_has_qualitative_attribute
+    - Activity_has_quantitative_attribute
+    - Activity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - evaluated_entity
+    - realized_plan
+    - occurred_in
+    - ReactionMonitoring_evaluated_activity
+    slot_usage:
+      evaluated_activity:
+        name: evaluated_activity
+        description: The slot to specify the ChemicalReaction being recorded.
+        range: ChemicalReaction
+        multivalued: true
+        inlined_as_list: true
+    class_uri: prov:Activity
   Laboratory:
     name: Laboratory
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/Laboratory
@@ -6717,6 +6675,198 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: ENVO:01001405
+  MaterialisticMixin:
+    name: MaterialisticMixin
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialisticMixin
+    description: A LinkML mixin used to pass down properties common to all material
+      entities. It is needed for example to have MaterialSample have the same properties
+      as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    abstract: true
+    mixin: true
+    slots:
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    class_uri: material_entities_ap:MaterialisticMixin
+  MaterialEntity:
+    name: MaterialEntity
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialEntity
+    description: A material is an Entity that has some portion of matter as proper
+      part.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - BFO:0000040
+    is_a: Entity
+    mixins:
+    - MaterialisticMixin
+    slots:
+    - Entity_title
+    - Entity_description
+    - id
+    - Entity_other_identifier
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - Entity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - MaterialEntity_has_part
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    slot_usage:
+      has_part:
+        name: has_part
+        description: The slot to provide the parts of a MaterialEntity.
+        slot_uri: BFO:0000051
+        range: MaterialEntity
+        recommended: true
+        multivalued: true
+        inlined_as_list: true
+    class_uri: BFO:0000040
+  MaterialSample:
+    name: MaterialSample
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialSample
+    description: A Sample that was derived from a previous MaterialSample or some
+      other kind of MaterialEntity.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - OBI:0000747
+    exact_mappings:
+    - SIO:001050
+    - VOC4CAT:0005056
+    is_a: EvaluatedEntity
+    mixins:
+    - MaterialisticMixin
+    slots:
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - Entity_has_part
+    - Entity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - EvaluatedEntity_was_generated_by
+    - EvaluatedEntity_title
+    - EvaluatedEntity_description
+    - EvaluatedEntity_other_identifier
+    - MaterialSample_derived_from
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    slot_usage:
+      derived_from:
+        name: derived_from
+        description: The slot to specify the MaterialEntity or MaterialSample from
+          which the MaterialSample was created.
+    class_uri: OBI:0000747
+  Temperature:
+    name: Temperature
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Temperature
+    description: A physical quantity that quantitatively expresses the attribute of
+      hotness or coldness.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - qudt:Quantity
+    close_mappings:
+    - PATO:0000146
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: qudt:Quantity
+  Mass:
+    name: Mass
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Mass
+    description: The strength of a body's gravitational attraction to other bodies.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - qudt:Quantity
+    close_mappings:
+    - PATO:0000125
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: qudt:Quantity
+  Volume:
+    name: Volume
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Volume
+    description: A measure of regions in three-dimensional space.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - qudt:Quantity
+    close_mappings:
+    - PATO:0000918
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: qudt:Quantity
+  Density:
+    name: Density
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Density
+    description: A measure of the mass per unit volume of a substance.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - SIO:001406
+    close_mappings:
+    - PATO:0001019
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: SIO:001406
+  Pressure:
+    name: Pressure
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Pressure
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+    mappings:
+    - qudt:Quantity
+    close_mappings:
+    - PATO:0001025
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: qudt:Quantity
   Activity:
     name: Activity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/Activity
@@ -9064,6 +9214,82 @@ classes:
     - title
     - description
     class_uri: time:Instant
+  SubstanceSample:
+    name: SubstanceSample
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/SubstanceSample
+    description: A MaterialSample derived from a chemical substance that is of interest
+      in an analytical procedure.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    aliases:
+    - analyte
+    mappings:
+    - SIO:001378
+    is_a: MaterialSample
+    mixins:
+    - ChemicalSubstanceMixin
+    slots:
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - Entity_has_part
+    - Entity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - EvaluatedEntity_was_generated_by
+    - EvaluatedEntity_title
+    - EvaluatedEntity_description
+    - EvaluatedEntity_other_identifier
+    - MaterialSample_derived_from
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    - has_concentration
+    - has_ph_value
+    - composed_of
+    - has_amount
+    class_uri: SIO:001378
+  PolymerSample:
+    name: PolymerSample
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerSample
+    description: A SubstanceSample derived from a Polymer.
+    todos:
+    - Find a better mapping, as it is currently mapped to same ontology class as its
+      parent.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    mappings:
+    - SIO:001378
+    is_a: SubstanceSample
+    mixins:
+    - PolymerMixin
+    slots:
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - Entity_has_part
+    - Entity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - EvaluatedEntity_was_generated_by
+    - EvaluatedEntity_title
+    - EvaluatedEntity_description
+    - EvaluatedEntity_other_identifier
+    - MaterialSample_derived_from
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    - has_concentration
+    - has_ph_value
+    - composed_of
+    - has_amount
+    class_uri: SIO:001378
   ChemicalEntity:
     name: ChemicalEntity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalEntity
@@ -9071,9 +9297,11 @@ classes:
       ion pair, radical, radical ion, complex, conformer etc., identifiable as a separately
       distinguishable entity.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    aliases:
+    - molecular entity
     mappings:
     - CHEBI:23367
-    is_a: MaterialEntity
+    is_a: Entity
     slots:
     - Entity_title
     - Entity_description
@@ -9084,30 +9312,32 @@ classes:
     - Entity_part_of
     - ClassifierMixin_type
     - rdf_type
-    - MaterialEntity_has_part
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
     - inchi
     - inchikey
     - smiles
     - molecular_formula
     - iupac_name
     - has_molar_mass
+    - ChemicalEntity_has_part
+    slot_usage:
+      has_part:
+        name: has_part
+        description: The slot to provide the parts of a ChemicalEntity that are themself
+          chemical entities.
+        slot_uri: BFO:0000051
+        range: ChemicalEntity
+        multivalued: true
+        inlined_as_list: true
     class_uri: CHEBI:23367
   Atom:
     name: Atom
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Atom
-    description: A MaterialEntity constituting the smallest component of an element
+    description: An Entity constituting the smallest component of a chemical element
       having the chemical properties of the element.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
     mappings:
     - CHEBI:33250
-    is_a: ChemicalEntity
+    is_a: Entity
     slots:
     - Entity_title
     - Entity_description
@@ -9115,22 +9345,9 @@ classes:
     - Entity_other_identifier
     - has_qualitative_attribute
     - has_quantitative_attribute
+    - Entity_has_part
     - Entity_part_of
     - ClassifierMixin_type
-    - MaterialEntity_has_part
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    - inchi
-    - inchikey
-    - smiles
-    - molecular_formula
-    - iupac_name
-    - has_molar_mass
     - Atom_rdf_type
     slot_usage:
       rdf_type:
@@ -9159,6 +9376,75 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: AFR:0002409
+  Concentration:
+    name: Concentration
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration
+    description: A QuantitativeAttribute of a ChemicalSubstance that represents the
+      amount of a constituent divided by the volume of the mixture.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    mappings:
+    - CHMO:0002820
+    exact_mappings:
+    - EDAM:2140
+    - NCIT:C41185
+    - VOC4CAT:0007244
+    - AFR:0002036
+    close_mappings:
+    - PATO:0000033
+    narrow_mappings:
+    - CHMO:0002822
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: CHMO:0002820
+  AmountOfSubstance:
+    name: AmountOfSubstance
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/AmountOfSubstance
+    description: The total amount of substance used in a ChemicalReaction.
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    aliases:
+    - SubstanceAmount
+    mappings:
+    - qudt:Quantity
+    close_mappings:
+    - PATO:0000070
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: qudt:Quantity
+  PHValue:
+    name: PHValue
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PHValue
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+    mappings:
+    - SIO:001089
+    exact_mappings:
+    - NCIT:C45997
+    - AFR:0001142
+    close_mappings:
+    - PATO:0001842
+    is_a: QuantitativeAttribute
+    slots:
+    - title
+    - description
+    - QuantitativeAttribute_value
+    - quantitativeAttribute__has_quantity_type
+    - quantitativeAttribute__unit
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: SIO:001089
   InChIKey:
     name: InChIKey
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/InChIKey
@@ -9238,27 +9524,18 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: CHEMINF:000018
-  ChemicalSubstance:
-    name: ChemicalSubstance
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstance
-    description: A MaterialEntity of constant composition, composed of chemical entities
-      of the same type or of different types.
+  ChemicalSubstanceMixin:
+    name: ChemicalSubstanceMixin
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/ChemicalSubstanceMixin
+    description: A LinkML mixin used to pass down properties common to all material
+      entities that are described in a chemical context via being composed of chemical
+      entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc.,
+      ) of the same type or of different types.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - CHEBI:59999
-    is_a: MaterialEntity
+    is_a: MaterialisticMixin
+    abstract: true
     mixin: true
     slots:
-    - Entity_title
-    - Entity_description
-    - id
-    - Entity_other_identifier
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - MaterialEntity_has_part
     - alternative_label
     - has_physical_state
     - has_temperature
@@ -9269,32 +9546,19 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
-    class_uri: CHEBI:59999
-  Polymer:
-    name: Polymer
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Polymer
-    description: A ChemicalSubstance that is composed of macromolecules of different
-      kinds and which may be differentiated by composition, length, degree of branching
-      etc..
+    class_uri: chemical_entities_ap:ChemicalSubstanceMixin
+  PolymerMixin:
+    name: PolymerMixin
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PolymerMixin
+    description: A LinkML mixin used to pass down properties common to all chemical
+      substances that are composed of macromolecules of different kinds and which
+      may be differentiated by composition, length, degree of branching etc..
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - CHEBI:60027
-    is_a: ChemicalSubstance
+    is_a: ChemicalSubstanceMixin
+    abstract: true
     mixin: true
     slots:
-    - Entity_title
-    - Entity_description
-    - id
-    - Entity_other_identifier
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - MaterialEntity_has_part
     - alternative_label
     - has_physical_state
     - has_temperature
@@ -9305,84 +9569,13 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
-    class_uri: CHEBI:60027
-  Concentration:
-    name: Concentration
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/Concentration
-    description: A QuantitativeAttribute of a ChemicalSubstance that represents the
-      amount of a constituent divided by the volume of the mixture.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - CHMO:0002820
-    exact_mappings:
-    - EDAM:2140
-    - NCIT:C41185
-    - VOC4CAT:0007244
-    - AFR:0002036
-    close_mappings:
-    - PATO:0000033
-    narrow_mappings:
-    - CHMO:0002822
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: CHMO:0002820
-  AmountOfSubstance:
-    name: AmountOfSubstance
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/AmountOfSubstance
-    description: The total amount of substance used in a ChemicalReaction.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    aliases:
-    - SubstanceAmount
-    mappings:
-    - qudt:Quantity
-    close_mappings:
-    - PATO:0000070
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: qudt:Quantity
-  PHValue:
-    name: PHValue
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/PHValue
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
-    mappings:
-    - SIO:001089
-    exact_mappings:
-    - NCIT:C45997
-    - AFR:0001142
-    close_mappings:
-    - PATO:0001842
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: SIO:001089
+    class_uri: chemical_entities_ap:PolymerMixin
   ChemicalReaction:
     name: ChemicalReaction
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/ChemicalReaction
     description: A process that leads to the transformation of one set of chemical
-      substances to another.
+      substances to another and that is the subject matter of a DataGeneratingActivity.
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - SIO:010345
@@ -9392,12 +9585,11 @@ classes:
     - AFP:0003711
     narrow_mappings:
     - RXNO:0000329
-    is_a: Activity
+    is_a: EvaluatedActivity
     slots:
     - id
     - Activity_title
     - Activity_description
-    - Activity_other_identifier
     - Activity_has_part
     - Activity_had_input_entity
     - Activity_had_output_entity
@@ -9408,6 +9600,7 @@ classes:
     - Activity_part_of
     - ClassifierMixin_type
     - rdf_type
+    - EvaluatedActivity_other_identifier
     - used_starting_material
     - used_reactant
     - generated_product
@@ -9445,7 +9638,9 @@ classes:
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
     - PROCO:0000029
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+    - ChemicalSubstanceMixin
     slots:
     - Entity_title
     - Entity_description
@@ -9464,12 +9659,11 @@ classes:
     - has_volume
     - has_density
     - has_pressure
+    - has_molar_equivalent
     - has_concentration
     - has_ph_value
     - composed_of
     - has_amount
-    - has_percentage_of_total
-    - has_molar_equivalent
     class_uri: PROCO:0000029
   DissolvingSubstance:
     name: DissolvingSubstance
@@ -9486,8 +9680,7 @@ classes:
     - NCIT:C45790
     is_a: AgenticEntity
     mixins:
-    - ChemicalSubstance
-    - Materialistic
+    - ChemicalSubstanceMixin
     slots:
     - id
     - title
@@ -9510,7 +9703,6 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
     class_uri: SIO:010417
   Reagent:
@@ -9526,7 +9718,9 @@ classes:
     close_mappings:
     - OBI:0001879
     - PROCO:0000029
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+    - ChemicalSubstanceMixin
     slots:
     - Entity_title
     - Entity_description
@@ -9545,12 +9739,11 @@ classes:
     - has_volume
     - has_density
     - has_pressure
+    - has_molar_equivalent
     - has_concentration
     - has_ph_value
     - composed_of
     - has_amount
-    - has_percentage_of_total
-    - has_molar_equivalent
     class_uri: SIO:010411
   ChemicalProduct:
     name: ChemicalProduct
@@ -9563,7 +9756,9 @@ classes:
     - VOC4CAT:0000194
     close_mappings:
     - ENVO:2000000
-    is_a: ChemicalSubstance
+    is_a: MaterialEntity
+    mixins:
+    - ChemicalSubstanceMixin
     slots:
     - Entity_title
     - Entity_description
@@ -9585,9 +9780,7 @@ classes:
     - has_concentration
     - has_ph_value
     - composed_of
-    - has_molar_equivalent
     - has_amount
-    - has_percentage_of_total
     class_uri: NCIT:C48810
   Catalyst:
     name: Catalyst
@@ -9604,8 +9797,7 @@ classes:
     - CHEBI:35223
     is_a: AgenticEntity
     mixins:
-    - ChemicalSubstance
-    - Materialistic
+    - ChemicalSubstanceMixin
     slots:
     - id
     - title
@@ -9629,7 +9821,6 @@ classes:
     - has_ph_value
     - composed_of
     - has_amount
-    - has_percentage_of_total
     class_uri: SIO:010344
   Reactor:
     name: Reactor
@@ -9643,7 +9834,7 @@ classes:
     - VOC4CAT:0007017
     is_a: Device
     mixins:
-    - Materialistic
+    - MaterialisticMixin
     slots:
     - id
     - title
@@ -9672,7 +9863,7 @@ classes:
       100 %).
     from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/
     mappings:
-    - qudt:Quantity
+    - CHMO:0002855
     exact_mappings:
     - VOC4CAT:0005005
     is_a: QuantitativeAttribute
@@ -9684,7 +9875,7 @@ classes:
     - quantitativeAttribute__unit
     - ClassifierMixin_type
     - rdf_type
-    class_uri: qudt:Quantity
+    class_uri: CHMO:0002855
   MolarEquivalent:
     name: MolarEquivalent
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/reaction/MolarEquivalent
@@ -9721,200 +9912,9 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: qudt:Quantity
-  Materialistic:
-    name: Materialistic
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Materialistic
-    description: A LinkML mixin used to pass down properties common to all material
-      entities. It is needed for example to have MaterialSample have the same properties
-      as MaterialEntity, although it is defined as a subclass of EvaluatedEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mixin: true
-    slots:
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    class_uri: material_entities_ap:Materialistic
-  MaterialEntity:
-    name: MaterialEntity
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialEntity
-    description: A material is an Entity that has some portion of matter as proper
-      part.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - BFO:0000040
-    is_a: Entity
-    mixins:
-    - Materialistic
-    slots:
-    - Entity_title
-    - Entity_description
-    - id
-    - Entity_other_identifier
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - MaterialEntity_has_part
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    slot_usage:
-      has_part:
-        name: has_part
-        description: The slot to provide the parts of a MaterialEntity.
-        slot_uri: BFO:0000051
-        range: MaterialEntity
-        recommended: true
-        multivalued: true
-        inlined_as_list: true
-    class_uri: BFO:0000040
-  MaterialSample:
-    name: MaterialSample
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/MaterialSample
-    description: A Sample that was derived from a previous MaterialSample or some
-      other kind of MaterialEntity.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - OBI:0000747
-    exact_mappings:
-    - SIO:001050
-    - VOC4CAT:0005056
-    is_a: EvaluatedEntity
-    mixins:
-    - Materialistic
-    slots:
-    - id
-    - has_qualitative_attribute
-    - has_quantitative_attribute
-    - Entity_has_part
-    - Entity_part_of
-    - ClassifierMixin_type
-    - rdf_type
-    - EvaluatedEntity_was_generated_by
-    - EvaluatedEntity_title
-    - EvaluatedEntity_description
-    - EvaluatedEntity_other_identifier
-    - MaterialSample_derived_from
-    - alternative_label
-    - has_physical_state
-    - has_temperature
-    - has_mass
-    - has_volume
-    - has_density
-    - has_pressure
-    slot_usage:
-      derived_from:
-        name: derived_from
-        description: The slot to specify the MaterialEntity or MaterialSample from
-          which the MaterialSample was created.
-    class_uri: OBI:0000747
-  Temperature:
-    name: Temperature
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Temperature
-    description: A physical quantity that quantitatively expresses the attribute of
-      hotness or coldness.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - qudt:Quantity
-    close_mappings:
-    - PATO:0000146
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: qudt:Quantity
-  Mass:
-    name: Mass
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Mass
-    description: The strength of a body's gravitational attraction to other bodies.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - qudt:Quantity
-    close_mappings:
-    - PATO:0000125
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: qudt:Quantity
-  Volume:
-    name: Volume
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Volume
-    description: A measure of regions in three-dimensional space.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - qudt:Quantity
-    close_mappings:
-    - PATO:0000918
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: qudt:Quantity
-  Density:
-    name: Density
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Density
-    description: A measure of the mass per unit volume of a substance.
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - SIO:001406
-    close_mappings:
-    - PATO:0001019
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: SIO:001406
-  Pressure:
-    name: Pressure
-    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/Pressure
-    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
-    mappings:
-    - qudt:Quantity
-    close_mappings:
-    - PATO:0001025
-    is_a: QuantitativeAttribute
-    slots:
-    - title
-    - description
-    - QuantitativeAttribute_value
-    - quantitativeAttribute__has_quantity_type
-    - quantitativeAttribute__unit
-    - ClassifierMixin_type
-    - rdf_type
-    class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-04-17T10:14:43'
-source_file_size: 7013
-generation_date: '2026-04-17T10:14:51'
+source_file_date: '2026-04-24T14:40:07'
+source_file_size: 9666
+generation_date: '2026-04-24T14:40:17'
 

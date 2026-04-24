@@ -513,43 +513,18 @@ Alias: has_physical_state</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Polymer/">Polymer</a></td>
-<td>A ChemicalSubstance that is composed of macromolecules of different kinds and...</td>
+<td><a href="../PolymerMixin/">PolymerMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all chemical substances...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalEntity/">ChemicalEntity</a></td>
-<td>Any constitutionally or isotopically distinct atom, molecule, ion, ion pair, ...</td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities t...</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MSSample/">MSSample</a></td>
-<td>Sample that has been investigated by a chemical analysis by mass spectrometry</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
-<td>A chemical substance that is produced by a ChemicalReaction</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Atom/">Atom</a></td>
-<td>A MaterialEntity constituting the smallest component of an element having the...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Materialistic/">Materialistic</a></td>
-<td>A LinkML mixin used to pass down properties common to all material entities</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Reagent/">Reagent</a></td>
-<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer</td>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an ...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -558,28 +533,8 @@ Alias: has_physical_state</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td>A material is an Entity that has some portion of matter as proper part</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
-<td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an a...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Catalyst/">Catalyst</a></td>
-<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a Chemica...</td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities</td>
 <td>no</td>
 </tr>
 <tr>
@@ -588,8 +543,43 @@ Alias: has_physical_state</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A MaterialEntity of constant composition, composed of chemical entities of th...</td>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td>A material is an Entity that has some portion of matter as proper part</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind o...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DissolvingSubstance/">DissolvingSubstance</a></td>
+<td>A liquid ChemicalSubstance that dissolves or that is capable of dissolving a ...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MSSample/">MSSample</a></td>
+<td>A sample prepared for and investigated by Mass Spectrometry (MS), following r...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
+<td>A chemical substance that is produced by a ChemicalReaction</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Catalyst/">Catalyst</a></td>
+<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a Chemica...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Reagent/">Reagent</a></td>
+<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -610,7 +600,7 @@ Alias: has_physical_state</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../Materialistic/">Materialistic</a></td>
+<td><a href="../MaterialisticMixin/">MaterialisticMixin</a></td>
 </tr>
 <tr>
 <td>Slot URI</td>
@@ -674,7 +664,7 @@ Alias: has_physical_state</p>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_physical_state</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Materialistic</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialisticMixin</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">PhysicalStateEnum</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 <span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>

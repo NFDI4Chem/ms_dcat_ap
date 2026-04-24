@@ -311,6 +311,10 @@
     click Dataset href "../Dataset/"
       Dataset &lt;|-- AnalysisDataset
         click AnalysisDataset href "../AnalysisDataset/"
+      Dataset &lt;|-- SubstanceSampleCharacterizationDataset
+        click SubstanceSampleCharacterizationDataset href "../SubstanceSampleCharacterizationDataset/"
+      Dataset &lt;|-- ReactionMonitoringDataset
+        click ReactionMonitoringDataset href "../ReactionMonitoringDataset/"
 
       Dataset : access_rights
 
@@ -647,6 +651,8 @@
 <ul>
 <li><strong>Dataset</strong><ul>
 <li><a href="../AnalysisDataset/">AnalysisDataset</a></li>
+<li><a href="../SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></li>
+<li><a href="../ReactionMonitoringDataset/">ReactionMonitoringDataset</a></li>
 </ul>
 </li>
 </ul>
@@ -961,6 +967,30 @@
 </tr>
 <tr>
 <td><a href="./">Dataset</a></td>
+<td><a href="../source/">source</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></td>
+<td><a href="../has_version/">has_version</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></td>
+<td><a href="../source/">source</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
+<td><a href="../has_version/">has_version</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoringDataset/">ReactionMonitoringDataset</a></td>
 <td><a href="../source/">source</a></td>
 <td>range</td>
 <td><a href="./">Dataset</a></td>

@@ -518,28 +518,18 @@ Alias: has_concentration</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Polymer/">Polymer</a></td>
-<td>A ChemicalSubstance that is composed of macromolecules of different kinds and...</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MSSample/">MSSample</a></td>
-<td>Sample that has been investigated by a chemical analysis by mass spectrometry</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
-<td>A chemical substance that is produced by a ChemicalReaction</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Reagent/">Reagent</a></td>
-<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities t...</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../PolymerSample/">PolymerSample</a></td>
 <td>A SubstanceSample derived from a Polymer</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an ...</td>
 <td>no</td>
 </tr>
 <tr>
@@ -553,8 +543,13 @@ Alias: has_concentration</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a ChemicalSubstance that is of interest in an a...</td>
+<td><a href="../PolymerMixin/">PolymerMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all chemical substances...</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
+<td>A chemical substance that is produced by a ChemicalReaction</td>
 <td>no</td>
 </tr>
 <tr>
@@ -563,8 +558,8 @@ Alias: has_concentration</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
-<td>A MaterialEntity of constant composition, composed of chemical entities of th...</td>
+<td><a href="../Reagent/">Reagent</a></td>
+<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -585,7 +580,7 @@ Alias: has_concentration</p>
 </tr>
 <tr>
 <td>Domain Of</td>
-<td><a href="../ChemicalSubstance/">ChemicalSubstance</a></td>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
 </tr>
 <tr>
 <td>Slot URI</td>
@@ -646,7 +641,7 @@ Alias: has_concentration</p>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">SIO:000008</span>
 <span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_concentration</span>
 <span class="nt">domain_of</span><span class="p">:</span>
-<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstance</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Concentration</span>
 <span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
