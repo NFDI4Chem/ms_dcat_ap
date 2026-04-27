@@ -385,55 +385,55 @@
 <tr>
 <td><a href="../application_profile/">application_profile</a></td>
 <td>* <em>recommended</em> <br/> <a href="../Standard/">Standard</a></td>
-<td>An Application Profile that the Catalogued Resource's metadata conforms t...</td>
+<td>An Application Profile that the Catalogued Resource's metadata conforms to.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../change_type/">change_type</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../Concept/">Concept</a></td>
-<td>The status of the catalogue record in the context of editorial flow of the da...</td>
+<td>The status of the catalogue record in the context of editorial flow of the dataset and data service descriptions.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../description/">description</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>A free-text account of the record</td>
+<td>A free-text account of the record. This property can be repeated for parallel language versions of the description.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../language/">language</a></td>
 <td>* <br/> <a href="../LinguisticSystem/">LinguisticSystem</a></td>
-<td>A language used in the textual metadata describing titles, descriptions, etc</td>
+<td>A language used in the textual metadata describing titles, descriptions, etc. of the Catalogued Resource.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../listing_date/">listing_date</a></td>
 <td>0..1 <em>recommended</em> <br/> <a href="../Date/">Date</a></td>
-<td>The date on which the description of the Resource was included in the Catalog...</td>
+<td>The date on which the description of the Resource was included in the Catalogue.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../modification_date/">modification_date</a></td>
 <td>1 <br/> <a href="../Date/">Date</a></td>
-<td>The most recent date on which the Catalogue entry was changed or modified</td>
+<td>The most recent date on which the Catalogue entry was changed or modified.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../primary_topic/">primary_topic</a></td>
-<td>1 <br/> <a href="../Dataset/">Dataset</a> or <br/><a href="../DatasetSeries/">DatasetSeries</a> or <br/><a href="../DataService/">DataService</a> or <br/><a href="../Catalogue/">Catalogue</a> or <br/><a href="../Any/">Any</a></td>
-<td>A link to the Dataset, Data service or Catalog described in the record</td>
+<td>1 <br/> <a href="../Catalogue/">Catalogue</a> or <br/><a href="../DatasetSeries/">DatasetSeries</a> or <br/><a href="../Any/">Any</a> or <br/><a href="../DataService/">DataService</a> or <br/><a href="../Dataset/">Dataset</a></td>
+<td>A link to the Dataset, Data service or Catalog described in the record.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../source_metadata/">source_metadata</a></td>
 <td>0..1 <br/> <a href="./">CatalogueRecord</a></td>
-<td>The original metadata that was used in creating metadata for the Dataset, Dat...</td>
+<td>The original metadata that was used in creating metadata for the Dataset, Data Service or Dataset Series.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../title/">title</a></td>
 <td>* <br/> <a href="../String/">String</a></td>
-<td>A name given to the Catalogue Record</td>
+<td>A name given to the Catalogue Record.</td>
 <td>direct</td>
 </tr>
 </tbody>
