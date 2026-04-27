@@ -286,7 +286,7 @@
 <div class="md-content" data-md-component="content">
 <article class="md-content__inner md-typeset">
 <h1 id="class-mssample">Class: MSSample</h1>
-<p><em>A sample prepared for and investigated by Mass Spectrometry (MS), following recommendations of "Liquid MS MIChI".</em></p>
+<p><em>A sample prepared for and investigated by Mass Spectrometry (MS). Can be a MaterialSample of unknown composition or a SubstanceSample of known composition.</em></p>
 <p>URI: <a href="http://purl.obolibrary.org/obo/MS_1000457">MS:1000457</a></p>
 <pre class="mermaid"><code> classDiagram
     class MSSample
@@ -576,18 +576,18 @@
 <tr>
 <td><a href="../id/">id</a></td>
 <td>1 <br/> <a href="../Uriorcurie/">Uriorcurie</a></td>
-<td>Analysed Compound and/or Sample ID</td>
+<td><strong>Analysed Compound and/or Sample ID</strong> <br/> <em>Analysed Compound</em> : A compound analysed in an mass spectrometry (MS) sample using data acquired from an mass spectrometry (MS) analysis. <br/> <em>Sample ID</em>: The URI identifying a sample and leading to the sample history</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../other_identifier/">other_identifier</a></td>
-<td>* <br/> <a href="../Identifier/">Identifier</a></td>
+<td>* <br> <a href="../Identifier/">Identifier</a></br></td>
 <td>A slot to provide a secondary identifier of the EvaluatedEntity.</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
 <tr>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
-<td>* <em>recommended</em> <br/> <a href="../QualitativeAttribute/">QualitativeAttribute</a></td>
+<td>* <em>recommended</em> <br> <a href="../QualitativeAttribute/">QualitativeAttribute</a></br></td>
 <td>The slot to relate a qualitative attribute to an EvaluatedEntity, EvaluatedActivity or AgenticEntity</td>
 <td><a href="../Entity/">Entity</a></td>
 </tr>
@@ -652,48 +652,42 @@
 <h3 id="direct">Direct</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample prepared for and investigated by Mass Spectrometry (MS), following</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">recommendations of "Liquid MS MIChI".</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample prepared for and investigated by Mass Spectrometry (MS). Can</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">be a MaterialSample of unknown composition or a SubstanceSample of known composition.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialSample</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysed Compound and/or Sample ID</span>
-<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Analysed</span><span class="nv"> </span><span class="s">Compound</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">compound</span><span class="nv"> </span><span class="s">analysed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">Sample</span>
-<span class="w">      </span><span class="s">using</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">acquired</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">analysis.</span>
-
-<span class="w">      </span><span class="s">'</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Sample</span><span class="nv"> </span><span class="s">ID:</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">URI</span><span class="nv"> </span><span class="s">identifying</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">leading</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">history</span><span class="nv"> </span><span class="s">including</span>
-<span class="w">      </span><span class="s">its</span><span class="nv"> </span><span class="s">preparation.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'**Analysed</span><span class="nv"> </span><span class="s">Compound</span><span class="nv"> </span><span class="s">and/or</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">ID**</span><span class="nv"> </span><span class="s">&lt;br&gt;</span><span class="nv"> </span><span class="s">*Analysed</span><span class="nv"> </span><span class="s">Compound*</span>
+<span class="w">      </span><span class="s">:</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">compound</span><span class="nv"> </span><span class="s">analysed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">acquired</span>
+<span class="w">      </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">analysis.</span><span class="nv"> </span><span class="s">&lt;br&gt;</span><span class="nv"> </span><span class="s">*Sample</span><span class="nv"> </span><span class="s">ID*:</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">URI</span><span class="nv"> </span><span class="s">identifying</span>
+<span class="w">      </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">leading</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">history</span>
 
 <span class="w">      </span><span class="s">'</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MS:1000777</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">class_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MS:1000457</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
-<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample prepared for and investigated by Mass Spectrometry (MS), following</span>
-<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">recommendations of "Liquid MS MIChI".</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A sample prepared for and investigated by Mass Spectrometry (MS). Can</span>
+<span class="w">  </span><span class="l l-Scalar l-Scalar-Plain">be a MaterialSample of unknown composition or a SubstanceSample of known composition.</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialSample</span>
 <span class="nt">slot_usage</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysed Compound and/or Sample ID</span>
-<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Analysed</span><span class="nv"> </span><span class="s">Compound</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">compound</span><span class="nv"> </span><span class="s">analysed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">Sample</span>
-<span class="w">      </span><span class="s">using</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">acquired</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">analysis.</span>
-
-<span class="w">      </span><span class="s">'</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Sample</span><span class="nv"> </span><span class="s">ID:</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">URI</span><span class="nv"> </span><span class="s">identifying</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">leading</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">history</span><span class="nv"> </span><span class="s">including</span>
-<span class="w">      </span><span class="s">its</span><span class="nv"> </span><span class="s">preparation.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'**Analysed</span><span class="nv"> </span><span class="s">Compound</span><span class="nv"> </span><span class="s">and/or</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">ID**</span><span class="nv"> </span><span class="s">&lt;br&gt;</span><span class="nv"> </span><span class="s">*Analysed</span><span class="nv"> </span><span class="s">Compound*</span>
+<span class="w">      </span><span class="s">:</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">compound</span><span class="nv"> </span><span class="s">analysed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">acquired</span>
+<span class="w">      </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">analysis.</span><span class="nv"> </span><span class="s">&lt;br&gt;</span><span class="nv"> </span><span class="s">*Sample</span><span class="nv"> </span><span class="s">ID*:</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">URI</span><span class="nv"> </span><span class="s">identifying</span>
+<span class="w">      </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">leading</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">history</span>
 
 <span class="w">      </span><span class="s">'</span>
 <span class="w">    </span><span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MS:1000777</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">attributes</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">derived_from</span>
@@ -934,14 +928,10 @@
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">string</span>
 <span class="w">  </span><span class="nt">id</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">id</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Analysed Compound and/or Sample ID</span>
-<span class="w">    </span><span class="nt">comments</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Analysed</span><span class="nv"> </span><span class="s">Compound</span><span class="nv"> </span><span class="s">:</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">compound</span><span class="nv"> </span><span class="s">analysed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">Sample</span>
-<span class="w">      </span><span class="s">using</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">acquired</span><span class="nv"> </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">analysis.</span>
-
-<span class="w">      </span><span class="s">'</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">'Sample</span><span class="nv"> </span><span class="s">ID:</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">URI</span><span class="nv"> </span><span class="s">identifying</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">leading</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">history</span><span class="nv"> </span><span class="s">including</span>
-<span class="w">      </span><span class="s">its</span><span class="nv"> </span><span class="s">preparation.</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'**Analysed</span><span class="nv"> </span><span class="s">Compound</span><span class="nv"> </span><span class="s">and/or</span><span class="nv"> </span><span class="s">Sample</span><span class="nv"> </span><span class="s">ID**</span><span class="nv"> </span><span class="s">&lt;br&gt;</span><span class="nv"> </span><span class="s">*Analysed</span><span class="nv"> </span><span class="s">Compound*</span>
+<span class="w">      </span><span class="s">:</span><span class="nv"> </span><span class="s">A</span><span class="nv"> </span><span class="s">compound</span><span class="nv"> </span><span class="s">analysed</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">using</span><span class="nv"> </span><span class="s">data</span><span class="nv"> </span><span class="s">acquired</span>
+<span class="w">      </span><span class="s">from</span><span class="nv"> </span><span class="s">an</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">analysis.</span><span class="nv"> </span><span class="s">&lt;br&gt;</span><span class="nv"> </span><span class="s">*Sample</span><span class="nv"> </span><span class="s">ID*:</span><span class="nv"> </span><span class="s">The</span><span class="nv"> </span><span class="s">URI</span><span class="nv"> </span><span class="s">identifying</span>
+<span class="w">      </span><span class="s">a</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">and</span><span class="nv"> </span><span class="s">leading</span><span class="nv"> </span><span class="s">to</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">history</span>
 
 <span class="w">      </span><span class="s">'</span>
 <span class="w">    </span><span class="nt">in_subset</span><span class="p">:</span>
@@ -963,6 +953,7 @@
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">LicenseDocument</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Resource</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">uriorcurie</span>
+<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">other_identifier</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">other_identifier</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">A slot to provide a secondary identifier of the EvaluatedEntity.</span>

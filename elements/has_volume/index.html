@@ -518,18 +518,13 @@ Alias: has_volume</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
+<td><a href="../Reagent/">Reagent</a></td>
+<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Catalyst/">Catalyst</a></td>
-<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.</td>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td>A material is an Entity that has some portion of matter as proper part.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -543,18 +538,18 @@ Alias: has_volume</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PolymerMixin/">PolymerMixin</a></td>
-<td>A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td>A material is an Entity that has some portion of matter as proper part.</td>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
-<td>A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.</td>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -563,28 +558,33 @@ Alias: has_volume</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StartingMaterial/">StartingMaterial</a></td>
-<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../Reactor/">Reactor</a></td>
 <td>A reactor is a container for controlling a biological or chemical reaction or process.</td>
 <td>no</td>
 </tr>
 <tr>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../MSSample/">MSSample</a></td>
-<td>A sample prepared for and investigated by Mass Spectrometry (MS), following recommendations of "Liquid MS MIChI".</td>
+<td>A sample prepared for and investigated by Mass Spectrometry (MS). Can be a MaterialSample of unknown composition or a SubstanceSample of known composition.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Reagent/">Reagent</a></td>
-<td>A ChemicalSubstance that is consumed or transformed in a ChemicalReaction.</td>
+<td><a href="../PolymerMixin/">PolymerMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer.</td>
+<td><a href="../StartingMaterial/">StartingMaterial</a></td>
+<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Catalyst/">Catalyst</a></td>
+<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.</td>
 <td>no</td>
 </tr>
 </tbody>

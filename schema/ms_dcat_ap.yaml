@@ -2542,14 +2542,10 @@ slots:
   MSSample_id:
     name: MSSample_id
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/id
-    description: Analysed Compound and/or Sample ID
-    comments:
-    - 'Analysed Compound : A compound analysed in an mass spectrometry (MS) Sample
-      using data acquired from an mass spectrometry (MS) analysis.
-
-      '
-    - 'Sample ID: The URI identifying a sample and leading to the sample history including
-      its preparation.
+    description: '**Analysed Compound and/or Sample ID** <br> *Analysed Compound*
+      : A compound analysed in an mass spectrometry (MS) sample using data acquired
+      from an mass spectrometry (MS) analysis. <br> *Sample ID*: The URI identifying
+      a sample and leading to the sample history
 
       '
     in_subset:
@@ -6401,8 +6397,9 @@ classes:
   MSSample:
     name: MSSample
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
-    description: A sample prepared for and investigated by Mass Spectrometry (MS),
-      following recommendations of "Liquid MS MIChI".
+    description: A sample prepared for and investigated by Mass Spectrometry (MS).
+      Can be a MaterialSample of unknown composition or a SubstanceSample of known
+      composition.
     from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
     mappings:
     - MS:1000457
@@ -6430,17 +6427,14 @@ classes:
     slot_usage:
       id:
         name: id
-        description: Analysed Compound and/or Sample ID
-        comments:
-        - 'Analysed Compound : A compound analysed in an mass spectrometry (MS) Sample
-          using data acquired from an mass spectrometry (MS) analysis.
-
-          '
-        - 'Sample ID: The URI identifying a sample and leading to the sample history
-          including its preparation.
+        description: '**Analysed Compound and/or Sample ID** <br> *Analysed Compound*
+          : A compound analysed in an mass spectrometry (MS) sample using data acquired
+          from an mass spectrometry (MS) analysis. <br> *Sample ID*: The URI identifying
+          a sample and leading to the sample history
 
           '
         slot_uri: MS:1000777
+        required: true
     class_uri: MS:1000457
   SubstanceSampleCharacterizationDataset:
     name: SubstanceSampleCharacterizationDataset
@@ -9914,7 +9908,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-04-27T11:55:02'
-source_file_size: 9666
-generation_date: '2026-04-27T11:55:12'
+source_file_date: '2026-04-27T14:09:41'
+source_file_size: 9677
+generation_date: '2026-04-27T14:09:50'
 
