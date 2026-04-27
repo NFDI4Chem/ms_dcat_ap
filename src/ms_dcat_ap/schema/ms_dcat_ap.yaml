@@ -27,19 +27,19 @@ classes:
     class_uri: MS:1000457
     is_a: MaterialSample
     description:
-      A sample prepared for and investigated by Mass Spectrometry (MS),
-      following recommendations of "Liquid MS MIChI".
+      A sample prepared for and investigated by Mass Spectrometry (MS). Can
+      be a MaterialSample of unknown composition or a SubstanceSample of
+      known composition.
     slot_usage:
       id:
         slot_uri: MS:1000777
-        description: Analysed Compound and/or Sample ID
-        comments:
-          - >
-            Analysed Compound : A compound analysed in an mass spectrometry (MS)
-            Sample using data acquired from an mass spectrometry (MS) analysis.
-          - >
-            Sample ID: The URI identifying a sample and leading to the sample history
-            including its preparation.
+        description: >
+          **Analysed Compound and/or Sample ID** <br>
+          *Analysed Compound* : A compound analysed in an mass spectrometry (MS) sample
+          using data acquired from an mass spectrometry (MS) analysis. <br>
+          *Sample ID*: The URI identifying a sample and leading to the sample history
+        required: true
+
 #        range: uriorcurie
 #        required: true
 #      analysed_compound:
