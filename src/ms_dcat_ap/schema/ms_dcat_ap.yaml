@@ -24,21 +24,59 @@ imports:
 
 classes:
   MSSample:
+    abstract: true
+    mixin: true
+    slots:
+      - solvent
+      - injection_volume
+
+  SubstanceMSSample:
+    is_a: SubstanceSample
     class_uri: MS:1000457
+    mixins:
+      - MSSample
+    description: >
+      A mass spectrometry sample of known composition (substance)
+      prepared for and investigated by Mass Spectrometry (MS).
+    slot_usage:
+      composed_of:
+        description: >
+          Analysed Compound : A compound analysed in an mass spectrometry (MS)
+          sample using data acquired from an mass spectrometry (MS) analysis.
+        required: true
+      has_concentration:
+        description: >
+          The concentration of the compound analysed in a mass spectrometry (MS)
+          sample using data acquired from a mass spectrometry (MS) analysis
+        recommended: true
+
+  MaterialMSSample:
     is_a: MaterialSample
-    description:
-      A sample prepared for and investigated by Mass Spectrometry (MS). Can
-      be a MaterialSample of unknown composition or a SubstanceSample of
-      known composition.
+    class_uri: MS:1000457
+    mixins:
+      - MSSample
+    description: >
+      A mass spectrometry sample of unknown composition (material) prepared for and
+      investigated by Mass Spectrometry (MS).
     slot_usage:
       id:
-        slot_uri: MS:1000777
         description: >
-          **Analysed Compound and/or Sample ID** <br>
-          *Analysed Compound* : A compound analysed in an mass spectrometry (MS) sample
-          using data acquired from an mass spectrometry (MS) analysis. <br>
-          *Sample ID*: The URI identifying a sample and leading to the sample history
+          Sample ID: The URI identifying a sample and leading to the sample history including its preparation.
         required: true
+
+slots:
+  solvent:
+    description: >
+      A solvent used in liquid mass spectrometry (MS) for sample preparation.
+    range: ChemicalEntity
+    required: true
+  injection_volume:
+    description: >
+      The volume of liquid sample injected into the mass spectrometer for analysis.
+    range: Volume
+    required: true
+
+
 
 #        range: uriorcurie
 #        required: true
