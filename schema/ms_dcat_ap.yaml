@@ -2641,6 +2641,40 @@ slots:
     usage_slot_name: id
     range: uriorcurie
     required: true
+  MassSpectrometer_has_qualitative_attribute:
+    name: MassSpectrometer_has_qualitative_attribute
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/has_qualitative_attribute
+    description: The slot to relate a qualitative attribute to an EvaluatedEntity,
+      EvaluatedActivity or AgenticEntity
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - dcterms:relation
+    is_a: has_qualitative_attribute
+    domain: MassSpectrometer
+    slot_uri: dcterms:relation
+    alias: has_qualitative_attribute
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    is_usage_slot: true
+    usage_slot_name: has_qualitative_attribute
+    range: QualitativeAttribute
+    required: true
+    recommended: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
+    all_of:
+    - range: Manufacturer
+      required: true
+    - range: Model
+      required: true
+    - range: MassAnalyzerType
+      required: true
+    - range: IonizationType
+      required: true
   SubstanceSampleCharacterizationDataset_was_generated_by:
     name: SubstanceSampleCharacterizationDataset_was_generated_by
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
@@ -6579,6 +6613,120 @@ classes:
           '
         required: true
     class_uri: MS:1000457
+  MassSpectrometer:
+    name: MassSpectrometer
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MassSpectrometer
+    description: 'A mass spectrometer used for the analysis of samples in mass spectrometry
+      (MS).
+
+      '
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    mappings:
+    - CHMO:0000982
+    is_a: Device
+    slots:
+    - id
+    - title
+    - description
+    - has_quantitative_attribute
+    - AgenticEntity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - Device_has_part
+    - Device_other_identifier
+    - MassSpectrometer_has_qualitative_attribute
+    slot_usage:
+      has_qualitative_attribute:
+        name: has_qualitative_attribute
+        range: QualitativeAttribute
+        required: true
+        multivalued: true
+        all_of:
+        - range: Manufacturer
+          required: true
+        - range: Model
+          required: true
+        - range: MassAnalyzerType
+          required: true
+        - range: IonizationType
+          required: true
+    class_uri: CHMO:0000982
+  Manufacturer:
+    name: Manufacturer
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/Manufacturer
+    description: A manufacturer that produces MS instruments and/or their parts
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    mappings:
+    - MS:1000031
+    is_a: QualitativeAttribute
+    slots:
+    - title
+    - description
+    - QualitativeAttribute_value
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: MS:1000031
+  Model:
+    name: Model
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/Model
+    description: Instrument model name not including the vendor's name.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    mappings:
+    - MS:1000031
+    is_a: QualitativeAttribute
+    slots:
+    - title
+    - description
+    - QualitativeAttribute_value
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: MS:1000031
+  MassAnalyzerType:
+    name: MassAnalyzerType
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MassAnalyzerType
+    description: Type of mass analyzer used in a mass spectrometer (e.g. quadrupole,
+      time-of-flight, etc.)
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    mappings:
+    - MS:1000443
+    is_a: QualitativeAttribute
+    slots:
+    - title
+    - description
+    - QualitativeAttribute_value
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: MS:1000443
+  IonizationType:
+    name: IonizationType
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/IonizationType
+    description: Type of ionization used in a mass spectrometer (e.g. ESI, MALDI,
+      etc.)
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    mappings:
+    - MS:1000008
+    is_a: QualitativeAttribute
+    slots:
+    - title
+    - description
+    - QualitativeAttribute_value
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: MS:1000008
+  DetectorType:
+    name: DetectorType
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/DetectorType
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    mappings:
+    - MS:1000026
+    is_a: QualitativeAttribute
+    slots:
+    - title
+    - description
+    - QualitativeAttribute_value
+    - ClassifierMixin_type
+    - rdf_type
+    class_uri: MS:1000026
   SubstanceSampleCharacterizationDataset:
     name: SubstanceSampleCharacterizationDataset
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/SubstanceSampleCharacterizationDataset
@@ -10051,7 +10199,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-04-28T14:13:32'
-source_file_size: 10593
-generation_date: '2026-04-28T14:13:47'
+source_file_date: '2026-04-29T09:26:49'
+source_file_size: 11862
+generation_date: '2026-04-29T09:26:58'
 

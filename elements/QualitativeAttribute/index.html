@@ -313,6 +313,16 @@
         click ClassifierMixin href "../ClassifierMixin/"
 
 
+      QualitativeAttribute &lt;|-- Manufacturer
+        click Manufacturer href "../Manufacturer/"
+      QualitativeAttribute &lt;|-- Model
+        click Model href "../Model/"
+      QualitativeAttribute &lt;|-- MassAnalyzerType
+        click MassAnalyzerType href "../MassAnalyzerType/"
+      QualitativeAttribute &lt;|-- IonizationType
+        click IonizationType href "../IonizationType/"
+      QualitativeAttribute &lt;|-- DetectorType
+        click DetectorType href "../DetectorType/"
       QualitativeAttribute &lt;|-- InChIKey
         click InChIKey href "../InChIKey/"
       QualitativeAttribute &lt;|-- InChi
@@ -357,6 +367,11 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>QualitativeAttribute</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../Manufacturer/">Manufacturer</a></li>
+<li><a href="../Model/">Model</a></li>
+<li><a href="../MassAnalyzerType/">MassAnalyzerType</a></li>
+<li><a href="../IonizationType/">IonizationType</a></li>
+<li><a href="../DetectorType/">DetectorType</a></li>
 <li><a href="../InChIKey/">InChIKey</a></li>
 <li><a href="../InChi/">InChi</a></li>
 <li><a href="../MolecularFormula/">MolecularFormula</a></li>
@@ -442,6 +457,12 @@
 </tr>
 <tr>
 <td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
+<td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QualitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometer/">MassSpectrometer</a></td>
 <td><a href="../has_qualitative_attribute/">has_qualitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QualitativeAttribute</a></td>

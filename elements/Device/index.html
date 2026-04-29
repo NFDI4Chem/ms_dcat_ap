@@ -322,6 +322,8 @@
         click AgenticEntity href "../AgenticEntity/"
 
 
+      Device &lt;|-- MassSpectrometer
+        click MassSpectrometer href "../MassSpectrometer/"
       Device &lt;|-- Reactor
         click Reactor href "../Reactor/"
 
@@ -414,6 +416,7 @@
 <ul>
 <li><a href="../AgenticEntity/">AgenticEntity</a> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
 <li><strong>Device</strong><ul>
+<li><a href="../MassSpectrometer/">MassSpectrometer</a></li>
 <li><a href="../Reactor/">Reactor</a> [ <a href="../MaterialisticMixin/">MaterialisticMixin</a>]</li>
 </ul>
 </li>
@@ -519,6 +522,12 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../MassSpectrometer/">MassSpectrometer</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Device</a></td>
+</tr>
 <tr>
 <td><a href="./">Device</a></td>
 <td><a href="../has_part/">has_part</a></td>
