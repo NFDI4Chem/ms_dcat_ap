@@ -64,6 +64,47 @@ classes:
           Sample ID: The URI identifying a sample and leading to the sample history including its preparation.
         required: true
 
+  MassSpectrometer:
+    is_a: Device
+    class_uri: CHMO:0000982
+    description: >
+      A mass spectrometer used for the analysis of samples in mass spectrometry (MS).
+    slot_usage:
+      has_qualitative_attribute:
+        range: QualitativeAttribute
+        required: true
+        multivalued: true
+        all_of:
+          - range: Manufacturer
+            required: true
+          - range: Model
+            required: true
+          - range: MassAnalyzerType
+            required: true
+          - range: IonizationType
+            required: true
+
+  Manufacturer:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000031
+    description: A manufacturer that produces MS instruments and/or their parts
+  Model:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000031
+    description: Instrument model name not including the vendor's name.
+  MassAnalyzerType:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000443
+    description: Type of mass analyzer used in a mass spectrometer (e.g. quadrupole, time-of-flight, etc.)
+  IonizationType:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000008
+    description: Type of ionization used in a mass spectrometer (e.g. ESI, MALDI, etc.)
+  DetectorType:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000026
+
+
 slots:
   solvent:
     description: >
