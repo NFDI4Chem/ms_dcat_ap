@@ -376,6 +376,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#slots" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Slots
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#identifier-and-mapping-information" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -436,6 +447,8 @@
 
 
 <h1 id="enum-scanpolarityenum">Enum: ScanPolarityEnum</h1>
+<p><em>Polarity of a mass spectrometry scan: either positive or negative ion mode.</em></p>
+<p>__</p>
 <p>URI: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/ScanPolarityEnum">https://w3id.org/NFDI4Chem/ms-dcat-ap/ScanPolarityEnum</a></p>
 <h2 id="permissible-values">Permissible Values</h2>
 <table>
@@ -450,11 +463,26 @@
 <tr>
 <td>negative_scan</td>
 <td>MS:1000129</td>
-<td></td>
+<td>Negative ion mode scan.</td>
 </tr>
 <tr>
 <td>positive_scan</td>
 <td>MS:1000130</td>
+<td>Positive ion mode scan.</td>
+</tr>
+</tbody>
+</table>
+<h2 id="slots">Slots</h2>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Description</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><a href="../value/">value</a></td>
 <td></td>
 </tr>
 </tbody>
@@ -467,14 +495,20 @@
 <h2 id="linkml-source">LinkML Source</h2>
 <details>
 <div class="highlight"><pre><span></span><code><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ScanPolarityEnum</span>
+<span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;Polarity</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">a</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">scan:</span><span class="nv"> </span><span class="s">either</span><span class="nv"> </span><span class="s">positive</span><span class="nv"> </span><span class="s">or</span><span class="nv"> </span><span class="s">negative</span><span class="nv"> </span><span class="s">ion</span>
+<span class="w">  </span><span class="s">mode.</span>
+
+<span class="w">  </span><span class="s">&#39;</span>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">permissible_values</span><span class="p">:</span>
 <span class="w">  </span><span class="nt">negative_scan</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">negative_scan</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Negative ion mode scan.</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MS:1000129</span>
 <span class="w">  </span><span class="nt">positive_scan</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">text</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">positive_scan</span>
+<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Positive ion mode scan.</span>
 <span class="w">    </span><span class="nt">meaning</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MS:1000130</span>
 </code></pre></div>
 </details>

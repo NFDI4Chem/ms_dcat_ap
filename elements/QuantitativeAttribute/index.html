@@ -313,6 +313,10 @@
         click ClassifierMixin href "../ClassifierMixin/"
 
 
+      QuantitativeAttribute &lt;|-- ScanWindowLowerLimit
+        click ScanWindowLowerLimit href "../ScanWindowLowerLimit/"
+      QuantitativeAttribute &lt;|-- ScanWindowUpperLimit
+        click ScanWindowUpperLimit href "../ScanWindowUpperLimit/"
       QuantitativeAttribute &lt;|-- Concentration
         click Concentration href "../Concentration/"
       QuantitativeAttribute &lt;|-- AmountOfSubstance
@@ -391,6 +395,8 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>QuantitativeAttribute</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../ScanWindowLowerLimit/">ScanWindowLowerLimit</a></li>
+<li><a href="../ScanWindowUpperLimit/">ScanWindowUpperLimit</a></li>
 <li><a href="../Concentration/">Concentration</a></li>
 <li><a href="../AmountOfSubstance/">AmountOfSubstance</a></li>
 <li><a href="../PHValue/">PHValue</a></li>
@@ -500,6 +506,12 @@
 </tr>
 <tr>
 <td><a href="../MassSpectrometer/">MassSpectrometer</a></td>
+<td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
+<td>range</td>
+<td><a href="./">QuantitativeAttribute</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
 <td><a href="../has_quantitative_attribute/">has_quantitative_attribute</a></td>
 <td>range</td>
 <td><a href="./">QuantitativeAttribute</a></td>

@@ -309,6 +309,8 @@
 <pre class="mermaid"><code> classDiagram
     class Dataset
     click Dataset href "../Dataset/"
+      Dataset &lt;|-- MSSampleMeasurementDataset
+        click MSSampleMeasurementDataset href "../MSSampleMeasurementDataset/"
       Dataset &lt;|-- AnalysisDataset
         click AnalysisDataset href "../AnalysisDataset/"
       Dataset &lt;|-- SubstanceSampleCharacterizationDataset
@@ -650,6 +652,7 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Dataset</strong><ul>
+<li><a href="../MSSampleMeasurementDataset/">MSSampleMeasurementDataset</a></li>
 <li><a href="../AnalysisDataset/">AnalysisDataset</a></li>
 <li><a href="../SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></li>
 <li><a href="../ReactionMonitoringDataset/">ReactionMonitoringDataset</a></li>
@@ -929,6 +932,18 @@
 </tr>
 </thead>
 <tbody>
+<tr>
+<td><a href="../MSSampleMeasurementDataset/">MSSampleMeasurementDataset</a></td>
+<td><a href="../has_version/">has_version</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
+<tr>
+<td><a href="../MSSampleMeasurementDataset/">MSSampleMeasurementDataset</a></td>
+<td><a href="../source/">source</a></td>
+<td>range</td>
+<td><a href="./">Dataset</a></td>
+</tr>
 <tr>
 <td><a href="../AnalysisDataset/">AnalysisDataset</a></td>
 <td><a href="../has_version/">has_version</a></td>
