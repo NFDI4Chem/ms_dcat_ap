@@ -25,7 +25,9 @@ imports:
 classes:
   MSSample:
     abstract: true
-    mixin: true
+    description: >
+      Abstract base class for mass spectrometry samples, providing common
+      slots such as solvent and injection volume.
     slots:
       - solvent
       - injection_volume
@@ -69,20 +71,32 @@ classes:
     class_uri: CHMO:0000982
     description: >
       A mass spectrometer used for the analysis of samples in mass spectrometry (MS).
-    slot_usage:
-      has_qualitative_attribute:
-        range: QualitativeAttribute
+    attributes:
+      manufacturer:
+        is_a: has_qualitative_attribute
+        description: The manufacturer of the mass spectrometer.
+        range: Manufacturer
         required: true
-        multivalued: true
-        all_of:
-          - range: Manufacturer
-            required: true
-          - range: Model
-            required: true
-          - range: MassAnalyzerType
-            required: true
-          - range: IonizationType
-            required: true
+      model:
+        is_a: has_qualitative_attribute
+        description: The model designation of the mass spectrometer.
+        range: Model
+        required: true
+      mass_analyzer_type:
+        is_a: has_qualitative_attribute
+        description: The type of mass analyzer used in the mass spectrometer.
+        range: MassAnalyzerType
+        required: true
+      ionization_type:
+        is_a: has_qualitative_attribute
+        description: The type of ionization used in the mass spectrometer.
+        range: IonizationType
+        required: true
+      detector_type:
+        is_a: has_qualitative_attribute
+        description: The type of detector used in the mass spectrometer.
+        range: DetectorType
+        required: false
 
   Manufacturer:
     is_a: QualitativeAttribute
@@ -103,6 +117,80 @@ classes:
   DetectorType:
     is_a: QualitativeAttribute
     class_uri: MS:1000026
+    description: Type of detector used in a mass spectrometer (e.g. electron multiplier, microchannel plate).
+
+  MSSampleMeasurementDataset:
+    is_a: Dataset
+    class_uri: dcat:Dataset
+    description: >
+      A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.
+    slot_usage:
+      was_generated_by:
+        range: MassSpectrometry
+        required: true
+      is_about_entity:
+        any_of:
+          - range: SubstanceMSSample
+          - range: MaterialMSSample
+        required: true
+
+  MassSpectrometry:
+    is_a: DataGeneratingActivity
+    description: >
+      A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.
+    attributes:
+      acquisition_mode:
+        is_a: has_qualitative_attribute
+        description: The acquisition mode used during the mass spectrometry measurement.
+        range: AcquisitionMode
+        required: true
+      scan_polarity:
+        is_a: has_qualitative_attribute
+        description: The scan polarity used during the mass spectrometry measurement.
+        range: ScanPolarity
+        required: true
+      scan_window_lower_limit:
+        is_a: has_quantitative_attribute
+        description: The lower limit of the scan window used during the measurement, typically expressed in m/z.
+        range: ScanWindowLowerLimit
+        required: true
+      scan_window_upper_limit:
+        is_a: has_quantitative_attribute
+        description: The upper limit of the scan window used during the measurement, typically expressed in m/z.
+        range: ScanWindowUpperLimit
+        required: true
+    slot_usage:
+      carried_out_by:
+        range: MassSpectrometer
+        required: true
+      evaluated_entity:
+        any_of:
+          - range: SubstanceMSSample
+          - range: MaterialMSSample
+        required: true
+
+  AcquisitionMode:
+    is_a: QualitativeAttribute
+    description: >
+      The instrument setting specifying how to collect data determining which ions
+      are detected, whether and how they are being fragmented and how their signals
+      are recorded.
+  ScanPolarity:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000465
+    description: Scan polarity.
+    slot_usage:
+      value:
+        range: ScanPolarityEnum
+        required: true
+  ScanWindowLowerLimit:
+    is_a: QuantitativeAttribute
+    class_uri: MS:1000501
+    description: Scan window lower limit (MS:1000501), typically expressed in m/z.
+  ScanWindowUpperLimit:
+    is_a: QuantitativeAttribute
+    class_uri: MS:1000500
+    description: Scan window upper limit (MS:1000500), typically expressed in m/z.
 
 
 slots:
@@ -117,283 +205,16 @@ slots:
     range: Volume
     required: true
 
-
-
-#        range: uriorcurie
-#        required: true
-#      analysed_compound:
-#        slot_uri: MS:1000501 # compound, generic
-#        description: Compound(s) analyzed in the sample (ChEBI, PubChem, etc.).
-#        range: string
-#        multivalued: true
-#        required: true
-#      concentration_of_analyte:
-#        slot_uri: MS:1002512 # sample concentration
-#        description: Concentration(s) of the analyte(s) in the sample, with unit.
-#        range: string
-#        multivalued: true
-#      solvent:
-#        slot_uri: MS:1000874 # solvent, generic
-#        description: Solvent(s) used for the sample (ChEBI ID or IRI preferred).
-#        range: string
-#        multivalued: true
-#      injection_volume:
-#        slot_uri: MS:1000528 # injection volume
-#        description: Volume injected for MS analysis (with unit).
-#        range: string
-#      notes:
-#        slot_uri: MS:1002037 # sample note
-#        description: Free-text notes about the sample preparation or handling.
-#        range: string
-#    slots:
-#      - sample_id
-#      - analysed_compound
-#      - concentration_of_analyte
-#      - solvent
-#      - injection_volume
-#      - notes
-
-#  MSDataset:
-#    is_a: dcat:Dataset
-#    class_uri: OBI:0000070
-#    description: A dataset that is the result of a MSAssay of a MSSample.
-#    slots:
-#      - title
-#      - description
-#      - was_generated_by
-#      - is_about_entity
-#      - creator
-#      - created
-#      - attribution
-#    slot_usage:
-#      was_generated_by:
-#        range: MSAssay
-#        required: true
-#      is_about_entity:
-#        range: MSSample
-#        required: true
-#
-#
-#
-#  MSAssay:
-#    description: Mass spectrometry assay (OBI:0000470) for liquid samples according to MIChI.
-#    class_uri: OBI:0000470
-#    slots:
-#      - ms_sample
-#      - instrument
-#      - software
-#      - acquisition_parameters
-#      - data_processing
-#      - date
-#    slot_usage:
-#      ms_sample:
-#        range: MSSample
-#        required: true
-#      instrument:
-#        range: MSInstrument
-#        required: true
-#      software:
-#        range: MSSoftware
-#        multivalued: true
-#      acquisition_parameters:
-#        range: MSAcquisitionParameters
-#      data_processing:
-#        range: MSDataProcessing
-#
-#  MSInstrument:
-#    description: Mass spectrometer and associated components.
-#    class_uri: MS:1000031
-#    slots:
-#      - manufacturer
-#      - model
-#      - mass_analyzer_type
-#      - ionization_type
-#      - detector_type
-#      - notes
-#
-#  MSSoftware:
-#    description: Software used for MS experiments.
-#    class_uri: OBI:0000072
-#    slots:
-#      - software_purpose
-#      - software_name
-#      - software_version
-#
-#  MSAcquisitionParameters:
-#    description: Parameters used during data acquisition in mass spectrometry.
-#    slots:
-#      - acquisition_mode
-#      - scan_polarity
-#      - scan_window_lower_limit
-#      - scan_window_upper_limit
-#      - ms1_median_cycle_frequency
-#
-#  MSDataProcessing:
-#    description: Processing steps and evaluation parameters for MS data.
-#    slots:
-#      - peak_thresholding
-#      - level_of_identification_confidence
-#      - level_of_identification_confidence_standard
-#      - spectrum_representation
-#      - base_peak_mz
-#      - base_peak_intensity
-#      - notes
-#
-#slots:
-#  ms_sample:
-#    range: MSSample
-#    description: The investigated sample.
-#  instrument:
-#    range: MSInstrument
-#    description: The mass spectrometer used.
-#  software:
-#    range: MSSoftware
-#    multivalued: true
-#    description: Software used.
-#  acquisition_parameters:
-#    range: MSAcquisitionParameters
-#    description: Data acquisition parameters.
-#  data_processing:
-#    range: MSDataProcessing
-#    description: Data processing steps for MS data.
-#  analysed_compound:
-#    range: string
-#    multivalued: true
-#    description: Analysed compound (ChEBI ID, PubChem ID, etc.).
-#  sample_id:
-#    range: uriorcurie
-#    multivalued: true
-#    description: URI that uniquely identifies the sample.
-#  concentration_of_analyte:
-#    range: string
-#    multivalued: true
-#    description: Concentration of the analysed compound (with unit).
-#  solvent:
-#    range: string
-#    multivalued: true
-#    description: Solvent used (ChEBI ID or IRI).
-#  injection_volume:
-#    range: string
-#    description: Injection volume (with unit).
-#  manufacturer:
-#    range: string
-#    description: Manufacturer of the instrument.
-#  model:
-#    range: string
-#    description: Model designation of the instrument.
-#  mass_analyzer_type:
-#    range: string
-#    description: Type of mass analyzer (MS ID).
-#  ionization_type:
-#    range: string
-#    description: Ionization type (MS ID).
-#  detector_type:
-#    range: string
-#    description: Detector type (MS ID).
-#  notes:
-#    range: string
-#    description: Free text for instrument details.
-#  software_purpose:
-#    range: string
-#    description: Purpose of the software (e.g. analysis, acquisition).
-#  software_name:
-#    range: string
-#    description: Name of the software.
-#  software_version:
-#    range: string
-#    description: Version of the software.
-#  acquisition_mode:
-#    range: string
-#    description: Mode of data acquisition.
-#  scan_polarity:
-#    range: ScanPolarityEnum
-#    description: Scan polarity.
-#  scan_window_lower_limit:
-#    range: string
-#    description: Lower limit of the scan window (m/z).
-#  scan_window_upper_limit:
-#    range: string
-#    description: Upper limit of the scan window (m/z).
-#  ms1_median_cycle_frequency:
-#    range: string
-#    description: MS1 cycle frequency (Hz).
-#  peak_thresholding:
-#    range: string
-#    description: Threshold for peaks.
-#  level_of_identification_confidence:
-#    range: string
-#    description: Level of identification confidence.
-#  level_of_identification_confidence_standard:
-#    range: uriorcurie
-#    description: Source of the identification confidence standard.
-#  spectrum_representation:
-#    range: string
-#    description: Type of spectrum representation (MS ID).
-#  base_peak_mz:
-#    range: string
-#    description: m/z of the base peak.
-#  base_peak_intensity:
-#    range: string
-#    description: Intensity of the base peak.
-#  # title, description, creator, created, attribution werden aus chemdcatap/dcatapplus importiert
-#  date:
-#    range: datetime
-#    description: Date of the assay or event.
-
-#classes:
-#  MSAnalysisDataset:
-#    is_a: AnalysisDataset
-#    class_uri: dcat:Dataset
-#    description: A dataset that is the result of a MSAnalysis of a ChemicalSample.
-#    slot_usage:
-#      was_generated_by:
-#        range: MSAnalysis
-#        multivalued: true
-#        inlined_as_list: true
-#      is_about_entity:
-#        range: ChemicalSample
-#    comments:
-#      - Initial implementation of a domain-specific schema profile for a mass spectrometry dataset.
-#
-#  MSAnalysis:
-#    is_a: DataAnalysis
-#    description: A DataAnalysis which identifies and/or quantifies molecules in a mass spectrum.
-#    slot_usage:
-#      evaluated_entity:
-#        range: MSSpectrum
-#    comments:
-#      - Initial implementation of a domain-specific schema profile of a mass spectrometry analysis.
-#
-#  MSSpectroscopy:
-#    is_a: DataGeneratingActivity
-#    class_uri: CHMO:0000470 # mass spectrometry from CHMO
-#    description: Spectrometry where the sample is converted into gaseous ions which are characterised by their mass-to-charge ratio and relative abundance.
-#    slot_usage:
-#      evaluated_entity:
-#        range: ChemicalSample
-#
-#  MSSpectrum:
-#    is_a: AnalysisSourceData
-#    class_uri: MS:1000442
-#    description: A set of chemical shifts obtained via NMR spectroscopy.
-#    slot_usage:
-#      was_generated_by:
-#        range: MSSpectroscopy
-#        multivalued: true
-#        inlined_as_list: true
-#      scan_polarity:
-#        slot_uri: MS:1000465
-#        range: ScanPolarityEnum
-#        description: The scan polarity of the spectrum.
-#        required: true
-#
 enums:
   ScanPolarityEnum:
+    description: >
+      Polarity of a mass spectrometry scan: either positive or negative ion mode.
     permissible_values:
       negative_scan:
         text: negative_scan
+        description: Negative ion mode scan.
         meaning: MS:1000129
       positive_scan:
         text: positive_scan
+        description: Positive ion mode scan.
         meaning: MS:1000130
-  # Add further enums as needed, e.g. for instrument types, acquisition modes, etc.
