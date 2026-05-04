@@ -1,0 +1,69 @@
+# Example: a complete MSSampleMeasurementDataset.
+#
+# Derived from MassBank record MSBNK-IPB_Halle-PB001341
+# (https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341):
+# an LC-ESI-QTOF MS2 spectrum of Rutin, [M+H]+, collision energy 10 eV,
+# acquired by Boettcher C., Institute of Plant Biochemistry, Halle (CC BY-SA).
+#
+# All required ms-dcat-ap entities (sample, instrument, activity, dataset)
+# are defined inline in this single file:
+#   - MSSampleMeasurementDataset  (top-level document)
+#     - MassSpectrometry          (was_generated_by[*])
+#       - MassSpectrometer        (carried_out_by[*])
+#       - SubstanceMSSample IRI   (evaluated_entity[*], same as is_about_entity)
+#     - SubstanceMSSample         (is_about_entity[*], inlined)
+#       - ChemicalEntity IRI      (composed_of[*])
+id: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341
+title:
+  - "Rutin; LC-ESI-QTOF; MS2; CE:10 eV; [M+H]+"
+description:
+  - >
+    Tandem mass spectrum (MS2) of the flavonoid glycoside Rutin acquired in
+    positive electrospray ionization mode on an Applied Biosystems API QSTAR
+    Pulsar i (LC-ESI-QTOF) instrument. Precursor ion [M+H]+ at m/z 611.16,
+    fragmented at a collision energy of 10 eV. Recorded by C. Boettcher,
+    Institute of Plant Biochemistry, Halle, Germany. Original MassBank
+    accession: MSBNK-IPB_Halle-PB001341.
+release_date: "2008-05-22"
+modification_date: "2013-06-04"
+keyword:
+  - rutin
+  - flavonoid
+  - LC-ESI-QTOF
+  - MS2
+
+# Provenance: the activity (single MS run) that produced this dataset.
+was_generated_by:
+  - id: https://example.org/ms-dcat-ap/activities/MSBNK-IPB_Halle-PB001341
+    acquisition_mode:
+      value: "MS2"
+    scan_polarity:
+      value: positive_scan
+    scan_window_lower_limit:
+      value: 100.0
+      has_quantity_type: "qudt:DimensionlessRatio"
+      unit: "unit:NUM"
+    scan_window_upper_limit:
+      value: 700.0
+      has_quantity_type: "qudt:DimensionlessRatio"
+      unit: "unit:NUM"
+    carried_out_by:
+      - id: https://example.org/ms-dcat-ap/instruments/api-qstar-pulsar-i
+        manufacturer:
+          value: "Applied Biosystems / MDS Sciex"
+        model:
+          value: "API QSTAR Pulsar i"
+        mass_analyzer_type:
+          value: "quadrupole time-of-flight"
+        ionization_type:
+          value: "electrospray ionization"
+    evaluated_entity:
+      - https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+
+# Subject: which sample the dataset is about. The slot range is the
+# `any_of` union {SubstanceMSSample, MaterialMSSample}, which JSON-Schema
+# validates only against IRI references; the corresponding SubstanceMSSample
+# instance is therefore defined in the sibling file
+# `SubstanceMSSample-001.yaml`.
+is_about_entity:
+  - https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
