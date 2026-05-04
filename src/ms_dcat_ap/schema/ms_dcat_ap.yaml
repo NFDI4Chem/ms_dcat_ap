@@ -25,18 +25,29 @@ imports:
 classes:
   MSSample:
     abstract: true
+    is_a: MaterialSample
     description: >
       Abstract base class for mass spectrometry samples, providing common
-      slots such as solvent and injection volume.
-    slots:
-      - solvent
-      - injection_volume
+      slots such as solvent and injection volume. Concrete subclasses are
+      SubstanceMSSample (known composition) and MaterialMSSample (unknown
+      composition).
+    attributes:
+      solvent:
+        description: >
+          A solvent used in liquid mass spectrometry (MS) for sample preparation.
+        range: ChemicalEntity
+        required: true
+      injection_volume:
+        description: >
+          The volume of liquid sample injected into the mass spectrometer for analysis.
+        range: Volume
+        required: true
 
   SubstanceMSSample:
-    is_a: SubstanceSample
-    class_uri: MS:1000457
+    is_a: MSSample
     mixins:
-      - MSSample
+      - SubstanceSample
+    class_uri: MS:1000457
     description: >
       A mass spectrometry sample of known composition (substance)
       prepared for and investigated by Mass Spectrometry (MS).
@@ -53,10 +64,8 @@ classes:
         recommended: true
 
   MaterialMSSample:
-    is_a: MaterialSample
+    is_a: MSSample
     class_uri: MS:1000457
-    mixins:
-      - MSSample
     description: >
       A mass spectrometry sample of unknown composition (material) prepared for and
       investigated by Mass Spectrometry (MS).
@@ -102,22 +111,42 @@ classes:
     is_a: QualitativeAttribute
     class_uri: MS:1000031
     description: A manufacturer that produces MS instruments and/or their parts
+    slot_usage:
+      value:
+        range: string
+        required: true
   Model:
     is_a: QualitativeAttribute
     class_uri: MS:1000031
     description: Instrument model name not including the vendor's name.
+    slot_usage:
+      value:
+        range: string
+        required: true
   MassAnalyzerType:
     is_a: QualitativeAttribute
     class_uri: MS:1000443
     description: Type of mass analyzer used in a mass spectrometer (e.g. quadrupole, time-of-flight, etc.)
+    slot_usage:
+      value:
+        range: string
+        required: true
   IonizationType:
     is_a: QualitativeAttribute
     class_uri: MS:1000008
     description: Type of ionization used in a mass spectrometer (e.g. ESI, MALDI, etc.)
+    slot_usage:
+      value:
+        range: string
+        required: true
   DetectorType:
     is_a: QualitativeAttribute
     class_uri: MS:1000026
     description: Type of detector used in a mass spectrometer (e.g. electron multiplier, microchannel plate).
+    slot_usage:
+      value:
+        range: string
+        required: true
 
   MSSampleMeasurementDataset:
     is_a: Dataset
@@ -129,9 +158,7 @@ classes:
         range: MassSpectrometry
         required: true
       is_about_entity:
-        any_of:
-          - range: SubstanceMSSample
-          - range: MaterialMSSample
+        range: MSSample
         required: true
 
   MassSpectrometry:
@@ -164,9 +191,7 @@ classes:
         range: MassSpectrometer
         required: true
       evaluated_entity:
-        any_of:
-          - range: SubstanceMSSample
-          - range: MaterialMSSample
+        range: MSSample
         required: true
 
   AcquisitionMode:
@@ -175,6 +200,10 @@ classes:
       The instrument setting specifying how to collect data determining which ions
       are detected, whether and how they are being fragmented and how their signals
       are recorded.
+    slot_usage:
+      value:
+        range: string
+        required: true
   ScanPolarity:
     is_a: QualitativeAttribute
     class_uri: MS:1000465
@@ -192,18 +221,6 @@ classes:
     class_uri: MS:1000500
     description: Scan window upper limit (MS:1000500), typically expressed in m/z.
 
-
-slots:
-  solvent:
-    description: >
-      A solvent used in liquid mass spectrometry (MS) for sample preparation.
-    range: ChemicalEntity
-    required: true
-  injection_volume:
-    description: >
-      The volume of liquid sample injected into the mass spectrometer for analysis.
-    range: Volume
-    required: true
 
 enums:
   ScanPolarityEnum:
