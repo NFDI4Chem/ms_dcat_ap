@@ -529,14 +529,9 @@ Alias: evaluated_activity</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.</td>
+<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
+<td>An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.</td>
 <td>no</td>
-</tr>
-<tr>
-<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
-<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
-<td>yes</td>
 </tr>
 <tr>
 <td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
@@ -549,9 +544,14 @@ Alias: evaluated_activity</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
-<td>An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.</td>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td>A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.</td>
 <td>no</td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
+<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>

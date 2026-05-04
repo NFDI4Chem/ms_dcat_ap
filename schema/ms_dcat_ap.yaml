@@ -522,35 +522,6 @@ enums:
       - rdf:type
       is_direct: true
 slots:
-  solvent:
-    name: solvent
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/solvent
-    description: 'A solvent used in liquid mass spectrometry (MS) for sample preparation.
-
-      '
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/solvent
-    owner: MSSample
-    domain_of:
-    - MSSample
-    range: ChemicalEntity
-    required: true
-  injection_volume:
-    name: injection_volume
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/injection_volume
-    description: 'The volume of liquid sample injected into the mass spectrometer
-      for analysis.
-
-      '
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/injection_volume
-    owner: MSSample
-    domain_of:
-    - MSSample
-    range: Volume
-    required: true
-    inlined: true
-    inlined_as_list: true
   alternative_label:
     name: alternative_label
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/alternative_label
@@ -2522,6 +2493,35 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  mSSample__solvent:
+    name: mSSample__solvent
+    description: 'A solvent used in liquid mass spectrometry (MS) for sample preparation.
+
+      '
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/solvent
+    alias: solvent
+    owner: MSSample
+    domain_of:
+    - MSSample
+    range: ChemicalEntity
+    required: true
+  mSSample__injection_volume:
+    name: mSSample__injection_volume
+    description: 'The volume of liquid sample injected into the mass spectrometer
+      for analysis.
+
+      '
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/injection_volume
+    alias: injection_volume
+    owner: MSSample
+    domain_of:
+    - MSSample
+    range: Volume
+    required: true
+    inlined: true
+    inlined_as_list: true
   massSpectrometer__manufacturer:
     name: massSpectrometer__manufacturer
     description: The manufacturer of the mass spectrometer.
@@ -2793,6 +2793,106 @@ slots:
     usage_slot_name: id
     range: uriorcurie
     required: true
+  Manufacturer_value:
+    name: Manufacturer_value
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
+    description: A slot to provide the literal value of an attribute.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:value
+    is_a: value
+    domain: Manufacturer
+    slot_uri: prov:value
+    alias: value
+    owner: Manufacturer
+    domain_of:
+    - Manufacturer
+    is_usage_slot: true
+    usage_slot_name: value
+    range: string
+    required: true
+  Model_value:
+    name: Model_value
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
+    description: A slot to provide the literal value of an attribute.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:value
+    is_a: value
+    domain: Model
+    slot_uri: prov:value
+    alias: value
+    owner: Model
+    domain_of:
+    - Model
+    is_usage_slot: true
+    usage_slot_name: value
+    range: string
+    required: true
+  MassAnalyzerType_value:
+    name: MassAnalyzerType_value
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
+    description: A slot to provide the literal value of an attribute.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:value
+    is_a: value
+    domain: MassAnalyzerType
+    slot_uri: prov:value
+    alias: value
+    owner: MassAnalyzerType
+    domain_of:
+    - MassAnalyzerType
+    is_usage_slot: true
+    usage_slot_name: value
+    range: string
+    required: true
+  IonizationType_value:
+    name: IonizationType_value
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
+    description: A slot to provide the literal value of an attribute.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:value
+    is_a: value
+    domain: IonizationType
+    slot_uri: prov:value
+    alias: value
+    owner: IonizationType
+    domain_of:
+    - IonizationType
+    is_usage_slot: true
+    usage_slot_name: value
+    range: string
+    required: true
+  DetectorType_value:
+    name: DetectorType_value
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
+    description: A slot to provide the literal value of an attribute.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:value
+    is_a: value
+    domain: DetectorType
+    slot_uri: prov:value
+    alias: value
+    owner: DetectorType
+    domain_of:
+    - DetectorType
+    is_usage_slot: true
+    usage_slot_name: value
+    range: string
+    required: true
   MSSampleMeasurementDataset_was_generated_by:
     name: MSSampleMeasurementDataset_was_generated_by
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/was_generated_by
@@ -2832,15 +2932,12 @@ slots:
     - MSSampleMeasurementDataset
     is_usage_slot: true
     usage_slot_name: is_about_entity
-    range: EvaluatedEntity
+    range: MSSample
     required: true
     recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-    any_of:
-    - range: SubstanceMSSample
-    - range: MaterialMSSample
   MassSpectrometry_carried_out_by:
     name: MassSpectrometry_carried_out_by
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/carried_out_by
@@ -2886,15 +2983,32 @@ slots:
     - MassSpectrometry
     is_usage_slot: true
     usage_slot_name: evaluated_entity
-    range: EvaluatedEntity
+    range: MSSample
     required: true
     recommended: true
     multivalued: true
     inlined: true
     inlined_as_list: true
-    any_of:
-    - range: SubstanceMSSample
-    - range: MaterialMSSample
+  AcquisitionMode_value:
+    name: AcquisitionMode_value
+    definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
+    description: A slot to provide the literal value of an attribute.
+    in_subset:
+    - domain_agnostic_core
+    from_schema: https://w3id.org/nfdi-de/dcat-ap-plus/
+    mappings:
+    - prov:value
+    is_a: value
+    domain: AcquisitionMode
+    slot_uri: prov:value
+    alias: value
+    owner: AcquisitionMode
+    domain_of:
+    - AcquisitionMode
+    is_usage_slot: true
+    usage_slot_name: value
+    range: string
+    required: true
   ScanPolarity_value:
     name: ScanPolarity_value
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
@@ -6748,28 +6862,13 @@ classes:
     name: MSSample
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
     description: 'Abstract base class for mass spectrometry samples, providing common
-      slots such as solvent and injection volume.
+      slots such as solvent and injection volume. Concrete subclasses are SubstanceMSSample
+      (known composition) and MaterialMSSample (unknown composition).
 
       '
     from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: MaterialSample
     abstract: true
-    slots:
-    - solvent
-    - injection_volume
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
-  SubstanceMSSample:
-    name: SubstanceMSSample
-    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/SubstanceMSSample
-    description: 'A mass spectrometry sample of known composition (substance) prepared
-      for and investigated by Mass Spectrometry (MS).
-
-      '
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    mappings:
-    - MS:1000457
-    is_a: SubstanceSample
-    mixins:
-    - MSSample
     slots:
     - id
     - has_qualitative_attribute
@@ -6790,12 +6889,64 @@ classes:
     - has_volume
     - has_density
     - has_pressure
-    - has_ph_value
-    - has_amount
+    - mSSample__solvent
+    - mSSample__injection_volume
+    attributes:
+      solvent:
+        name: solvent
+        description: 'A solvent used in liquid mass spectrometry (MS) for sample preparation.
+
+          '
+        range: ChemicalEntity
+        required: true
+      injection_volume:
+        name: injection_volume
+        description: 'The volume of liquid sample injected into the mass spectrometer
+          for analysis.
+
+          '
+        range: Volume
+        required: true
+    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
+  SubstanceMSSample:
+    name: SubstanceMSSample
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/SubstanceMSSample
+    description: 'A mass spectrometry sample of known composition (substance) prepared
+      for and investigated by Mass Spectrometry (MS).
+
+      '
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    mappings:
+    - MS:1000457
+    is_a: MSSample
+    mixins:
+    - SubstanceSample
+    slots:
+    - id
+    - has_qualitative_attribute
+    - has_quantitative_attribute
+    - Entity_has_part
+    - Entity_part_of
+    - ClassifierMixin_type
+    - rdf_type
+    - EvaluatedEntity_was_generated_by
+    - EvaluatedEntity_title
+    - EvaluatedEntity_description
+    - EvaluatedEntity_other_identifier
+    - MaterialSample_derived_from
+    - alternative_label
+    - has_physical_state
+    - has_temperature
+    - has_mass
+    - has_volume
+    - has_density
+    - has_pressure
+    - mSSample__solvent
+    - mSSample__injection_volume
     - SubstanceMSSample_composed_of
     - SubstanceMSSample_has_concentration
-    - solvent
-    - injection_volume
+    - has_ph_value
+    - has_amount
     slot_usage:
       composed_of:
         name: composed_of
@@ -6822,9 +6973,7 @@ classes:
     from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
     mappings:
     - MS:1000457
-    is_a: MaterialSample
-    mixins:
-    - MSSample
+    is_a: MSSample
     slots:
     - has_qualitative_attribute
     - has_quantitative_attribute
@@ -6844,9 +6993,9 @@ classes:
     - has_volume
     - has_density
     - has_pressure
+    - mSSample__solvent
+    - mSSample__injection_volume
     - MaterialMSSample_id
-    - solvent
-    - injection_volume
     slot_usage:
       id:
         name: id
@@ -6926,9 +7075,14 @@ classes:
     slots:
     - title
     - description
-    - QualitativeAttribute_value
     - ClassifierMixin_type
     - rdf_type
+    - Manufacturer_value
+    slot_usage:
+      value:
+        name: value
+        range: string
+        required: true
     class_uri: MS:1000031
   Model:
     name: Model
@@ -6941,9 +7095,14 @@ classes:
     slots:
     - title
     - description
-    - QualitativeAttribute_value
     - ClassifierMixin_type
     - rdf_type
+    - Model_value
+    slot_usage:
+      value:
+        name: value
+        range: string
+        required: true
     class_uri: MS:1000031
   MassAnalyzerType:
     name: MassAnalyzerType
@@ -6957,9 +7116,14 @@ classes:
     slots:
     - title
     - description
-    - QualitativeAttribute_value
     - ClassifierMixin_type
     - rdf_type
+    - MassAnalyzerType_value
+    slot_usage:
+      value:
+        name: value
+        range: string
+        required: true
     class_uri: MS:1000443
   IonizationType:
     name: IonizationType
@@ -6973,9 +7137,14 @@ classes:
     slots:
     - title
     - description
-    - QualitativeAttribute_value
     - ClassifierMixin_type
     - rdf_type
+    - IonizationType_value
+    slot_usage:
+      value:
+        name: value
+        range: string
+        required: true
     class_uri: MS:1000008
   DetectorType:
     name: DetectorType
@@ -6989,9 +7158,14 @@ classes:
     slots:
     - title
     - description
-    - QualitativeAttribute_value
     - ClassifierMixin_type
     - rdf_type
+    - DetectorType_value
+    slot_usage:
+      value:
+        name: value
+        range: string
+        required: true
     class_uri: MS:1000026
   MSSampleMeasurementDataset:
     name: MSSampleMeasurementDataset
@@ -7051,10 +7225,8 @@ classes:
         required: true
       is_about_entity:
         name: is_about_entity
+        range: MSSample
         required: true
-        any_of:
-        - range: SubstanceMSSample
-        - range: MaterialMSSample
     class_uri: dcat:Dataset
   MassSpectrometry:
     name: MassSpectrometry
@@ -7095,10 +7267,8 @@ classes:
         required: true
       evaluated_entity:
         name: evaluated_entity
+        range: MSSample
         required: true
-        any_of:
-        - range: SubstanceMSSample
-        - range: MaterialMSSample
     attributes:
       acquisition_mode:
         name: acquisition_mode
@@ -7140,9 +7310,14 @@ classes:
     slots:
     - title
     - description
-    - QualitativeAttribute_value
     - ClassifierMixin_type
     - rdf_type
+    - AcquisitionMode_value
+    slot_usage:
+      value:
+        name: value
+        range: string
+        required: true
     class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/AcquisitionMode
   ScanPolarity:
     name: ScanPolarity
@@ -10670,7 +10845,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-04-30T13:39:57'
-source_file_size: 7282
-generation_date: '2026-04-30T13:40:09'
+source_file_date: '2026-05-04T14:53:47'
+source_file_size: 7700
+generation_date: '2026-05-04T14:53:55'
 

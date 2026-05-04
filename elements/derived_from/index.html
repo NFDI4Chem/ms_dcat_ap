@@ -502,13 +502,18 @@ Alias: derived_from</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer.</td>
+<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
+<td>A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry (MS).</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
-<td>A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry (MS).</td>
+<td><a href="../MSSample/">MSSample</a></td>
+<td>Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume. Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
+<td>A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry (MS).</td>
 <td>no</td>
 </tr>
 <tr>
@@ -517,8 +522,8 @@ Alias: derived_from</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
-<td>A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry (MS).</td>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
 <td>no</td>
 </tr>
 <tr>
