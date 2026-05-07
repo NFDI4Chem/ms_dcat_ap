@@ -7227,6 +7227,8 @@ classes:
         name: is_about_entity
         range: MSSample
         required: true
+        inlined: false
+        inlined_as_list: false
     class_uri: dcat:Dataset
   MassSpectrometry:
     name: MassSpectrometry
@@ -7269,6 +7271,8 @@ classes:
         name: evaluated_entity
         range: MSSample
         required: true
+        inlined: false
+        inlined_as_list: false
     attributes:
       acquisition_mode:
         name: acquisition_mode
@@ -10845,7 +10849,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-05-04T14:53:47'
-source_file_size: 7700
-generation_date: '2026-05-04T14:53:55'
+source_file_date: '2026-05-07T13:33:18'
+source_file_size: 7808
+generation_date: '2026-05-07T13:33:27'
 

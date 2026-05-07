@@ -502,8 +502,13 @@ Alias: was_generated_by</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
-<td>An Entity that is being evaluated in a DataGeneratingActivity.</td>
+<td><a href="../SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></td>
+<td>A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MSSampleMeasurementDataset/">MSSampleMeasurementDataset</a></td>
+<td>A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.</td>
 <td>yes</td>
 </tr>
 <tr>
@@ -512,38 +517,8 @@ Alias: was_generated_by</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
-<td>A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry (MS).</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MSSample/">MSSample</a></td>
-<td>Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume. Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../SubstanceSampleCharacterizationDataset/">SubstanceSampleCharacterizationDataset</a></td>
-<td>A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a coarse-grained convenience shape that conflates measurement and analysis into a single data-generating activity. Domain-specific sub-profiles that need to distinguish raw measurement from post-processing or structure assignment should define their own Dataset subclasses, potentially using the DCAT-AP+ DataAnalysis/AnalysisDataset chain instead of reusing this class.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
-<td>A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry (MS).</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MSSampleMeasurementDataset/">MSSampleMeasurementDataset</a></td>
-<td>A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.</td>
-<td>yes</td>
-</tr>
-<tr>
 <td><a href="../MaterialSample/">MaterialSample</a></td>
 <td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -552,8 +527,8 @@ Alias: was_generated_by</p>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
+<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
+<td>A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry (MS).</td>
 <td>no</td>
 </tr>
 <tr>
@@ -562,9 +537,34 @@ Alias: was_generated_by</p>
 <td>yes</td>
 </tr>
 <tr>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
+<td>A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry (MS).</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
+<td>An Entity that is being evaluated in a DataGeneratingActivity.</td>
+<td>yes</td>
+</tr>
+<tr>
 <td><a href="../Dataset/">Dataset</a></td>
 <td>A collection of data, published or curated by a single agent, and available for access or download in one or more representations.</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../MSSample/">MSSample</a></td>
+<td>Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume. Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
