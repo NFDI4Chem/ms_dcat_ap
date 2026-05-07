@@ -15,14 +15,12 @@ from ms_dcat_ap.datamodel.ms_dcat_ap_pydantic import (
     MassAnalyzerType,
     MassSpectrometer,
     MassSpectrometry,
-    MaterialMSSample,
     Model,
     MSSampleMeasurementDataset,
     ScanPolarity,
     ScanPolarityEnum,
     ScanWindowLowerLimit,
     ScanWindowUpperLimit,
-    Volume,
 )
 
 
@@ -32,22 +30,9 @@ ACTIVITY_IRI = "https://example.org/ms-dcat-ap/activities/caffeine-msrun-001"
 DATASET_IRI = "https://example.org/ms-dcat-ap/datasets/caffeine-001"
 
 
-def _build_sample() -> MaterialMSSample:
-    """Construct a minimal MaterialMSSample.
-
-    The pydantic model requires nested objects (not URI references) for
-    ``evaluated_entity`` / ``is_about_entity`` because their ``any_of``
-    constraint resolves to a Union of concrete classes.
-    """
-    return MaterialMSSample(
-        id=SAMPLE_IRI,
-        solvent="CHEBI:17790",  # methanol
-        injection_volume=Volume(
-            value=5.0,
-            has_quantity_type="qudt:Volume",
-            unit="unit:MicroL",
-        ),
-    )
+def _sample_ref() -> str:
+    """Return the IRI reference to the sample described elsewhere."""
+    return SAMPLE_IRI
 
 
 def _build_instrument() -> MassSpectrometer:
@@ -67,7 +52,7 @@ def _build_activity() -> MassSpectrometry:
     return MassSpectrometry(
         id=ACTIVITY_IRI,
         carried_out_by=[_build_instrument()],
-        evaluated_entity=[_build_sample()],
+        evaluated_entity=[_sample_ref()],
         acquisition_mode=AcquisitionMode(value="DDA"),
         scan_polarity=ScanPolarity(value=ScanPolarityEnum.positive_scan),
         scan_window_lower_limit=ScanWindowLowerLimit(
@@ -93,7 +78,7 @@ def _build_dataset() -> MSSampleMeasurementDataset:
             "solution measured on a Thermo Q-Exactive Orbitrap."
         ],
         was_generated_by=[_build_activity()],
-        is_about_entity=[_build_sample()],
+        is_about_entity=[_sample_ref()],
     )
 
 
@@ -106,7 +91,7 @@ def test_instantiate_ms_sample_measurement_dataset() -> None:
     assert ds.title == ["MS measurement of a 10 uM caffeine standard solution"]
     assert len(ds.description) == 1
     assert len(ds.is_about_entity) == 1
-    assert ds.is_about_entity[0].id == SAMPLE_IRI
+    assert ds.is_about_entity[0] == SAMPLE_IRI
 
     # Provenance: exactly one MassSpectrometry activity
     assert len(ds.was_generated_by) == 1
@@ -114,7 +99,7 @@ def test_instantiate_ms_sample_measurement_dataset() -> None:
     assert isinstance(activity, MassSpectrometry)
     assert activity.id == ACTIVITY_IRI
     assert len(activity.evaluated_entity) == 1
-    assert activity.evaluated_entity[0].id == SAMPLE_IRI
+    assert activity.evaluated_entity[0] == SAMPLE_IRI
 
     # Acquisition parameters
     assert activity.acquisition_mode.value == "DDA"
@@ -146,7 +131,7 @@ def test_dataset_round_trips_to_dict() -> None:
         dumped["was_generated_by"][0]["scan_window_upper_limit"]["unit"]
         == "unit:NUM"
     )
-    assert dumped["is_about_entity"][0]["id"] == SAMPLE_IRI
+    assert dumped["is_about_entity"][0] == SAMPLE_IRI
 
 
 def test_missing_required_field_raises() -> None:
@@ -159,6 +144,6 @@ def test_missing_required_field_raises() -> None:
             title=["x"],
             description=["y"],
             # was_generated_by missing on purpose
-            is_about_entity=[_build_sample()],
+            is_about_entity=[_sample_ref()],
         )
 

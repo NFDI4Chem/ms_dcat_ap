@@ -5,14 +5,14 @@
 # an LC-ESI-QTOF MS2 spectrum of Rutin, [M+H]+, collision energy 10 eV,
 # acquired by Boettcher C., Institute of Plant Biochemistry, Halle (CC BY-SA).
 #
-# All required ms-dcat-ap entities (sample, instrument, activity, dataset)
-# are defined inline in this single file:
+# The dataset and activity are defined in this file; the referenced sample is
+# identified via its IRI and described separately in
+# `SubstanceMSSample-001.yaml`:
 #   - MSSampleMeasurementDataset  (top-level document)
 #     - MassSpectrometry          (was_generated_by[*])
 #       - MassSpectrometer        (carried_out_by[*])
-#       - SubstanceMSSample IRI   (evaluated_entity[*], same as is_about_entity)
-#     - SubstanceMSSample         (is_about_entity[*], inlined)
-#       - ChemicalEntity IRI      (composed_of[*])
+#       - MSSample IRI            (evaluated_entity[*], same as is_about_entity)
+#     - MSSample IRI              (is_about_entity[*])
 id: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341
 title:
   - "Rutin; LC-ESI-QTOF; MS2; CE:10 eV; [M+H]+"
@@ -60,10 +60,6 @@ was_generated_by:
     evaluated_entity:
       - https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
 
-# Subject: which sample the dataset is about. The slot range is the
-# `any_of` union {SubstanceMSSample, MaterialMSSample}, which JSON-Schema
-# validates only against IRI references; the corresponding SubstanceMSSample
-# instance is therefore defined in the sibling file
-# `SubstanceMSSample-001.yaml`.
+# Subject: which sample the dataset is about.
 is_about_entity:
   - https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341

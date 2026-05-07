@@ -160,6 +160,8 @@ classes:
       is_about_entity:
         range: MSSample
         required: true
+        inlined: false
+        inlined_as_list: false
 
   MassSpectrometry:
     is_a: DataGeneratingActivity
@@ -193,6 +195,8 @@ classes:
       evaluated_entity:
         range: MSSample
         required: true
+        inlined: false
+        inlined_as_list: false
 
   AcquisitionMode:
     is_a: QualitativeAttribute

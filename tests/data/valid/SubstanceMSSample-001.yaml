@@ -1,0 +1,16 @@
+# Example: a referenced SubstanceMSSample used by `MSSampleMeasurementDataset-001.yaml`.
+#
+# This example describes the rutin sample that is referenced by IRI from the
+# dataset and the mass spectrometry activity.
+id: https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+title: "Rutin sample for LC-MS/MS"
+description: "Prepared rutin sample analysed in the referenced MassBank record."
+solvent: "CHEBI:17790"
+injection_volume:
+  value: 5.0
+  has_quantity_type: "qudt:Volume"
+  unit: "unit:MicroL"
+composed_of:
+  - id: http://purl.obolibrary.org/obo/CHEBI_28527
+    title: "Rutin"
+
