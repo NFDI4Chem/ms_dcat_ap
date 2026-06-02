@@ -36,12 +36,10 @@ classes:
         description: >
           A solvent used in liquid mass spectrometry (MS) for sample preparation.
         range: ChemicalEntity
-        required: true
       injection_volume:
         description: >
           The volume of liquid sample injected into the mass spectrometer for analysis.
         range: Volume
-        required: true
 
   SubstanceMSSample:
     is_a: MSSample
@@ -151,12 +149,16 @@ classes:
   MSSampleMeasurementDataset:
     is_a: Dataset
     class_uri: dcat:Dataset
+    tree_root: true
     description: >
       A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.
     slot_usage:
       was_generated_by:
         range: MassSpectrometry
         required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       is_about_entity:
         range: MSSample
         required: true
@@ -195,6 +197,7 @@ classes:
       evaluated_entity:
         range: MSSample
         required: true
+        multivalued: false
         inlined: false
         inlined_as_list: false
 

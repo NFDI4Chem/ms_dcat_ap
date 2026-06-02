@@ -11,8 +11,8 @@
 #   - MSSampleMeasurementDataset  (top-level document)
 #     - MassSpectrometry          (was_generated_by[*])
 #       - MassSpectrometer        (carried_out_by[*])
-#       - MSSample IRI            (evaluated_entity[*], same as is_about_entity)
-#     - MSSample IRI              (is_about_entity[*])
+#       - MSSample IRI            (evaluated_entity, same as is_about_entity)
+#     - MSSample IRI              (is_about_entity)
 id: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341
 title:
   - "Rutin; LC-ESI-QTOF; MS2; CE:10 eV; [M+H]+"
@@ -58,7 +58,7 @@ was_generated_by:
         ionization_type:
           value: "electrospray ionization"
     evaluated_entity:
-      - https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+      https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
 
 # Subject: which sample the dataset is about.
 is_about_entity:

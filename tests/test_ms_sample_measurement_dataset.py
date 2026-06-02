@@ -52,7 +52,7 @@ def _build_activity() -> MassSpectrometry:
     return MassSpectrometry(
         id=ACTIVITY_IRI,
         carried_out_by=[_build_instrument()],
-        evaluated_entity=[_sample_ref()],
+        evaluated_entity=_sample_ref(),
         acquisition_mode=AcquisitionMode(value="DDA"),
         scan_polarity=ScanPolarity(value=ScanPolarityEnum.positive_scan),
         scan_window_lower_limit=ScanWindowLowerLimit(
@@ -90,16 +90,14 @@ def test_instantiate_ms_sample_measurement_dataset() -> None:
     assert ds.id == DATASET_IRI
     assert ds.title == ["MS measurement of a 10 uM caffeine standard solution"]
     assert len(ds.description) == 1
-    assert len(ds.is_about_entity) == 1
-    assert ds.is_about_entity[0] == SAMPLE_IRI
+    assert ds.is_about_entity == [SAMPLE_IRI]
 
     # Provenance: exactly one MassSpectrometry activity
     assert len(ds.was_generated_by) == 1
     activity = ds.was_generated_by[0]
     assert isinstance(activity, MassSpectrometry)
     assert activity.id == ACTIVITY_IRI
-    assert len(activity.evaluated_entity) == 1
-    assert activity.evaluated_entity[0] == SAMPLE_IRI
+    assert activity.evaluated_entity == SAMPLE_IRI
 
     # Acquisition parameters
     assert activity.acquisition_mode.value == "DDA"
@@ -131,7 +129,7 @@ def test_dataset_round_trips_to_dict() -> None:
         dumped["was_generated_by"][0]["scan_window_upper_limit"]["unit"]
         == "unit:NUM"
     )
-    assert dumped["is_about_entity"][0] == SAMPLE_IRI
+    assert dumped["is_about_entity"] == [SAMPLE_IRI]
 
 
 def test_missing_required_field_raises() -> None:
