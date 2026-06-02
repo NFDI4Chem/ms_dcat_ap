@@ -427,7 +427,7 @@
 
 
 
-        MSSample --&gt; "1" Volume : injection_volume
+        MSSample --&gt; "0..1" Volume : injection_volume
         click Volume href "../Volume/"
 
 
@@ -471,7 +471,7 @@
 
 
 
-        MSSample --&gt; "1" ChemicalEntity : solvent
+        MSSample --&gt; "0..1" ChemicalEntity : solvent
         click ChemicalEntity href "../ChemicalEntity/"
 
 
@@ -531,13 +531,13 @@
 <tbody>
 <tr>
 <td><a href="../solvent/">solvent</a></td>
-<td>1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
+<td>0..1 <br/> <a href="../ChemicalEntity/">ChemicalEntity</a></td>
 <td>A solvent used in liquid mass spectrometry (MS) for sample preparation.</td>
 <td>direct</td>
 </tr>
 <tr>
 <td><a href="../injection_volume/">injection_volume</a></td>
-<td>1 <br/> <a href="../Volume/">Volume</a></td>
+<td>0..1 <br/> <a href="../Volume/">Volume</a></td>
 <td>The volume of liquid sample injected into the mass spectrometer for analysis.</td>
 <td>direct</td>
 </tr>
@@ -730,7 +730,6 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalEntity</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">injection_volume</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">injection_volume</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">volume</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">liquid</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">injected</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometer</span>
@@ -742,7 +741,6 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volume</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>
@@ -769,7 +767,6 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalEntity</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">injection_volume</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">injection_volume</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">volume</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">liquid</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">injected</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometer</span>
@@ -783,7 +780,6 @@
 <span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
 <span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
 <span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volume</span>
-<span class="w">    </span><span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="w">  </span><span class="nt">derived_from</span><span class="p">:</span>
 <span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">derived_from</span>
 <span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">The slot to specify the MaterialEntity or MaterialSample from which</span>

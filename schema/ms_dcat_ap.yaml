@@ -2505,7 +2505,6 @@ slots:
     domain_of:
     - MSSample
     range: ChemicalEntity
-    required: true
   mSSample__injection_volume:
     name: mSSample__injection_volume
     description: 'The volume of liquid sample injected into the mass spectrometer
@@ -2519,7 +2518,6 @@ slots:
     domain_of:
     - MSSample
     range: Volume
-    required: true
     inlined: true
     inlined_as_list: true
   massSpectrometer__manufacturer:
@@ -2912,6 +2910,9 @@ slots:
     usage_slot_name: was_generated_by
     range: MassSpectrometry
     required: true
+    multivalued: true
+    inlined: true
+    inlined_as_list: true
   MSSampleMeasurementDataset_is_about_entity:
     name: MSSampleMeasurementDataset_is_about_entity
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/is_about_entity
@@ -6898,7 +6899,6 @@ classes:
 
           '
         range: ChemicalEntity
-        required: true
       injection_volume:
         name: injection_volume
         description: 'The volume of liquid sample injected into the mass spectrometer
@@ -6906,7 +6906,6 @@ classes:
 
           '
         range: Volume
-        required: true
     class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
   SubstanceMSSample:
     name: SubstanceMSSample
@@ -7223,6 +7222,9 @@ classes:
         name: was_generated_by
         range: MassSpectrometry
         required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       is_about_entity:
         name: is_about_entity
         range: MSSample
@@ -7230,6 +7232,7 @@ classes:
         inlined: false
         inlined_as_list: false
     class_uri: dcat:Dataset
+    tree_root: true
   MassSpectrometry:
     name: MassSpectrometry
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MassSpectrometry
@@ -7271,6 +7274,7 @@ classes:
         name: evaluated_entity
         range: MSSample
         required: true
+        multivalued: false
         inlined: false
         inlined_as_list: false
     attributes:
@@ -10849,7 +10853,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.7.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-05-07T13:33:18'
-source_file_size: 7808
-generation_date: '2026-05-07T13:33:27'
+source_file_date: '2026-06-02T19:27:50'
+source_file_size: 7887
+generation_date: '2026-06-02T19:28:00'
 

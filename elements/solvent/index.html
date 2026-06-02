@@ -503,11 +503,6 @@ Alias: solvent</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
-<td>A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry (MS).</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
 <td>A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry (MS).</td>
 <td>no</td>
@@ -515,6 +510,11 @@ Alias: solvent</p>
 <tr>
 <td><a href="../MSSample/">MSSample</a></td>
 <td>Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume. Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
+<td>A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry (MS).</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -548,10 +548,6 @@ Alias: solvent</p>
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>Required</td>
-<td>Yes</td>
-</tr>
 <tr>
 <td>### Slot Characteristics</td>
 <td></td>
@@ -609,7 +605,6 @@ Alias: solvent</p>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalEntity</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
 
