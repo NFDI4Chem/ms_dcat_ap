@@ -11,10 +11,11 @@ authors = [
 license = "MIT"
 license-files = ["LICENSE"]
 readme = "README.md"
-requires-python = ">=3.9,<4.0"
+requires-python = ">=3.10"
 dynamic = ["version"]
 
 dependencies = [
+  "linkml>=1.11.1",
   "linkml-runtime >=1.9.4",
 ]
 
@@ -45,6 +46,14 @@ fallback-version = "0.0.0"
 [tool.pytest.ini_options]
 testpaths = ["tests"]
 
+# https://docs.astral.sh/ruff/configuration/
+[tool.ruff]
+exclude = [
+    "src/ms_dcat_ap/_version.py",
+]
+# Set oldest supported Python version
+target-version = "py310"
+
 # Ref.: https://github.com/codespell-project/codespell
 [tool.codespell]
 skip = [
@@ -63,6 +72,7 @@ quiet-level = 3
 # Ref.: https://github.com/crate-ci/typos (spell checker)
 [tool.typos.default.extend-words]
 linke = "linke"
+
 [tool.typos.files]
 extend-exclude = [
   "LICENSE",

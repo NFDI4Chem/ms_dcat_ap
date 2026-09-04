@@ -11,7 +11,7 @@ name: Publish Python Package
 on:  # yamllint disable-line rule:truthy
   push:
     tags:
-      # GitHub glob matching is limited [1]. So we can't define a pattern matching
+      # GitHub glob matching is limited. So we can't define a pattern matching
       # pep 440 version definition [N!]N(.N)*[{a|b|rc}N][.postN][.devN]
       - 'v[0-9]+.[0-9]+.[0-9]+.?*'
       - 'v[0-9]+.[0-9]+.[0-9]+rc[0-9]'
@@ -32,26 +32,22 @@ jobs:
     steps:
       # https://github.com/actions/checkout
       - name: Check out repository
-        uses: actions/checkout@v6.0.2
+        uses: actions/checkout@v5.0.0
         with:
           persist-credentials: false
 
       # https://github.com/astral-sh/setup-uv
       - name: Install uv
-        uses: astral-sh/setup-uv@v8.1.0
+        uses: astral-sh/setup-uv@v7.1.2
         with:
-
           python-version: ${{ matrix.pyversion }}
-
           enable-cache: true
 
       # https://github.com/actions/setup-python
       - name: Set up Python
-        uses: actions/setup-python@v6.2.0
+        uses: actions/setup-python@v6.0.0
         with:
-
           python-version: ${{ matrix.pyversion }}
-
 
       - name: Install just
         run: |
@@ -79,7 +75,7 @@ jobs:
     steps:
       # https://github.com/actions/download-artifact
       - name: Download built distribution
-        uses: actions/download-artifact@v8.0.1
+        uses: actions/download-artifact@v6.0.0
         with:
           name: distribution-files
           path: dist
@@ -97,5 +93,3 @@ jobs:
         uses: pypa/gh-action-pypi-publish@v1.13.0
         with:
           verbose: true
-
-# [1] https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#filter-pattern-cheat-sheet

@@ -28,8 +28,8 @@ plugins:
       execute: false
   - mermaid2:
       version: 11.4.1
+  # https://pypi.org/project/mkdocs-pymdownx-material-extras
   - mkdocs_pymdownx_material_extras:
-    # https://pypi.org/project/mkdocs-pymdownx-material-extras
 
 markdown_extensions:
   - pymdownx.superfences:
@@ -40,11 +40,21 @@ markdown_extensions:
           # disable code highlighting to display diagrams
           format: !!python/name:pymdownx.superfences.fence_code_format
           class: mermaid
-
-  # TODO rebuild docs on schema change (https://github.com/dalito/linkml-project-copier/issues/39)
-  # - gen-files:
-  #     scripts:
-  #       - gen_pages.py  # or any other name or path
+  # https://facelessuser.github.io/pymdown-extensions/extensions/magiclink/
+  # auto-link HTML, FTP, and email links
+  - pymdownx.magiclink
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#admonition
+  # support for call-outs
+  - admonition
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#tables
+  # create tables
+  - tables
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#attribute-lists
+  # enables use of HTML attributes and CSS classes to applicable elements
+  - attr_list
+  # https://squidfunk.github.io/mkdocs-material/setup/extensions/python-markdown/#markdown-in-html
+  # write markdown inside of HTML
+  - md_in_html
 
 watch:
   - src/ms_dcat_ap/schema

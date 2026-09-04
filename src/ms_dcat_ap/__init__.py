@@ -1,3 +1,8 @@
+"""ms_dcat_ap.
+
+This is the project description.
+"""
+
 try:
     from ms_dcat_ap._version import __version__, __version_tuple__
 except ImportError:  # pragma: no cover
