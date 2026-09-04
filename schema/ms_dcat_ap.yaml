@@ -52,8 +52,8 @@ types:
     description: A character string
     notes:
     - In RDF serializations, a slot with range of string is treated as a literal or
-      type xsd:string.   If you are authoring schemas in LinkML YAML, the type is
-      referenced with the lower case "string".
+      type xsd:string. If you are authoring schemas in LinkML YAML, the type is referenced
+      with the lower case "string".
     from_schema: https://w3id.org/linkml/types
     imported_from: linkml:types
     exact_mappings:
@@ -2692,9 +2692,7 @@ slots:
     range: DefinedTerm
     bindings:
     - range: QUDTQuantityKindEnum
-      obligation_level:
-        text: RECOMMENDED
-        description: The metadata element is recommended to be present in the model
+      obligation_level: &id001 RECOMMENDED
       binds_value_of: id
       description: Binds the type of a quantifiable attribute to a QUDT Quantity Kind
         instance from the QUDT Quantity Kind vocabulary.
@@ -2712,9 +2710,7 @@ slots:
     range: DefinedTerm
     bindings:
     - range: QUDTUnitEnum
-      obligation_level:
-        text: RECOMMENDED
-        description: The metadata element is recommended to be present in the model
+      obligation_level: &id002 RECOMMENDED
       binds_value_of: id
       description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
     recommended: true
@@ -9972,10 +9968,7 @@ classes:
         range: DefinedTerm
         bindings:
         - range: QUDTQuantityKindEnum
-          obligation_level:
-            text: RECOMMENDED
-            description: The metadata element is recommended to be present in the
-              model
+          obligation_level: *id001
           binds_value_of: id
           description: Binds the type of a quantifiable attribute to a QUDT Quantity
             Kind instance from the QUDT Quantity Kind vocabulary.
@@ -9986,10 +9979,7 @@ classes:
         range: DefinedTerm
         bindings:
         - range: QUDTUnitEnum
-          obligation_level:
-            text: RECOMMENDED
-            description: The metadata element is recommended to be present in the
-              model
+          obligation_level: *id002
           binds_value_of: id
           description: Restricts the allowable defined terms to the QUDT Unit vocabulary.
         recommended: true
@@ -10851,9 +10841,9 @@ classes:
     - ClassifierMixin_type
     - rdf_type
     class_uri: qudt:Quantity
-metamodel_version: 1.7.0
+metamodel_version: 1.11.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-06-05T08:18:31'
+source_file_date: '2026-09-04T13:43:42'
 source_file_size: 7887
-generation_date: '2026-06-05T08:18:40'
+generation_date: '2026-09-04T13:43:52'
 

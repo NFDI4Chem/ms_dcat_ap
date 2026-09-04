@@ -498,8 +498,8 @@
 
 <h1 id="slot-composed_of">Slot: composed_of</h1>
 <p><em>The slot to provide the chemical entities of which a ChemicalSubstance is composed of.</em></p>
-<p>URI: <a href="http://purl.obolibrary.org/obo/BFO_0000051">BFO:0000051</a>
-Alias: composed_of</p>
+<div>
+<p>URI: <a href="http://purl.obolibrary.org/obo/BFO_0000051">BFO:0000051</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../has_part/">has_part</a><ul>
@@ -518,18 +518,18 @@ Alias: composed_of</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
 <td>A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry (MS).</td>
 <td>yes</td>
 </tr>
 <tr>
-<td><a href="../PolymerMixin/">PolymerMixin</a></td>
-<td>A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalSubstanceMixin/">ChemicalSubstanceMixin</a></td>
-<td>A LinkML mixin used to pass down properties common to all material entities that are described in a chemical context via being composed of chemical entities (e.g. atom, molecule, ion, ion pair, radical, complex, conformer etc., ) of the same type or of different types.</td>
+<td><a href="../SubstanceSample/">SubstanceSample</a></td>
+<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -538,13 +538,13 @@ Alias: composed_of</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
-<td>A chemical substance that is produced by a ChemicalReaction.</td>
+<td><a href="../PolymerMixin/">PolymerMixin</a></td>
+<td>A LinkML mixin used to pass down properties common to all chemical substances that are composed of macromolecules of different kinds and which may be differentiated by composition, length, degree of branching etc..</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubstanceSample/">SubstanceSample</a></td>
-<td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
+<td><a href="../StartingMaterial/">StartingMaterial</a></td>
+<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -558,13 +558,13 @@ Alias: composed_of</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Catalyst/">Catalyst</a></td>
-<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.</td>
+<td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
+<td>A chemical substance that is produced by a ChemicalReaction.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../StartingMaterial/">StartingMaterial</a></td>
-<td>A ChemicalSubstance with that has a starting material role in a synthesis.</td>
+<td><a href="../Catalyst/">Catalyst</a></td>
+<td>A ChemicalSubstance or MaterialEntity that initiates or accelerates a ChemicalReaction without itself being affected.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -615,7 +615,7 @@ Alias: composed_of</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/NFDI4Chem/ms-dcat-ap</li>
+<li>from schema: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap">https://w3id.org/NFDI4Chem/ms-dcat-ap</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -632,7 +632,7 @@ Alias: composed_of</p>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/NFDI4Chem/ms-dcat-ap/composed_of</td>
+<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/composed_of">https://w3id.org/NFDI4Chem/ms-dcat-ap/composed_of</a></td>
 </tr>
 <tr>
 <td>close</td>
@@ -651,7 +651,6 @@ Alias: composed_of</p>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_part</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">BFO:0000051</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">composed_of</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalSubstanceMixin</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalEntity</span>
@@ -661,12 +660,16 @@ Alias: composed_of</p>
 <span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

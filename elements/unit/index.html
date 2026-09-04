@@ -486,10 +486,9 @@
 
 
 <h1 id="slot-unit">Slot: unit</h1>
-<p>URI: <a href="http://qudt.org/schema/qudt/unit">qudt:unit</a>
-Alias: unit</p>
+<div>
+<p>URI: <a href="http://qudt.org/schema/qudt/unit">qudt:unit</a></p>
 <!-- no inheritance hierarchy -->
-
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -501,13 +500,8 @@ Alias: unit</p>
 </thead>
 <tbody>
 <tr>
-<td><a href="../Mass/">Mass</a></td>
-<td>The strength of a body's gravitational attraction to other bodies.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
-<td>A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
+<td><a href="../ScanWindowLowerLimit/">ScanWindowLowerLimit</a></td>
+<td>Scan window lower limit (MS:1000501), typically expressed in m/z.</td>
 <td>no</td>
 </tr>
 <tr>
@@ -516,13 +510,58 @@ Alias: unit</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../ScanWindowLowerLimit/">ScanWindowLowerLimit</a></td>
-<td>Scan window lower limit (MS:1000501), typically expressed in m/z.</td>
+<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td>A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../MolarMass/">MolarMass</a></td>
+<td>A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Concentration/">Concentration</a></td>
+<td>A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../AmountOfSubstance/">AmountOfSubstance</a></td>
+<td>The total amount of substance used in a ChemicalReaction.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../PHValue/">PHValue</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Temperature/">Temperature</a></td>
+<td>A physical quantity that quantitatively expresses the attribute of hotness or coldness.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Mass/">Mass</a></td>
+<td>The strength of a body's gravitational attraction to other bodies.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Volume/">Volume</a></td>
+<td>A measure of regions in three-dimensional space.</td>
 <td>no</td>
 </tr>
 <tr>
 <td><a href="../Density/">Density</a></td>
 <td>A measure of the mass per unit volume of a substance.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Pressure/">Pressure</a></td>
+<td></td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../Yield/">Yield</a></td>
+<td>A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).</td>
 <td>no</td>
 </tr>
 <tr>
@@ -533,46 +572,6 @@ Alias: unit</p>
 <tr>
 <td><a href="../PercentageOfTotal/">PercentageOfTotal</a></td>
 <td>A dimensionless ratio that quantifies the stoichiometric proportion of a chemical substance relative to a reference substance in a chemical reaction.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Concentration/">Concentration</a></td>
-<td>A QuantitativeAttribute of a ChemicalSubstance that represents the amount of a constituent divided by the volume of the mixture.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Volume/">Volume</a></td>
-<td>A measure of regions in three-dimensional space.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Yield/">Yield</a></td>
-<td>A dimensionless physical quantity describing the fraction of a product B that is formed from a reactant A taking into account the stoichiometry. If A fully reacts to B without side-reactions, the yield of product B is 1 (or 100 %).</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MolarMass/">MolarMass</a></td>
-<td>A Mass (physical quality) that quantifies the mass of a homogeneous ChemicalSubstance containing 6.02 x 10^23 atoms or molecules.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Temperature/">Temperature</a></td>
-<td>A physical quantity that quantitatively expresses the attribute of hotness or coldness.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../AmountOfSubstance/">AmountOfSubstance</a></td>
-<td>The total amount of substance used in a ChemicalReaction.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../Pressure/">Pressure</a></td>
-<td></td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../PHValue/">PHValue</a></td>
-<td></td>
 <td>no</td>
 </tr>
 </tbody>
@@ -645,11 +644,10 @@ Alias: unit</p>
 })
 
 </details>
-
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/NFDI4Chem/ms-dcat-ap</li>
+<li>from schema: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap">https://w3id.org/NFDI4Chem/ms-dcat-ap</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -666,7 +664,7 @@ Alias: unit</p>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/NFDI4Chem/ms-dcat-ap/unit</td>
+<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/unit">https://w3id.org/NFDI4Chem/ms-dcat-ap/unit</a></td>
 </tr>
 </tbody>
 </table>
@@ -676,7 +674,6 @@ Alias: unit</p>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">qudt:unit</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">unit</span>
 <span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantitativeAttribute</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantitativeAttribute</span>
@@ -689,12 +686,16 @@ Alias: unit</p>
 <span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

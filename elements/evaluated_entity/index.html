@@ -509,8 +509,8 @@
 
 <h1 id="slot-evaluated_entity">Slot: evaluated_entity</h1>
 <p><em>The slot to specify the Entity about which the DataGeneratingActivity produced information.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a>
-Alias: evaluated_entity</p>
+<div>
+<p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../had_input_entity/">had_input_entity</a><ul>
@@ -534,16 +534,6 @@ Alias: evaluated_entity</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
-<td>A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
-<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
 <td>A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.</td>
 <td>yes</td>
@@ -552,6 +542,16 @@ Alias: evaluated_entity</p>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
 <td>An Activity that evaluates the data produced by another Activity.</td>
 <td>yes</td>
+</tr>
+<tr>
+<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
+<td>A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
+<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
+<td>no</td>
 </tr>
 </tbody>
 </table>
@@ -605,7 +605,7 @@ Alias: evaluated_entity</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/NFDI4Chem/ms-dcat-ap</li>
+<li>from schema: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap">https://w3id.org/NFDI4Chem/ms-dcat-ap</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -622,7 +622,7 @@ Alias: evaluated_entity</p>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/NFDI4Chem/ms-dcat-ap/evaluated_entity</td>
+<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/evaluated_entity">https://w3id.org/NFDI4Chem/ms-dcat-ap/evaluated_entity</a></td>
 </tr>
 </tbody>
 </table>
@@ -637,7 +637,6 @@ Alias: evaluated_entity</p>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_entity</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">evaluated_entity</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">EvaluatedEntity</span>
@@ -647,12 +646,16 @@ Alias: evaluated_entity</p>
 <span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

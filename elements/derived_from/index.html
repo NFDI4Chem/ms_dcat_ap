@@ -487,10 +487,9 @@
 
 <h1 id="slot-derived_from">Slot: derived_from</h1>
 <p><em>The slot to specify the Entity from which a Sample was derived.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#wasDerivedFrom">prov:wasDerivedFrom</a>
-Alias: derived_from</p>
+<div>
+<p>URI: <a href="http://www.w3.org/ns/prov#wasDerivedFrom">prov:wasDerivedFrom</a></p>
 <!-- no inheritance hierarchy -->
-
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -502,6 +501,16 @@ Alias: derived_from</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MSSample/">MSSample</a></td>
+<td>Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume. Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
 <td>A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry (MS).</td>
 <td>no</td>
@@ -512,23 +521,13 @@ Alias: derived_from</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../PolymerSample/">PolymerSample</a></td>
-<td>A SubstanceSample derived from a Polymer.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../SubstanceSample/">SubstanceSample</a></td>
 <td>A MaterialSample derived from a chemical substance that is of interest in an analytical procedure.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td>A Sample that was derived from a previous MaterialSample or some other kind of MaterialEntity.</td>
-<td>yes</td>
-</tr>
-<tr>
-<td><a href="../MSSample/">MSSample</a></td>
-<td>Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume. Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).</td>
+<td><a href="../PolymerSample/">PolymerSample</a></td>
+<td>A SubstanceSample derived from a Polymer.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -575,7 +574,7 @@ Alias: derived_from</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/NFDI4Chem/ms-dcat-ap</li>
+<li>from schema: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap">https://w3id.org/NFDI4Chem/ms-dcat-ap</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -592,7 +591,7 @@ Alias: derived_from</p>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/NFDI4Chem/ms-dcat-ap/derived_from</td>
+<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/derived_from">https://w3id.org/NFDI4Chem/ms-dcat-ap/derived_from</a></td>
 </tr>
 <tr>
 <td>exact</td>
@@ -616,7 +615,6 @@ Alias: derived_from</p>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">dcterms:partOf</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:wasDerivedFrom</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">derived_from</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialSample</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
@@ -624,12 +622,16 @@ Alias: derived_from</p>
 <span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

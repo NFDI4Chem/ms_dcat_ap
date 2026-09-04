@@ -498,10 +498,9 @@
 
 <h1 id="slot-occurred_in">Slot: occurred_in</h1>
 <p><em>The slot to specify the Surrounding in which an Activity took place.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a>
-Alias: occurred_in</p>
+<div>
+<p>URI: <a href="http://www.w3.org/ns/prov#atLocation">prov:atLocation</a></p>
 <!-- no inheritance hierarchy -->
-
 <h2 id="applicable-classes">Applicable Classes</h2>
 <table>
 <thead>
@@ -518,16 +517,6 @@ Alias: occurred_in</p>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
-<td>A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
-<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
-<td>no</td>
-</tr>
-<tr>
 <td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
 <td>A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.</td>
 <td>no</td>
@@ -535,6 +524,16 @@ Alias: occurred_in</p>
 <tr>
 <td><a href="../DataAnalysis/">DataAnalysis</a></td>
 <td>An Activity that evaluates the data produced by another Activity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
+<td>A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a physical property determination, or a combined measurement-and-analysis workflow. This is a coarse-grained convenience shape that does not distinguish between raw data acquisition and subsequent data processing or analysis. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw measurement from derived results.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
+<td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -585,7 +584,7 @@ Alias: occurred_in</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/NFDI4Chem/ms-dcat-ap</li>
+<li>from schema: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap">https://w3id.org/NFDI4Chem/ms-dcat-ap</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -602,7 +601,7 @@ Alias: occurred_in</p>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/NFDI4Chem/ms-dcat-ap/occurred_in</td>
+<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/occurred_in">https://w3id.org/NFDI4Chem/ms-dcat-ap/occurred_in</a></td>
 </tr>
 </tbody>
 </table>
@@ -615,18 +614,21 @@ Alias: occurred_in</p>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:atLocation</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">occurred_in</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">DataGeneratingActivity</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Surrounding</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 

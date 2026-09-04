@@ -509,8 +509,8 @@
 
 <h1 id="slot-had_input_entity">Slot: had_input_entity</h1>
 <p><em>The slot to specify the Entity that was used as an input of an Activity that is to be changed, consumed or transformed.</em></p>
-<p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a>
-Alias: had_input_entity</p>
+<div>
+<p>URI: <a href="http://www.w3.org/ns/prov#used">prov:used</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>had_input_entity</strong><ul>
@@ -531,14 +531,34 @@ Alias: had_input_entity</p>
 </thead>
 <tbody>
 <tr>
+<td><a href="../Activity/">Activity</a></td>
+<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></td>
+<td>yes</td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td>A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../DataAnalysis/">DataAnalysis</a></td>
+<td>An Activity that evaluates the data produced by another Activity.</td>
+<td>no</td>
+</tr>
+<tr>
 <td><a href="../DataGeneratingActivity/">DataGeneratingActivity</a></td>
 <td>An Activity (process) that has the objective to produce information (in form of a dataset) about another Activity or Entity.</td>
 <td>no</td>
 </tr>
 <tr>
-<td><a href="../Activity/">Activity</a></td>
-<td>See <a href="https://semiceu.github.io/DCAT-AP/releases/3.0.0/#Activity">DCAT-AP specs:Activity</a></td>
-<td>yes</td>
+<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
+<td>An activity or process that is being evaluated in a DataGeneratingActivity.</td>
+<td>no</td>
+</tr>
+<tr>
+<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
+<td>A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.</td>
+<td>no</td>
 </tr>
 <tr>
 <td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
@@ -548,26 +568,6 @@ Alias: had_input_entity</p>
 <tr>
 <td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
 <td>A DataGeneratingActivity that produces data about a ChemicalReaction, such as reaction monitoring, experimental documentation, or a combined recording-and-evaluation workflow. This is a coarse-grained convenience shape that does not distinguish between raw experimental recording and subsequent data evaluation. Domain-specific sub-profiles that need this distinction should define their own DataGeneratingActivity subclasses and use the DCAT-AP+ DataAnalysis chain to separate raw data from derived results.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
-<td>A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
-<td>A process that leads to the transformation of one set of chemical substances to another and that is the subject matter of a DataGeneratingActivity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../DataAnalysis/">DataAnalysis</a></td>
-<td>An Activity that evaluates the data produced by another Activity.</td>
-<td>no</td>
-</tr>
-<tr>
-<td><a href="../EvaluatedActivity/">EvaluatedActivity</a></td>
-<td>An activity or process that is being evaluated in a DataGeneratingActivity.</td>
 <td>no</td>
 </tr>
 </tbody>
@@ -622,7 +622,7 @@ Alias: had_input_entity</p>
 <h2 id="identifier-and-mapping-information">Identifier and Mapping Information</h2>
 <h3 id="schema-source">Schema Source</h3>
 <ul>
-<li>from schema: https://w3id.org/NFDI4Chem/ms-dcat-ap</li>
+<li>from schema: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap">https://w3id.org/NFDI4Chem/ms-dcat-ap</a></li>
 </ul>
 <h2 id="mappings">Mappings</h2>
 <table>
@@ -639,7 +639,7 @@ Alias: had_input_entity</p>
 </tr>
 <tr>
 <td>native</td>
-<td>https://w3id.org/NFDI4Chem/ms-dcat-ap/had_input_entity</td>
+<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/had_input_entity">https://w3id.org/NFDI4Chem/ms-dcat-ap/had_input_entity</a></td>
 </tr>
 </tbody>
 </table>
@@ -653,7 +653,6 @@ Alias: had_input_entity</p>
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">slot_uri</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">prov:used</span>
-<span class="nt">alias</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">had_input_entity</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Activity</span>
 <span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Entity</span>
@@ -663,12 +662,16 @@ Alias: had_input_entity</p>
 <span class="nt">inlined_as_list</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
 </details>
+</div>
 
 
 
 
 
 
+
+  
+  
 
 
 
