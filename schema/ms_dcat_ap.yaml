@@ -36,6 +36,15 @@ prefixes:
   OBI:
     prefix_prefix: OBI
     prefix_reference: http://purl.obolibrary.org/obo/OBI_
+  CHEBI:
+    prefix_prefix: CHEBI
+    prefix_reference: http://purl.obolibrary.org/obo/CHEBI_
+  qudt:
+    prefix_prefix: qudt
+    prefix_reference: http://qudt.org/schema/qudt/
+  unit:
+    prefix_prefix: unit
+    prefix_reference: http://qudt.org/vocab/unit/
 default_prefix: https://w3id.org/NFDI4Chem/ms-dcat-ap/
 default_range: string
 subsets:
@@ -7228,7 +7237,6 @@ classes:
         inlined: false
         inlined_as_list: false
     class_uri: dcat:Dataset
-    tree_root: true
   MassSpectrometry:
     name: MassSpectrometry
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MassSpectrometry
@@ -10843,7 +10851,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.11.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-09-04T13:43:42'
-source_file_size: 7887
-generation_date: '2026-09-04T13:43:52'
+source_file_date: '2026-09-07T13:21:20'
+source_file_size: 8009
+generation_date: '2026-09-07T13:21:28'
 
