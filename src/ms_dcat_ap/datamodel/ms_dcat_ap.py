@@ -1,5 +1,5 @@
 # Auto generated from ms_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-06-05T10:17:14
+# Generation date: 2026-09-07T11:29:55
 # Schema: ms-dcat-ap
 #
 # id: https://w3id.org/NFDI4Chem/ms-dcat-ap
@@ -60,7 +60,7 @@ from rdflib import (
 from linkml_runtime.linkml_model.types import Date, Decimal, Float, String, Uriorcurie
 from linkml_runtime.utils.metamodelcore import Decimal, URIorCURIE, XSDDate
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = None
 
 # Namespaces
@@ -107,6 +107,7 @@ SCHEMA = CurieNamespace('schema', 'http://schema.org/')
 SKOS = CurieNamespace('skos', 'http://www.w3.org/2004/02/skos/core#')
 SPDX = CurieNamespace('spdx', 'http://spdx.org/rdf/terms#')
 TIME = CurieNamespace('time', 'http://www.w3.org/2006/time#')
+UNIT = CurieNamespace('unit', 'http://qudt.org/vocab/unit/')
 VCARD = CurieNamespace('vcard', 'http://www.w3.org/2006/vcard/ns#')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
 DEFAULT_ = CurieNamespace('', 'https://w3id.org/NFDI4Chem/ms-dcat-ap/')

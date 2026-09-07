@@ -29,7 +29,7 @@ from pydantic import (
 )
 
 
-metamodel_version = "1.7.0"
+metamodel_version = "1.11.0"
 version = "None"
 
 
@@ -67,6 +67,7 @@ class LinkMLMeta(RootModel):
 
 
 linkml_meta = LinkMLMeta({'default_prefix': 'https://w3id.org/NFDI4Chem/ms-dcat-ap/',
+     'default_range': 'string',
      'description': 'A DCAT-AP profile for mass spectrometry (MS) implementing '
                     'MIChI recommendations.\n',
      'id': 'https://w3id.org/NFDI4Chem/ms-dcat-ap',
@@ -76,7 +77,9 @@ linkml_meta = LinkMLMeta({'default_prefix': 'https://w3id.org/NFDI4Chem/ms-dcat-
                  'dcatapplus:latest/schema/dcat_ap_plus'],
      'license': 'MIT',
      'name': 'ms-dcat-ap',
-     'prefixes': {'CHMO': {'prefix_prefix': 'CHMO',
+     'prefixes': {'CHEBI': {'prefix_prefix': 'CHEBI',
+                            'prefix_reference': 'http://purl.obolibrary.org/obo/CHEBI_'},
+                  'CHMO': {'prefix_prefix': 'CHMO',
                            'prefix_reference': 'http://purl.obolibrary.org/obo/CHMO_'},
                   'MS': {'prefix_prefix': 'MS',
                          'prefix_reference': 'http://purl.obolibrary.org/obo/MS_'},
@@ -89,7 +92,11 @@ linkml_meta = LinkMLMeta({'default_prefix': 'https://w3id.org/NFDI4Chem/ms-dcat-
                   'linkml': {'prefix_prefix': 'linkml',
                              'prefix_reference': 'https://w3id.org/linkml/'},
                   'material_entities_ap': {'prefix_prefix': 'material_entities_ap',
-                                           'prefix_reference': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/'}},
+                                           'prefix_reference': 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/'},
+                  'qudt': {'prefix_prefix': 'qudt',
+                           'prefix_reference': 'http://qudt.org/schema/qudt/'},
+                  'unit': {'prefix_prefix': 'unit',
+                           'prefix_reference': 'http://qudt.org/vocab/unit/'}},
      'see_also': ['https://NFDI4Chem.github.io/ms-dcat-ap'],
      'source_file': 'src/ms_dcat_ap/schema/ms_dcat_ap.yaml',
      'title': 'ms-dcat-ap'} )
@@ -12252,8 +12259,7 @@ class MSSampleMeasurementDataset(Dataset):
                                              'multivalued': True,
                                              'name': 'was_generated_by',
                                              'range': 'MassSpectrometry',
-                                             'required': True}},
-         'tree_root': True})
+                                             'required': True}}})
 
     access_rights: Optional[RightsStatement] = Field(default=None, description="""Information that indicates whether the Dataset is publicly accessible, has access restrictions or is not public.""", json_schema_extra = { "linkml_meta": {'domain_of': ['DataService', 'Dataset'], 'slot_uri': 'dcterms:accessRights'} })
     applicable_legislation: Optional[list[LegalResource]] = Field(default=None, description="""The legislation that mandates the creation or management of the Dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Catalogue',

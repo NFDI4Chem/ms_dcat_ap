@@ -6,6 +6,7 @@ description: |
 license: MIT
 see_also:
   - https://NFDI4Chem.github.io/ms-dcat-ap
+default_range: string
 prefixes:
   linkml: https://w3id.org/linkml/
   MS: http://purl.obolibrary.org/obo/MS_
@@ -15,6 +16,9 @@ prefixes:
   dcat: http://www.w3.org/ns/dcat#
   CHMO: http://purl.obolibrary.org/obo/CHMO_
   OBI: http://purl.obolibrary.org/obo/OBI_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  qudt: http://qudt.org/schema/qudt/
+  unit: http://qudt.org/vocab/unit/
 
 imports:
   - linkml:types
@@ -149,7 +153,6 @@ classes:
   MSSampleMeasurementDataset:
     is_a: Dataset
     class_uri: dcat:Dataset
-    tree_root: true
     description: >
       A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.
     slot_usage:
