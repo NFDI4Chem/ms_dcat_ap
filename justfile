@@ -133,6 +133,7 @@ testdoc: gen-doc _serve
 gen-python:
   uv run gen-project -d  {{pymodel}} -I python {{source_schema_path}}
   uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_dir}}/{{schema_name}}_level1.yaml > {{pymodel}}/{{schema_name}}_level1_pydantic.py
 
 # Generate project files including Python data model
 [group('model development')]
@@ -141,6 +142,7 @@ gen-project:
   mkdir -p {{pymodel}}
   mv {{dest}}/*.py {{pymodel}}/
   uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_path}} > {{pymodel}}/{{schema_name}}_pydantic.py
+  uv run gen-pydantic {{gen_pydantic_args}} {{source_schema_dir}}/{{schema_name}}_level1.yaml > {{pymodel}}/{{schema_name}}_level1_pydantic.py
 
   @# Some generators ignore config_yaml or cannot create directories, so we run them separately.
   uv run gen-java {{gen_java_args}} --output-directory {{dest}}/java/ {{source_schema_path}}

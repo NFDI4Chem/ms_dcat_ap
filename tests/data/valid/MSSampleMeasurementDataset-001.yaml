@@ -24,6 +24,9 @@ description:
     fragmented at a collision energy of 10 eV. Recorded by C. Boettcher,
     Institute of Plant Biochemistry, Halle, Germany. Original MassBank
     accession: MSBNK-IPB_Halle-PB001341.
+conforms_to:
+  - title: "MIChI MS Level 1 Profile"
+    description: "https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1"
 release_date: "2008-05-22"
 modification_date: "2013-06-04"
 keyword:

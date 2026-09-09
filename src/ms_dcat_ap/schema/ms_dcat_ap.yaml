@@ -6,8 +6,10 @@ description: |
 license: MIT
 see_also:
   - https://NFDI4Chem.github.io/ms-dcat-ap
+default_prefix: ms_dcat_ap
 default_range: string
 prefixes:
+  ms_dcat_ap: https://w3id.org/NFDI4Chem/ms-dcat-ap/
   linkml: https://w3id.org/linkml/
   MS: http://purl.obolibrary.org/obo/MS_
   material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
@@ -35,15 +37,9 @@ classes:
       slots such as solvent and injection volume. Concrete subclasses are
       SubstanceMSSample (known composition) and MaterialMSSample (unknown
       composition).
-    attributes:
-      solvent:
-        description: >
-          A solvent used in liquid mass spectrometry (MS) for sample preparation.
-        range: ChemicalEntity
-      injection_volume:
-        description: >
-          The volume of liquid sample injected into the mass spectrometer for analysis.
-        range: Volume
+    slots:
+      - solvent
+      - injection_volume
 
   SubstanceMSSample:
     is_a: MSSample
@@ -82,36 +78,31 @@ classes:
     class_uri: CHMO:0000982
     description: >
       A mass spectrometer used for the analysis of samples in mass spectrometry (MS).
-    attributes:
+    slots:
+      - manufacturer
+      - model
+      - mass_analyzer_type
+      - ionization_type
+      - detector_type
+    slot_usage:
       manufacturer:
-        is_a: has_qualitative_attribute
-        description: The manufacturer of the mass spectrometer.
-        range: Manufacturer
-        required: true
+        multivalued: false
+        recommended: true
       model:
-        is_a: has_qualitative_attribute
-        description: The model designation of the mass spectrometer.
-        range: Model
-        required: true
+        multivalued: false
+        recommended: true
       mass_analyzer_type:
-        is_a: has_qualitative_attribute
-        description: The type of mass analyzer used in the mass spectrometer.
-        range: MassAnalyzerType
-        required: true
+        multivalued: false
+        recommended: true
       ionization_type:
-        is_a: has_qualitative_attribute
-        description: The type of ionization used in the mass spectrometer.
-        range: IonizationType
-        required: true
+        multivalued: false
+        recommended: true
       detector_type:
-        is_a: has_qualitative_attribute
-        description: The type of detector used in the mass spectrometer.
-        range: DetectorType
+        multivalued: false
         required: false
 
   Manufacturer:
     is_a: QualitativeAttribute
-    class_uri: MS:1000031
     description: A manufacturer that produces MS instruments and/or their parts
     slot_usage:
       value:
@@ -165,6 +156,7 @@ classes:
       is_about_entity:
         range: MSSample
         required: true
+        multivalued: true
         inlined: false
         inlined_as_list: false
 
@@ -172,31 +164,30 @@ classes:
     is_a: DataGeneratingActivity
     description: >
       A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.
-    attributes:
-      acquisition_mode:
-        is_a: has_qualitative_attribute
-        description: The acquisition mode used during the mass spectrometry measurement.
-        range: AcquisitionMode
-        required: true
-      scan_polarity:
-        is_a: has_qualitative_attribute
-        description: The scan polarity used during the mass spectrometry measurement.
-        range: ScanPolarity
-        required: true
-      scan_window_lower_limit:
-        is_a: has_quantitative_attribute
-        description: The lower limit of the scan window used during the measurement, typically expressed in m/z.
-        range: ScanWindowLowerLimit
-        required: true
-      scan_window_upper_limit:
-        is_a: has_quantitative_attribute
-        description: The upper limit of the scan window used during the measurement, typically expressed in m/z.
-        range: ScanWindowUpperLimit
-        required: true
+    slots:
+      - acquisition_mode
+      - scan_polarity
+      - scan_window_lower_limit
+      - scan_window_upper_limit
     slot_usage:
+      acquisition_mode:
+        multivalued: false
+        recommended: true
+      scan_polarity:
+        multivalued: false
+        recommended: true
+      scan_window_lower_limit:
+        multivalued: false
+        recommended: true
+      scan_window_upper_limit:
+        multivalued: false
+        recommended: true
       carried_out_by:
         range: MassSpectrometer
-        required: true
+        recommended: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       evaluated_entity:
         range: MSSample
         required: true
@@ -230,6 +221,72 @@ classes:
     is_a: QuantitativeAttribute
     class_uri: MS:1000500
     description: Scan window upper limit (MS:1000500), typically expressed in m/z.
+
+slots:
+  solvent:
+    description: >
+      A solvent used in liquid mass spectrometry (MS) for sample preparation.
+    range: ChemicalEntity
+  injection_volume:
+    description: >
+      The volume of liquid sample injected into the mass spectrometer for analysis.
+    range: Volume
+
+  manufacturer:
+    is_a: has_qualitative_attribute
+    description: The manufacturer of the mass spectrometer.
+    range: Manufacturer
+    multivalued: false
+    recommended: true
+  model:
+    is_a: has_qualitative_attribute
+    description: The model designation of the mass spectrometer.
+    range: Model
+    multivalued: false
+    recommended: true
+  mass_analyzer_type:
+    is_a: has_qualitative_attribute
+    description: The type of mass analyzer used in the mass spectrometer.
+    range: MassAnalyzerType
+    multivalued: false
+    recommended: true
+  ionization_type:
+    is_a: has_qualitative_attribute
+    description: The type of ionization used in the mass spectrometer.
+    range: IonizationType
+    multivalued: false
+    recommended: true
+  detector_type:
+    is_a: has_qualitative_attribute
+    description: The type of detector used in the mass spectrometer.
+    range: DetectorType
+    multivalued: false
+    required: false
+
+  acquisition_mode:
+    is_a: has_qualitative_attribute
+    description: The acquisition mode used during the mass spectrometry measurement.
+    range: AcquisitionMode
+    multivalued: false
+    recommended: true
+  scan_polarity:
+    is_a: has_qualitative_attribute
+    description: The scan polarity used during the mass spectrometry measurement.
+    range: ScanPolarity
+    multivalued: false
+    recommended: true
+  scan_window_lower_limit:
+    is_a: has_quantitative_attribute
+    description: The lower limit of the scan window used during the measurement, typically expressed in m/z.
+    range: ScanWindowLowerLimit
+    multivalued: false
+    recommended: true
+  scan_window_upper_limit:
+    is_a: has_quantitative_attribute
+    description: The upper limit of the scan window used during the measurement, typically expressed in m/z.
+    range: ScanWindowUpperLimit
+    multivalued: false
+    recommended: true
 
 
 enums:

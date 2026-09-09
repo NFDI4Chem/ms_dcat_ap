@@ -1,0 +1,120 @@
+id: https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1
+name: ms_dcat_ap_level1
+title: ms-dcat-ap-level1
+description: |
+  MIChI Level 1 strict profile for mass spectrometry (MS) DCAT-AP.
+license: MIT
+see_also:
+  - https://NFDI4Chem.github.io/ms-dcat-ap
+default_prefix: ms_dcat_ap
+default_range: string
+
+prefixes:
+  ms_dcat_ap: https://w3id.org/NFDI4Chem/ms-dcat-ap/
+  ms_dcat_ap_level1: https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1/
+  linkml: https://w3id.org/linkml/
+  MS: http://purl.obolibrary.org/obo/MS_
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+  dcat: http://www.w3.org/ns/dcat#
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  CHEBI: http://purl.obolibrary.org/obo/CHEBI_
+  qudt: http://qudt.org/schema/qudt/
+  unit: http://qudt.org/vocab/unit/
+
+imports:
+  - linkml:types
+  - chem_dcat_ap
+  - material_entities_ap
+  - dcatapplus:latest/schema/dcat_ap_plus
+  - ms_dcat_ap
+
+classes:
+  MSSample:
+    abstract: true
+    is_a: MaterialSample
+    slots:
+      - solvent
+      - injection_volume
+    slot_usage:
+      solvent:
+        required: true
+      injection_volume:
+        required: true
+
+  MassSpectrometer:
+    is_a: Device
+    class_uri: CHMO:0000982
+    slots:
+      - manufacturer
+      - model
+      - mass_analyzer_type
+      - ionization_type
+      - detector_type
+    slot_usage:
+      manufacturer:
+        multivalued: false
+        required: true
+      model:
+        multivalued: false
+        required: true
+      mass_analyzer_type:
+        multivalued: false
+        required: true
+      ionization_type:
+        multivalued: false
+        required: true
+      detector_type:
+        multivalued: false
+        required: false
+
+  MSSampleMeasurementDataset:
+    is_a: Dataset
+    class_uri: dcat:Dataset
+    slot_usage:
+      was_generated_by:
+        range: MassSpectrometry
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      is_about_entity:
+        range: MSSample
+        required: true
+        multivalued: true
+        inlined: false
+        inlined_as_list: false
+
+  MassSpectrometry:
+    is_a: DataGeneratingActivity
+    slots:
+      - acquisition_mode
+      - scan_polarity
+      - scan_window_lower_limit
+      - scan_window_upper_limit
+    slot_usage:
+      acquisition_mode:
+        multivalued: false
+        required: true
+      scan_polarity:
+        multivalued: false
+        required: true
+      scan_window_lower_limit:
+        multivalued: false
+        required: true
+      scan_window_upper_limit:
+        multivalued: false
+        required: true
+      carried_out_by:
+        range: MassSpectrometer
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      evaluated_entity:
+        range: MSSample
+        required: true
+        multivalued: false
+        inlined: false
+        inlined_as_list: false

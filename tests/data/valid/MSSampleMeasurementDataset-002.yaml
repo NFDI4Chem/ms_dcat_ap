@@ -1,0 +1,22 @@
+# Example: a minimal legacy MSSampleMeasurementDataset.
+#
+# Represents a legacy dataset where only basic metadata and instrument model are known,
+# omitting detailed parameters like mass analyzer type, ionization type, or scan limits.
+id: https://example.org/ms-dcat-ap/datasets/legacy-sample-001
+title:
+  - "Legacy MS spectrum of caffeine"
+description:
+  - "Legacy mass spectrum entry with minimal experimental metadata."
+conforms_to:
+  - title: "MIChI MS Legacy Profile"
+    description: "https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/legacy"
+was_generated_by:
+  - id: https://example.org/ms-dcat-ap/activities/legacy-msrun-001
+    carried_out_by:
+      - id: https://example.org/ms-dcat-ap/instruments/legacy-ms-001
+        model:
+          value: "API QSTAR Pulsar i"
+    evaluated_entity:
+      https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+is_about_entity:
+  - https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341

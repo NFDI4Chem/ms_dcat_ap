@@ -1,5 +1,5 @@
 # Auto generated from ms_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-07T11:29:55
+# Generation date: 2026-09-09T12:47:43
 # Schema: ms-dcat-ap
 #
 # id: https://w3id.org/NFDI4Chem/ms-dcat-ap
@@ -98,6 +98,7 @@ FOAF = CurieNamespace('foaf', 'http://xmlns.com/foaf/0.1/')
 LINKML = CurieNamespace('linkml', 'https://w3id.org/linkml/')
 LOCN = CurieNamespace('locn', 'http://www.w3.org/ns/locn#')
 MATERIAL_ENTITIES_AP = CurieNamespace('material_entities_ap', 'https://w3id.org/nfdi-de/dcat-ap-plus/materials/')
+MS_DCAT_AP = CurieNamespace('ms_dcat_ap', 'https://w3id.org/NFDI4Chem/ms-dcat-ap/')
 ODRL = CurieNamespace('odrl', 'http://www.w3.org/ns/odrl/2/')
 PROV = CurieNamespace('prov', 'http://www.w3.org/ns/prov#')
 QUDT = CurieNamespace('qudt', 'http://qudt.org/schema/qudt/')
@@ -110,7 +111,7 @@ TIME = CurieNamespace('time', 'http://www.w3.org/2006/time#')
 UNIT = CurieNamespace('unit', 'http://qudt.org/vocab/unit/')
 VCARD = CurieNamespace('vcard', 'http://www.w3.org/2006/vcard/ns#')
 XSD = CurieNamespace('xsd', 'http://www.w3.org/2001/XMLSchema#')
-DEFAULT_ = CurieNamespace('', 'https://w3id.org/NFDI4Chem/ms-dcat-ap/')
+DEFAULT_ = MS_DCAT_AP
 
 
 # Types
@@ -119,7 +120,7 @@ class Duration(str):
     type_class_uri = XSD["duration"]
     type_class_curie = "xsd:duration"
     type_name = "duration"
-    type_model_uri = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Duration")
+    type_model_uri = MS_DCAT_AP.Duration
 
 
 class HexBinary(str):
@@ -127,7 +128,7 @@ class HexBinary(str):
     type_class_uri = XSD["hexBinary"]
     type_class_curie = "xsd:hexBinary"
     type_name = "hexBinary"
-    type_model_uri = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/HexBinary")
+    type_model_uri = MS_DCAT_AP.HexBinary
 
 
 class NonNegativeInteger(int):
@@ -135,7 +136,7 @@ class NonNegativeInteger(int):
     type_class_uri = XSD["nonNegativeInteger"]
     type_class_curie = "xsd:nonNegativeInteger"
     type_name = "nonNegativeInteger"
-    type_model_uri = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/NonNegativeInteger")
+    type_model_uri = MS_DCAT_AP.NonNegativeInteger
 
 
 # Class references
@@ -311,7 +312,7 @@ class MaterialisticMixin(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = MATERIAL_ENTITIES_AP["MaterialisticMixin"]
     class_class_curie: ClassVar[str] = "material_entities_ap:MaterialisticMixin"
     class_name: ClassVar[str] = "MaterialisticMixin"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MaterialisticMixin")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MaterialisticMixin
 
     alternative_label: Optional[str] = None
     has_physical_state: Optional[Union[str, "PhysicalStateEnum"]] = None
@@ -351,7 +352,7 @@ class Activity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Activity"]
     class_class_curie: ClassVar[str] = "prov:Activity"
     class_name: ClassVar[str] = "Activity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Activity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Activity
 
     id: Union[str, ActivityId] = None
     title: Optional[Union[str, list[str]]] = empty_list()
@@ -419,7 +420,7 @@ class Agent(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = FOAF["Agent"]
     class_class_curie: ClassVar[str] = "foaf:Agent"
     class_name: ClassVar[str] = "Agent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Agent")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Agent
 
     name: Union[str, list[str]] = None
     type: Optional[Union[dict, "Concept"]] = None
@@ -447,7 +448,7 @@ class AgenticEntity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Agent"]
     class_class_curie: ClassVar[str] = "prov:Agent"
     class_name: ClassVar[str] = "AgenticEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/AgenticEntity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.AgenticEntity
 
     id: Union[str, AgenticEntityId] = None
     title: Optional[str] = None
@@ -503,7 +504,7 @@ class Catalogue(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["Catalog"]
     class_class_curie: ClassVar[str] = "dcat:Catalog"
     class_name: ClassVar[str] = "Catalogue"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Catalogue")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Catalogue
 
     description: Union[str, list[str]] = None
     publisher: Union[dict, Agent] = None
@@ -600,7 +601,7 @@ class CatalogueRecord(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["CatalogRecord"]
     class_class_curie: ClassVar[str] = "dcat:CatalogRecord"
     class_name: ClassVar[str] = "CatalogueRecord"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/CatalogueRecord")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.CatalogueRecord
 
     modification_date: Union[str, XSDDate] = None
     primary_topic: Union[dict, Any] = None
@@ -656,7 +657,7 @@ class Checksum(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SPDX["Checksum"]
     class_class_curie: ClassVar[str] = "spdx:Checksum"
     class_name: ClassVar[str] = "Checksum"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Checksum")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Checksum
 
     algorithm: Union[dict, "ChecksumAlgorithm"] = None
     checksum_value: str = None
@@ -685,7 +686,7 @@ class ClassifierMixin(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCATAPPLUS["ClassifierMixin"]
     class_class_curie: ClassVar[str] = "dcatapplus:ClassifierMixin"
     class_name: ClassVar[str] = "ClassifierMixin"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ClassifierMixin")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ClassifierMixin
 
     type: Optional[Union[dict, "DefinedTerm"]] = None
     rdf_type: Optional[Union[dict, "DefinedTerm"]] = None
@@ -711,7 +712,7 @@ class DataGeneratingActivity(Activity):
     class_class_uri: ClassVar[URIRef] = PROV["Activity"]
     class_class_curie: ClassVar[str] = "prov:Activity"
     class_name: ClassVar[str] = "DataGeneratingActivity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/DataGeneratingActivity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DataGeneratingActivity
 
     id: Union[str, DataGeneratingActivityId] = None
     evaluated_entity: Optional[Union[dict[Union[str, EvaluatedEntityId], Union[dict, "EvaluatedEntity"]], list[Union[dict, "EvaluatedEntity"]]]] = empty_dict()
@@ -745,18 +746,18 @@ class MassSpectrometry(DataGeneratingActivity):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MassSpectrometry")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["MassSpectrometry"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:MassSpectrometry"
     class_name: ClassVar[str] = "MassSpectrometry"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MassSpectrometry")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassSpectrometry
 
     id: Union[str, MassSpectrometryId] = None
-    acquisition_mode: Union[Union[dict, "AcquisitionMode"], list[Union[dict, "AcquisitionMode"]]] = None
-    scan_polarity: Union[Union[dict, "ScanPolarity"], list[Union[dict, "ScanPolarity"]]] = None
-    scan_window_lower_limit: Union[Union[dict, "ScanWindowLowerLimit"], list[Union[dict, "ScanWindowLowerLimit"]]] = None
-    scan_window_upper_limit: Union[Union[dict, "ScanWindowUpperLimit"], list[Union[dict, "ScanWindowUpperLimit"]]] = None
-    carried_out_by: Union[dict[Union[str, MassSpectrometerId], Union[dict, "MassSpectrometer"]], list[Union[dict, "MassSpectrometer"]]] = empty_dict()
     evaluated_entity: Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]] = empty_dict()
+    acquisition_mode: Optional[Union[dict, "AcquisitionMode"]] = None
+    scan_polarity: Optional[Union[dict, "ScanPolarity"]] = None
+    scan_window_lower_limit: Optional[Union[dict, "ScanWindowLowerLimit"]] = None
+    scan_window_upper_limit: Optional[Union[dict, "ScanWindowUpperLimit"]] = None
+    carried_out_by: Optional[Union[dict[Union[str, MassSpectrometerId], Union[dict, "MassSpectrometer"]], list[Union[dict, "MassSpectrometer"]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -764,29 +765,23 @@ class MassSpectrometry(DataGeneratingActivity):
         if not isinstance(self.id, MassSpectrometryId):
             self.id = MassSpectrometryId(self.id)
 
-        if self._is_empty(self.acquisition_mode):
-            self.MissingRequiredField("acquisition_mode")
-        self._normalize_inlined_as_list(slot_name="acquisition_mode", slot_type=AcquisitionMode, key_name="value", keyed=False)
-
-        if self._is_empty(self.scan_polarity):
-            self.MissingRequiredField("scan_polarity")
-        self._normalize_inlined_as_list(slot_name="scan_polarity", slot_type=ScanPolarity, key_name="value", keyed=False)
-
-        if self._is_empty(self.scan_window_lower_limit):
-            self.MissingRequiredField("scan_window_lower_limit")
-        self._normalize_inlined_as_list(slot_name="scan_window_lower_limit", slot_type=ScanWindowLowerLimit, key_name="value", keyed=False)
-
-        if self._is_empty(self.scan_window_upper_limit):
-            self.MissingRequiredField("scan_window_upper_limit")
-        self._normalize_inlined_as_list(slot_name="scan_window_upper_limit", slot_type=ScanWindowUpperLimit, key_name="value", keyed=False)
-
-        if self._is_empty(self.carried_out_by):
-            self.MissingRequiredField("carried_out_by")
-        self._normalize_inlined_as_list(slot_name="carried_out_by", slot_type=MassSpectrometer, key_name="id", keyed=True)
-
         if self._is_empty(self.evaluated_entity):
             self.MissingRequiredField("evaluated_entity")
         self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=MSSample, key_name="id", keyed=True)
+
+        if self.acquisition_mode is not None and not isinstance(self.acquisition_mode, AcquisitionMode):
+            self.acquisition_mode = AcquisitionMode(**as_dict(self.acquisition_mode))
+
+        if self.scan_polarity is not None and not isinstance(self.scan_polarity, ScanPolarity):
+            self.scan_polarity = ScanPolarity(**as_dict(self.scan_polarity))
+
+        if self.scan_window_lower_limit is not None and not isinstance(self.scan_window_lower_limit, ScanWindowLowerLimit):
+            self.scan_window_lower_limit = ScanWindowLowerLimit(**as_dict(self.scan_window_lower_limit))
+
+        if self.scan_window_upper_limit is not None and not isinstance(self.scan_window_upper_limit, ScanWindowUpperLimit):
+            self.scan_window_upper_limit = ScanWindowUpperLimit(**as_dict(self.scan_window_upper_limit))
+
+        self._normalize_inlined_as_list(slot_name="carried_out_by", slot_type=MassSpectrometer, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -805,7 +800,7 @@ class SubstanceSampleCharacterization(DataGeneratingActivity):
     class_class_uri: ClassVar[URIRef] = PROV["Activity"]
     class_class_curie: ClassVar[str] = "prov:Activity"
     class_name: ClassVar[str] = "SubstanceSampleCharacterization"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/SubstanceSampleCharacterization")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SubstanceSampleCharacterization
 
     id: Union[str, SubstanceSampleCharacterizationId] = None
     evaluated_entity: Optional[Union[dict[Union[str, SubstanceSampleId], Union[dict, "SubstanceSample"]], list[Union[dict, "SubstanceSample"]]]] = empty_dict()
@@ -835,7 +830,7 @@ class ReactionMonitoring(DataGeneratingActivity):
     class_class_uri: ClassVar[URIRef] = PROV["Activity"]
     class_class_curie: ClassVar[str] = "prov:Activity"
     class_name: ClassVar[str] = "ReactionMonitoring"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ReactionMonitoring")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ReactionMonitoring
 
     id: Union[str, ReactionMonitoringId] = None
     evaluated_activity: Optional[Union[dict[Union[str, ChemicalReactionId], Union[dict, "ChemicalReaction"]], list[Union[dict, "ChemicalReaction"]]]] = empty_dict()
@@ -861,7 +856,7 @@ class DataAnalysis(DataGeneratingActivity):
     class_class_uri: ClassVar[URIRef] = PROV["Activity"]
     class_class_curie: ClassVar[str] = "prov:Activity"
     class_name: ClassVar[str] = "DataAnalysis"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/DataAnalysis")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DataAnalysis
 
     id: Union[str, DataAnalysisId] = None
     evaluated_entity: Optional[Union[dict[Union[str, AnalysisSourceDataId], Union[dict, "AnalysisSourceData"]], list[Union[dict, "AnalysisSourceData"]]]] = empty_dict()
@@ -887,7 +882,7 @@ class DataService(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["DataService"]
     class_class_curie: ClassVar[str] = "dcat:DataService"
     class_name: ClassVar[str] = "DataService"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/DataService")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DataService
 
     endpoint_URL: Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]] = empty_dict()
     title: Union[str, list[str]] = None
@@ -972,7 +967,7 @@ class Dataset(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
     class_class_curie: ClassVar[str] = "dcat:Dataset"
     class_name: ClassVar[str] = "Dataset"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Dataset")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Dataset
 
     id: Union[str, DatasetId] = None
     description: Union[str, list[str]] = None
@@ -1153,7 +1148,7 @@ class MSSampleMeasurementDataset(Dataset):
     class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
     class_class_curie: ClassVar[str] = "dcat:Dataset"
     class_name: ClassVar[str] = "MSSampleMeasurementDataset"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSampleMeasurementDataset")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MSSampleMeasurementDataset
 
     id: Union[str, MSSampleMeasurementDatasetId] = None
     description: Union[str, list[str]] = None
@@ -1192,7 +1187,7 @@ class SubstanceSampleCharacterizationDataset(Dataset):
     class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
     class_class_curie: ClassVar[str] = "dcat:Dataset"
     class_name: ClassVar[str] = "SubstanceSampleCharacterizationDataset"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/SubstanceSampleCharacterizationDataset")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SubstanceSampleCharacterizationDataset
 
     id: Union[str, SubstanceSampleCharacterizationDatasetId] = None
     description: Union[str, list[str]] = None
@@ -1227,7 +1222,7 @@ class ReactionMonitoringDataset(Dataset):
     class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
     class_class_curie: ClassVar[str] = "dcat:Dataset"
     class_name: ClassVar[str] = "ReactionMonitoringDataset"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ReactionMonitoringDataset")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ReactionMonitoringDataset
 
     id: Union[str, ReactionMonitoringDatasetId] = None
     description: Union[str, list[str]] = None
@@ -1260,7 +1255,7 @@ class AnalysisDataset(Dataset):
     class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
     class_class_curie: ClassVar[str] = "dcat:Dataset"
     class_name: ClassVar[str] = "AnalysisDataset"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/AnalysisDataset")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.AnalysisDataset
 
     id: Union[str, AnalysisDatasetId] = None
     description: Union[str, list[str]] = None
@@ -1288,7 +1283,7 @@ class DatasetSeries(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["DatasetSeries"]
     class_class_curie: ClassVar[str] = "dcat:DatasetSeries"
     class_name: ClassVar[str] = "DatasetSeries"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/DatasetSeries")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DatasetSeries
 
     description: Union[str, list[str]] = None
     title: Union[str, list[str]] = None
@@ -1354,7 +1349,7 @@ class DefinedTerm(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = SCHEMA["DefinedTerm"]
     class_class_curie: ClassVar[str] = "schema:DefinedTerm"
     class_name: ClassVar[str] = "DefinedTerm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/DefinedTerm")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DefinedTerm
 
     id: Union[str, DefinedTermId] = None
     title: Optional[str] = None
@@ -1386,7 +1381,7 @@ class Device(AgenticEntity):
     class_class_uri: ClassVar[URIRef] = PROV["Agent"]
     class_class_curie: ClassVar[str] = "prov:Agent"
     class_name: ClassVar[str] = "Device"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Device")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Device
 
     id: Union[str, DeviceId] = None
     has_part: Optional[Union[dict[Union[str, DeviceId], Union[dict, "Device"]], list[Union[dict, "Device"]]]] = empty_dict()
@@ -1415,14 +1410,14 @@ class MassSpectrometer(Device):
     class_class_uri: ClassVar[URIRef] = CHMO["0000982"]
     class_class_curie: ClassVar[str] = "CHMO:0000982"
     class_name: ClassVar[str] = "MassSpectrometer"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MassSpectrometer")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassSpectrometer
 
     id: Union[str, MassSpectrometerId] = None
-    manufacturer: Union[Union[dict, "Manufacturer"], list[Union[dict, "Manufacturer"]]] = None
-    model: Union[Union[dict, "Model"], list[Union[dict, "Model"]]] = None
-    mass_analyzer_type: Union[Union[dict, "MassAnalyzerType"], list[Union[dict, "MassAnalyzerType"]]] = None
-    ionization_type: Union[Union[dict, "IonizationType"], list[Union[dict, "IonizationType"]]] = None
-    detector_type: Optional[Union[Union[dict, "DetectorType"], list[Union[dict, "DetectorType"]]]] = empty_list()
+    manufacturer: Optional[Union[dict, "Manufacturer"]] = None
+    model: Optional[Union[dict, "Model"]] = None
+    mass_analyzer_type: Optional[Union[dict, "MassAnalyzerType"]] = None
+    ionization_type: Optional[Union[dict, "IonizationType"]] = None
+    detector_type: Optional[Union[dict, "DetectorType"]] = None
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -1430,23 +1425,20 @@ class MassSpectrometer(Device):
         if not isinstance(self.id, MassSpectrometerId):
             self.id = MassSpectrometerId(self.id)
 
-        if self._is_empty(self.manufacturer):
-            self.MissingRequiredField("manufacturer")
-        self._normalize_inlined_as_list(slot_name="manufacturer", slot_type=Manufacturer, key_name="value", keyed=False)
+        if self.manufacturer is not None and not isinstance(self.manufacturer, Manufacturer):
+            self.manufacturer = Manufacturer(**as_dict(self.manufacturer))
 
-        if self._is_empty(self.model):
-            self.MissingRequiredField("model")
-        self._normalize_inlined_as_list(slot_name="model", slot_type=Model, key_name="value", keyed=False)
+        if self.model is not None and not isinstance(self.model, Model):
+            self.model = Model(**as_dict(self.model))
 
-        if self._is_empty(self.mass_analyzer_type):
-            self.MissingRequiredField("mass_analyzer_type")
-        self._normalize_inlined_as_list(slot_name="mass_analyzer_type", slot_type=MassAnalyzerType, key_name="value", keyed=False)
+        if self.mass_analyzer_type is not None and not isinstance(self.mass_analyzer_type, MassAnalyzerType):
+            self.mass_analyzer_type = MassAnalyzerType(**as_dict(self.mass_analyzer_type))
 
-        if self._is_empty(self.ionization_type):
-            self.MissingRequiredField("ionization_type")
-        self._normalize_inlined_as_list(slot_name="ionization_type", slot_type=IonizationType, key_name="value", keyed=False)
+        if self.ionization_type is not None and not isinstance(self.ionization_type, IonizationType):
+            self.ionization_type = IonizationType(**as_dict(self.ionization_type))
 
-        self._normalize_inlined_as_list(slot_name="detector_type", slot_type=DetectorType, key_name="value", keyed=False)
+        if self.detector_type is not None and not isinstance(self.detector_type, DetectorType):
+            self.detector_type = DetectorType(**as_dict(self.detector_type))
 
         super().__post_init__(**kwargs)
 
@@ -1461,7 +1453,7 @@ class Distribution(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["Distribution"]
     class_class_curie: ClassVar[str] = "dcat:Distribution"
     class_name: ClassVar[str] = "Distribution"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Distribution")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Distribution
 
     access_URL: Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]] = empty_dict()
     access_service: Optional[Union[Union[dict, DataService], list[Union[dict, DataService]]]] = empty_list()
@@ -1575,7 +1567,7 @@ class Entity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "Entity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Entity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Entity
 
     id: Union[str, EntityId] = None
     title: Optional[str] = None
@@ -1629,7 +1621,7 @@ class MaterialEntity(Entity):
     class_class_uri: ClassVar[URIRef] = BFO["0000040"]
     class_class_curie: ClassVar[str] = "BFO:0000040"
     class_name: ClassVar[str] = "MaterialEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MaterialEntity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MaterialEntity
 
     id: Union[str, MaterialEntityId] = None
     has_part: Optional[Union[dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], list[Union[dict, "MaterialEntity"]]]] = empty_dict()
@@ -1678,7 +1670,7 @@ class EvaluatedActivity(Activity):
     class_class_uri: ClassVar[URIRef] = PROV["Activity"]
     class_class_curie: ClassVar[str] = "prov:Activity"
     class_name: ClassVar[str] = "EvaluatedActivity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/EvaluatedActivity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.EvaluatedActivity
 
     id: Union[str, EvaluatedActivityId] = None
     other_identifier: Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]] = empty_list()
@@ -1704,7 +1696,7 @@ class EvaluatedEntity(Entity):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "EvaluatedEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/EvaluatedEntity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.EvaluatedEntity
 
     id: Union[str, EvaluatedEntityId] = None
     was_generated_by: Optional[Union[dict[Union[str, ActivityId], Union[dict, Activity]], list[Union[dict, Activity]]]] = empty_dict()
@@ -1741,7 +1733,7 @@ class MaterialSample(EvaluatedEntity):
     class_class_uri: ClassVar[URIRef] = OBI["0000747"]
     class_class_curie: ClassVar[str] = "OBI:0000747"
     class_name: ClassVar[str] = "MaterialSample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MaterialSample")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MaterialSample
 
     id: Union[str, MaterialSampleId] = None
     derived_from: Optional[Union[dict, Entity]] = None
@@ -1789,10 +1781,10 @@ class MSSample(MaterialSample):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["MSSample"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:MSSample"
     class_name: ClassVar[str] = "MSSample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MSSample
 
     id: Union[str, MSSampleId] = None
     solvent: Optional[Union[str, ChemicalEntityId]] = None
@@ -1819,7 +1811,7 @@ class SubstanceMSSample(MSSample):
     class_class_uri: ClassVar[URIRef] = MS["1000457"]
     class_class_curie: ClassVar[str] = "MS:1000457"
     class_name: ClassVar[str] = "SubstanceMSSample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/SubstanceMSSample")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SubstanceMSSample
 
     id: Union[str, SubstanceMSSampleId] = None
     composed_of: Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]] = empty_dict()
@@ -1881,7 +1873,7 @@ class MaterialMSSample(MSSample):
     class_class_uri: ClassVar[URIRef] = MS["1000457"]
     class_class_curie: ClassVar[str] = "MS:1000457"
     class_name: ClassVar[str] = "MaterialMSSample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MaterialMSSample")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MaterialMSSample
 
     id: Union[str, MaterialMSSampleId] = None
 
@@ -1904,7 +1896,7 @@ class AnalysisSourceData(EvaluatedEntity):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "AnalysisSourceData"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/AnalysisSourceData")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.AnalysisSourceData
 
     id: Union[str, AnalysisSourceDataId] = None
     was_generated_by: Optional[Union[dict[Union[str, DataGeneratingActivityId], Union[dict, DataGeneratingActivity]], list[Union[dict, DataGeneratingActivity]]]] = empty_dict()
@@ -1929,7 +1921,7 @@ class Kind(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = VCARD["Kind"]
     class_class_curie: ClassVar[str] = "vcard:Kind"
     class_name: ClassVar[str] = "Kind"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Kind")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Kind
 
 
 @dataclass(repr=False)
@@ -1942,7 +1934,7 @@ class Location(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCTERMS["Location"]
     class_class_curie: ClassVar[str] = "dcterms:Location"
     class_name: ClassVar[str] = "Location"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Location")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Location
 
     bbox: Optional[str] = None
     centroid: Optional[str] = None
@@ -1972,7 +1964,7 @@ class Plan(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Plan"]
     class_class_curie: ClassVar[str] = "prov:Plan"
     class_name: ClassVar[str] = "Plan"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Plan")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Plan
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2005,7 +1997,7 @@ class QualitativeAttribute(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Entity"]
     class_class_curie: ClassVar[str] = "prov:Entity"
     class_name: ClassVar[str] = "QualitativeAttribute"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/QualitativeAttribute")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.QualitativeAttribute
 
     value: str = None
     title: Optional[str] = None
@@ -2041,10 +2033,10 @@ class Manufacturer(QualitativeAttribute):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = MS["1000031"]
-    class_class_curie: ClassVar[str] = "MS:1000031"
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["Manufacturer"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:Manufacturer"
     class_name: ClassVar[str] = "Manufacturer"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Manufacturer")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Manufacturer
 
     value: str = None
 
@@ -2067,7 +2059,7 @@ class Model(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = MS["1000031"]
     class_class_curie: ClassVar[str] = "MS:1000031"
     class_name: ClassVar[str] = "Model"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Model")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Model
 
     value: str = None
 
@@ -2090,7 +2082,7 @@ class MassAnalyzerType(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = MS["1000443"]
     class_class_curie: ClassVar[str] = "MS:1000443"
     class_name: ClassVar[str] = "MassAnalyzerType"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MassAnalyzerType")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassAnalyzerType
 
     value: str = None
 
@@ -2113,7 +2105,7 @@ class IonizationType(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = MS["1000008"]
     class_class_curie: ClassVar[str] = "MS:1000008"
     class_name: ClassVar[str] = "IonizationType"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/IonizationType")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.IonizationType
 
     value: str = None
 
@@ -2136,7 +2128,7 @@ class DetectorType(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = MS["1000026"]
     class_class_curie: ClassVar[str] = "MS:1000026"
     class_name: ClassVar[str] = "DetectorType"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/DetectorType")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DetectorType
 
     value: str = None
 
@@ -2157,10 +2149,10 @@ class AcquisitionMode(QualitativeAttribute):
     """
     _inherited_slots: ClassVar[list[str]] = []
 
-    class_class_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/AcquisitionMode")
-    class_class_curie: ClassVar[str] = None
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["AcquisitionMode"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:AcquisitionMode"
     class_name: ClassVar[str] = "AcquisitionMode"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/AcquisitionMode")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.AcquisitionMode
 
     value: str = None
 
@@ -2183,7 +2175,7 @@ class ScanPolarity(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = MS["1000465"]
     class_class_curie: ClassVar[str] = "MS:1000465"
     class_name: ClassVar[str] = "ScanPolarity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ScanPolarity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanPolarity
 
     value: Union[str, "ScanPolarityEnum"] = None
 
@@ -2206,7 +2198,7 @@ class QuantitativeAttribute(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "QuantitativeAttribute"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/QuantitativeAttribute")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.QuantitativeAttribute
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2255,7 +2247,7 @@ class ScanWindowLowerLimit(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = MS["1000501"]
     class_class_curie: ClassVar[str] = "MS:1000501"
     class_name: ClassVar[str] = "ScanWindowLowerLimit"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ScanWindowLowerLimit")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanWindowLowerLimit
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2270,7 +2262,7 @@ class ScanWindowUpperLimit(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = MS["1000500"]
     class_class_curie: ClassVar[str] = "MS:1000500"
     class_name: ClassVar[str] = "ScanWindowUpperLimit"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ScanWindowUpperLimit")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanWindowUpperLimit
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2285,7 +2277,7 @@ class Temperature(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "Temperature"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Temperature")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Temperature
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2300,7 +2292,7 @@ class Mass(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "Mass"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Mass")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Mass
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2315,7 +2307,7 @@ class Volume(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "Volume"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Volume")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Volume
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2330,7 +2322,7 @@ class Density(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = SIO["001406"]
     class_class_curie: ClassVar[str] = "SIO:001406"
     class_name: ClassVar[str] = "Density"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Density")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Density
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2342,7 +2334,7 @@ class Pressure(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "Pressure"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Pressure")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Pressure
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -2357,7 +2349,7 @@ class Relationship(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCAT["Relationship"]
     class_class_curie: ClassVar[str] = "dcat:Relationship"
     class_name: ClassVar[str] = "Relationship"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Relationship")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Relationship
 
     had_role: Union[Union[dict, "Role"], list[Union[dict, "Role"]]] = None
     relation: Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]] = empty_dict()
@@ -2386,7 +2378,7 @@ class Software(AgenticEntity):
     class_class_uri: ClassVar[URIRef] = PROV["SoftwareAgent"]
     class_class_curie: ClassVar[str] = "prov:SoftwareAgent"
     class_name: ClassVar[str] = "Software"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Software")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Software
 
     id: Union[str, SoftwareId] = None
     has_part: Optional[Union[dict[Union[str, SoftwareId], Union[dict, "Software"]], list[Union[dict, "Software"]]]] = empty_dict()
@@ -2416,7 +2408,7 @@ class SupportiveEntity(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = DCATAPPLUS["SupportiveEntity"]
     class_class_curie: ClassVar[str] = "dcatapplus:SupportiveEntity"
     class_name: ClassVar[str] = "SupportiveEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/SupportiveEntity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SupportiveEntity
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2441,7 +2433,7 @@ class Attribution(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = PROV["Attribution"]
     class_class_curie: ClassVar[str] = "prov:Attribution"
     class_name: ClassVar[str] = "Attribution"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Attribution")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Attribution
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2466,7 +2458,7 @@ class ChecksumAlgorithm(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = SPDX["ChecksumAlgorithm"]
     class_class_curie: ClassVar[str] = "spdx:ChecksumAlgorithm"
     class_name: ClassVar[str] = "ChecksumAlgorithm"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ChecksumAlgorithm")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ChecksumAlgorithm
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2491,7 +2483,7 @@ class Concept(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = SKOS["Concept"]
     class_class_curie: ClassVar[str] = "skos:Concept"
     class_name: ClassVar[str] = "Concept"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Concept")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Concept
 
     preferred_label: Union[str, list[str]] = None
     title: Optional[str] = None
@@ -2523,7 +2515,7 @@ class ConceptScheme(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = SKOS["ConceptScheme"]
     class_class_curie: ClassVar[str] = "skos:ConceptScheme"
     class_name: ClassVar[str] = "ConceptScheme"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ConceptScheme")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ConceptScheme
 
     title: Union[str, list[str]] = None
     description: Optional[str] = None
@@ -2551,7 +2543,7 @@ class Document(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = FOAF["Document"]
     class_class_curie: ClassVar[str] = "foaf:Document"
     class_name: ClassVar[str] = "Document"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Document")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Document
 
     id: Union[str, DocumentId] = None
     title: Optional[str] = None
@@ -2582,7 +2574,7 @@ class Frequency(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["Frequency"]
     class_class_curie: ClassVar[str] = "dcterms:Frequency"
     class_name: ClassVar[str] = "Frequency"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Frequency")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Frequency
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2607,7 +2599,7 @@ class Geometry(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = LOCN["Geometry"]
     class_class_curie: ClassVar[str] = "locn:Geometry"
     class_name: ClassVar[str] = "Geometry"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Geometry")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Geometry
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2632,7 +2624,7 @@ class Identifier(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = ADMS["Identifier"]
     class_class_curie: ClassVar[str] = "adms:Identifier"
     class_name: ClassVar[str] = "Identifier"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Identifier")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Identifier
 
     notation: str = None
     title: Optional[str] = None
@@ -2663,7 +2655,7 @@ class LegalResource(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = ELI["LegalResource"]
     class_class_curie: ClassVar[str] = "eli:LegalResource"
     class_name: ClassVar[str] = "LegalResource"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/LegalResource")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.LegalResource
 
     id: Union[str, LegalResourceId] = None
     title: Optional[str] = None
@@ -2694,7 +2686,7 @@ class LicenseDocument(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["LicenseDocument"]
     class_class_curie: ClassVar[str] = "dcterms:LicenseDocument"
     class_name: ClassVar[str] = "LicenseDocument"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/LicenseDocument")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.LicenseDocument
 
     id: Union[str, LicenseDocumentId] = None
     type: Optional[Union[Union[dict, Concept], list[Union[dict, Concept]]]] = empty_list()
@@ -2728,7 +2720,7 @@ class LinguisticSystem(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["LinguisticSystem"]
     class_class_curie: ClassVar[str] = "dcterms:LinguisticSystem"
     class_name: ClassVar[str] = "LinguisticSystem"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/LinguisticSystem")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.LinguisticSystem
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2753,7 +2745,7 @@ class MediaType(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["MediaType"]
     class_class_curie: ClassVar[str] = "dcterms:MediaType"
     class_name: ClassVar[str] = "MediaType"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MediaType")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MediaType
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2778,7 +2770,7 @@ class MediaTypeOrExtent(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["MediaTypeOrExtent"]
     class_class_curie: ClassVar[str] = "dcterms:MediaTypeOrExtent"
     class_name: ClassVar[str] = "MediaTypeOrExtent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MediaTypeOrExtent")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MediaTypeOrExtent
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2803,7 +2795,7 @@ class PeriodOfTime(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["PeriodOfTime"]
     class_class_curie: ClassVar[str] = "dcterms:PeriodOfTime"
     class_name: ClassVar[str] = "PeriodOfTime"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/PeriodOfTime")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.PeriodOfTime
 
     beginning: Optional[Union[dict, "TimeInstant"]] = None
     end: Optional[Union[dict, "TimeInstant"]] = None
@@ -2844,7 +2836,7 @@ class Policy(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = ODRL["Policy"]
     class_class_curie: ClassVar[str] = "odrl:Policy"
     class_name: ClassVar[str] = "Policy"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Policy")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Policy
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2869,7 +2861,7 @@ class ProvenanceStatement(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["ProvenanceStatement"]
     class_class_curie: ClassVar[str] = "dcterms:ProvenanceStatement"
     class_name: ClassVar[str] = "ProvenanceStatement"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ProvenanceStatement")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ProvenanceStatement
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2894,7 +2886,7 @@ class Resource(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = RDFS["Resource"]
     class_class_curie: ClassVar[str] = "rdfs:Resource"
     class_name: ClassVar[str] = "Resource"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Resource")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Resource
 
     id: Union[str, ResourceId] = None
     title: Optional[str] = None
@@ -2925,7 +2917,7 @@ class RightsStatement(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["RightsStatement"]
     class_class_curie: ClassVar[str] = "dcterms:RightsStatement"
     class_name: ClassVar[str] = "RightsStatement"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/RightsStatement")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.RightsStatement
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2950,7 +2942,7 @@ class Role(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCAT["Role"]
     class_class_curie: ClassVar[str] = "dcat:Role"
     class_name: ClassVar[str] = "Role"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Role")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Role
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -2975,7 +2967,7 @@ class Standard(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = DCTERMS["Standard"]
     class_class_curie: ClassVar[str] = "dcterms:Standard"
     class_name: ClassVar[str] = "Standard"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Standard")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Standard
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -3000,7 +2992,7 @@ class Surrounding(YAMLRoot):
     class_class_uri: ClassVar[URIRef] = PROV["Location"]
     class_class_curie: ClassVar[str] = "prov:Location"
     class_name: ClassVar[str] = "Surrounding"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Surrounding")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Surrounding
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -3033,7 +3025,7 @@ class Laboratory(Surrounding):
     class_class_uri: ClassVar[URIRef] = ENVO["01001405"]
     class_class_curie: ClassVar[str] = "ENVO:01001405"
     class_name: ClassVar[str] = "Laboratory"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Laboratory")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Laboratory
 
 
 @dataclass(repr=False)
@@ -3046,7 +3038,7 @@ class TimeInstant(SupportiveEntity):
     class_class_uri: ClassVar[URIRef] = TIME["Instant"]
     class_class_curie: ClassVar[str] = "time:Instant"
     class_name: ClassVar[str] = "TimeInstant"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/TimeInstant")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.TimeInstant
 
     title: Optional[str] = None
     description: Optional[str] = None
@@ -3071,7 +3063,7 @@ class SubstanceSample(MaterialSample):
     class_class_uri: ClassVar[URIRef] = SIO["001378"]
     class_class_curie: ClassVar[str] = "SIO:001378"
     class_name: ClassVar[str] = "SubstanceSample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/SubstanceSample")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SubstanceSample
 
     id: Union[str, SubstanceSampleId] = None
     alternative_label: Optional[str] = None
@@ -3129,7 +3121,7 @@ class PolymerSample(SubstanceSample):
     class_class_uri: ClassVar[URIRef] = SIO["001378"]
     class_class_curie: ClassVar[str] = "SIO:001378"
     class_name: ClassVar[str] = "PolymerSample"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/PolymerSample")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.PolymerSample
 
     id: Union[str, PolymerSampleId] = None
     alternative_label: Optional[str] = None
@@ -3188,7 +3180,7 @@ class ChemicalEntity(Entity):
     class_class_uri: ClassVar[URIRef] = CHEBI["23367"]
     class_class_curie: ClassVar[str] = "CHEBI:23367"
     class_name: ClassVar[str] = "ChemicalEntity"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ChemicalEntity")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ChemicalEntity
 
     id: Union[str, ChemicalEntityId] = None
     inchi: Optional[Union[Union[dict, "InChi"], list[Union[dict, "InChi"]]]] = empty_list()
@@ -3232,7 +3224,7 @@ class Atom(Entity):
     class_class_uri: ClassVar[URIRef] = CHEBI["33250"]
     class_class_curie: ClassVar[str] = "CHEBI:33250"
     class_name: ClassVar[str] = "Atom"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Atom")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Atom
 
     id: Union[str, AtomId] = None
     rdf_type: Union[dict, DefinedTerm] = None
@@ -3262,7 +3254,7 @@ class MolarMass(Mass):
     class_class_uri: ClassVar[URIRef] = AFR["0002409"]
     class_class_curie: ClassVar[str] = "AFR:0002409"
     class_name: ClassVar[str] = "MolarMass"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MolarMass")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MolarMass
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3278,7 +3270,7 @@ class Concentration(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = CHMO["0002820"]
     class_class_curie: ClassVar[str] = "CHMO:0002820"
     class_name: ClassVar[str] = "Concentration"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Concentration")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Concentration
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3293,7 +3285,7 @@ class AmountOfSubstance(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "AmountOfSubstance"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/AmountOfSubstance")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.AmountOfSubstance
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3305,7 +3297,7 @@ class PHValue(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = SIO["001089"]
     class_class_curie: ClassVar[str] = "SIO:001089"
     class_name: ClassVar[str] = "PHValue"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/PHValue")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.PHValue
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3317,7 +3309,7 @@ class InChIKey(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000059"]
     class_class_curie: ClassVar[str] = "CHEMINF:000059"
     class_name: ClassVar[str] = "InChIKey"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/InChIKey")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.InChIKey
 
     value: str = None
 
@@ -3331,7 +3323,7 @@ class InChi(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000113"]
     class_class_curie: ClassVar[str] = "CHEMINF:000113"
     class_name: ClassVar[str] = "InChi"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/InChi")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.InChi
 
     value: str = None
 
@@ -3346,7 +3338,7 @@ class MolecularFormula(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000042"]
     class_class_curie: ClassVar[str] = "CHEMINF:000042"
     class_name: ClassVar[str] = "MolecularFormula"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MolecularFormula")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MolecularFormula
 
     value: str = None
 
@@ -3361,7 +3353,7 @@ class IUPACName(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000107"]
     class_class_curie: ClassVar[str] = "CHEMINF:000107"
     class_name: ClassVar[str] = "IUPACName"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/IUPACName")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.IUPACName
 
     value: str = None
 
@@ -3376,7 +3368,7 @@ class SMILES(QualitativeAttribute):
     class_class_uri: ClassVar[URIRef] = CHEMINF["000018"]
     class_class_curie: ClassVar[str] = "CHEMINF:000018"
     class_name: ClassVar[str] = "SMILES"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/SMILES")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SMILES
 
     value: str = None
 
@@ -3392,7 +3384,7 @@ class ChemicalSubstanceMixin(MaterialisticMixin):
     class_class_uri: ClassVar[URIRef] = CHEMICAL_ENTITIES_AP["ChemicalSubstanceMixin"]
     class_class_curie: ClassVar[str] = "chemical_entities_ap:ChemicalSubstanceMixin"
     class_name: ClassVar[str] = "ChemicalSubstanceMixin"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ChemicalSubstanceMixin")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ChemicalSubstanceMixin
 
     has_concentration: Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]] = empty_list()
     has_ph_value: Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]] = empty_list()
@@ -3421,7 +3413,7 @@ class PolymerMixin(ChemicalSubstanceMixin):
     class_class_uri: ClassVar[URIRef] = CHEMICAL_ENTITIES_AP["PolymerMixin"]
     class_class_curie: ClassVar[str] = "chemical_entities_ap:PolymerMixin"
     class_name: ClassVar[str] = "PolymerMixin"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/PolymerMixin")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.PolymerMixin
 
 
 @dataclass(repr=False)
@@ -3435,7 +3427,7 @@ class ChemicalReaction(EvaluatedActivity):
     class_class_uri: ClassVar[URIRef] = SIO["010345"]
     class_class_curie: ClassVar[str] = "SIO:010345"
     class_name: ClassVar[str] = "ChemicalReaction"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ChemicalReaction")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ChemicalReaction
 
     id: Union[str, ChemicalReactionId] = None
     used_starting_material: Optional[Union[dict[Union[str, StartingMaterialId], Union[dict, "StartingMaterial"]], list[Union[dict, "StartingMaterial"]]]] = empty_dict()
@@ -3495,7 +3487,7 @@ class StartingMaterial(MaterialEntity):
     class_class_uri: ClassVar[URIRef] = PROCO["0000029"]
     class_class_curie: ClassVar[str] = "PROCO:0000029"
     class_name: ClassVar[str] = "StartingMaterial"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/StartingMaterial")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.StartingMaterial
 
     id: Union[str, StartingMaterialId] = None
     alternative_label: Optional[str] = None
@@ -3556,7 +3548,7 @@ class DissolvingSubstance(AgenticEntity):
     class_class_uri: ClassVar[URIRef] = SIO["010417"]
     class_class_curie: ClassVar[str] = "SIO:010417"
     class_name: ClassVar[str] = "DissolvingSubstance"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/DissolvingSubstance")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DissolvingSubstance
 
     id: Union[str, DissolvingSubstanceId] = None
     has_percentage_of_total: Optional[Union[Union[dict, "PercentageOfTotal"], list[Union[dict, "PercentageOfTotal"]]]] = empty_list()
@@ -3617,7 +3609,7 @@ class Reagent(MaterialEntity):
     class_class_uri: ClassVar[URIRef] = SIO["010411"]
     class_class_curie: ClassVar[str] = "SIO:010411"
     class_name: ClassVar[str] = "Reagent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Reagent")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Reagent
 
     id: Union[str, ReagentId] = None
     alternative_label: Optional[str] = None
@@ -3678,7 +3670,7 @@ class ChemicalProduct(MaterialEntity):
     class_class_uri: ClassVar[URIRef] = NCIT["C48810"]
     class_class_curie: ClassVar[str] = "NCIT:C48810"
     class_name: ClassVar[str] = "ChemicalProduct"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/ChemicalProduct")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ChemicalProduct
 
     id: Union[str, ChemicalProductId] = None
     alternative_label: Optional[str] = None
@@ -3737,7 +3729,7 @@ class Catalyst(AgenticEntity):
     class_class_uri: ClassVar[URIRef] = SIO["010344"]
     class_class_curie: ClassVar[str] = "SIO:010344"
     class_name: ClassVar[str] = "Catalyst"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Catalyst")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Catalyst
 
     id: Union[str, CatalystId] = None
     has_molar_equivalent: Optional[Union[Union[dict, "MolarEquivalent"], list[Union[dict, "MolarEquivalent"]]]] = empty_list()
@@ -3798,7 +3790,7 @@ class Reactor(Device):
     class_class_uri: ClassVar[URIRef] = AFE["0000153"]
     class_class_curie: ClassVar[str] = "AFE:0000153"
     class_name: ClassVar[str] = "Reactor"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Reactor")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Reactor
 
     id: Union[str, ReactorId] = None
     alternative_label: Optional[str] = None
@@ -3846,7 +3838,7 @@ class Yield(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = CHMO["0002855"]
     class_class_curie: ClassVar[str] = "CHMO:0002855"
     class_name: ClassVar[str] = "Yield"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/Yield")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Yield
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3862,7 +3854,7 @@ class MolarEquivalent(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "MolarEquivalent"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/MolarEquivalent")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MolarEquivalent
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -3878,7 +3870,7 @@ class PercentageOfTotal(QuantitativeAttribute):
     class_class_uri: ClassVar[URIRef] = QUDT["Quantity"]
     class_class_curie: ClassVar[str] = "qudt:Quantity"
     class_name: ClassVar[str] = "PercentageOfTotal"
-    class_model_uri: ClassVar[URIRef] = URIRef("https://w3id.org/NFDI4Chem/ms-dcat-ap/PercentageOfTotal")
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.PercentageOfTotal
 
     value: float = None
     has_quantity_type: Union[str, DefinedTermId] = None
@@ -4028,998 +4020,1025 @@ class QUDTUnitEnum(EnumDefinitionImpl):
 class slots:
     pass
 
+slots.solvent = Slot(uri=MS_DCAT_AP.solvent, name="solvent", curie=MS_DCAT_AP.curie('solvent'),
+                   model_uri=MS_DCAT_AP.solvent, domain=None, range=Optional[Union[str, ChemicalEntityId]])
+
+slots.injection_volume = Slot(uri=MS_DCAT_AP.injection_volume, name="injection_volume", curie=MS_DCAT_AP.curie('injection_volume'),
+                   model_uri=MS_DCAT_AP.injection_volume, domain=None, range=Optional[Union[dict, Volume]])
+
+slots.manufacturer = Slot(uri=MS_DCAT_AP.manufacturer, name="manufacturer", curie=MS_DCAT_AP.curie('manufacturer'),
+                   model_uri=MS_DCAT_AP.manufacturer, domain=None, range=Optional[Union[dict, Manufacturer]])
+
+slots.model = Slot(uri=MS_DCAT_AP.model, name="model", curie=MS_DCAT_AP.curie('model'),
+                   model_uri=MS_DCAT_AP.model, domain=None, range=Optional[Union[dict, Model]])
+
+slots.mass_analyzer_type = Slot(uri=MS_DCAT_AP.mass_analyzer_type, name="mass_analyzer_type", curie=MS_DCAT_AP.curie('mass_analyzer_type'),
+                   model_uri=MS_DCAT_AP.mass_analyzer_type, domain=None, range=Optional[Union[dict, MassAnalyzerType]])
+
+slots.ionization_type = Slot(uri=MS_DCAT_AP.ionization_type, name="ionization_type", curie=MS_DCAT_AP.curie('ionization_type'),
+                   model_uri=MS_DCAT_AP.ionization_type, domain=None, range=Optional[Union[dict, IonizationType]])
+
+slots.detector_type = Slot(uri=MS_DCAT_AP.detector_type, name="detector_type", curie=MS_DCAT_AP.curie('detector_type'),
+                   model_uri=MS_DCAT_AP.detector_type, domain=None, range=Optional[Union[dict, DetectorType]])
+
+slots.acquisition_mode = Slot(uri=MS_DCAT_AP.acquisition_mode, name="acquisition_mode", curie=MS_DCAT_AP.curie('acquisition_mode'),
+                   model_uri=MS_DCAT_AP.acquisition_mode, domain=None, range=Optional[Union[dict, AcquisitionMode]])
+
+slots.scan_polarity = Slot(uri=MS_DCAT_AP.scan_polarity, name="scan_polarity", curie=MS_DCAT_AP.curie('scan_polarity'),
+                   model_uri=MS_DCAT_AP.scan_polarity, domain=None, range=Optional[Union[dict, ScanPolarity]])
+
+slots.scan_window_lower_limit = Slot(uri=MS_DCAT_AP.scan_window_lower_limit, name="scan_window_lower_limit", curie=MS_DCAT_AP.curie('scan_window_lower_limit'),
+                   model_uri=MS_DCAT_AP.scan_window_lower_limit, domain=None, range=Optional[Union[dict, ScanWindowLowerLimit]])
+
+slots.scan_window_upper_limit = Slot(uri=MS_DCAT_AP.scan_window_upper_limit, name="scan_window_upper_limit", curie=MS_DCAT_AP.curie('scan_window_upper_limit'),
+                   model_uri=MS_DCAT_AP.scan_window_upper_limit, domain=None, range=Optional[Union[dict, ScanWindowUpperLimit]])
+
 slots.alternative_label = Slot(uri=SKOS.altLabel, name="alternative_label", curie=SKOS.curie('altLabel'),
-                   model_uri=DEFAULT_.alternative_label, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.alternative_label, domain=None, range=Optional[str])
 
 slots.has_physical_state = Slot(uri=SIO['000008'], name="has_physical_state", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_physical_state, domain=None, range=Optional[Union[str, "PhysicalStateEnum"]])
+                   model_uri=MS_DCAT_AP.has_physical_state, domain=None, range=Optional[Union[str, "PhysicalStateEnum"]])
 
 slots.has_temperature = Slot(uri=SIO['000008'], name="has_temperature", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_temperature, domain=None, range=Optional[Union[Union[dict, Temperature], list[Union[dict, Temperature]]]])
+                   model_uri=MS_DCAT_AP.has_temperature, domain=None, range=Optional[Union[Union[dict, Temperature], list[Union[dict, Temperature]]]])
 
 slots.has_mass = Slot(uri=SIO['000008'], name="has_mass", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_mass, domain=None, range=Optional[Union[Union[dict, Mass], list[Union[dict, Mass]]]])
+                   model_uri=MS_DCAT_AP.has_mass, domain=None, range=Optional[Union[Union[dict, Mass], list[Union[dict, Mass]]]])
 
 slots.has_volume = Slot(uri=SIO['000008'], name="has_volume", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_volume, domain=None, range=Optional[Union[Union[dict, Volume], list[Union[dict, Volume]]]])
+                   model_uri=MS_DCAT_AP.has_volume, domain=None, range=Optional[Union[Union[dict, Volume], list[Union[dict, Volume]]]])
 
 slots.has_density = Slot(uri=SIO['000008'], name="has_density", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_density, domain=None, range=Optional[Union[Union[dict, Density], list[Union[dict, Density]]]])
+                   model_uri=MS_DCAT_AP.has_density, domain=None, range=Optional[Union[Union[dict, Density], list[Union[dict, Density]]]])
 
 slots.has_pressure = Slot(uri=SIO['000008'], name="has_pressure", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_pressure, domain=None, range=Optional[Union[Union[dict, Pressure], list[Union[dict, Pressure]]]])
+                   model_uri=MS_DCAT_AP.has_pressure, domain=None, range=Optional[Union[Union[dict, Pressure], list[Union[dict, Pressure]]]])
 
 slots.derived_from = Slot(uri=PROV.wasDerivedFrom, name="derived_from", curie=PROV.curie('wasDerivedFrom'),
-                   model_uri=DEFAULT_.derived_from, domain=None, range=Optional[Union[dict, Entity]])
+                   model_uri=MS_DCAT_AP.derived_from, domain=None, range=Optional[Union[dict, Entity]])
 
 slots.access_URL = Slot(uri=DCAT.accessURL, name="access_URL", curie=DCAT.curie('accessURL'),
-                   model_uri=DEFAULT_.access_URL, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.access_URL, domain=None, range=Optional[str])
 
 slots.access_rights = Slot(uri=DCTERMS.accessRights, name="access_rights", curie=DCTERMS.curie('accessRights'),
-                   model_uri=DEFAULT_.access_rights, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.access_rights, domain=None, range=Optional[str])
 
 slots.access_service = Slot(uri=DCAT.accessService, name="access_service", curie=DCAT.curie('accessService'),
-                   model_uri=DEFAULT_.access_service, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.access_service, domain=None, range=Optional[str])
 
 slots.algorithm = Slot(uri=SPDX.algorithm, name="algorithm", curie=SPDX.curie('algorithm'),
-                   model_uri=DEFAULT_.algorithm, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.algorithm, domain=None, range=Optional[str])
 
 slots.applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
-                   model_uri=DEFAULT_.applicable_legislation, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.applicable_legislation, domain=None, range=Optional[str])
 
 slots.application_profile = Slot(uri=DCTERMS.conformsTo, name="application_profile", curie=DCTERMS.curie('conformsTo'),
-                   model_uri=DEFAULT_.application_profile, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.application_profile, domain=None, range=Optional[str])
 
 slots.availability = Slot(uri=DCATAP.availability, name="availability", curie=DCATAP.curie('availability'),
-                   model_uri=DEFAULT_.availability, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.availability, domain=None, range=Optional[str])
 
 slots.bbox = Slot(uri=DCAT.bbox, name="bbox", curie=DCAT.curie('bbox'),
-                   model_uri=DEFAULT_.bbox, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.bbox, domain=None, range=Optional[str])
 
 slots.beginning = Slot(uri=TIME.hasBeginning, name="beginning", curie=TIME.curie('hasBeginning'),
-                   model_uri=DEFAULT_.beginning, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.beginning, domain=None, range=Optional[str])
 
 slots.byte_size = Slot(uri=DCAT.byteSize, name="byte_size", curie=DCAT.curie('byteSize'),
-                   model_uri=DEFAULT_.byte_size, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.byte_size, domain=None, range=Optional[str])
 
 slots.carried_out_by = Slot(uri=PROV.wasAssociatedWith, name="carried_out_by", curie=PROV.curie('wasAssociatedWith'),
-                   model_uri=DEFAULT_.carried_out_by, domain=None, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, AgenticEntity]], list[Union[dict, AgenticEntity]]]])
+                   model_uri=MS_DCAT_AP.carried_out_by, domain=None, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, AgenticEntity]], list[Union[dict, AgenticEntity]]]])
 
 slots.catalogue = Slot(uri=DCAT.catalog, name="catalogue", curie=DCAT.curie('catalog'),
-                   model_uri=DEFAULT_.catalogue, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.catalogue, domain=None, range=Optional[str])
 
 slots.centroid = Slot(uri=DCAT.centroid, name="centroid", curie=DCAT.curie('centroid'),
-                   model_uri=DEFAULT_.centroid, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.centroid, domain=None, range=Optional[str])
 
 slots.change_type = Slot(uri=ADMS.status, name="change_type", curie=ADMS.curie('status'),
-                   model_uri=DEFAULT_.change_type, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.change_type, domain=None, range=Optional[str])
 
 slots.checksum = Slot(uri=SPDX.checksum, name="checksum", curie=SPDX.curie('checksum'),
-                   model_uri=DEFAULT_.checksum, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.checksum, domain=None, range=Optional[str])
 
 slots.checksum_value = Slot(uri=SPDX.checksumValue, name="checksum_value", curie=SPDX.curie('checksumValue'),
-                   model_uri=DEFAULT_.checksum_value, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.checksum_value, domain=None, range=Optional[str])
 
 slots.compression_format = Slot(uri=DCAT.compressFormat, name="compression_format", curie=DCAT.curie('compressFormat'),
-                   model_uri=DEFAULT_.compression_format, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.compression_format, domain=None, range=Optional[str])
 
 slots.conforms_to = Slot(uri=DCTERMS.conformsTo, name="conforms_to", curie=DCTERMS.curie('conformsTo'),
-                   model_uri=DEFAULT_.conforms_to, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.conforms_to, domain=None, range=Optional[str])
 
 slots.contact_point = Slot(uri=DCAT.contactPoint, name="contact_point", curie=DCAT.curie('contactPoint'),
-                   model_uri=DEFAULT_.contact_point, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.contact_point, domain=None, range=Optional[str])
 
 slots.creator = Slot(uri=DCTERMS.creator, name="creator", curie=DCTERMS.curie('creator'),
-                   model_uri=DEFAULT_.creator, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.creator, domain=None, range=Optional[str])
 
 slots.dataset_distribution = Slot(uri=DCAT.distribution, name="dataset_distribution", curie=DCAT.curie('distribution'),
-                   model_uri=DEFAULT_.dataset_distribution, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.dataset_distribution, domain=None, range=Optional[str])
 
 slots.description = Slot(uri=DCTERMS.description, name="description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.description, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.description, domain=None, range=Optional[str])
 
 slots.documentation = Slot(uri=FOAF.page, name="documentation", curie=FOAF.curie('page'),
-                   model_uri=DEFAULT_.documentation, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.documentation, domain=None, range=Optional[str])
 
 slots.download_URL = Slot(uri=DCAT.downloadURL, name="download_URL", curie=DCAT.curie('downloadURL'),
-                   model_uri=DEFAULT_.download_URL, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.download_URL, domain=None, range=Optional[str])
 
 slots.end = Slot(uri=TIME.hasEnd, name="end", curie=TIME.curie('hasEnd'),
-                   model_uri=DEFAULT_.end, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.end, domain=None, range=Optional[str])
 
 slots.end_date = Slot(uri=DCAT.endDate, name="end_date", curie=DCAT.curie('endDate'),
-                   model_uri=DEFAULT_.end_date, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.end_date, domain=None, range=Optional[str])
 
 slots.endpoint_URL = Slot(uri=DCAT.endpointURL, name="endpoint_URL", curie=DCAT.curie('endpointURL'),
-                   model_uri=DEFAULT_.endpoint_URL, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.endpoint_URL, domain=None, range=Optional[str])
 
 slots.endpoint_description = Slot(uri=DCAT.endpointDescription, name="endpoint_description", curie=DCAT.curie('endpointDescription'),
-                   model_uri=DEFAULT_.endpoint_description, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.endpoint_description, domain=None, range=Optional[str])
 
 slots.evaluated_activity = Slot(uri=PROV.wasInformedBy, name="evaluated_activity", curie=PROV.curie('wasInformedBy'),
-                   model_uri=DEFAULT_.evaluated_activity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], list[Union[dict, EvaluatedActivity]]]])
+                   model_uri=MS_DCAT_AP.evaluated_activity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], list[Union[dict, EvaluatedActivity]]]])
 
 slots.evaluated_entity = Slot(uri=PROV.used, name="evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=DEFAULT_.evaluated_entity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], list[Union[dict, EvaluatedEntity]]]])
+                   model_uri=MS_DCAT_AP.evaluated_entity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], list[Union[dict, EvaluatedEntity]]]])
 
 slots.format = Slot(uri=DCTERMS.format, name="format", curie=DCTERMS.curie('format'),
-                   model_uri=DEFAULT_.format, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.format, domain=None, range=Optional[str])
 
 slots.frequency = Slot(uri=DCTERMS.accrualPeriodicity, name="frequency", curie=DCTERMS.curie('accrualPeriodicity'),
-                   model_uri=DEFAULT_.frequency, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.frequency, domain=None, range=Optional[str])
 
 slots.geographical_coverage = Slot(uri=DCTERMS.spatial, name="geographical_coverage", curie=DCTERMS.curie('spatial'),
-                   model_uri=DEFAULT_.geographical_coverage, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.geographical_coverage, domain=None, range=Optional[str])
 
 slots.geometry = Slot(uri=LOCN.geometry, name="geometry", curie=LOCN.curie('geometry'),
-                   model_uri=DEFAULT_.geometry, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.geometry, domain=None, range=Optional[str])
 
 slots.had_input_activity = Slot(uri=PROV.wasInformedBy, name="had_input_activity", curie=PROV.curie('wasInformedBy'),
-                   model_uri=DEFAULT_.had_input_activity, domain=None, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, Activity]], list[Union[dict, Activity]]]])
+                   model_uri=MS_DCAT_AP.had_input_activity, domain=None, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, Activity]], list[Union[dict, Activity]]]])
 
 slots.had_input_entity = Slot(uri=PROV.used, name="had_input_entity", curie=PROV.curie('used'),
-                   model_uri=DEFAULT_.had_input_entity, domain=None, range=Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]])
+                   model_uri=MS_DCAT_AP.had_input_entity, domain=None, range=Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]])
 
 slots.had_output_entity = Slot(uri=PROV.generated, name="had_output_entity", curie=PROV.curie('generated'),
-                   model_uri=DEFAULT_.had_output_entity, domain=None, range=Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]])
+                   model_uri=MS_DCAT_AP.had_output_entity, domain=None, range=Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]])
 
 slots.had_role = Slot(uri=DCAT.hadRole, name="had_role", curie=DCAT.curie('hadRole'),
-                   model_uri=DEFAULT_.had_role, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.had_role, domain=None, range=Optional[str])
 
 slots.has_dataset = Slot(uri=DCAT.dataset, name="has_dataset", curie=DCAT.curie('dataset'),
-                   model_uri=DEFAULT_.has_dataset, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.has_dataset, domain=None, range=Optional[str])
 
 slots.has_part = Slot(uri=DCTERMS.hasPart, name="has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=DEFAULT_.has_part, domain=None, range=Optional[Union[str, ActivityId]])
+                   model_uri=MS_DCAT_AP.has_part, domain=None, range=Optional[Union[str, ActivityId]])
 
 slots.has_policy = Slot(uri=ODRL.hasPolicy, name="has_policy", curie=ODRL.curie('hasPolicy'),
-                   model_uri=DEFAULT_.has_policy, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.has_policy, domain=None, range=Optional[str])
 
 slots.has_qualitative_attribute = Slot(uri=DCTERMS.relation, name="has_qualitative_attribute", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.has_qualitative_attribute, domain=None, range=Optional[Union[Union[dict, QualitativeAttribute], list[Union[dict, QualitativeAttribute]]]])
+                   model_uri=MS_DCAT_AP.has_qualitative_attribute, domain=None, range=Optional[Union[Union[dict, QualitativeAttribute], list[Union[dict, QualitativeAttribute]]]])
 
 slots.has_quantitative_attribute = Slot(uri=DCTERMS.relation, name="has_quantitative_attribute", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.has_quantitative_attribute, domain=None, range=Optional[Union[Union[dict, QuantitativeAttribute], list[Union[dict, QuantitativeAttribute]]]])
+                   model_uri=MS_DCAT_AP.has_quantitative_attribute, domain=None, range=Optional[Union[Union[dict, QuantitativeAttribute], list[Union[dict, QuantitativeAttribute]]]])
 
 slots.has_version = Slot(uri=DCAT.hasVersion, name="has_version", curie=DCAT.curie('hasVersion'),
-                   model_uri=DEFAULT_.has_version, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.has_version, domain=None, range=Optional[str])
 
 slots.homepage = Slot(uri=FOAF.homepage, name="homepage", curie=FOAF.curie('homepage'),
-                   model_uri=DEFAULT_.homepage, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.homepage, domain=None, range=Optional[str])
 
 slots.id = Slot(uri=DCATAPPLUS.id, name="id", curie=DCATAPPLUS.curie('id'),
-                   model_uri=DEFAULT_.id, domain=None, range=URIRef)
+                   model_uri=MS_DCAT_AP.id, domain=None, range=URIRef)
 
 slots.identifier = Slot(uri=DCTERMS.identifier, name="identifier", curie=DCTERMS.curie('identifier'),
-                   model_uri=DEFAULT_.identifier, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.identifier, domain=None, range=Optional[str])
 
 slots.in_series = Slot(uri=DCAT.inSeries, name="in_series", curie=DCAT.curie('inSeries'),
-                   model_uri=DEFAULT_.in_series, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.in_series, domain=None, range=Optional[str])
 
 slots.is_about_activity = Slot(uri=DCTERMS.subject, name="is_about_activity", curie=DCTERMS.curie('subject'),
-                   model_uri=DEFAULT_.is_about_activity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], list[Union[dict, EvaluatedActivity]]]])
+                   model_uri=MS_DCAT_AP.is_about_activity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedActivityId], Union[dict, EvaluatedActivity]], list[Union[dict, EvaluatedActivity]]]])
 
 slots.is_about_entity = Slot(uri=DCTERMS.subject, name="is_about_entity", curie=DCTERMS.curie('subject'),
-                   model_uri=DEFAULT_.is_about_entity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], list[Union[dict, EvaluatedEntity]]]])
+                   model_uri=MS_DCAT_AP.is_about_entity, domain=None, range=Optional[Union[dict[Union[str, EvaluatedEntityId], Union[dict, EvaluatedEntity]], list[Union[dict, EvaluatedEntity]]]])
 
 slots.is_referenced_by = Slot(uri=DCTERMS.isReferencedBy, name="is_referenced_by", curie=DCTERMS.curie('isReferencedBy'),
-                   model_uri=DEFAULT_.is_referenced_by, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.is_referenced_by, domain=None, range=Optional[str])
 
 slots.keyword = Slot(uri=DCAT.keyword, name="keyword", curie=DCAT.curie('keyword'),
-                   model_uri=DEFAULT_.keyword, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.keyword, domain=None, range=Optional[str])
 
 slots.landing_page = Slot(uri=DCAT.landingPage, name="landing_page", curie=DCAT.curie('landingPage'),
-                   model_uri=DEFAULT_.landing_page, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.landing_page, domain=None, range=Optional[str])
 
 slots.language = Slot(uri=DCTERMS.language, name="language", curie=DCTERMS.curie('language'),
-                   model_uri=DEFAULT_.language, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.language, domain=None, range=Optional[str])
 
 slots.licence = Slot(uri=DCTERMS.license, name="licence", curie=DCTERMS.curie('license'),
-                   model_uri=DEFAULT_.licence, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.licence, domain=None, range=Optional[str])
 
 slots.linked_schemas = Slot(uri=DCTERMS.conformsTo, name="linked_schemas", curie=DCTERMS.curie('conformsTo'),
-                   model_uri=DEFAULT_.linked_schemas, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.linked_schemas, domain=None, range=Optional[str])
 
 slots.listing_date = Slot(uri=DCTERMS.issued, name="listing_date", curie=DCTERMS.curie('issued'),
-                   model_uri=DEFAULT_.listing_date, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.listing_date, domain=None, range=Optional[str])
 
 slots.media_type = Slot(uri=DCAT.mediaType, name="media_type", curie=DCAT.curie('mediaType'),
-                   model_uri=DEFAULT_.media_type, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.media_type, domain=None, range=Optional[str])
 
 slots.modification_date = Slot(uri=DCTERMS.modified, name="modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=DEFAULT_.modification_date, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.modification_date, domain=None, range=Optional[str])
 
 slots.name = Slot(uri=FOAF.name, name="name", curie=FOAF.curie('name'),
-                   model_uri=DEFAULT_.name, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.name, domain=None, range=Optional[str])
 
 slots.notation = Slot(uri=SKOS.notation, name="notation", curie=SKOS.curie('notation'),
-                   model_uri=DEFAULT_.notation, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.notation, domain=None, range=Optional[str])
 
 slots.occurred_in = Slot(uri=PROV.atLocation, name="occurred_in", curie=PROV.curie('atLocation'),
-                   model_uri=DEFAULT_.occurred_in, domain=None, range=Optional[Union[dict, Surrounding]])
+                   model_uri=MS_DCAT_AP.occurred_in, domain=None, range=Optional[Union[dict, Surrounding]])
 
 slots.other_identifier = Slot(uri=ADMS.identifier, name="other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.other_identifier, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.other_identifier, domain=None, range=Optional[str])
 
 slots.packaging_format = Slot(uri=DCAT.packageFormat, name="packaging_format", curie=DCAT.curie('packageFormat'),
-                   model_uri=DEFAULT_.packaging_format, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.packaging_format, domain=None, range=Optional[str])
 
 slots.part_of = Slot(uri=DCTERMS.isPartOf, name="part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=DEFAULT_.part_of, domain=None, range=Optional[Union[str, ActivityId]])
+                   model_uri=MS_DCAT_AP.part_of, domain=None, range=Optional[Union[str, ActivityId]])
 
 slots.preferred_label = Slot(uri=SKOS.prefLabel, name="preferred_label", curie=SKOS.curie('prefLabel'),
-                   model_uri=DEFAULT_.preferred_label, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.preferred_label, domain=None, range=Optional[str])
 
 slots.primary_topic = Slot(uri=FOAF.primaryTopic, name="primary_topic", curie=FOAF.curie('primaryTopic'),
-                   model_uri=DEFAULT_.primary_topic, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.primary_topic, domain=None, range=Optional[str])
 
 slots.provenance = Slot(uri=DCTERMS.provenance, name="provenance", curie=DCTERMS.curie('provenance'),
-                   model_uri=DEFAULT_.provenance, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.provenance, domain=None, range=Optional[str])
 
 slots.publisher = Slot(uri=DCTERMS.publisher, name="publisher", curie=DCTERMS.curie('publisher'),
-                   model_uri=DEFAULT_.publisher, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.publisher, domain=None, range=Optional[str])
 
 slots.qualified_attribution = Slot(uri=PROV.qualifiedAttribution, name="qualified_attribution", curie=PROV.curie('qualifiedAttribution'),
-                   model_uri=DEFAULT_.qualified_attribution, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.qualified_attribution, domain=None, range=Optional[str])
 
 slots.qualified_relation = Slot(uri=DCAT.qualifiedRelation, name="qualified_relation", curie=DCAT.curie('qualifiedRelation'),
-                   model_uri=DEFAULT_.qualified_relation, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.qualified_relation, domain=None, range=Optional[str])
 
 slots.rdf_type = Slot(uri=RDF.type, name="rdf_type", curie=RDF.curie('type'),
-                   model_uri=DEFAULT_.rdf_type, domain=None, range=Optional[Union[dict, DefinedTerm]])
+                   model_uri=MS_DCAT_AP.rdf_type, domain=None, range=Optional[Union[dict, DefinedTerm]])
 
 slots.realized_plan = Slot(uri=PROV.used, name="realized_plan", curie=PROV.curie('used'),
-                   model_uri=DEFAULT_.realized_plan, domain=None, range=Optional[Union[dict, Plan]])
+                   model_uri=MS_DCAT_AP.realized_plan, domain=None, range=Optional[Union[dict, Plan]])
 
 slots.record = Slot(uri=DCAT.record, name="record", curie=DCAT.curie('record'),
-                   model_uri=DEFAULT_.record, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.record, domain=None, range=Optional[str])
 
 slots.related_resource = Slot(uri=DCTERMS.relation, name="related_resource", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.related_resource, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.related_resource, domain=None, range=Optional[str])
 
 slots.relation = Slot(uri=DCTERMS.relation, name="relation", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.relation, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.relation, domain=None, range=Optional[str])
 
 slots.release_date = Slot(uri=DCTERMS.issued, name="release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=DEFAULT_.release_date, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.release_date, domain=None, range=Optional[str])
 
 slots.rights = Slot(uri=DCTERMS.rights, name="rights", curie=DCTERMS.curie('rights'),
-                   model_uri=DEFAULT_.rights, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.rights, domain=None, range=Optional[str])
 
 slots.sample = Slot(uri=ADMS.sample, name="sample", curie=ADMS.curie('sample'),
-                   model_uri=DEFAULT_.sample, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.sample, domain=None, range=Optional[str])
 
 slots.serves_dataset = Slot(uri=DCAT.servesDataset, name="serves_dataset", curie=DCAT.curie('servesDataset'),
-                   model_uri=DEFAULT_.serves_dataset, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.serves_dataset, domain=None, range=Optional[str])
 
 slots.service = Slot(uri=DCAT.service, name="service", curie=DCAT.curie('service'),
-                   model_uri=DEFAULT_.service, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.service, domain=None, range=Optional[str])
 
 slots.source = Slot(uri=DCTERMS.source, name="source", curie=DCTERMS.curie('source'),
-                   model_uri=DEFAULT_.source, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.source, domain=None, range=Optional[str])
 
 slots.source_metadata = Slot(uri=DCTERMS.source, name="source_metadata", curie=DCTERMS.curie('source'),
-                   model_uri=DEFAULT_.source_metadata, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.source_metadata, domain=None, range=Optional[str])
 
 slots.spatial_resolution = Slot(uri=DCAT.spatialResolutionInMeters, name="spatial_resolution", curie=DCAT.curie('spatialResolutionInMeters'),
-                   model_uri=DEFAULT_.spatial_resolution, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.spatial_resolution, domain=None, range=Optional[str])
 
 slots.start_date = Slot(uri=DCAT.startDate, name="start_date", curie=DCAT.curie('startDate'),
-                   model_uri=DEFAULT_.start_date, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.start_date, domain=None, range=Optional[str])
 
 slots.status = Slot(uri=ADMS.status, name="status", curie=ADMS.curie('status'),
-                   model_uri=DEFAULT_.status, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.status, domain=None, range=Optional[str])
 
 slots.temporal_coverage = Slot(uri=DCTERMS.temporal, name="temporal_coverage", curie=DCTERMS.curie('temporal'),
-                   model_uri=DEFAULT_.temporal_coverage, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.temporal_coverage, domain=None, range=Optional[str])
 
 slots.temporal_resolution = Slot(uri=DCAT.temporalResolution, name="temporal_resolution", curie=DCAT.curie('temporalResolution'),
-                   model_uri=DEFAULT_.temporal_resolution, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.temporal_resolution, domain=None, range=Optional[str])
 
 slots.theme = Slot(uri=DCAT.theme, name="theme", curie=DCAT.curie('theme'),
-                   model_uri=DEFAULT_.theme, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.theme, domain=None, range=Optional[str])
 
 slots.themes = Slot(uri=DCAT.themeTaxonomy, name="themes", curie=DCAT.curie('themeTaxonomy'),
-                   model_uri=DEFAULT_.themes, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.themes, domain=None, range=Optional[str])
 
 slots.title = Slot(uri=DCTERMS.title, name="title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.title, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.title, domain=None, range=Optional[str])
 
 slots.type = Slot(uri=DCTERMS.type, name="type", curie=DCTERMS.curie('type'),
-                   model_uri=DEFAULT_.type, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.type, domain=None, range=Optional[str])
 
 slots.value = Slot(uri=PROV.value, name="value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.value, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.value, domain=None, range=Optional[str])
 
 slots.version = Slot(uri=DCAT.version, name="version", curie=DCAT.curie('version'),
-                   model_uri=DEFAULT_.version, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.version, domain=None, range=Optional[str])
 
 slots.version_notes = Slot(uri=ADMS.versionNotes, name="version_notes", curie=ADMS.curie('versionNotes'),
-                   model_uri=DEFAULT_.version_notes, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.version_notes, domain=None, range=Optional[str])
 
 slots.was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.was_generated_by, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.was_generated_by, domain=None, range=Optional[str])
 
 slots.composed_of = Slot(uri=BFO['0000051'], name="composed_of", curie=BFO.curie('0000051'),
-                   model_uri=DEFAULT_.composed_of, domain=None, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]])
+                   model_uri=MS_DCAT_AP.composed_of, domain=None, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]])
 
 slots.has_concentration = Slot(uri=SIO['000008'], name="has_concentration", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_concentration, domain=None, range=Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]])
+                   model_uri=MS_DCAT_AP.has_concentration, domain=None, range=Optional[Union[Union[dict, Concentration], list[Union[dict, Concentration]]]])
 
 slots.has_amount = Slot(uri=SIO['000008'], name="has_amount", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_amount, domain=None, range=Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]])
+                   model_uri=MS_DCAT_AP.has_amount, domain=None, range=Optional[Union[Union[dict, AmountOfSubstance], list[Union[dict, AmountOfSubstance]]]])
 
 slots.has_ph_value = Slot(uri=SIO['000008'], name="has_ph_value", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_ph_value, domain=None, range=Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]])
+                   model_uri=MS_DCAT_AP.has_ph_value, domain=None, range=Optional[Union[Union[dict, PHValue], list[Union[dict, PHValue]]]])
 
 slots.inchi = Slot(uri=SIO['000008'], name="inchi", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.inchi, domain=None, range=Optional[Union[Union[dict, InChi], list[Union[dict, InChi]]]])
+                   model_uri=MS_DCAT_AP.inchi, domain=None, range=Optional[Union[Union[dict, InChi], list[Union[dict, InChi]]]])
 
 slots.inchikey = Slot(uri=SIO['000008'], name="inchikey", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.inchikey, domain=None, range=Optional[Union[Union[dict, InChIKey], list[Union[dict, InChIKey]]]])
+                   model_uri=MS_DCAT_AP.inchikey, domain=None, range=Optional[Union[Union[dict, InChIKey], list[Union[dict, InChIKey]]]])
 
 slots.smiles = Slot(uri=SIO['000008'], name="smiles", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.smiles, domain=None, range=Optional[Union[Union[dict, SMILES], list[Union[dict, SMILES]]]])
+                   model_uri=MS_DCAT_AP.smiles, domain=None, range=Optional[Union[Union[dict, SMILES], list[Union[dict, SMILES]]]])
 
 slots.molecular_formula = Slot(uri=SIO['000008'], name="molecular_formula", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.molecular_formula, domain=None, range=Optional[Union[Union[dict, MolecularFormula], list[Union[dict, MolecularFormula]]]])
+                   model_uri=MS_DCAT_AP.molecular_formula, domain=None, range=Optional[Union[Union[dict, MolecularFormula], list[Union[dict, MolecularFormula]]]])
 
 slots.iupac_name = Slot(uri=SIO['000008'], name="iupac_name", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.iupac_name, domain=None, range=Optional[Union[Union[dict, IUPACName], list[Union[dict, IUPACName]]]])
+                   model_uri=MS_DCAT_AP.iupac_name, domain=None, range=Optional[Union[Union[dict, IUPACName], list[Union[dict, IUPACName]]]])
 
 slots.has_molar_mass = Slot(uri=SIO['000008'], name="has_molar_mass", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_molar_mass, domain=None, range=Optional[Union[Union[dict, MolarMass], list[Union[dict, MolarMass]]]])
+                   model_uri=MS_DCAT_AP.has_molar_mass, domain=None, range=Optional[Union[Union[dict, MolarMass], list[Union[dict, MolarMass]]]])
 
 slots.used_starting_material = Slot(uri=RO['0004009'], name="used_starting_material", curie=RO.curie('0004009'),
-                   model_uri=DEFAULT_.used_starting_material, domain=None, range=Optional[Union[dict[Union[str, StartingMaterialId], Union[dict, StartingMaterial]], list[Union[dict, StartingMaterial]]]])
+                   model_uri=MS_DCAT_AP.used_starting_material, domain=None, range=Optional[Union[dict[Union[str, StartingMaterialId], Union[dict, StartingMaterial]], list[Union[dict, StartingMaterial]]]])
 
 slots.used_reactant = Slot(uri=RO['0004009'], name="used_reactant", curie=RO.curie('0004009'),
-                   model_uri=DEFAULT_.used_reactant, domain=None, range=Optional[Union[dict[Union[str, ReagentId], Union[dict, Reagent]], list[Union[dict, Reagent]]]])
+                   model_uri=MS_DCAT_AP.used_reactant, domain=None, range=Optional[Union[dict[Union[str, ReagentId], Union[dict, Reagent]], list[Union[dict, Reagent]]]])
 
 slots.generated_product = Slot(uri=RO['0004008'], name="generated_product", curie=RO.curie('0004008'),
-                   model_uri=DEFAULT_.generated_product, domain=None, range=Optional[Union[dict[Union[str, ChemicalProductId], Union[dict, ChemicalProduct]], list[Union[dict, ChemicalProduct]]]])
+                   model_uri=MS_DCAT_AP.generated_product, domain=None, range=Optional[Union[dict[Union[str, ChemicalProductId], Union[dict, ChemicalProduct]], list[Union[dict, ChemicalProduct]]]])
 
 slots.used_catalyst = Slot(uri=RXNO['0000425'], name="used_catalyst", curie=RXNO.curie('0000425'),
-                   model_uri=DEFAULT_.used_catalyst, domain=None, range=Optional[Union[dict[Union[str, CatalystId], Union[dict, Catalyst]], list[Union[dict, Catalyst]]]])
+                   model_uri=MS_DCAT_AP.used_catalyst, domain=None, range=Optional[Union[dict[Union[str, CatalystId], Union[dict, Catalyst]], list[Union[dict, Catalyst]]]])
 
 slots.used_solvent = Slot(uri=PROV.wasAssociatedWith, name="used_solvent", curie=PROV.curie('wasAssociatedWith'),
-                   model_uri=DEFAULT_.used_solvent, domain=None, range=Optional[Union[dict[Union[str, DissolvingSubstanceId], Union[dict, DissolvingSubstance]], list[Union[dict, DissolvingSubstance]]]])
+                   model_uri=MS_DCAT_AP.used_solvent, domain=None, range=Optional[Union[dict[Union[str, DissolvingSubstanceId], Union[dict, DissolvingSubstance]], list[Union[dict, DissolvingSubstance]]]])
 
 slots.has_duration = Slot(uri=SCHEMA.duration, name="has_duration", curie=SCHEMA.curie('duration'),
-                   model_uri=DEFAULT_.has_duration, domain=None, range=Optional[str])
+                   model_uri=MS_DCAT_AP.has_duration, domain=None, range=Optional[str])
 
 slots.used_reactor = Slot(uri=PROV.wasAssociatedWith, name="used_reactor", curie=PROV.curie('wasAssociatedWith'),
-                   model_uri=DEFAULT_.used_reactor, domain=None, range=Optional[Union[dict[Union[str, ReactorId], Union[dict, Reactor]], list[Union[dict, Reactor]]]])
+                   model_uri=MS_DCAT_AP.used_reactor, domain=None, range=Optional[Union[dict[Union[str, ReactorId], Union[dict, Reactor]], list[Union[dict, Reactor]]]])
 
 slots.has_yield = Slot(uri=SIO['000008'], name="has_yield", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_yield, domain=None, range=Optional[Union[Union[dict, Yield], list[Union[dict, Yield]]]])
+                   model_uri=MS_DCAT_AP.has_yield, domain=None, range=Optional[Union[Union[dict, Yield], list[Union[dict, Yield]]]])
 
 slots.has_molar_equivalent = Slot(uri=SIO['000008'], name="has_molar_equivalent", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_molar_equivalent, domain=None, range=Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]])
+                   model_uri=MS_DCAT_AP.has_molar_equivalent, domain=None, range=Optional[Union[Union[dict, MolarEquivalent], list[Union[dict, MolarEquivalent]]]])
 
 slots.has_percentage_of_total = Slot(uri=SIO['000008'], name="has_percentage_of_total", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.has_percentage_of_total, domain=None, range=Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]])
+                   model_uri=MS_DCAT_AP.has_percentage_of_total, domain=None, range=Optional[Union[Union[dict, PercentageOfTotal], list[Union[dict, PercentageOfTotal]]]])
 
 slots.has_reaction_step = Slot(uri=BFO['0000051'], name="has_reaction_step", curie=BFO.curie('0000051'),
-                   model_uri=DEFAULT_.has_reaction_step, domain=None, range=Optional[Union[dict[Union[str, ChemicalReactionId], Union[dict, ChemicalReaction]], list[Union[dict, ChemicalReaction]]]])
-
-slots.mSSample__solvent = Slot(uri=DEFAULT_.solvent, name="mSSample__solvent", curie=DEFAULT_.curie('solvent'),
-                   model_uri=DEFAULT_.mSSample__solvent, domain=None, range=Optional[Union[str, ChemicalEntityId]])
-
-slots.mSSample__injection_volume = Slot(uri=DEFAULT_.injection_volume, name="mSSample__injection_volume", curie=DEFAULT_.curie('injection_volume'),
-                   model_uri=DEFAULT_.mSSample__injection_volume, domain=None, range=Optional[Union[dict, Volume]])
-
-slots.massSpectrometer__manufacturer = Slot(uri=DEFAULT_.manufacturer, name="massSpectrometer__manufacturer", curie=DEFAULT_.curie('manufacturer'),
-                   model_uri=DEFAULT_.massSpectrometer__manufacturer, domain=None, range=Union[Union[dict, Manufacturer], list[Union[dict, Manufacturer]]])
-
-slots.massSpectrometer__model = Slot(uri=DEFAULT_.model, name="massSpectrometer__model", curie=DEFAULT_.curie('model'),
-                   model_uri=DEFAULT_.massSpectrometer__model, domain=None, range=Union[Union[dict, Model], list[Union[dict, Model]]])
-
-slots.massSpectrometer__mass_analyzer_type = Slot(uri=DEFAULT_.mass_analyzer_type, name="massSpectrometer__mass_analyzer_type", curie=DEFAULT_.curie('mass_analyzer_type'),
-                   model_uri=DEFAULT_.massSpectrometer__mass_analyzer_type, domain=None, range=Union[Union[dict, MassAnalyzerType], list[Union[dict, MassAnalyzerType]]])
-
-slots.massSpectrometer__ionization_type = Slot(uri=DEFAULT_.ionization_type, name="massSpectrometer__ionization_type", curie=DEFAULT_.curie('ionization_type'),
-                   model_uri=DEFAULT_.massSpectrometer__ionization_type, domain=None, range=Union[Union[dict, IonizationType], list[Union[dict, IonizationType]]])
-
-slots.massSpectrometer__detector_type = Slot(uri=DEFAULT_.detector_type, name="massSpectrometer__detector_type", curie=DEFAULT_.curie('detector_type'),
-                   model_uri=DEFAULT_.massSpectrometer__detector_type, domain=None, range=Optional[Union[Union[dict, DetectorType], list[Union[dict, DetectorType]]]])
-
-slots.massSpectrometry__acquisition_mode = Slot(uri=DEFAULT_.acquisition_mode, name="massSpectrometry__acquisition_mode", curie=DEFAULT_.curie('acquisition_mode'),
-                   model_uri=DEFAULT_.massSpectrometry__acquisition_mode, domain=None, range=Union[Union[dict, AcquisitionMode], list[Union[dict, AcquisitionMode]]])
-
-slots.massSpectrometry__scan_polarity = Slot(uri=DEFAULT_.scan_polarity, name="massSpectrometry__scan_polarity", curie=DEFAULT_.curie('scan_polarity'),
-                   model_uri=DEFAULT_.massSpectrometry__scan_polarity, domain=None, range=Union[Union[dict, ScanPolarity], list[Union[dict, ScanPolarity]]])
-
-slots.massSpectrometry__scan_window_lower_limit = Slot(uri=DEFAULT_.scan_window_lower_limit, name="massSpectrometry__scan_window_lower_limit", curie=DEFAULT_.curie('scan_window_lower_limit'),
-                   model_uri=DEFAULT_.massSpectrometry__scan_window_lower_limit, domain=None, range=Union[Union[dict, ScanWindowLowerLimit], list[Union[dict, ScanWindowLowerLimit]]])
-
-slots.massSpectrometry__scan_window_upper_limit = Slot(uri=DEFAULT_.scan_window_upper_limit, name="massSpectrometry__scan_window_upper_limit", curie=DEFAULT_.curie('scan_window_upper_limit'),
-                   model_uri=DEFAULT_.massSpectrometry__scan_window_upper_limit, domain=None, range=Union[Union[dict, ScanWindowUpperLimit], list[Union[dict, ScanWindowUpperLimit]]])
+                   model_uri=MS_DCAT_AP.has_reaction_step, domain=None, range=Optional[Union[dict[Union[str, ChemicalReactionId], Union[dict, ChemicalReaction]], list[Union[dict, ChemicalReaction]]]])
 
 slots.definedTerm__from_CV = Slot(uri=SCHEMA.inDefinedTermSet, name="definedTerm__from_CV", curie=SCHEMA.curie('inDefinedTermSet'),
-                   model_uri=DEFAULT_.definedTerm__from_CV, domain=None, range=Optional[Union[str, URIorCURIE]])
+                   model_uri=MS_DCAT_AP.definedTerm__from_CV, domain=None, range=Optional[Union[str, URIorCURIE]])
 
 slots.quantitativeAttribute__has_quantity_type = Slot(uri=QUDT.hasQuantityKind, name="quantitativeAttribute__has_quantity_type", curie=QUDT.curie('hasQuantityKind'),
-                   model_uri=DEFAULT_.quantitativeAttribute__has_quantity_type, domain=None, range=Union[str, DefinedTermId])
+                   model_uri=MS_DCAT_AP.quantitativeAttribute__has_quantity_type, domain=None, range=Union[str, DefinedTermId])
 
 slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttribute__unit", curie=QUDT.curie('unit'),
-                   model_uri=DEFAULT_.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
+                   model_uri=MS_DCAT_AP.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
 
 slots.SubstanceMSSample_composed_of = Slot(uri=BFO['0000051'], name="SubstanceMSSample_composed_of", curie=BFO.curie('0000051'),
-                   model_uri=DEFAULT_.SubstanceMSSample_composed_of, domain=SubstanceMSSample, range=Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]])
+                   model_uri=MS_DCAT_AP.SubstanceMSSample_composed_of, domain=SubstanceMSSample, range=Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]])
 
 slots.SubstanceMSSample_has_concentration = Slot(uri=SIO['000008'], name="SubstanceMSSample_has_concentration", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.SubstanceMSSample_has_concentration, domain=SubstanceMSSample, range=Optional[Union[Union[dict, "Concentration"], list[Union[dict, "Concentration"]]]])
+                   model_uri=MS_DCAT_AP.SubstanceMSSample_has_concentration, domain=SubstanceMSSample, range=Optional[Union[Union[dict, "Concentration"], list[Union[dict, "Concentration"]]]])
 
 slots.MaterialMSSample_id = Slot(uri=DCATAPPLUS.id, name="MaterialMSSample_id", curie=DCATAPPLUS.curie('id'),
-                   model_uri=DEFAULT_.MaterialMSSample_id, domain=MaterialMSSample, range=Union[str, MaterialMSSampleId])
+                   model_uri=MS_DCAT_AP.MaterialMSSample_id, domain=MaterialMSSample, range=Union[str, MaterialMSSampleId])
+
+slots.MassSpectrometer_manufacturer = Slot(uri=MS_DCAT_AP.manufacturer, name="MassSpectrometer_manufacturer", curie=MS_DCAT_AP.curie('manufacturer'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_manufacturer, domain=MassSpectrometer, range=Optional[Union[dict, "Manufacturer"]])
+
+slots.MassSpectrometer_model = Slot(uri=MS_DCAT_AP.model, name="MassSpectrometer_model", curie=MS_DCAT_AP.curie('model'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_model, domain=MassSpectrometer, range=Optional[Union[dict, "Model"]])
+
+slots.MassSpectrometer_mass_analyzer_type = Slot(uri=MS_DCAT_AP.mass_analyzer_type, name="MassSpectrometer_mass_analyzer_type", curie=MS_DCAT_AP.curie('mass_analyzer_type'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_mass_analyzer_type, domain=MassSpectrometer, range=Optional[Union[dict, "MassAnalyzerType"]])
+
+slots.MassSpectrometer_ionization_type = Slot(uri=MS_DCAT_AP.ionization_type, name="MassSpectrometer_ionization_type", curie=MS_DCAT_AP.curie('ionization_type'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_ionization_type, domain=MassSpectrometer, range=Optional[Union[dict, "IonizationType"]])
+
+slots.MassSpectrometer_detector_type = Slot(uri=MS_DCAT_AP.detector_type, name="MassSpectrometer_detector_type", curie=MS_DCAT_AP.curie('detector_type'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_detector_type, domain=MassSpectrometer, range=Optional[Union[dict, "DetectorType"]])
 
 slots.Manufacturer_value = Slot(uri=PROV.value, name="Manufacturer_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.Manufacturer_value, domain=Manufacturer, range=str)
+                   model_uri=MS_DCAT_AP.Manufacturer_value, domain=Manufacturer, range=str)
 
 slots.Model_value = Slot(uri=PROV.value, name="Model_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.Model_value, domain=Model, range=str)
+                   model_uri=MS_DCAT_AP.Model_value, domain=Model, range=str)
 
 slots.MassAnalyzerType_value = Slot(uri=PROV.value, name="MassAnalyzerType_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.MassAnalyzerType_value, domain=MassAnalyzerType, range=str)
+                   model_uri=MS_DCAT_AP.MassAnalyzerType_value, domain=MassAnalyzerType, range=str)
 
 slots.IonizationType_value = Slot(uri=PROV.value, name="IonizationType_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.IonizationType_value, domain=IonizationType, range=str)
+                   model_uri=MS_DCAT_AP.IonizationType_value, domain=IonizationType, range=str)
 
 slots.DetectorType_value = Slot(uri=PROV.value, name="DetectorType_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.DetectorType_value, domain=DetectorType, range=str)
+                   model_uri=MS_DCAT_AP.DetectorType_value, domain=DetectorType, range=str)
 
 slots.MSSampleMeasurementDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="MSSampleMeasurementDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.MSSampleMeasurementDataset_was_generated_by, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]])
+                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_was_generated_by, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]])
 
 slots.MSSampleMeasurementDataset_is_about_entity = Slot(uri=DCTERMS.subject, name="MSSampleMeasurementDataset_is_about_entity", curie=DCTERMS.curie('subject'),
-                   model_uri=DEFAULT_.MSSampleMeasurementDataset_is_about_entity, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]])
+                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_is_about_entity, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]])
+
+slots.MassSpectrometry_acquisition_mode = Slot(uri=MS_DCAT_AP.acquisition_mode, name="MassSpectrometry_acquisition_mode", curie=MS_DCAT_AP.curie('acquisition_mode'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_acquisition_mode, domain=MassSpectrometry, range=Optional[Union[dict, "AcquisitionMode"]])
+
+slots.MassSpectrometry_scan_polarity = Slot(uri=MS_DCAT_AP.scan_polarity, name="MassSpectrometry_scan_polarity", curie=MS_DCAT_AP.curie('scan_polarity'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_polarity, domain=MassSpectrometry, range=Optional[Union[dict, "ScanPolarity"]])
+
+slots.MassSpectrometry_scan_window_lower_limit = Slot(uri=MS_DCAT_AP.scan_window_lower_limit, name="MassSpectrometry_scan_window_lower_limit", curie=MS_DCAT_AP.curie('scan_window_lower_limit'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_window_lower_limit, domain=MassSpectrometry, range=Optional[Union[dict, "ScanWindowLowerLimit"]])
+
+slots.MassSpectrometry_scan_window_upper_limit = Slot(uri=MS_DCAT_AP.scan_window_upper_limit, name="MassSpectrometry_scan_window_upper_limit", curie=MS_DCAT_AP.curie('scan_window_upper_limit'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_window_upper_limit, domain=MassSpectrometry, range=Optional[Union[dict, "ScanWindowUpperLimit"]])
 
 slots.MassSpectrometry_carried_out_by = Slot(uri=PROV.wasAssociatedWith, name="MassSpectrometry_carried_out_by", curie=PROV.curie('wasAssociatedWith'),
-                   model_uri=DEFAULT_.MassSpectrometry_carried_out_by, domain=MassSpectrometry, range=Union[dict[Union[str, MassSpectrometerId], Union[dict, "MassSpectrometer"]], list[Union[dict, "MassSpectrometer"]]])
+                   model_uri=MS_DCAT_AP.MassSpectrometry_carried_out_by, domain=MassSpectrometry, range=Optional[Union[dict[Union[str, MassSpectrometerId], Union[dict, "MassSpectrometer"]], list[Union[dict, "MassSpectrometer"]]]])
 
 slots.MassSpectrometry_evaluated_entity = Slot(uri=PROV.used, name="MassSpectrometry_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=DEFAULT_.MassSpectrometry_evaluated_entity, domain=MassSpectrometry, range=Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]])
+                   model_uri=MS_DCAT_AP.MassSpectrometry_evaluated_entity, domain=MassSpectrometry, range=Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]])
 
 slots.AcquisitionMode_value = Slot(uri=PROV.value, name="AcquisitionMode_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.AcquisitionMode_value, domain=AcquisitionMode, range=str)
+                   model_uri=MS_DCAT_AP.AcquisitionMode_value, domain=AcquisitionMode, range=str)
 
 slots.ScanPolarity_value = Slot(uri=PROV.value, name="ScanPolarity_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.ScanPolarity_value, domain=ScanPolarity, range=Union[str, "ScanPolarityEnum"])
+                   model_uri=MS_DCAT_AP.ScanPolarity_value, domain=ScanPolarity, range=Union[str, "ScanPolarityEnum"])
 
 slots.SubstanceSampleCharacterizationDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="SubstanceSampleCharacterizationDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.SubstanceSampleCharacterizationDataset_was_generated_by, domain=SubstanceSampleCharacterizationDataset, range=Optional[Union[dict[Union[str, SubstanceSampleCharacterizationId], Union[dict, SubstanceSampleCharacterization]], list[Union[dict, SubstanceSampleCharacterization]]]])
+                   model_uri=MS_DCAT_AP.SubstanceSampleCharacterizationDataset_was_generated_by, domain=SubstanceSampleCharacterizationDataset, range=Optional[Union[dict[Union[str, SubstanceSampleCharacterizationId], Union[dict, SubstanceSampleCharacterization]], list[Union[dict, SubstanceSampleCharacterization]]]])
 
 slots.SubstanceSampleCharacterizationDataset_is_about_entity = Slot(uri=DCTERMS.subject, name="SubstanceSampleCharacterizationDataset_is_about_entity", curie=DCTERMS.curie('subject'),
-                   model_uri=DEFAULT_.SubstanceSampleCharacterizationDataset_is_about_entity, domain=SubstanceSampleCharacterizationDataset, range=Optional[Union[dict[Union[str, SubstanceSampleId], Union[dict, "SubstanceSample"]], list[Union[dict, "SubstanceSample"]]]])
+                   model_uri=MS_DCAT_AP.SubstanceSampleCharacterizationDataset_is_about_entity, domain=SubstanceSampleCharacterizationDataset, range=Optional[Union[dict[Union[str, SubstanceSampleId], Union[dict, "SubstanceSample"]], list[Union[dict, "SubstanceSample"]]]])
 
 slots.ReactionMonitoringDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="ReactionMonitoringDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.ReactionMonitoringDataset_was_generated_by, domain=ReactionMonitoringDataset, range=Optional[Union[dict[Union[str, ReactionMonitoringId], Union[dict, ReactionMonitoring]], list[Union[dict, ReactionMonitoring]]]])
+                   model_uri=MS_DCAT_AP.ReactionMonitoringDataset_was_generated_by, domain=ReactionMonitoringDataset, range=Optional[Union[dict[Union[str, ReactionMonitoringId], Union[dict, ReactionMonitoring]], list[Union[dict, ReactionMonitoring]]]])
 
 slots.ReactionMonitoringDataset_is_about_activity = Slot(uri=DCTERMS.subject, name="ReactionMonitoringDataset_is_about_activity", curie=DCTERMS.curie('subject'),
-                   model_uri=DEFAULT_.ReactionMonitoringDataset_is_about_activity, domain=ReactionMonitoringDataset, range=Optional[Union[dict[Union[str, ChemicalReactionId], Union[dict, "ChemicalReaction"]], list[Union[dict, "ChemicalReaction"]]]])
+                   model_uri=MS_DCAT_AP.ReactionMonitoringDataset_is_about_activity, domain=ReactionMonitoringDataset, range=Optional[Union[dict[Union[str, ChemicalReactionId], Union[dict, "ChemicalReaction"]], list[Union[dict, "ChemicalReaction"]]]])
 
 slots.SubstanceSampleCharacterization_evaluated_entity = Slot(uri=PROV.used, name="SubstanceSampleCharacterization_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=DEFAULT_.SubstanceSampleCharacterization_evaluated_entity, domain=SubstanceSampleCharacterization, range=Optional[Union[dict[Union[str, SubstanceSampleId], Union[dict, "SubstanceSample"]], list[Union[dict, "SubstanceSample"]]]])
+                   model_uri=MS_DCAT_AP.SubstanceSampleCharacterization_evaluated_entity, domain=SubstanceSampleCharacterization, range=Optional[Union[dict[Union[str, SubstanceSampleId], Union[dict, "SubstanceSample"]], list[Union[dict, "SubstanceSample"]]]])
 
 slots.ReactionMonitoring_evaluated_activity = Slot(uri=PROV.wasInformedBy, name="ReactionMonitoring_evaluated_activity", curie=PROV.curie('wasInformedBy'),
-                   model_uri=DEFAULT_.ReactionMonitoring_evaluated_activity, domain=ReactionMonitoring, range=Optional[Union[dict[Union[str, ChemicalReactionId], Union[dict, "ChemicalReaction"]], list[Union[dict, "ChemicalReaction"]]]])
+                   model_uri=MS_DCAT_AP.ReactionMonitoring_evaluated_activity, domain=ReactionMonitoring, range=Optional[Union[dict[Union[str, ChemicalReactionId], Union[dict, "ChemicalReaction"]], list[Union[dict, "ChemicalReaction"]]]])
 
 slots.MaterialEntity_has_part = Slot(uri=BFO['0000051'], name="MaterialEntity_has_part", curie=BFO.curie('0000051'),
-                   model_uri=DEFAULT_.MaterialEntity_has_part, domain=MaterialEntity, range=Optional[Union[dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], list[Union[dict, "MaterialEntity"]]]])
+                   model_uri=MS_DCAT_AP.MaterialEntity_has_part, domain=MaterialEntity, range=Optional[Union[dict[Union[str, MaterialEntityId], Union[dict, "MaterialEntity"]], list[Union[dict, "MaterialEntity"]]]])
 
 slots.MaterialSample_derived_from = Slot(uri=PROV.wasDerivedFrom, name="MaterialSample_derived_from", curie=PROV.curie('wasDerivedFrom'),
-                   model_uri=DEFAULT_.MaterialSample_derived_from, domain=MaterialSample, range=Optional[Union[dict, Entity]])
+                   model_uri=MS_DCAT_AP.MaterialSample_derived_from, domain=MaterialSample, range=Optional[Union[dict, Entity]])
 
 slots.Activity_title = Slot(uri=DCTERMS.title, name="Activity_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.Activity_title, domain=Activity, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.Activity_title, domain=Activity, range=Optional[Union[str, list[str]]])
 
 slots.Activity_description = Slot(uri=DCTERMS.description, name="Activity_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.Activity_description, domain=Activity, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.Activity_description, domain=Activity, range=Optional[Union[str, list[str]]])
 
 slots.Activity_has_part = Slot(uri=DCTERMS.hasPart, name="Activity_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=DEFAULT_.Activity_has_part, domain=Activity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, "Activity"]], list[Union[dict, "Activity"]]]])
+                   model_uri=MS_DCAT_AP.Activity_has_part, domain=Activity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, "Activity"]], list[Union[dict, "Activity"]]]])
 
 slots.Activity_part_of = Slot(uri=DCTERMS.isPartOf, name="Activity_part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=DEFAULT_.Activity_part_of, domain=Activity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, "Activity"]], list[Union[dict, "Activity"]]]])
+                   model_uri=MS_DCAT_AP.Activity_part_of, domain=Activity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, "Activity"]], list[Union[dict, "Activity"]]]])
 
 slots.Activity_other_identifier = Slot(uri=ADMS.identifier, name="Activity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.Activity_other_identifier, domain=Activity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.Activity_other_identifier, domain=Activity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.Activity_has_qualitative_attribute = Slot(uri=DCTERMS.relation, name="Activity_has_qualitative_attribute", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.Activity_has_qualitative_attribute, domain=Activity, range=Optional[Union[Union[dict, "QualitativeAttribute"], list[Union[dict, "QualitativeAttribute"]]]])
+                   model_uri=MS_DCAT_AP.Activity_has_qualitative_attribute, domain=Activity, range=Optional[Union[Union[dict, "QualitativeAttribute"], list[Union[dict, "QualitativeAttribute"]]]])
 
 slots.Activity_has_quantitative_attribute = Slot(uri=DCTERMS.relation, name="Activity_has_quantitative_attribute", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.Activity_has_quantitative_attribute, domain=Activity, range=Optional[Union[Union[dict, "QuantitativeAttribute"], list[Union[dict, "QuantitativeAttribute"]]]])
+                   model_uri=MS_DCAT_AP.Activity_has_quantitative_attribute, domain=Activity, range=Optional[Union[Union[dict, "QuantitativeAttribute"], list[Union[dict, "QuantitativeAttribute"]]]])
 
 slots.Activity_had_input_entity = Slot(uri=PROV.used, name="Activity_had_input_entity", curie=PROV.curie('used'),
-                   model_uri=DEFAULT_.Activity_had_input_entity, domain=Activity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
+                   model_uri=MS_DCAT_AP.Activity_had_input_entity, domain=Activity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
 
 slots.Activity_had_output_entity = Slot(uri=PROV.generated, name="Activity_had_output_entity", curie=PROV.curie('generated'),
-                   model_uri=DEFAULT_.Activity_had_output_entity, domain=Activity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
+                   model_uri=MS_DCAT_AP.Activity_had_output_entity, domain=Activity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
 
 slots.Activity_had_input_activity = Slot(uri=PROV.wasInformedBy, name="Activity_had_input_activity", curie=PROV.curie('wasInformedBy'),
-                   model_uri=DEFAULT_.Activity_had_input_activity, domain=Activity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, "Activity"]], list[Union[dict, "Activity"]]]])
+                   model_uri=MS_DCAT_AP.Activity_had_input_activity, domain=Activity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, "Activity"]], list[Union[dict, "Activity"]]]])
 
 slots.Activity_carried_out_by = Slot(uri=PROV.wasAssociatedWith, name="Activity_carried_out_by", curie=PROV.curie('wasAssociatedWith'),
-                   model_uri=DEFAULT_.Activity_carried_out_by, domain=Activity, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, "AgenticEntity"]], list[Union[dict, "AgenticEntity"]]]])
+                   model_uri=MS_DCAT_AP.Activity_carried_out_by, domain=Activity, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, "AgenticEntity"]], list[Union[dict, "AgenticEntity"]]]])
 
 slots.Agent_name = Slot(uri=FOAF.name, name="Agent_name", curie=FOAF.curie('name'),
-                   model_uri=DEFAULT_.Agent_name, domain=Agent, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.Agent_name, domain=Agent, range=Union[str, list[str]])
 
 slots.Agent_type = Slot(uri=DCTERMS.type, name="Agent_type", curie=DCTERMS.curie('type'),
-                   model_uri=DEFAULT_.Agent_type, domain=Agent, range=Optional[Union[dict, "Concept"]])
+                   model_uri=MS_DCAT_AP.Agent_type, domain=Agent, range=Optional[Union[dict, "Concept"]])
 
 slots.AgenticEntity_has_part = Slot(uri=DCTERMS.hasPart, name="AgenticEntity_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=DEFAULT_.AgenticEntity_has_part, domain=AgenticEntity, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, "AgenticEntity"]], list[Union[dict, "AgenticEntity"]]]])
+                   model_uri=MS_DCAT_AP.AgenticEntity_has_part, domain=AgenticEntity, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, "AgenticEntity"]], list[Union[dict, "AgenticEntity"]]]])
 
 slots.AgenticEntity_part_of = Slot(uri=DCTERMS.isPartOf, name="AgenticEntity_part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=DEFAULT_.AgenticEntity_part_of, domain=AgenticEntity, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, "AgenticEntity"]], list[Union[dict, "AgenticEntity"]]]])
+                   model_uri=MS_DCAT_AP.AgenticEntity_part_of, domain=AgenticEntity, range=Optional[Union[dict[Union[str, AgenticEntityId], Union[dict, "AgenticEntity"]], list[Union[dict, "AgenticEntity"]]]])
 
 slots.AgenticEntity_other_identifier = Slot(uri=ADMS.identifier, name="AgenticEntity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.AgenticEntity_other_identifier, domain=AgenticEntity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.AgenticEntity_other_identifier, domain=AgenticEntity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.AnalysisDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.AnalysisDataset_was_generated_by, domain=AnalysisDataset, range=Optional[Union[dict[Union[str, DataAnalysisId], Union[dict, DataAnalysis]], list[Union[dict, DataAnalysis]]]])
+                   model_uri=MS_DCAT_AP.AnalysisDataset_was_generated_by, domain=AnalysisDataset, range=Optional[Union[dict[Union[str, DataAnalysisId], Union[dict, DataAnalysis]], list[Union[dict, DataAnalysis]]]])
 
 slots.AnalysisSourceData_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="AnalysisSourceData_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.AnalysisSourceData_was_generated_by, domain=AnalysisSourceData, range=Optional[Union[dict[Union[str, DataGeneratingActivityId], Union[dict, DataGeneratingActivity]], list[Union[dict, DataGeneratingActivity]]]])
+                   model_uri=MS_DCAT_AP.AnalysisSourceData_was_generated_by, domain=AnalysisSourceData, range=Optional[Union[dict[Union[str, DataGeneratingActivityId], Union[dict, DataGeneratingActivity]], list[Union[dict, DataGeneratingActivity]]]])
 
 slots.Catalogue_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="Catalogue_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
-                   model_uri=DEFAULT_.Catalogue_applicable_legislation, domain=Catalogue, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_applicable_legislation, domain=Catalogue, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
 
 slots.Catalogue_catalogue = Slot(uri=DCAT.catalog, name="Catalogue_catalogue", curie=DCAT.curie('catalog'),
-                   model_uri=DEFAULT_.Catalogue_catalogue, domain=Catalogue, range=Optional[Union[Union[dict, "Catalogue"], list[Union[dict, "Catalogue"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_catalogue, domain=Catalogue, range=Optional[Union[Union[dict, "Catalogue"], list[Union[dict, "Catalogue"]]]])
 
 slots.Catalogue_creator = Slot(uri=DCTERMS.creator, name="Catalogue_creator", curie=DCTERMS.curie('creator'),
-                   model_uri=DEFAULT_.Catalogue_creator, domain=Catalogue, range=Optional[Union[dict, Agent]])
+                   model_uri=MS_DCAT_AP.Catalogue_creator, domain=Catalogue, range=Optional[Union[dict, Agent]])
 
 slots.Catalogue_description = Slot(uri=DCTERMS.description, name="Catalogue_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.Catalogue_description, domain=Catalogue, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.Catalogue_description, domain=Catalogue, range=Union[str, list[str]])
 
 slots.Catalogue_geographical_coverage = Slot(uri=DCTERMS.spatial, name="Catalogue_geographical_coverage", curie=DCTERMS.curie('spatial'),
-                   model_uri=DEFAULT_.Catalogue_geographical_coverage, domain=Catalogue, range=Optional[Union[Union[dict, "Location"], list[Union[dict, "Location"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_geographical_coverage, domain=Catalogue, range=Optional[Union[Union[dict, "Location"], list[Union[dict, "Location"]]]])
 
 slots.Catalogue_has_dataset = Slot(uri=DCAT.dataset, name="Catalogue_has_dataset", curie=DCAT.curie('dataset'),
-                   model_uri=DEFAULT_.Catalogue_has_dataset, domain=Catalogue, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_has_dataset, domain=Catalogue, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
 
 slots.Catalogue_has_part = Slot(uri=DCTERMS.hasPart, name="Catalogue_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=DEFAULT_.Catalogue_has_part, domain=Catalogue, range=Optional[Union[Union[dict, "Catalogue"], list[Union[dict, "Catalogue"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_has_part, domain=Catalogue, range=Optional[Union[Union[dict, "Catalogue"], list[Union[dict, "Catalogue"]]]])
 
 slots.Catalogue_homepage = Slot(uri=FOAF.homepage, name="Catalogue_homepage", curie=FOAF.curie('homepage'),
-                   model_uri=DEFAULT_.Catalogue_homepage, domain=Catalogue, range=Optional[Union[dict, "Document"]])
+                   model_uri=MS_DCAT_AP.Catalogue_homepage, domain=Catalogue, range=Optional[Union[dict, "Document"]])
 
 slots.Catalogue_language = Slot(uri=DCTERMS.language, name="Catalogue_language", curie=DCTERMS.curie('language'),
-                   model_uri=DEFAULT_.Catalogue_language, domain=Catalogue, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_language, domain=Catalogue, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
 
 slots.Catalogue_licence = Slot(uri=DCTERMS.license, name="Catalogue_licence", curie=DCTERMS.curie('license'),
-                   model_uri=DEFAULT_.Catalogue_licence, domain=Catalogue, range=Optional[Union[dict, "LicenseDocument"]])
+                   model_uri=MS_DCAT_AP.Catalogue_licence, domain=Catalogue, range=Optional[Union[dict, "LicenseDocument"]])
 
 slots.Catalogue_modification_date = Slot(uri=DCTERMS.modified, name="Catalogue_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=DEFAULT_.Catalogue_modification_date, domain=Catalogue, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.Catalogue_modification_date, domain=Catalogue, range=Optional[Union[str, XSDDate]])
 
 slots.Catalogue_publisher = Slot(uri=DCTERMS.publisher, name="Catalogue_publisher", curie=DCTERMS.curie('publisher'),
-                   model_uri=DEFAULT_.Catalogue_publisher, domain=Catalogue, range=Union[dict, Agent])
+                   model_uri=MS_DCAT_AP.Catalogue_publisher, domain=Catalogue, range=Union[dict, Agent])
 
 slots.Catalogue_record = Slot(uri=DCAT.record, name="Catalogue_record", curie=DCAT.curie('record'),
-                   model_uri=DEFAULT_.Catalogue_record, domain=Catalogue, range=Optional[Union[Union[dict, "CatalogueRecord"], list[Union[dict, "CatalogueRecord"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_record, domain=Catalogue, range=Optional[Union[Union[dict, "CatalogueRecord"], list[Union[dict, "CatalogueRecord"]]]])
 
 slots.Catalogue_release_date = Slot(uri=DCTERMS.issued, name="Catalogue_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=DEFAULT_.Catalogue_release_date, domain=Catalogue, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.Catalogue_release_date, domain=Catalogue, range=Optional[Union[str, XSDDate]])
 
 slots.Catalogue_rights = Slot(uri=DCTERMS.rights, name="Catalogue_rights", curie=DCTERMS.curie('rights'),
-                   model_uri=DEFAULT_.Catalogue_rights, domain=Catalogue, range=Optional[Union[dict, "RightsStatement"]])
+                   model_uri=MS_DCAT_AP.Catalogue_rights, domain=Catalogue, range=Optional[Union[dict, "RightsStatement"]])
 
 slots.Catalogue_service = Slot(uri=DCAT.service, name="Catalogue_service", curie=DCAT.curie('service'),
-                   model_uri=DEFAULT_.Catalogue_service, domain=Catalogue, range=Optional[Union[Union[dict, "DataService"], list[Union[dict, "DataService"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_service, domain=Catalogue, range=Optional[Union[Union[dict, "DataService"], list[Union[dict, "DataService"]]]])
 
 slots.Catalogue_temporal_coverage = Slot(uri=DCTERMS.temporal, name="Catalogue_temporal_coverage", curie=DCTERMS.curie('temporal'),
-                   model_uri=DEFAULT_.Catalogue_temporal_coverage, domain=Catalogue, range=Optional[Union[Union[dict, "PeriodOfTime"], list[Union[dict, "PeriodOfTime"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_temporal_coverage, domain=Catalogue, range=Optional[Union[Union[dict, "PeriodOfTime"], list[Union[dict, "PeriodOfTime"]]]])
 
 slots.Catalogue_themes = Slot(uri=DCAT.themeTaxonomy, name="Catalogue_themes", curie=DCAT.curie('themeTaxonomy'),
-                   model_uri=DEFAULT_.Catalogue_themes, domain=Catalogue, range=Optional[Union[Union[dict, "ConceptScheme"], list[Union[dict, "ConceptScheme"]]]])
+                   model_uri=MS_DCAT_AP.Catalogue_themes, domain=Catalogue, range=Optional[Union[Union[dict, "ConceptScheme"], list[Union[dict, "ConceptScheme"]]]])
 
 slots.Catalogue_title = Slot(uri=DCTERMS.title, name="Catalogue_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.Catalogue_title, domain=Catalogue, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.Catalogue_title, domain=Catalogue, range=Union[str, list[str]])
 
 slots.CatalogueRecord_application_profile = Slot(uri=DCTERMS.conformsTo, name="CatalogueRecord_application_profile", curie=DCTERMS.curie('conformsTo'),
-                   model_uri=DEFAULT_.CatalogueRecord_application_profile, domain=CatalogueRecord, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_application_profile, domain=CatalogueRecord, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
 
 slots.CatalogueRecord_change_type = Slot(uri=ADMS.status, name="CatalogueRecord_change_type", curie=ADMS.curie('status'),
-                   model_uri=DEFAULT_.CatalogueRecord_change_type, domain=CatalogueRecord, range=Optional[Union[dict, "Concept"]])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_change_type, domain=CatalogueRecord, range=Optional[Union[dict, "Concept"]])
 
 slots.CatalogueRecord_description = Slot(uri=DCTERMS.description, name="CatalogueRecord_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.CatalogueRecord_description, domain=CatalogueRecord, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_description, domain=CatalogueRecord, range=Optional[Union[str, list[str]]])
 
 slots.CatalogueRecord_language = Slot(uri=DCTERMS.language, name="CatalogueRecord_language", curie=DCTERMS.curie('language'),
-                   model_uri=DEFAULT_.CatalogueRecord_language, domain=CatalogueRecord, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_language, domain=CatalogueRecord, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
 
 slots.CatalogueRecord_listing_date = Slot(uri=DCTERMS.issued, name="CatalogueRecord_listing_date", curie=DCTERMS.curie('issued'),
-                   model_uri=DEFAULT_.CatalogueRecord_listing_date, domain=CatalogueRecord, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_listing_date, domain=CatalogueRecord, range=Optional[Union[str, XSDDate]])
 
 slots.CatalogueRecord_modification_date = Slot(uri=DCTERMS.modified, name="CatalogueRecord_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=DEFAULT_.CatalogueRecord_modification_date, domain=CatalogueRecord, range=Union[str, XSDDate])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_modification_date, domain=CatalogueRecord, range=Union[str, XSDDate])
 
 slots.CatalogueRecord_primary_topic = Slot(uri=FOAF.primaryTopic, name="CatalogueRecord_primary_topic", curie=FOAF.curie('primaryTopic'),
-                   model_uri=DEFAULT_.CatalogueRecord_primary_topic, domain=CatalogueRecord, range=Union[dict, Any])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_primary_topic, domain=CatalogueRecord, range=Union[dict, Any])
 
 slots.CatalogueRecord_source_metadata = Slot(uri=DCTERMS.source, name="CatalogueRecord_source_metadata", curie=DCTERMS.curie('source'),
-                   model_uri=DEFAULT_.CatalogueRecord_source_metadata, domain=CatalogueRecord, range=Optional[Union[dict, "CatalogueRecord"]])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_source_metadata, domain=CatalogueRecord, range=Optional[Union[dict, "CatalogueRecord"]])
 
 slots.CatalogueRecord_title = Slot(uri=DCTERMS.title, name="CatalogueRecord_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.CatalogueRecord_title, domain=CatalogueRecord, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.CatalogueRecord_title, domain=CatalogueRecord, range=Optional[Union[str, list[str]]])
 
 slots.Checksum_algorithm = Slot(uri=SPDX.algorithm, name="Checksum_algorithm", curie=SPDX.curie('algorithm'),
-                   model_uri=DEFAULT_.Checksum_algorithm, domain=Checksum, range=Union[dict, "ChecksumAlgorithm"])
+                   model_uri=MS_DCAT_AP.Checksum_algorithm, domain=Checksum, range=Union[dict, "ChecksumAlgorithm"])
 
 slots.Checksum_checksum_value = Slot(uri=SPDX.checksumValue, name="Checksum_checksum_value", curie=SPDX.curie('checksumValue'),
-                   model_uri=DEFAULT_.Checksum_checksum_value, domain=Checksum, range=str)
+                   model_uri=MS_DCAT_AP.Checksum_checksum_value, domain=Checksum, range=str)
 
 slots.ClassifierMixin_type = Slot(uri=DCTERMS.type, name="ClassifierMixin_type", curie=DCTERMS.curie('type'),
-                   model_uri=DEFAULT_.ClassifierMixin_type, domain=None, range=Optional[Union[dict, "DefinedTerm"]])
+                   model_uri=MS_DCAT_AP.ClassifierMixin_type, domain=None, range=Optional[Union[dict, "DefinedTerm"]])
 
 slots.Concept_preferred_label = Slot(uri=SKOS.prefLabel, name="Concept_preferred_label", curie=SKOS.curie('prefLabel'),
-                   model_uri=DEFAULT_.Concept_preferred_label, domain=Concept, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.Concept_preferred_label, domain=Concept, range=Union[str, list[str]])
 
 slots.ConceptScheme_title = Slot(uri=DCTERMS.title, name="ConceptScheme_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.ConceptScheme_title, domain=ConceptScheme, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.ConceptScheme_title, domain=ConceptScheme, range=Union[str, list[str]])
 
 slots.DataAnalysis_evaluated_entity = Slot(uri=PROV.used, name="DataAnalysis_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=DEFAULT_.DataAnalysis_evaluated_entity, domain=DataAnalysis, range=Optional[Union[dict[Union[str, AnalysisSourceDataId], Union[dict, "AnalysisSourceData"]], list[Union[dict, "AnalysisSourceData"]]]])
+                   model_uri=MS_DCAT_AP.DataAnalysis_evaluated_entity, domain=DataAnalysis, range=Optional[Union[dict[Union[str, AnalysisSourceDataId], Union[dict, "AnalysisSourceData"]], list[Union[dict, "AnalysisSourceData"]]]])
 
 slots.DataService_access_rights = Slot(uri=DCTERMS.accessRights, name="DataService_access_rights", curie=DCTERMS.curie('accessRights'),
-                   model_uri=DEFAULT_.DataService_access_rights, domain=DataService, range=Optional[Union[dict, "RightsStatement"]])
+                   model_uri=MS_DCAT_AP.DataService_access_rights, domain=DataService, range=Optional[Union[dict, "RightsStatement"]])
 
 slots.DataService_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="DataService_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
-                   model_uri=DEFAULT_.DataService_applicable_legislation, domain=DataService, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
+                   model_uri=MS_DCAT_AP.DataService_applicable_legislation, domain=DataService, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
 
 slots.DataService_conforms_to = Slot(uri=DCTERMS.conformsTo, name="DataService_conforms_to", curie=DCTERMS.curie('conformsTo'),
-                   model_uri=DEFAULT_.DataService_conforms_to, domain=DataService, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
+                   model_uri=MS_DCAT_AP.DataService_conforms_to, domain=DataService, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
 
 slots.DataService_contact_point = Slot(uri=DCAT.contactPoint, name="DataService_contact_point", curie=DCAT.curie('contactPoint'),
-                   model_uri=DEFAULT_.DataService_contact_point, domain=DataService, range=Optional[Union[Union[dict, "Kind"], list[Union[dict, "Kind"]]]])
+                   model_uri=MS_DCAT_AP.DataService_contact_point, domain=DataService, range=Optional[Union[Union[dict, "Kind"], list[Union[dict, "Kind"]]]])
 
 slots.DataService_description = Slot(uri=DCTERMS.description, name="DataService_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.DataService_description, domain=DataService, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.DataService_description, domain=DataService, range=Optional[Union[str, list[str]]])
 
 slots.DataService_documentation = Slot(uri=FOAF.page, name="DataService_documentation", curie=FOAF.curie('page'),
-                   model_uri=DEFAULT_.DataService_documentation, domain=DataService, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
+                   model_uri=MS_DCAT_AP.DataService_documentation, domain=DataService, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
 
 slots.DataService_endpoint_URL = Slot(uri=DCAT.endpointURL, name="DataService_endpoint_URL", curie=DCAT.curie('endpointURL'),
-                   model_uri=DEFAULT_.DataService_endpoint_URL, domain=DataService, range=Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]])
+                   model_uri=MS_DCAT_AP.DataService_endpoint_URL, domain=DataService, range=Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]])
 
 slots.DataService_endpoint_description = Slot(uri=DCAT.endpointDescription, name="DataService_endpoint_description", curie=DCAT.curie('endpointDescription'),
-                   model_uri=DEFAULT_.DataService_endpoint_description, domain=DataService, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
+                   model_uri=MS_DCAT_AP.DataService_endpoint_description, domain=DataService, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
 
 slots.DataService_format = Slot(uri=DCTERMS.format, name="DataService_format", curie=DCTERMS.curie('format'),
-                   model_uri=DEFAULT_.DataService_format, domain=DataService, range=Optional[Union[Union[dict, "MediaTypeOrExtent"], list[Union[dict, "MediaTypeOrExtent"]]]])
+                   model_uri=MS_DCAT_AP.DataService_format, domain=DataService, range=Optional[Union[Union[dict, "MediaTypeOrExtent"], list[Union[dict, "MediaTypeOrExtent"]]]])
 
 slots.DataService_keyword = Slot(uri=DCAT.keyword, name="DataService_keyword", curie=DCAT.curie('keyword'),
-                   model_uri=DEFAULT_.DataService_keyword, domain=DataService, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.DataService_keyword, domain=DataService, range=Optional[Union[str, list[str]]])
 
 slots.DataService_landing_page = Slot(uri=DCAT.landingPage, name="DataService_landing_page", curie=DCAT.curie('landingPage'),
-                   model_uri=DEFAULT_.DataService_landing_page, domain=DataService, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
+                   model_uri=MS_DCAT_AP.DataService_landing_page, domain=DataService, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
 
 slots.DataService_licence = Slot(uri=DCTERMS.license, name="DataService_licence", curie=DCTERMS.curie('license'),
-                   model_uri=DEFAULT_.DataService_licence, domain=DataService, range=Optional[Union[dict, "LicenseDocument"]])
+                   model_uri=MS_DCAT_AP.DataService_licence, domain=DataService, range=Optional[Union[dict, "LicenseDocument"]])
 
 slots.DataService_publisher = Slot(uri=DCTERMS.publisher, name="DataService_publisher", curie=DCTERMS.curie('publisher'),
-                   model_uri=DEFAULT_.DataService_publisher, domain=DataService, range=Optional[Union[dict, Agent]])
+                   model_uri=MS_DCAT_AP.DataService_publisher, domain=DataService, range=Optional[Union[dict, Agent]])
 
 slots.DataService_serves_dataset = Slot(uri=DCAT.servesDataset, name="DataService_serves_dataset", curie=DCAT.curie('servesDataset'),
-                   model_uri=DEFAULT_.DataService_serves_dataset, domain=DataService, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
+                   model_uri=MS_DCAT_AP.DataService_serves_dataset, domain=DataService, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
 
 slots.DataService_theme = Slot(uri=DCAT.theme, name="DataService_theme", curie=DCAT.curie('theme'),
-                   model_uri=DEFAULT_.DataService_theme, domain=DataService, range=Optional[Union[Union[dict, "Concept"], list[Union[dict, "Concept"]]]])
+                   model_uri=MS_DCAT_AP.DataService_theme, domain=DataService, range=Optional[Union[Union[dict, "Concept"], list[Union[dict, "Concept"]]]])
 
 slots.DataService_title = Slot(uri=DCTERMS.title, name="DataService_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.DataService_title, domain=DataService, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.DataService_title, domain=DataService, range=Union[str, list[str]])
 
 slots.Dataset_access_rights = Slot(uri=DCTERMS.accessRights, name="Dataset_access_rights", curie=DCTERMS.curie('accessRights'),
-                   model_uri=DEFAULT_.Dataset_access_rights, domain=Dataset, range=Optional[Union[dict, "RightsStatement"]])
+                   model_uri=MS_DCAT_AP.Dataset_access_rights, domain=Dataset, range=Optional[Union[dict, "RightsStatement"]])
 
 slots.Dataset_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="Dataset_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
-                   model_uri=DEFAULT_.Dataset_applicable_legislation, domain=Dataset, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_applicable_legislation, domain=Dataset, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
 
 slots.Dataset_conforms_to = Slot(uri=DCTERMS.conformsTo, name="Dataset_conforms_to", curie=DCTERMS.curie('conformsTo'),
-                   model_uri=DEFAULT_.Dataset_conforms_to, domain=Dataset, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_conforms_to, domain=Dataset, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
 
 slots.Dataset_contact_point = Slot(uri=DCAT.contactPoint, name="Dataset_contact_point", curie=DCAT.curie('contactPoint'),
-                   model_uri=DEFAULT_.Dataset_contact_point, domain=Dataset, range=Optional[Union[Union[dict, "Kind"], list[Union[dict, "Kind"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_contact_point, domain=Dataset, range=Optional[Union[Union[dict, "Kind"], list[Union[dict, "Kind"]]]])
 
 slots.Dataset_creator = Slot(uri=DCTERMS.creator, name="Dataset_creator", curie=DCTERMS.curie('creator'),
-                   model_uri=DEFAULT_.Dataset_creator, domain=Dataset, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
+                   model_uri=MS_DCAT_AP.Dataset_creator, domain=Dataset, range=Optional[Union[Union[dict, Agent], list[Union[dict, Agent]]]])
 
 slots.Dataset_dataset_distribution = Slot(uri=DCAT.distribution, name="Dataset_dataset_distribution", curie=DCAT.curie('distribution'),
-                   model_uri=DEFAULT_.Dataset_dataset_distribution, domain=Dataset, range=Optional[Union[Union[dict, "Distribution"], list[Union[dict, "Distribution"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_dataset_distribution, domain=Dataset, range=Optional[Union[Union[dict, "Distribution"], list[Union[dict, "Distribution"]]]])
 
 slots.Dataset_description = Slot(uri=DCTERMS.description, name="Dataset_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.Dataset_description, domain=Dataset, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.Dataset_description, domain=Dataset, range=Union[str, list[str]])
 
 slots.Dataset_documentation = Slot(uri=FOAF.page, name="Dataset_documentation", curie=FOAF.curie('page'),
-                   model_uri=DEFAULT_.Dataset_documentation, domain=Dataset, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_documentation, domain=Dataset, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
 
 slots.Dataset_frequency = Slot(uri=DCTERMS.accrualPeriodicity, name="Dataset_frequency", curie=DCTERMS.curie('accrualPeriodicity'),
-                   model_uri=DEFAULT_.Dataset_frequency, domain=Dataset, range=Optional[Union[dict, "Frequency"]])
+                   model_uri=MS_DCAT_AP.Dataset_frequency, domain=Dataset, range=Optional[Union[dict, "Frequency"]])
 
 slots.Dataset_geographical_coverage = Slot(uri=DCTERMS.spatial, name="Dataset_geographical_coverage", curie=DCTERMS.curie('spatial'),
-                   model_uri=DEFAULT_.Dataset_geographical_coverage, domain=Dataset, range=Optional[Union[Union[dict, "Location"], list[Union[dict, "Location"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_geographical_coverage, domain=Dataset, range=Optional[Union[Union[dict, "Location"], list[Union[dict, "Location"]]]])
 
 slots.Dataset_has_version = Slot(uri=DCAT.hasVersion, name="Dataset_has_version", curie=DCAT.curie('hasVersion'),
-                   model_uri=DEFAULT_.Dataset_has_version, domain=Dataset, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_has_version, domain=Dataset, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
 
 slots.Dataset_identifier = Slot(uri=DCTERMS.identifier, name="Dataset_identifier", curie=DCTERMS.curie('identifier'),
-                   model_uri=DEFAULT_.Dataset_identifier, domain=Dataset, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.Dataset_identifier, domain=Dataset, range=Optional[Union[str, list[str]]])
 
 slots.Dataset_in_series = Slot(uri=DCAT.inSeries, name="Dataset_in_series", curie=DCAT.curie('inSeries'),
-                   model_uri=DEFAULT_.Dataset_in_series, domain=Dataset, range=Optional[Union[Union[dict, "DatasetSeries"], list[Union[dict, "DatasetSeries"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_in_series, domain=Dataset, range=Optional[Union[Union[dict, "DatasetSeries"], list[Union[dict, "DatasetSeries"]]]])
 
 slots.Dataset_is_referenced_by = Slot(uri=DCTERMS.isReferencedBy, name="Dataset_is_referenced_by", curie=DCTERMS.curie('isReferencedBy'),
-                   model_uri=DEFAULT_.Dataset_is_referenced_by, domain=Dataset, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_is_referenced_by, domain=Dataset, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
 
 slots.Dataset_keyword = Slot(uri=DCAT.keyword, name="Dataset_keyword", curie=DCAT.curie('keyword'),
-                   model_uri=DEFAULT_.Dataset_keyword, domain=Dataset, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.Dataset_keyword, domain=Dataset, range=Optional[Union[str, list[str]]])
 
 slots.Dataset_landing_page = Slot(uri=DCAT.landingPage, name="Dataset_landing_page", curie=DCAT.curie('landingPage'),
-                   model_uri=DEFAULT_.Dataset_landing_page, domain=Dataset, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_landing_page, domain=Dataset, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
 
 slots.Dataset_language = Slot(uri=DCTERMS.language, name="Dataset_language", curie=DCTERMS.curie('language'),
-                   model_uri=DEFAULT_.Dataset_language, domain=Dataset, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_language, domain=Dataset, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
 
 slots.Dataset_modification_date = Slot(uri=DCTERMS.modified, name="Dataset_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=DEFAULT_.Dataset_modification_date, domain=Dataset, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.Dataset_modification_date, domain=Dataset, range=Optional[Union[str, XSDDate]])
 
 slots.Dataset_other_identifier = Slot(uri=ADMS.identifier, name="Dataset_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.Dataset_other_identifier, domain=Dataset, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_other_identifier, domain=Dataset, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.Dataset_provenance = Slot(uri=DCTERMS.provenance, name="Dataset_provenance", curie=DCTERMS.curie('provenance'),
-                   model_uri=DEFAULT_.Dataset_provenance, domain=Dataset, range=Optional[Union[Union[dict, "ProvenanceStatement"], list[Union[dict, "ProvenanceStatement"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_provenance, domain=Dataset, range=Optional[Union[Union[dict, "ProvenanceStatement"], list[Union[dict, "ProvenanceStatement"]]]])
 
 slots.Dataset_publisher = Slot(uri=DCTERMS.publisher, name="Dataset_publisher", curie=DCTERMS.curie('publisher'),
-                   model_uri=DEFAULT_.Dataset_publisher, domain=Dataset, range=Optional[Union[dict, Agent]])
+                   model_uri=MS_DCAT_AP.Dataset_publisher, domain=Dataset, range=Optional[Union[dict, Agent]])
 
 slots.Dataset_qualified_attribution = Slot(uri=PROV.qualifiedAttribution, name="Dataset_qualified_attribution", curie=PROV.curie('qualifiedAttribution'),
-                   model_uri=DEFAULT_.Dataset_qualified_attribution, domain=Dataset, range=Optional[Union[Union[dict, "Attribution"], list[Union[dict, "Attribution"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_qualified_attribution, domain=Dataset, range=Optional[Union[Union[dict, "Attribution"], list[Union[dict, "Attribution"]]]])
 
 slots.Dataset_qualified_relation = Slot(uri=DCAT.qualifiedRelation, name="Dataset_qualified_relation", curie=DCAT.curie('qualifiedRelation'),
-                   model_uri=DEFAULT_.Dataset_qualified_relation, domain=Dataset, range=Optional[Union[Union[dict, "Relationship"], list[Union[dict, "Relationship"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_qualified_relation, domain=Dataset, range=Optional[Union[Union[dict, "Relationship"], list[Union[dict, "Relationship"]]]])
 
 slots.Dataset_related_resource = Slot(uri=DCTERMS.relation, name="Dataset_related_resource", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.Dataset_related_resource, domain=Dataset, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_related_resource, domain=Dataset, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
 
 slots.Dataset_release_date = Slot(uri=DCTERMS.issued, name="Dataset_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=DEFAULT_.Dataset_release_date, domain=Dataset, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.Dataset_release_date, domain=Dataset, range=Optional[Union[str, XSDDate]])
 
 slots.Dataset_sample = Slot(uri=ADMS.sample, name="Dataset_sample", curie=ADMS.curie('sample'),
-                   model_uri=DEFAULT_.Dataset_sample, domain=Dataset, range=Optional[Union[Union[dict, "Distribution"], list[Union[dict, "Distribution"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_sample, domain=Dataset, range=Optional[Union[Union[dict, "Distribution"], list[Union[dict, "Distribution"]]]])
 
 slots.Dataset_source = Slot(uri=DCTERMS.source, name="Dataset_source", curie=DCTERMS.curie('source'),
-                   model_uri=DEFAULT_.Dataset_source, domain=Dataset, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_source, domain=Dataset, range=Optional[Union[dict[Union[str, DatasetId], Union[dict, "Dataset"]], list[Union[dict, "Dataset"]]]])
 
 slots.Dataset_spatial_resolution = Slot(uri=DCAT.spatialResolutionInMeters, name="Dataset_spatial_resolution", curie=DCAT.curie('spatialResolutionInMeters'),
-                   model_uri=DEFAULT_.Dataset_spatial_resolution, domain=Dataset, range=Optional[Decimal])
+                   model_uri=MS_DCAT_AP.Dataset_spatial_resolution, domain=Dataset, range=Optional[Decimal])
 
 slots.Dataset_temporal_coverage = Slot(uri=DCTERMS.temporal, name="Dataset_temporal_coverage", curie=DCTERMS.curie('temporal'),
-                   model_uri=DEFAULT_.Dataset_temporal_coverage, domain=Dataset, range=Optional[Union[Union[dict, "PeriodOfTime"], list[Union[dict, "PeriodOfTime"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_temporal_coverage, domain=Dataset, range=Optional[Union[Union[dict, "PeriodOfTime"], list[Union[dict, "PeriodOfTime"]]]])
 
 slots.Dataset_temporal_resolution = Slot(uri=DCAT.temporalResolution, name="Dataset_temporal_resolution", curie=DCAT.curie('temporalResolution'),
-                   model_uri=DEFAULT_.Dataset_temporal_resolution, domain=Dataset, range=Optional[str])
+                   model_uri=MS_DCAT_AP.Dataset_temporal_resolution, domain=Dataset, range=Optional[str])
 
 slots.Dataset_theme = Slot(uri=DCAT.theme, name="Dataset_theme", curie=DCAT.curie('theme'),
-                   model_uri=DEFAULT_.Dataset_theme, domain=Dataset, range=Optional[Union[Union[dict, "Concept"], list[Union[dict, "Concept"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_theme, domain=Dataset, range=Optional[Union[Union[dict, "Concept"], list[Union[dict, "Concept"]]]])
 
 slots.Dataset_title = Slot(uri=DCTERMS.title, name="Dataset_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.Dataset_title, domain=Dataset, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.Dataset_title, domain=Dataset, range=Union[str, list[str]])
 
 slots.Dataset_type = Slot(uri=DCTERMS.type, name="Dataset_type", curie=DCTERMS.curie('type'),
-                   model_uri=DEFAULT_.Dataset_type, domain=Dataset, range=Optional[Union[Union[dict, "Concept"], list[Union[dict, "Concept"]]]])
+                   model_uri=MS_DCAT_AP.Dataset_type, domain=Dataset, range=Optional[Union[Union[dict, "Concept"], list[Union[dict, "Concept"]]]])
 
 slots.Dataset_version = Slot(uri=DCAT.version, name="Dataset_version", curie=DCAT.curie('version'),
-                   model_uri=DEFAULT_.Dataset_version, domain=Dataset, range=Optional[str])
+                   model_uri=MS_DCAT_AP.Dataset_version, domain=Dataset, range=Optional[str])
 
 slots.Dataset_version_notes = Slot(uri=ADMS.versionNotes, name="Dataset_version_notes", curie=ADMS.curie('versionNotes'),
-                   model_uri=DEFAULT_.Dataset_version_notes, domain=Dataset, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.Dataset_version_notes, domain=Dataset, range=Optional[Union[str, list[str]]])
 
 slots.Dataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="Dataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.Dataset_was_generated_by, domain=Dataset, range=Union[dict[Union[str, DataGeneratingActivityId], Union[dict, DataGeneratingActivity]], list[Union[dict, DataGeneratingActivity]]])
+                   model_uri=MS_DCAT_AP.Dataset_was_generated_by, domain=Dataset, range=Union[dict[Union[str, DataGeneratingActivityId], Union[dict, DataGeneratingActivity]], list[Union[dict, DataGeneratingActivity]]])
 
 slots.DatasetSeries_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="DatasetSeries_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
-                   model_uri=DEFAULT_.DatasetSeries_applicable_legislation, domain=DatasetSeries, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_applicable_legislation, domain=DatasetSeries, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
 
 slots.DatasetSeries_contact_point = Slot(uri=DCAT.contactPoint, name="DatasetSeries_contact_point", curie=DCAT.curie('contactPoint'),
-                   model_uri=DEFAULT_.DatasetSeries_contact_point, domain=DatasetSeries, range=Optional[Union[Union[dict, "Kind"], list[Union[dict, "Kind"]]]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_contact_point, domain=DatasetSeries, range=Optional[Union[Union[dict, "Kind"], list[Union[dict, "Kind"]]]])
 
 slots.DatasetSeries_description = Slot(uri=DCTERMS.description, name="DatasetSeries_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.DatasetSeries_description, domain=DatasetSeries, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_description, domain=DatasetSeries, range=Union[str, list[str]])
 
 slots.DatasetSeries_frequency = Slot(uri=DCTERMS.accrualPeriodicity, name="DatasetSeries_frequency", curie=DCTERMS.curie('accrualPeriodicity'),
-                   model_uri=DEFAULT_.DatasetSeries_frequency, domain=DatasetSeries, range=Optional[Union[dict, "Frequency"]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_frequency, domain=DatasetSeries, range=Optional[Union[dict, "Frequency"]])
 
 slots.DatasetSeries_geographical_coverage = Slot(uri=DCTERMS.spatial, name="DatasetSeries_geographical_coverage", curie=DCTERMS.curie('spatial'),
-                   model_uri=DEFAULT_.DatasetSeries_geographical_coverage, domain=DatasetSeries, range=Optional[Union[Union[dict, "Location"], list[Union[dict, "Location"]]]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_geographical_coverage, domain=DatasetSeries, range=Optional[Union[Union[dict, "Location"], list[Union[dict, "Location"]]]])
 
 slots.DatasetSeries_modification_date = Slot(uri=DCTERMS.modified, name="DatasetSeries_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=DEFAULT_.DatasetSeries_modification_date, domain=DatasetSeries, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_modification_date, domain=DatasetSeries, range=Optional[Union[str, XSDDate]])
 
 slots.DatasetSeries_publisher = Slot(uri=DCTERMS.publisher, name="DatasetSeries_publisher", curie=DCTERMS.curie('publisher'),
-                   model_uri=DEFAULT_.DatasetSeries_publisher, domain=DatasetSeries, range=Optional[Union[dict, Agent]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_publisher, domain=DatasetSeries, range=Optional[Union[dict, Agent]])
 
 slots.DatasetSeries_release_date = Slot(uri=DCTERMS.issued, name="DatasetSeries_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=DEFAULT_.DatasetSeries_release_date, domain=DatasetSeries, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_release_date, domain=DatasetSeries, range=Optional[Union[str, XSDDate]])
 
 slots.DatasetSeries_temporal_coverage = Slot(uri=DCTERMS.temporal, name="DatasetSeries_temporal_coverage", curie=DCTERMS.curie('temporal'),
-                   model_uri=DEFAULT_.DatasetSeries_temporal_coverage, domain=DatasetSeries, range=Optional[Union[Union[dict, "PeriodOfTime"], list[Union[dict, "PeriodOfTime"]]]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_temporal_coverage, domain=DatasetSeries, range=Optional[Union[Union[dict, "PeriodOfTime"], list[Union[dict, "PeriodOfTime"]]]])
 
 slots.DatasetSeries_title = Slot(uri=DCTERMS.title, name="DatasetSeries_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.DatasetSeries_title, domain=DatasetSeries, range=Union[str, list[str]])
+                   model_uri=MS_DCAT_AP.DatasetSeries_title, domain=DatasetSeries, range=Union[str, list[str]])
 
 slots.DefinedTerm_title = Slot(uri=SCHEMA.name, name="DefinedTerm_title", curie=SCHEMA.curie('name'),
-                   model_uri=DEFAULT_.DefinedTerm_title, domain=DefinedTerm, range=Optional[str])
+                   model_uri=MS_DCAT_AP.DefinedTerm_title, domain=DefinedTerm, range=Optional[str])
 
 slots.Device_has_part = Slot(uri=DCTERMS.hasPart, name="Device_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=DEFAULT_.Device_has_part, domain=Device, range=Optional[Union[dict[Union[str, DeviceId], Union[dict, "Device"]], list[Union[dict, "Device"]]]])
+                   model_uri=MS_DCAT_AP.Device_has_part, domain=Device, range=Optional[Union[dict[Union[str, DeviceId], Union[dict, "Device"]], list[Union[dict, "Device"]]]])
 
 slots.Device_other_identifier = Slot(uri=ADMS.identifier, name="Device_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.Device_other_identifier, domain=Device, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.Device_other_identifier, domain=Device, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.Distribution_access_URL = Slot(uri=DCAT.accessURL, name="Distribution_access_URL", curie=DCAT.curie('accessURL'),
-                   model_uri=DEFAULT_.Distribution_access_URL, domain=Distribution, range=Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]])
+                   model_uri=MS_DCAT_AP.Distribution_access_URL, domain=Distribution, range=Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]])
 
 slots.Distribution_access_service = Slot(uri=DCAT.accessService, name="Distribution_access_service", curie=DCAT.curie('accessService'),
-                   model_uri=DEFAULT_.Distribution_access_service, domain=Distribution, range=Optional[Union[Union[dict, DataService], list[Union[dict, DataService]]]])
+                   model_uri=MS_DCAT_AP.Distribution_access_service, domain=Distribution, range=Optional[Union[Union[dict, DataService], list[Union[dict, DataService]]]])
 
 slots.Distribution_applicable_legislation = Slot(uri=DCATAP.applicableLegislation, name="Distribution_applicable_legislation", curie=DCATAP.curie('applicableLegislation'),
-                   model_uri=DEFAULT_.Distribution_applicable_legislation, domain=Distribution, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
+                   model_uri=MS_DCAT_AP.Distribution_applicable_legislation, domain=Distribution, range=Optional[Union[dict[Union[str, LegalResourceId], Union[dict, "LegalResource"]], list[Union[dict, "LegalResource"]]]])
 
 slots.Distribution_availability = Slot(uri=DCATAP.availability, name="Distribution_availability", curie=DCATAP.curie('availability'),
-                   model_uri=DEFAULT_.Distribution_availability, domain=Distribution, range=Optional[Union[dict, "Concept"]])
+                   model_uri=MS_DCAT_AP.Distribution_availability, domain=Distribution, range=Optional[Union[dict, "Concept"]])
 
 slots.Distribution_byte_size = Slot(uri=DCAT.byteSize, name="Distribution_byte_size", curie=DCAT.curie('byteSize'),
-                   model_uri=DEFAULT_.Distribution_byte_size, domain=Distribution, range=Optional[int])
+                   model_uri=MS_DCAT_AP.Distribution_byte_size, domain=Distribution, range=Optional[int])
 
 slots.Distribution_checksum = Slot(uri=SPDX.checksum, name="Distribution_checksum", curie=SPDX.curie('checksum'),
-                   model_uri=DEFAULT_.Distribution_checksum, domain=Distribution, range=Optional[Union[dict, Checksum]])
+                   model_uri=MS_DCAT_AP.Distribution_checksum, domain=Distribution, range=Optional[Union[dict, Checksum]])
 
 slots.Distribution_compression_format = Slot(uri=DCAT.compressFormat, name="Distribution_compression_format", curie=DCAT.curie('compressFormat'),
-                   model_uri=DEFAULT_.Distribution_compression_format, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
+                   model_uri=MS_DCAT_AP.Distribution_compression_format, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
 
 slots.Distribution_description = Slot(uri=DCTERMS.description, name="Distribution_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.Distribution_description, domain=Distribution, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.Distribution_description, domain=Distribution, range=Optional[Union[str, list[str]]])
 
 slots.Distribution_documentation = Slot(uri=FOAF.page, name="Distribution_documentation", curie=FOAF.curie('page'),
-                   model_uri=DEFAULT_.Distribution_documentation, domain=Distribution, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
+                   model_uri=MS_DCAT_AP.Distribution_documentation, domain=Distribution, range=Optional[Union[dict[Union[str, DocumentId], Union[dict, "Document"]], list[Union[dict, "Document"]]]])
 
 slots.Distribution_download_URL = Slot(uri=DCAT.downloadURL, name="Distribution_download_URL", curie=DCAT.curie('downloadURL'),
-                   model_uri=DEFAULT_.Distribution_download_URL, domain=Distribution, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
+                   model_uri=MS_DCAT_AP.Distribution_download_URL, domain=Distribution, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]]])
 
 slots.Distribution_format = Slot(uri=DCTERMS.format, name="Distribution_format", curie=DCTERMS.curie('format'),
-                   model_uri=DEFAULT_.Distribution_format, domain=Distribution, range=Optional[Union[dict, "MediaTypeOrExtent"]])
+                   model_uri=MS_DCAT_AP.Distribution_format, domain=Distribution, range=Optional[Union[dict, "MediaTypeOrExtent"]])
 
 slots.Distribution_has_policy = Slot(uri=ODRL.hasPolicy, name="Distribution_has_policy", curie=ODRL.curie('hasPolicy'),
-                   model_uri=DEFAULT_.Distribution_has_policy, domain=Distribution, range=Optional[Union[dict, "Policy"]])
+                   model_uri=MS_DCAT_AP.Distribution_has_policy, domain=Distribution, range=Optional[Union[dict, "Policy"]])
 
 slots.Distribution_language = Slot(uri=DCTERMS.language, name="Distribution_language", curie=DCTERMS.curie('language'),
-                   model_uri=DEFAULT_.Distribution_language, domain=Distribution, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
+                   model_uri=MS_DCAT_AP.Distribution_language, domain=Distribution, range=Optional[Union[Union[dict, "LinguisticSystem"], list[Union[dict, "LinguisticSystem"]]]])
 
 slots.Distribution_licence = Slot(uri=DCTERMS.license, name="Distribution_licence", curie=DCTERMS.curie('license'),
-                   model_uri=DEFAULT_.Distribution_licence, domain=Distribution, range=Optional[Union[dict, "LicenseDocument"]])
+                   model_uri=MS_DCAT_AP.Distribution_licence, domain=Distribution, range=Optional[Union[dict, "LicenseDocument"]])
 
 slots.Distribution_linked_schemas = Slot(uri=DCTERMS.conformsTo, name="Distribution_linked_schemas", curie=DCTERMS.curie('conformsTo'),
-                   model_uri=DEFAULT_.Distribution_linked_schemas, domain=Distribution, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
+                   model_uri=MS_DCAT_AP.Distribution_linked_schemas, domain=Distribution, range=Optional[Union[Union[dict, "Standard"], list[Union[dict, "Standard"]]]])
 
 slots.Distribution_media_type = Slot(uri=DCAT.mediaType, name="Distribution_media_type", curie=DCAT.curie('mediaType'),
-                   model_uri=DEFAULT_.Distribution_media_type, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
+                   model_uri=MS_DCAT_AP.Distribution_media_type, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
 
 slots.Distribution_modification_date = Slot(uri=DCTERMS.modified, name="Distribution_modification_date", curie=DCTERMS.curie('modified'),
-                   model_uri=DEFAULT_.Distribution_modification_date, domain=Distribution, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.Distribution_modification_date, domain=Distribution, range=Optional[Union[str, XSDDate]])
 
 slots.Distribution_packaging_format = Slot(uri=DCAT.packageFormat, name="Distribution_packaging_format", curie=DCAT.curie('packageFormat'),
-                   model_uri=DEFAULT_.Distribution_packaging_format, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
+                   model_uri=MS_DCAT_AP.Distribution_packaging_format, domain=Distribution, range=Optional[Union[dict, "MediaType"]])
 
 slots.Distribution_release_date = Slot(uri=DCTERMS.issued, name="Distribution_release_date", curie=DCTERMS.curie('issued'),
-                   model_uri=DEFAULT_.Distribution_release_date, domain=Distribution, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.Distribution_release_date, domain=Distribution, range=Optional[Union[str, XSDDate]])
 
 slots.Distribution_rights = Slot(uri=DCTERMS.rights, name="Distribution_rights", curie=DCTERMS.curie('rights'),
-                   model_uri=DEFAULT_.Distribution_rights, domain=Distribution, range=Optional[Union[dict, "RightsStatement"]])
+                   model_uri=MS_DCAT_AP.Distribution_rights, domain=Distribution, range=Optional[Union[dict, "RightsStatement"]])
 
 slots.Distribution_spatial_resolution = Slot(uri=DCAT.spatialResolutionInMeters, name="Distribution_spatial_resolution", curie=DCAT.curie('spatialResolutionInMeters'),
-                   model_uri=DEFAULT_.Distribution_spatial_resolution, domain=Distribution, range=Optional[Decimal])
+                   model_uri=MS_DCAT_AP.Distribution_spatial_resolution, domain=Distribution, range=Optional[Decimal])
 
 slots.Distribution_status = Slot(uri=ADMS.status, name="Distribution_status", curie=ADMS.curie('status'),
-                   model_uri=DEFAULT_.Distribution_status, domain=Distribution, range=Optional[Union[dict, "Concept"]])
+                   model_uri=MS_DCAT_AP.Distribution_status, domain=Distribution, range=Optional[Union[dict, "Concept"]])
 
 slots.Distribution_temporal_resolution = Slot(uri=DCAT.temporalResolution, name="Distribution_temporal_resolution", curie=DCAT.curie('temporalResolution'),
-                   model_uri=DEFAULT_.Distribution_temporal_resolution, domain=Distribution, range=Optional[str])
+                   model_uri=MS_DCAT_AP.Distribution_temporal_resolution, domain=Distribution, range=Optional[str])
 
 slots.Distribution_title = Slot(uri=DCTERMS.title, name="Distribution_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.Distribution_title, domain=Distribution, range=Optional[Union[str, list[str]]])
+                   model_uri=MS_DCAT_AP.Distribution_title, domain=Distribution, range=Optional[Union[str, list[str]]])
 
 slots.Entity_title = Slot(uri=DCTERMS.title, name="Entity_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.Entity_title, domain=Entity, range=Optional[str])
+                   model_uri=MS_DCAT_AP.Entity_title, domain=Entity, range=Optional[str])
 
 slots.Entity_description = Slot(uri=DCTERMS.description, name="Entity_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.Entity_description, domain=Entity, range=Optional[str])
+                   model_uri=MS_DCAT_AP.Entity_description, domain=Entity, range=Optional[str])
 
 slots.Entity_other_identifier = Slot(uri=ADMS.identifier, name="Entity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.Entity_other_identifier, domain=Entity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.Entity_other_identifier, domain=Entity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.Entity_has_part = Slot(uri=DCTERMS.hasPart, name="Entity_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=DEFAULT_.Entity_has_part, domain=Entity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
+                   model_uri=MS_DCAT_AP.Entity_has_part, domain=Entity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
 
 slots.Entity_part_of = Slot(uri=DCTERMS.isPartOf, name="Entity_part_of", curie=DCTERMS.curie('isPartOf'),
-                   model_uri=DEFAULT_.Entity_part_of, domain=Entity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
+                   model_uri=MS_DCAT_AP.Entity_part_of, domain=Entity, range=Optional[Union[dict[Union[str, EntityId], Union[dict, "Entity"]], list[Union[dict, "Entity"]]]])
 
 slots.EvaluatedActivity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedActivity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.EvaluatedActivity_other_identifier, domain=EvaluatedActivity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.EvaluatedActivity_other_identifier, domain=EvaluatedActivity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.EvaluatedEntity_title = Slot(uri=DCTERMS.title, name="EvaluatedEntity_title", curie=DCTERMS.curie('title'),
-                   model_uri=DEFAULT_.EvaluatedEntity_title, domain=EvaluatedEntity, range=Optional[str])
+                   model_uri=MS_DCAT_AP.EvaluatedEntity_title, domain=EvaluatedEntity, range=Optional[str])
 
 slots.EvaluatedEntity_description = Slot(uri=DCTERMS.description, name="EvaluatedEntity_description", curie=DCTERMS.curie('description'),
-                   model_uri=DEFAULT_.EvaluatedEntity_description, domain=EvaluatedEntity, range=Optional[str])
+                   model_uri=MS_DCAT_AP.EvaluatedEntity_description, domain=EvaluatedEntity, range=Optional[str])
 
 slots.EvaluatedEntity_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="EvaluatedEntity_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=DEFAULT_.EvaluatedEntity_was_generated_by, domain=EvaluatedEntity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, Activity]], list[Union[dict, Activity]]]])
+                   model_uri=MS_DCAT_AP.EvaluatedEntity_was_generated_by, domain=EvaluatedEntity, range=Optional[Union[dict[Union[str, ActivityId], Union[dict, Activity]], list[Union[dict, Activity]]]])
 
 slots.EvaluatedEntity_other_identifier = Slot(uri=ADMS.identifier, name="EvaluatedEntity_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.EvaluatedEntity_other_identifier, domain=EvaluatedEntity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.EvaluatedEntity_other_identifier, domain=EvaluatedEntity, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.Identifier_notation = Slot(uri=SKOS.notation, name="Identifier_notation", curie=SKOS.curie('notation'),
-                   model_uri=DEFAULT_.Identifier_notation, domain=Identifier, range=str)
+                   model_uri=MS_DCAT_AP.Identifier_notation, domain=Identifier, range=str)
 
 slots.LicenseDocument_type = Slot(uri=DCTERMS.type, name="LicenseDocument_type", curie=DCTERMS.curie('type'),
-                   model_uri=DEFAULT_.LicenseDocument_type, domain=LicenseDocument, range=Optional[Union[Union[dict, Concept], list[Union[dict, Concept]]]])
+                   model_uri=MS_DCAT_AP.LicenseDocument_type, domain=LicenseDocument, range=Optional[Union[Union[dict, Concept], list[Union[dict, Concept]]]])
 
 slots.Location_bbox = Slot(uri=DCAT.bbox, name="Location_bbox", curie=DCAT.curie('bbox'),
-                   model_uri=DEFAULT_.Location_bbox, domain=Location, range=Optional[str])
+                   model_uri=MS_DCAT_AP.Location_bbox, domain=Location, range=Optional[str])
 
 slots.Location_centroid = Slot(uri=DCAT.centroid, name="Location_centroid", curie=DCAT.curie('centroid'),
-                   model_uri=DEFAULT_.Location_centroid, domain=Location, range=Optional[str])
+                   model_uri=MS_DCAT_AP.Location_centroid, domain=Location, range=Optional[str])
 
 slots.Location_geometry = Slot(uri=LOCN.geometry, name="Location_geometry", curie=LOCN.curie('geometry'),
-                   model_uri=DEFAULT_.Location_geometry, domain=Location, range=Optional[Union[dict, "Geometry"]])
+                   model_uri=MS_DCAT_AP.Location_geometry, domain=Location, range=Optional[Union[dict, "Geometry"]])
 
 slots.PeriodOfTime_beginning = Slot(uri=TIME.hasBeginning, name="PeriodOfTime_beginning", curie=TIME.curie('hasBeginning'),
-                   model_uri=DEFAULT_.PeriodOfTime_beginning, domain=PeriodOfTime, range=Optional[Union[dict, "TimeInstant"]])
+                   model_uri=MS_DCAT_AP.PeriodOfTime_beginning, domain=PeriodOfTime, range=Optional[Union[dict, "TimeInstant"]])
 
 slots.PeriodOfTime_end = Slot(uri=TIME.hasEnd, name="PeriodOfTime_end", curie=TIME.curie('hasEnd'),
-                   model_uri=DEFAULT_.PeriodOfTime_end, domain=PeriodOfTime, range=Optional[Union[dict, "TimeInstant"]])
+                   model_uri=MS_DCAT_AP.PeriodOfTime_end, domain=PeriodOfTime, range=Optional[Union[dict, "TimeInstant"]])
 
 slots.PeriodOfTime_end_date = Slot(uri=DCAT.endDate, name="PeriodOfTime_end_date", curie=DCAT.curie('endDate'),
-                   model_uri=DEFAULT_.PeriodOfTime_end_date, domain=PeriodOfTime, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.PeriodOfTime_end_date, domain=PeriodOfTime, range=Optional[Union[str, XSDDate]])
 
 slots.PeriodOfTime_start_date = Slot(uri=DCAT.startDate, name="PeriodOfTime_start_date", curie=DCAT.curie('startDate'),
-                   model_uri=DEFAULT_.PeriodOfTime_start_date, domain=PeriodOfTime, range=Optional[Union[str, XSDDate]])
+                   model_uri=MS_DCAT_AP.PeriodOfTime_start_date, domain=PeriodOfTime, range=Optional[Union[str, XSDDate]])
 
 slots.QualitativeAttribute_value = Slot(uri=PROV.value, name="QualitativeAttribute_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.QualitativeAttribute_value, domain=QualitativeAttribute, range=str)
+                   model_uri=MS_DCAT_AP.QualitativeAttribute_value, domain=QualitativeAttribute, range=str)
 
 slots.QuantitativeAttribute_value = Slot(uri=PROV.value, name="QuantitativeAttribute_value", curie=PROV.curie('value'),
-                   model_uri=DEFAULT_.QuantitativeAttribute_value, domain=QuantitativeAttribute, range=float)
+                   model_uri=MS_DCAT_AP.QuantitativeAttribute_value, domain=QuantitativeAttribute, range=float)
 
 slots.Relationship_had_role = Slot(uri=DCAT.hadRole, name="Relationship_had_role", curie=DCAT.curie('hadRole'),
-                   model_uri=DEFAULT_.Relationship_had_role, domain=Relationship, range=Union[Union[dict, "Role"], list[Union[dict, "Role"]]])
+                   model_uri=MS_DCAT_AP.Relationship_had_role, domain=Relationship, range=Union[Union[dict, "Role"], list[Union[dict, "Role"]]])
 
 slots.Relationship_relation = Slot(uri=DCTERMS.relation, name="Relationship_relation", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.Relationship_relation, domain=Relationship, range=Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]])
+                   model_uri=MS_DCAT_AP.Relationship_relation, domain=Relationship, range=Union[dict[Union[str, ResourceId], Union[dict, "Resource"]], list[Union[dict, "Resource"]]])
 
 slots.Software_has_part = Slot(uri=DCTERMS.hasPart, name="Software_has_part", curie=DCTERMS.curie('hasPart'),
-                   model_uri=DEFAULT_.Software_has_part, domain=Software, range=Optional[Union[dict[Union[str, SoftwareId], Union[dict, "Software"]], list[Union[dict, "Software"]]]])
+                   model_uri=MS_DCAT_AP.Software_has_part, domain=Software, range=Optional[Union[dict[Union[str, SoftwareId], Union[dict, "Software"]], list[Union[dict, "Software"]]]])
 
 slots.Software_other_identifier = Slot(uri=ADMS.identifier, name="Software_other_identifier", curie=ADMS.curie('identifier'),
-                   model_uri=DEFAULT_.Software_other_identifier, domain=Software, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+                   model_uri=MS_DCAT_AP.Software_other_identifier, domain=Software, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
 
 slots.ChemicalEntity_has_part = Slot(uri=BFO['0000051'], name="ChemicalEntity_has_part", curie=BFO.curie('0000051'),
-                   model_uri=DEFAULT_.ChemicalEntity_has_part, domain=ChemicalEntity, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]])
+                   model_uri=MS_DCAT_AP.ChemicalEntity_has_part, domain=ChemicalEntity, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]])
 
 slots.Atom_rdf_type = Slot(uri=RDF.type, name="Atom_rdf_type", curie=RDF.curie('type'),
-                   model_uri=DEFAULT_.Atom_rdf_type, domain=Atom, range=Union[dict, DefinedTerm])
+                   model_uri=MS_DCAT_AP.Atom_rdf_type, domain=Atom, range=Union[dict, DefinedTerm])
 
 slots.ChemicalReaction_has_temperature = Slot(uri=SIO['000008'], name="ChemicalReaction_has_temperature", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.ChemicalReaction_has_temperature, domain=ChemicalReaction, range=Optional[Union[Union[dict, Temperature], list[Union[dict, Temperature]]]])
+                   model_uri=MS_DCAT_AP.ChemicalReaction_has_temperature, domain=ChemicalReaction, range=Optional[Union[Union[dict, Temperature], list[Union[dict, Temperature]]]])
 
 slots.ChemicalReaction_has_pressure = Slot(uri=SIO['000008'], name="ChemicalReaction_has_pressure", curie=SIO.curie('000008'),
-                   model_uri=DEFAULT_.ChemicalReaction_has_pressure, domain=ChemicalReaction, range=Optional[Union[Union[dict, Pressure], list[Union[dict, Pressure]]]])
+                   model_uri=MS_DCAT_AP.ChemicalReaction_has_pressure, domain=ChemicalReaction, range=Optional[Union[Union[dict, Pressure], list[Union[dict, Pressure]]]])
 
 slots.ChemicalReaction_related_resource = Slot(uri=DCTERMS.relation, name="ChemicalReaction_related_resource", curie=DCTERMS.curie('relation'),
-                   model_uri=DEFAULT_.ChemicalReaction_related_resource, domain=ChemicalReaction, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, Resource]], list[Union[dict, Resource]]]])
+                   model_uri=MS_DCAT_AP.ChemicalReaction_related_resource, domain=ChemicalReaction, range=Optional[Union[dict[Union[str, ResourceId], Union[dict, Resource]], list[Union[dict, Resource]]]])

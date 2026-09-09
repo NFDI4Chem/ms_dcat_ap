@@ -62,6 +62,7 @@ skip = [
   "uv.lock",
   "project/*",
   "src/ms_dcat_ap/datamodel/ms_dcat_ap_pydantic.py",
+  "src/ms_dcat_ap/datamodel/ms_dcat_ap_level1_pydantic.py",
   "src/ms_dcat_ap/datamodel/ms_dcat_ap.py",
 ]
 
@@ -80,5 +81,6 @@ extend-exclude = [
   "pyproject.toml",
   "project/*",
   "src/ms_dcat_ap/datamodel/ms_dcat_ap_pydantic.py",
+  "src/ms_dcat_ap/datamodel/ms_dcat_ap_level1_pydantic.py",
   "src/ms_dcat_ap/datamodel/ms_dcat_ap.py",
 ]

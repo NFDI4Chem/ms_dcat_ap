@@ -21,6 +21,7 @@ from ms_dcat_ap.datamodel.ms_dcat_ap_pydantic import (
     ScanPolarityEnum,
     ScanWindowLowerLimit,
     ScanWindowUpperLimit,
+    Standard,
 )
 
 
@@ -77,6 +78,12 @@ def _build_dataset() -> MSSampleMeasurementDataset:
             "Positive-mode ESI mass spectrum of a 10 uM caffeine standard "
             "solution measured on a Thermo Q-Exactive Orbitrap."
         ],
+        conforms_to=[
+            Standard(
+                title="MIChI MS Level 1 Profile",
+                description="https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1",
+            )
+        ],
         was_generated_by=[_build_activity()],
         is_about_entity=[_sample_ref()],
     )
@@ -91,6 +98,13 @@ def test_instantiate_ms_sample_measurement_dataset() -> None:
     assert ds.title == ["MS measurement of a 10 uM caffeine standard solution"]
     assert len(ds.description) == 1
     assert ds.is_about_entity == [SAMPLE_IRI]
+    assert ds.conforms_to is not None
+    assert len(ds.conforms_to) == 1
+    assert ds.conforms_to[0].title == "MIChI MS Level 1 Profile"
+    assert (
+        ds.conforms_to[0].description
+        == "https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1"
+    )
 
     # Provenance: exactly one MassSpectrometry activity
     assert len(ds.was_generated_by) == 1
@@ -132,6 +146,48 @@ def test_dataset_round_trips_to_dict() -> None:
     assert dumped["is_about_entity"] == [SAMPLE_IRI]
 
 
+def test_instantiate_legacy_minimal_dataset() -> None:
+    """A minimal legacy dataset omitting recommended fields can be instantiated."""
+    minimal_instrument = MassSpectrometer(
+        id=INSTRUMENT_IRI,
+        model=Model(value="API QSTAR Pulsar i"),
+    )
+    minimal_activity = MassSpectrometry(
+        id=ACTIVITY_IRI,
+        carried_out_by=[minimal_instrument],
+        evaluated_entity=_sample_ref(),
+    )
+    minimal_dataset = MSSampleMeasurementDataset(
+        id=DATASET_IRI,
+        title=["Minimal legacy dataset"],
+        description=["Minimal legacy test dataset."],
+        conforms_to=[
+            Standard(
+                title="MIChI MS Legacy Profile",
+                description="https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/legacy",
+            )
+        ],
+        was_generated_by=[minimal_activity],
+        is_about_entity=[_sample_ref()],
+    )
+
+    assert minimal_dataset.id == DATASET_IRI
+    assert minimal_dataset.conforms_to is not None
+    assert len(minimal_dataset.conforms_to) == 1
+    assert minimal_dataset.conforms_to[0].title == "MIChI MS Legacy Profile"
+    assert (
+        minimal_dataset.conforms_to[0].description
+        == "https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/legacy"
+    )
+    assert len(minimal_dataset.was_generated_by) == 1
+    act = minimal_dataset.was_generated_by[0]
+    assert act.acquisition_mode is None
+    assert act.scan_polarity is None
+    assert act.scan_window_lower_limit is None
+    assert act.carried_out_by[0].mass_analyzer_type is None
+    assert act.carried_out_by[0].ionization_type is None
+
+
 def test_missing_required_field_raises() -> None:
     """Omitting a required field must raise a validation error."""
     from pydantic import ValidationError
@@ -144,4 +200,123 @@ def test_missing_required_field_raises() -> None:
             # was_generated_by missing on purpose
             is_about_entity=[_sample_ref()],
         )
+
+
+def test_level1_pydantic_model_validates_full_dataset() -> None:
+    """The strict Level 1 Pydantic model successfully validates a complete dataset."""
+    from ms_dcat_ap.datamodel.ms_dcat_ap_level1_pydantic import (
+        AcquisitionMode as L1AcquisitionMode,
+        DetectorType as L1DetectorType,
+        IonizationType as L1IonizationType,
+        Manufacturer as L1Manufacturer,
+        MassAnalyzerType as L1MassAnalyzerType,
+        MassSpectrometer as L1MassSpectrometer,
+        MassSpectrometry as L1MassSpectrometry,
+        Model as L1Model,
+        MSSampleMeasurementDataset as L1MSSampleMeasurementDataset,
+        ScanPolarity as L1ScanPolarity,
+        ScanPolarityEnum as L1ScanPolarityEnum,
+        ScanWindowLowerLimit as L1ScanWindowLowerLimit,
+        ScanWindowUpperLimit as L1ScanWindowUpperLimit,
+        Standard as L1Standard,
+    )
+
+    instrument = L1MassSpectrometer(
+        id=INSTRUMENT_IRI,
+        manufacturer=L1Manufacturer(value="Thermo Fisher Scientific"),
+        model=L1Model(value="Q Exactive"),
+        mass_analyzer_type=L1MassAnalyzerType(value="orbitrap"),
+        ionization_type=L1IonizationType(value="electrospray ionization"),
+        detector_type=L1DetectorType(value="inductive detector"),
+    )
+    activity = L1MassSpectrometry(
+        id=ACTIVITY_IRI,
+        carried_out_by=[instrument],
+        evaluated_entity=_sample_ref(),
+        acquisition_mode=L1AcquisitionMode(value="DDA"),
+        scan_polarity=L1ScanPolarity(value=L1ScanPolarityEnum.positive_scan),
+        scan_window_lower_limit=L1ScanWindowLowerLimit(
+            value=100.0,
+            has_quantity_type="qudt:DimensionlessRatio",
+            unit="unit:NUM",
+        ),
+        scan_window_upper_limit=L1ScanWindowUpperLimit(
+            value=1500.0,
+            has_quantity_type="qudt:DimensionlessRatio",
+            unit="unit:NUM",
+        ),
+    )
+    ds = L1MSSampleMeasurementDataset(
+        id=DATASET_IRI,
+        title=["MS measurement of a 10 uM caffeine standard solution"],
+        description=["Level 1 dataset description."],
+        conforms_to=[
+            L1Standard(
+                title="MIChI MS Level 1 Profile",
+                description="https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1",
+            )
+        ],
+        was_generated_by=[activity],
+        is_about_entity=[_sample_ref()],
+    )
+
+    assert ds.id == DATASET_IRI
+    assert len(ds.was_generated_by) == 1
+
+
+def test_level1_pydantic_model_rejects_missing_recommended_fields() -> None:
+    """The strict Level 1 model rejects datasets missing MIChI Level 1 required fields."""
+    from pydantic import ValidationError
+    from ms_dcat_ap.datamodel.ms_dcat_ap_level1_pydantic import (
+        MassSpectrometer as L1MassSpectrometer,
+        MassSpectrometry as L1MassSpectrometry,
+        Model as L1Model,
+        MSSampleMeasurementDataset as L1MSSampleMeasurementDataset,
+    )
+
+    # In Level 1, manufacturer, mass_analyzer_type, ionization_type are required on MassSpectrometer
+    with pytest.raises(ValidationError):
+        L1MassSpectrometer(
+            id=INSTRUMENT_IRI,
+            model=L1Model(value="API QSTAR Pulsar i"),
+        )
+
+    # In Level 1, acquisition_mode, scan_polarity, scan limits are required on MassSpectrometry
+    with pytest.raises(ValidationError):
+        L1MassSpectrometry(
+            id=ACTIVITY_IRI,
+            evaluated_entity=_sample_ref(),
+        )
+
+
+def test_yaml_examples_against_both_models() -> None:
+    """Test loading YAML example files against base (legacy) and Level 1 models."""
+    from pathlib import Path
+    import yaml
+    from pydantic import ValidationError
+    from ms_dcat_ap.datamodel.ms_dcat_ap_pydantic import (
+        MSSampleMeasurementDataset as BaseDataset,
+    )
+    from ms_dcat_ap.datamodel.ms_dcat_ap_level1_pydantic import (
+        MSSampleMeasurementDataset as Level1Dataset,
+    )
+
+    valid_dir = Path("tests/data/valid")
+
+    with open(valid_dir / "MSSampleMeasurementDataset-001.yaml") as f:
+        data_full = yaml.safe_load(f)
+
+    with open(valid_dir / "MSSampleMeasurementDataset-002.yaml") as f:
+        data_legacy = yaml.safe_load(f)
+
+    # 1. Complete dataset parses successfully with BOTH models
+    assert BaseDataset(**data_full).id == data_full["id"]
+    assert Level1Dataset(**data_full).id == data_full["id"]
+
+    # 2. Minimal legacy dataset parses successfully with base model
+    assert BaseDataset(**data_legacy).id == data_legacy["id"]
+
+    # 3. Minimal legacy dataset FAILS with Level 1 model due to missing fields
+    with pytest.raises(ValidationError):
+        Level1Dataset(**data_legacy)
 
