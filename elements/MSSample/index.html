@@ -292,7 +292,7 @@
 <ul>
 <li><strong>NOTE</strong>: this is an abstract class and should not be instantiated directly</li>
 </ul>
-<p>URI: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample">https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample</a></p>
+<p>URI: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample">ms_dcat_ap:MSSample</a></p>
 <pre class="mermaid"><code> classDiagram
     class MSSample
     click MSSample href "../MSSample/"
@@ -699,11 +699,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample">https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample</a></td>
+<td>ms_dcat_ap:MSSample</td>
 </tr>
 <tr>
 <td>native</td>
-<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample">https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample</a></td>
+<td>ms_dcat_ap:MSSample</td>
 </tr>
 </tbody>
 </table>
@@ -720,28 +720,9 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MaterialSample</span>
 <span class="nt">abstract</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<span class="nt">attributes</span><span class="p">:</span>
-<span class="w">  </span><span class="nt">solvent</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">solvent</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'A</span><span class="nv"> </span><span class="s">solvent</span><span class="nv"> </span><span class="s">used</span><span class="nv"> </span><span class="s">in</span><span class="nv"> </span><span class="s">liquid</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometry</span><span class="nv"> </span><span class="s">(MS)</span><span class="nv"> </span><span class="s">for</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">preparation.</span>
-
-<span class="w">      </span><span class="s">'</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ChemicalEntity</span>
-<span class="w">  </span><span class="nt">injection_volume</span><span class="p">:</span>
-<span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">injection_volume</span>
-<span class="w">    </span><span class="nt">description</span><span class="p">:</span><span class="w"> </span><span class="s">'The</span><span class="nv"> </span><span class="s">volume</span><span class="nv"> </span><span class="s">of</span><span class="nv"> </span><span class="s">liquid</span><span class="nv"> </span><span class="s">sample</span><span class="nv"> </span><span class="s">injected</span><span class="nv"> </span><span class="s">into</span><span class="nv"> </span><span class="s">the</span><span class="nv"> </span><span class="s">mass</span><span class="nv"> </span><span class="s">spectrometer</span>
-<span class="w">      </span><span class="s">for</span><span class="nv"> </span><span class="s">analysis.</span>
-
-<span class="w">      </span><span class="s">'</span>
-<span class="w">    </span><span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
-<span class="w">    </span><span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
-<span class="w">    </span><span class="nt">domain_of</span><span class="p">:</span>
-<span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MSSample</span>
-<span class="w">    </span><span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Volume</span>
+<span class="nt">slots</span><span class="p">:</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">solvent</span>
+<span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">injection_volume</span>
 </code></pre></div>
 </details>
 <h3 id="induced">Induced</h3>

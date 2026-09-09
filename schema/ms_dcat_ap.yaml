@@ -15,6 +15,9 @@ imports:
 - chemical_reaction_ap
 license: MIT
 prefixes:
+  ms_dcat_ap:
+    prefix_prefix: ms_dcat_ap
+    prefix_reference: https://w3id.org/NFDI4Chem/ms-dcat-ap/
   linkml:
     prefix_prefix: linkml
     prefix_reference: https://w3id.org/linkml/
@@ -45,7 +48,7 @@ prefixes:
   unit:
     prefix_prefix: unit
     prefix_reference: http://qudt.org/vocab/unit/
-default_prefix: https://w3id.org/NFDI4Chem/ms-dcat-ap/
+default_prefix: ms_dcat_ap
 default_range: string
 subsets:
   domain_agnostic_core:
@@ -531,6 +534,171 @@ enums:
       - rdf:type
       is_direct: true
 slots:
+  solvent:
+    name: solvent
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/solvent
+    description: 'A solvent used in liquid mass spectrometry (MS) for sample preparation.
+
+      '
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    slot_uri: ms_dcat_ap:solvent
+    owner: MSSample
+    domain_of:
+    - MSSample
+    range: ChemicalEntity
+  injection_volume:
+    name: injection_volume
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/injection_volume
+    description: 'The volume of liquid sample injected into the mass spectrometer
+      for analysis.
+
+      '
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    slot_uri: ms_dcat_ap:injection_volume
+    owner: MSSample
+    domain_of:
+    - MSSample
+    range: Volume
+    inlined: true
+    inlined_as_list: true
+  manufacturer:
+    name: manufacturer
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/manufacturer
+    description: The manufacturer of the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_qualitative_attribute
+    slot_uri: ms_dcat_ap:manufacturer
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    range: Manufacturer
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  model:
+    name: model
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/model
+    description: The model designation of the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_qualitative_attribute
+    slot_uri: ms_dcat_ap:model
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    range: Model
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  mass_analyzer_type:
+    name: mass_analyzer_type
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/mass_analyzer_type
+    description: The type of mass analyzer used in the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_qualitative_attribute
+    slot_uri: ms_dcat_ap:mass_analyzer_type
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    range: MassAnalyzerType
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  ionization_type:
+    name: ionization_type
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ionization_type
+    description: The type of ionization used in the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_qualitative_attribute
+    slot_uri: ms_dcat_ap:ionization_type
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    range: IonizationType
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  detector_type:
+    name: detector_type
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/detector_type
+    description: The type of detector used in the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_qualitative_attribute
+    slot_uri: ms_dcat_ap:detector_type
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    range: DetectorType
+    required: false
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  acquisition_mode:
+    name: acquisition_mode
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/acquisition_mode
+    description: The acquisition mode used during the mass spectrometry measurement.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_qualitative_attribute
+    slot_uri: ms_dcat_ap:acquisition_mode
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    range: AcquisitionMode
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  scan_polarity:
+    name: scan_polarity
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_polarity
+    description: The scan polarity used during the mass spectrometry measurement.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_qualitative_attribute
+    slot_uri: ms_dcat_ap:scan_polarity
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    range: ScanPolarity
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  scan_window_lower_limit:
+    name: scan_window_lower_limit
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_lower_limit
+    description: The lower limit of the scan window used during the measurement, typically
+      expressed in m/z.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_quantitative_attribute
+    slot_uri: ms_dcat_ap:scan_window_lower_limit
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    range: ScanWindowLowerLimit
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  scan_window_upper_limit:
+    name: scan_window_upper_limit
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit
+    description: The upper limit of the scan window used during the measurement, typically
+      expressed in m/z.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: has_quantitative_attribute
+    slot_uri: ms_dcat_ap:scan_window_upper_limit
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    range: ScanWindowUpperLimit
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
   alternative_label:
     name: alternative_label
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/materials/alternative_label
@@ -2502,179 +2670,6 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
-  mSSample__solvent:
-    name: mSSample__solvent
-    description: 'A solvent used in liquid mass spectrometry (MS) for sample preparation.
-
-      '
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/solvent
-    alias: solvent
-    owner: MSSample
-    domain_of:
-    - MSSample
-    range: ChemicalEntity
-  mSSample__injection_volume:
-    name: mSSample__injection_volume
-    description: 'The volume of liquid sample injected into the mass spectrometer
-      for analysis.
-
-      '
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/injection_volume
-    alias: injection_volume
-    owner: MSSample
-    domain_of:
-    - MSSample
-    range: Volume
-    inlined: true
-    inlined_as_list: true
-  massSpectrometer__manufacturer:
-    name: massSpectrometer__manufacturer
-    description: The manufacturer of the mass spectrometer.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_qualitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/manufacturer
-    alias: manufacturer
-    owner: MassSpectrometer
-    domain_of:
-    - MassSpectrometer
-    range: Manufacturer
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometer__model:
-    name: massSpectrometer__model
-    description: The model designation of the mass spectrometer.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_qualitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/model
-    alias: model
-    owner: MassSpectrometer
-    domain_of:
-    - MassSpectrometer
-    range: Model
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometer__mass_analyzer_type:
-    name: massSpectrometer__mass_analyzer_type
-    description: The type of mass analyzer used in the mass spectrometer.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_qualitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/mass_analyzer_type
-    alias: mass_analyzer_type
-    owner: MassSpectrometer
-    domain_of:
-    - MassSpectrometer
-    range: MassAnalyzerType
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometer__ionization_type:
-    name: massSpectrometer__ionization_type
-    description: The type of ionization used in the mass spectrometer.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_qualitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ionization_type
-    alias: ionization_type
-    owner: MassSpectrometer
-    domain_of:
-    - MassSpectrometer
-    range: IonizationType
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometer__detector_type:
-    name: massSpectrometer__detector_type
-    description: The type of detector used in the mass spectrometer.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_qualitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/detector_type
-    alias: detector_type
-    owner: MassSpectrometer
-    domain_of:
-    - MassSpectrometer
-    range: DetectorType
-    required: false
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometry__acquisition_mode:
-    name: massSpectrometry__acquisition_mode
-    description: The acquisition mode used during the mass spectrometry measurement.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_qualitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/acquisition_mode
-    alias: acquisition_mode
-    owner: MassSpectrometry
-    domain_of:
-    - MassSpectrometry
-    range: AcquisitionMode
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometry__scan_polarity:
-    name: massSpectrometry__scan_polarity
-    description: The scan polarity used during the mass spectrometry measurement.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_qualitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_polarity
-    alias: scan_polarity
-    owner: MassSpectrometry
-    domain_of:
-    - MassSpectrometry
-    range: ScanPolarity
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometry__scan_window_lower_limit:
-    name: massSpectrometry__scan_window_lower_limit
-    description: The lower limit of the scan window used during the measurement, typically
-      expressed in m/z.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_quantitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_lower_limit
-    alias: scan_window_lower_limit
-    owner: MassSpectrometry
-    domain_of:
-    - MassSpectrometry
-    range: ScanWindowLowerLimit
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
-  massSpectrometry__scan_window_upper_limit:
-    name: massSpectrometry__scan_window_upper_limit
-    description: The upper limit of the scan window used during the measurement, typically
-      expressed in m/z.
-    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    is_a: has_quantitative_attribute
-    slot_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit
-    alias: scan_window_upper_limit
-    owner: MassSpectrometry
-    domain_of:
-    - MassSpectrometry
-    range: ScanWindowUpperLimit
-    required: true
-    recommended: true
-    multivalued: true
-    inlined: true
-    inlined_as_list: true
   definedTerm__from_CV:
     name: definedTerm__from_CV
     description: The URL of the controlled vocabulary.
@@ -2796,6 +2791,102 @@ slots:
     usage_slot_name: id
     range: uriorcurie
     required: true
+  MassSpectrometer_manufacturer:
+    name: MassSpectrometer_manufacturer
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/manufacturer
+    description: The manufacturer of the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: manufacturer
+    domain: MassSpectrometer
+    slot_uri: ms_dcat_ap:manufacturer
+    alias: manufacturer
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    is_usage_slot: true
+    usage_slot_name: manufacturer
+    range: Manufacturer
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  MassSpectrometer_model:
+    name: MassSpectrometer_model
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/model
+    description: The model designation of the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: model
+    domain: MassSpectrometer
+    slot_uri: ms_dcat_ap:model
+    alias: model
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    is_usage_slot: true
+    usage_slot_name: model
+    range: Model
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  MassSpectrometer_mass_analyzer_type:
+    name: MassSpectrometer_mass_analyzer_type
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/mass_analyzer_type
+    description: The type of mass analyzer used in the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: mass_analyzer_type
+    domain: MassSpectrometer
+    slot_uri: ms_dcat_ap:mass_analyzer_type
+    alias: mass_analyzer_type
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    is_usage_slot: true
+    usage_slot_name: mass_analyzer_type
+    range: MassAnalyzerType
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  MassSpectrometer_ionization_type:
+    name: MassSpectrometer_ionization_type
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ionization_type
+    description: The type of ionization used in the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: ionization_type
+    domain: MassSpectrometer
+    slot_uri: ms_dcat_ap:ionization_type
+    alias: ionization_type
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    is_usage_slot: true
+    usage_slot_name: ionization_type
+    range: IonizationType
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  MassSpectrometer_detector_type:
+    name: MassSpectrometer_detector_type
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/detector_type
+    description: The type of detector used in the mass spectrometer.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: detector_type
+    domain: MassSpectrometer
+    slot_uri: ms_dcat_ap:detector_type
+    alias: detector_type
+    owner: MassSpectrometer
+    domain_of:
+    - MassSpectrometer
+    is_usage_slot: true
+    usage_slot_name: detector_type
+    range: DetectorType
+    required: false
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
   Manufacturer_value:
     name: Manufacturer_value
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/value
@@ -2944,6 +3035,84 @@ slots:
     multivalued: true
     inlined: true
     inlined_as_list: true
+  MassSpectrometry_acquisition_mode:
+    name: MassSpectrometry_acquisition_mode
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/acquisition_mode
+    description: The acquisition mode used during the mass spectrometry measurement.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: acquisition_mode
+    domain: MassSpectrometry
+    slot_uri: ms_dcat_ap:acquisition_mode
+    alias: acquisition_mode
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    is_usage_slot: true
+    usage_slot_name: acquisition_mode
+    range: AcquisitionMode
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  MassSpectrometry_scan_polarity:
+    name: MassSpectrometry_scan_polarity
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_polarity
+    description: The scan polarity used during the mass spectrometry measurement.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: scan_polarity
+    domain: MassSpectrometry
+    slot_uri: ms_dcat_ap:scan_polarity
+    alias: scan_polarity
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    is_usage_slot: true
+    usage_slot_name: scan_polarity
+    range: ScanPolarity
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  MassSpectrometry_scan_window_lower_limit:
+    name: MassSpectrometry_scan_window_lower_limit
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_lower_limit
+    description: The lower limit of the scan window used during the measurement, typically
+      expressed in m/z.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: scan_window_lower_limit
+    domain: MassSpectrometry
+    slot_uri: ms_dcat_ap:scan_window_lower_limit
+    alias: scan_window_lower_limit
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    is_usage_slot: true
+    usage_slot_name: scan_window_lower_limit
+    range: ScanWindowLowerLimit
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
+  MassSpectrometry_scan_window_upper_limit:
+    name: MassSpectrometry_scan_window_upper_limit
+    definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit
+    description: The upper limit of the scan window used during the measurement, typically
+      expressed in m/z.
+    from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
+    is_a: scan_window_upper_limit
+    domain: MassSpectrometry
+    slot_uri: ms_dcat_ap:scan_window_upper_limit
+    alias: scan_window_upper_limit
+    owner: MassSpectrometry
+    domain_of:
+    - MassSpectrometry
+    is_usage_slot: true
+    usage_slot_name: scan_window_upper_limit
+    range: ScanWindowUpperLimit
+    recommended: true
+    multivalued: false
+    inlined: true
+    inlined_as_list: true
   MassSpectrometry_carried_out_by:
     name: MassSpectrometry_carried_out_by
     definition_uri: https://w3id.org/nfdi-de/dcat-ap-plus/carried_out_by
@@ -2965,7 +3134,6 @@ slots:
     is_usage_slot: true
     usage_slot_name: carried_out_by
     range: MassSpectrometer
-    required: true
     recommended: true
     multivalued: true
     inlined: true
@@ -6895,23 +7063,9 @@ classes:
     - has_volume
     - has_density
     - has_pressure
-    - mSSample__solvent
-    - mSSample__injection_volume
-    attributes:
-      solvent:
-        name: solvent
-        description: 'A solvent used in liquid mass spectrometry (MS) for sample preparation.
-
-          '
-        range: ChemicalEntity
-      injection_volume:
-        name: injection_volume
-        description: 'The volume of liquid sample injected into the mass spectrometer
-          for analysis.
-
-          '
-        range: Volume
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MSSample
+    - solvent
+    - injection_volume
+    class_uri: ms_dcat_ap:MSSample
   SubstanceMSSample:
     name: SubstanceMSSample
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/SubstanceMSSample
@@ -6945,8 +7099,8 @@ classes:
     - has_volume
     - has_density
     - has_pressure
-    - mSSample__solvent
-    - mSSample__injection_volume
+    - solvent
+    - injection_volume
     - SubstanceMSSample_composed_of
     - SubstanceMSSample_has_concentration
     - has_ph_value
@@ -6997,8 +7151,8 @@ classes:
     - has_volume
     - has_density
     - has_pressure
-    - mSSample__solvent
-    - mSSample__injection_volume
+    - solvent
+    - injection_volume
     - MaterialMSSample_id
     slot_usage:
       id:
@@ -7031,50 +7185,38 @@ classes:
     - rdf_type
     - Device_has_part
     - Device_other_identifier
-    - massSpectrometer__manufacturer
-    - massSpectrometer__model
-    - massSpectrometer__mass_analyzer_type
-    - massSpectrometer__ionization_type
-    - massSpectrometer__detector_type
-    attributes:
+    - MassSpectrometer_manufacturer
+    - MassSpectrometer_model
+    - MassSpectrometer_mass_analyzer_type
+    - MassSpectrometer_ionization_type
+    - MassSpectrometer_detector_type
+    slot_usage:
       manufacturer:
         name: manufacturer
-        description: The manufacturer of the mass spectrometer.
-        is_a: has_qualitative_attribute
-        range: Manufacturer
-        required: true
+        recommended: true
+        multivalued: false
       model:
         name: model
-        description: The model designation of the mass spectrometer.
-        is_a: has_qualitative_attribute
-        range: Model
-        required: true
+        recommended: true
+        multivalued: false
       mass_analyzer_type:
         name: mass_analyzer_type
-        description: The type of mass analyzer used in the mass spectrometer.
-        is_a: has_qualitative_attribute
-        range: MassAnalyzerType
-        required: true
+        recommended: true
+        multivalued: false
       ionization_type:
         name: ionization_type
-        description: The type of ionization used in the mass spectrometer.
-        is_a: has_qualitative_attribute
-        range: IonizationType
-        required: true
+        recommended: true
+        multivalued: false
       detector_type:
         name: detector_type
-        description: The type of detector used in the mass spectrometer.
-        is_a: has_qualitative_attribute
-        range: DetectorType
         required: false
+        multivalued: false
     class_uri: CHMO:0000982
   Manufacturer:
     name: Manufacturer
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/Manufacturer
     description: A manufacturer that produces MS instruments and/or their parts
     from_schema: https://w3id.org/NFDI4Chem/ms-dcat-ap
-    mappings:
-    - MS:1000031
     is_a: QualitativeAttribute
     slots:
     - title
@@ -7087,7 +7229,7 @@ classes:
         name: value
         range: string
         required: true
-    class_uri: MS:1000031
+    class_uri: ms_dcat_ap:Manufacturer
   Model:
     name: Model
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/Model
@@ -7234,6 +7376,7 @@ classes:
         name: is_about_entity
         range: MSSample
         required: true
+        multivalued: true
         inlined: false
         inlined_as_list: false
     class_uri: dcat:Dataset
@@ -7263,17 +7406,36 @@ classes:
     - evaluated_activity
     - realized_plan
     - occurred_in
-    - massSpectrometry__acquisition_mode
-    - massSpectrometry__scan_polarity
-    - massSpectrometry__scan_window_lower_limit
-    - massSpectrometry__scan_window_upper_limit
+    - MassSpectrometry_acquisition_mode
+    - MassSpectrometry_scan_polarity
+    - MassSpectrometry_scan_window_lower_limit
+    - MassSpectrometry_scan_window_upper_limit
     - MassSpectrometry_carried_out_by
     - MassSpectrometry_evaluated_entity
     slot_usage:
+      acquisition_mode:
+        name: acquisition_mode
+        recommended: true
+        multivalued: false
+      scan_polarity:
+        name: scan_polarity
+        recommended: true
+        multivalued: false
+      scan_window_lower_limit:
+        name: scan_window_lower_limit
+        recommended: true
+        multivalued: false
+      scan_window_upper_limit:
+        name: scan_window_upper_limit
+        recommended: true
+        multivalued: false
       carried_out_by:
         name: carried_out_by
         range: MassSpectrometer
-        required: true
+        recommended: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
       evaluated_entity:
         name: evaluated_entity
         range: MSSample
@@ -7281,34 +7443,7 @@ classes:
         multivalued: false
         inlined: false
         inlined_as_list: false
-    attributes:
-      acquisition_mode:
-        name: acquisition_mode
-        description: The acquisition mode used during the mass spectrometry measurement.
-        is_a: has_qualitative_attribute
-        range: AcquisitionMode
-        required: true
-      scan_polarity:
-        name: scan_polarity
-        description: The scan polarity used during the mass spectrometry measurement.
-        is_a: has_qualitative_attribute
-        range: ScanPolarity
-        required: true
-      scan_window_lower_limit:
-        name: scan_window_lower_limit
-        description: The lower limit of the scan window used during the measurement,
-          typically expressed in m/z.
-        is_a: has_quantitative_attribute
-        range: ScanWindowLowerLimit
-        required: true
-      scan_window_upper_limit:
-        name: scan_window_upper_limit
-        description: The upper limit of the scan window used during the measurement,
-          typically expressed in m/z.
-        is_a: has_quantitative_attribute
-        range: ScanWindowUpperLimit
-        required: true
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/MassSpectrometry
+    class_uri: ms_dcat_ap:MassSpectrometry
   AcquisitionMode:
     name: AcquisitionMode
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/AcquisitionMode
@@ -7330,7 +7465,7 @@ classes:
         name: value
         range: string
         required: true
-    class_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/AcquisitionMode
+    class_uri: ms_dcat_ap:AcquisitionMode
   ScanPolarity:
     name: ScanPolarity
     definition_uri: https://w3id.org/NFDI4Chem/ms-dcat-ap/ScanPolarity
@@ -10851,7 +10986,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.11.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-09-07T13:21:20'
-source_file_size: 8009
-generation_date: '2026-09-07T13:21:28'
+source_file_date: '2026-09-09T13:11:08'
+source_file_size: 9145
+generation_date: '2026-09-09T13:11:18'
 

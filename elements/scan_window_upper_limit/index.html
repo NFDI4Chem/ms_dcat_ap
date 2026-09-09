@@ -499,7 +499,7 @@
 <h1 id="slot-scan_window_upper_limit">Slot: scan_window_upper_limit</h1>
 <p><em>The upper limit of the scan window used during the measurement, typically expressed in m/z.</em></p>
 <div>
-<p>URI: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit">https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit</a></p>
+<p>URI: <a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit">ms_dcat_ap:scan_window_upper_limit</a></p>
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><a href="../has_quantitative_attribute/">has_quantitative_attribute</a><ul>
@@ -520,7 +520,7 @@
 <tr>
 <td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
 <td>A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.</td>
-<td>no</td>
+<td>yes</td>
 </tr>
 </tbody>
 </table>
@@ -536,7 +536,7 @@
 <tbody>
 <tr>
 <td>Range</td>
-<td><a href="../QuantitativeAttribute/">QuantitativeAttribute</a></td>
+<td><a href="../ScanWindowUpperLimit/">ScanWindowUpperLimit</a></td>
 </tr>
 <tr>
 <td>Domain Of</td>
@@ -554,30 +554,12 @@
 </thead>
 <tbody>
 <tr>
-<td>Required</td>
+<td>Recommended</td>
 <td>Yes</td>
 </tr>
 <tr>
 <td>Multivalued</td>
 <td>Yes</td>
-</tr>
-<tr>
-<td>### Slot Characteristics</td>
-<td></td>
-</tr>
-</tbody>
-</table>
-<table>
-<thead>
-<tr>
-<th>Property</th>
-<th>Value</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td>Owner</td>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
 </tr>
 </tbody>
 </table>
@@ -597,11 +579,11 @@
 <tbody>
 <tr>
 <td>self</td>
-<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit">https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit</a></td>
+<td>ms_dcat_ap:scan_window_upper_limit</td>
 </tr>
 <tr>
 <td>native</td>
-<td><a href="https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit">https://w3id.org/NFDI4Chem/ms-dcat-ap/scan_window_upper_limit</a></td>
+<td>ms_dcat_ap:scan_window_upper_limit</td>
 </tr>
 </tbody>
 </table>
@@ -613,11 +595,9 @@
 <span class="nt">from_schema</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">https://w3id.org/NFDI4Chem/ms-dcat-ap</span>
 <span class="nt">rank</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1000</span>
 <span class="nt">is_a</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">has_quantitative_attribute</span>
-<span class="nt">owner</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometry</span>
 <span class="nt">domain_of</span><span class="p">:</span>
 <span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">MassSpectrometry</span>
-<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">QuantitativeAttribute</span>
-<span class="nt">required</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<span class="nt">range</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ScanWindowUpperLimit</span>
 <span class="nt">recommended</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">multivalued</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <span class="nt">inlined</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
