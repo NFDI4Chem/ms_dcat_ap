@@ -1,4 +1,6 @@
 [build-system]
+# Hatchling 1.32+ emits core metadata 2.5, which the current publish workflow
+# (gh-action-pypi-publish verification) rejects, so keep the backend below 1.32.
 requires = ["hatchling>=1.28,<1.32", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
