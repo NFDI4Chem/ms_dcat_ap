@@ -2,23 +2,34 @@
 
 ## Overview
 
-This project implements a domain-specific DCAT-AP profile for mass spectrometry (MS) according to MIChI recommendations. The central data structure is a LinkML schema (`src/ms_dcat_ap/schema/ms_dcat_ap.yaml`), from which various artifacts (e.g., Python data model, documentation, validation rules) are generated.
+This project implements a domain-specific DCAT-AP profile for mass spectrometry (MS) according to MIChI recommendations. The central data structure is defined as a modular LinkML schema under `src/ms_dcat_ap/schema/`, from which various artifacts (e.g., Python data models for legacy and strict profiles, documentation, validation rules) are generated.
 
 ---
 
-## Architecture & Main Components
+## Architecture & Schema Design
 
-- **Schema Definition:**
-  - `src/ms_dcat_ap/schema/ms_dcat_ap.yaml` is the authoritative source for all model and validation rules.
-  - Changes to the schema require regeneration of artifacts (see workflows).
-- **Generated Artifacts:**
-  - `src/ms_dcat_ap/datamodel/`: Contains the generated Python data model (e.g., `ms_dcat_ap.py`, `ms_dcat_ap_pydantic.py`).
-  - `project/`: Contains further generated artifacts (e.g., Java, TypeScript, OWL, JSON-Schema). Never edit, always regenerate!
-- **Documentation:**
-  - `docs/` contains the MkDocs-generated documentation. Schema documentation is generated into `docs/elements/`.
-- **Example Data & Tests:**
-  - Example data is in `tests/data/` (valid/invalid). Examples are generated into `examples/output/`.
-  - Tests are in `tests/`.
+### Modular Schema Architecture (`src/ms_dcat_ap/schema/`)
+- **Topic-based Modularization:** To keep the schema clean and maintainable, classes, enums, and related slots are organized modularly into separate YAML files by topic or domain concept.
+- **Base Profiles & Imports:** Built upon `chem_dcat_ap.yaml` (and upstream DCAT-AP+ / Chemistry profiles).
+
+### Two Profile Schemas: Legacy vs. MIChI Level 1
+The project provides two primary schema entry points:
+1. **`ms_dcat_ap.yaml` (Legacy / Lenient Profile):**
+   - Imports all relevant modular schema components.
+   - Designed for legacy datasets: only essential identifiers and core metadata slots are `required: true`. MIChI attributes remain optional or recommended to maintain broad compatibility.
+2. **`ms_dcat_ap_level1.yaml` (MIChI Level 1 / Strict Profile):**
+   - Imports `ms_dcat_ap.yaml` and enforces strict MIChI Level 1 compliance using `slot_usage`.
+   - Makes recommended metadata fields strictly required for current data.
+
+### Generated Artifacts
+- **Python Data Models (`src/ms_dcat_ap/datamodel/`):**
+  - `ms_dcat_ap.py`: Dataclasses model for the core schema.
+  - `ms_dcat_ap_pydantic.py`: Pydantic model for legacy / flexible data.
+  - `ms_dcat_ap_level1_pydantic.py`: Pydantic model for strict MIChI Level 1 validated data.
+- **Project Artifacts (`project/`):**
+  - Generated Java, TypeScript, OWL, and JSON-Schema definitions. **Never edit manually; always regenerate!**
+- **Documentation (`docs/`):**
+  - Schema documentation is generated into `docs/elements/` and built via MkDocs.
 
 ---
 
@@ -29,56 +40,37 @@ This project implements a domain-specific DCAT-AP profile for mass spectrometry 
   - `just` or `just --list` shows all available commands.
 - **Typical Workflows:**
   - **Generate artifacts:**
-    - `just gen-project` (generates all artifacts including Python model)
-    - `just gen-doc` (generates schema documentation)
-    - `just site` (generates everything for the docs)
+    - `just gen-project` (generates all project artifacts and both Pydantic models: `ms_dcat_ap_pydantic.py` and `ms_dcat_ap_level1_pydantic.py`)
+    - `just gen-python` (generates only the Python data models)
+    - `just gen-doc` (generates schema documentation in Markdown)
+    - `just site` (generates project artifacts and schema documentation)
   - **Run tests:**
-    - `just test` (runs schema, Python, and example tests)
+    - `just test` (runs schema validation, pytest test suite, and example checks)
   - **Linter:**
-    - `just lint` (runs LinkML lint on the schema)
+    - `just lint` (runs LinkML linter on `src/ms_dcat_ap/schema/`)
   - **View docs locally:**
-    - `just testdoc` (starts local MkDocs server)
+    - `just testdoc` (generates docs and starts local MkDocs server)
   - **Deployment:**
-    - `just deploy` (publishes docs to GitHub Pages)
+    - `just deploy` (publishes documentation to GitHub Pages)
   - **Install dependencies:**
-    - `just install` (uses `uv` for dependency management)
+    - `just install` (syncs dev dependencies with `uv`)
 
 ---
 
-## Conventions & Special Notes
+## Conventions & Rules for AI Agents
 
-- **Schema as Single Source of Truth:**
-  - Only edit `src/ms_dcat_ap/schema/ms_dcat_ap.yaml`, never generated files.
-- **Never manually change files in `project/`.**
-- **Example and test data:**
-  - Example and test data is processed from `tests/data/`.
-- **Dependencies:**
-  - Python >=3.9, dependency management via `uv` (see `pyproject.toml`).
-  - Dev dependencies in `[dependency-groups]` in `pyproject.toml`.
-- **Docs and artifact generation:**
-  - Many artifacts are generated from the schema (see `justfile`).
-- **Upstream template:**
-  - The project is based on [linkml-project-copier](https://github.com/dalito/linkml-project-copier). Template updates via `just update`.
-
----
-
-## Examples & References
-
-- **Schema:** `src/ms_dcat_ap/schema/ms_dcat_ap.yaml`
-- **Python model:** `src/ms_dcat_ap/datamodel/ms_dcat_ap.py`
-- **Tests:** `tests/`, `tests/data/`
-- **Examples:** `examples/`
-- **Docs:** `docs/`, `docs/elements/`
-- **justfile:** Central definition of all workflows
-- **pyproject.toml:** Dependency and build management
-
----
-
-## Guidance for AI Agents
-
-- Always use the schema as the starting point for model changes.
-- Never manually edit generated files.
-- Always use `just` for workflows.
-- If unsure: See README.md and the generated docs (`docs/`).
-- All data classes should be derived from `chemdcatap`: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/ whenever possible.
-- When defining slots, always prefer referencing terms from ontologies hosted at https://terminology.nfdi4chem.de/ts/ if a suitable term exists.
+- **Modularity & Single Responsibility:**
+  - Keep domain concepts modular. When adding or refactoring classes and slots, organize them by topic in modular schema files rather than monolithic definitions.
+- **Profile Consistency:**
+  - Whenever slots or classes are introduced or updated:
+    - Define baseline slots and lenient constraints in the respective topic file or `ms_dcat_ap.yaml`.
+    - Apply strict Level 1 constraints (`required: true`) in `ms_dcat_ap_level1.yaml` under `slot_usage` where MIChI compliance requires it.
+- **Single Source of Truth:**
+  - Only edit schema YAML files in `src/ms_dcat_ap/schema/`. Never manually edit files in `src/ms_dcat_ap/datamodel/` or `project/`.
+  - Always run `just gen-project` (or `just site`) and `just test` after schema modifications.
+- **Ontology & Vocabulary Referencing:**
+  - All data classes should be derived from `chemdcatap`: `https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/` whenever possible.
+  - When defining slots, always prefer referencing terms from ontologies hosted at `https://terminology.nfdi4chem.de/ts/` (e.g., `MS:`, `CHMO:`, `OBI:`, `CHEBI:`) if a suitable term exists.
+- **Example Data & Tests:**
+  - Test data is located in `tests/data/` (valid/invalid examples).
+  - Python unit tests in `tests/` should test both lenient and strict Level 1 models where appropriate.
