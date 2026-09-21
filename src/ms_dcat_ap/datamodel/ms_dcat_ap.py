@@ -1,5 +1,5 @@
 # Auto generated from ms_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-09T12:47:43
+# Generation date: 2026-09-10T10:23:15
 # Schema: ms-dcat-ap
 #
 # id: https://w3id.org/NFDI4Chem/ms-dcat-ap
@@ -152,10 +152,6 @@ class DataGeneratingActivityId(ActivityId):
     pass
 
 
-class MassSpectrometryId(DataGeneratingActivityId):
-    pass
-
-
 class SubstanceSampleCharacterizationId(DataGeneratingActivityId):
     pass
 
@@ -169,10 +165,6 @@ class DataAnalysisId(DataGeneratingActivityId):
 
 
 class DatasetId(URIorCURIE):
-    pass
-
-
-class MSSampleMeasurementDatasetId(DatasetId):
     pass
 
 
@@ -196,10 +188,6 @@ class DeviceId(AgenticEntityId):
     pass
 
 
-class MassSpectrometerId(DeviceId):
-    pass
-
-
 class EntityId(URIorCURIE):
     pass
 
@@ -217,18 +205,6 @@ class EvaluatedEntityId(EntityId):
 
 
 class MaterialSampleId(EvaluatedEntityId):
-    pass
-
-
-class MSSampleId(MaterialSampleId):
-    pass
-
-
-class SubstanceMSSampleId(MSSampleId):
-    pass
-
-
-class MaterialMSSampleId(MSSampleId):
     pass
 
 
@@ -253,6 +229,30 @@ class LicenseDocumentId(URIorCURIE):
 
 
 class ResourceId(URIorCURIE):
+    pass
+
+
+class MSSampleId(MaterialSampleId):
+    pass
+
+
+class SubstanceMSSampleId(MSSampleId):
+    pass
+
+
+class MaterialMSSampleId(MSSampleId):
+    pass
+
+
+class MassSpectrometerId(DeviceId):
+    pass
+
+
+class MassSpectrometryId(DataGeneratingActivityId):
+    pass
+
+
+class MSSampleMeasurementDatasetId(DatasetId):
     pass
 
 
@@ -740,53 +740,6 @@ class DataGeneratingActivity(Activity):
 
 
 @dataclass(repr=False)
-class MassSpectrometry(DataGeneratingActivity):
-    """
-    A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["MassSpectrometry"]
-    class_class_curie: ClassVar[str] = "ms_dcat_ap:MassSpectrometry"
-    class_name: ClassVar[str] = "MassSpectrometry"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassSpectrometry
-
-    id: Union[str, MassSpectrometryId] = None
-    evaluated_entity: Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]] = empty_dict()
-    acquisition_mode: Optional[Union[dict, "AcquisitionMode"]] = None
-    scan_polarity: Optional[Union[dict, "ScanPolarity"]] = None
-    scan_window_lower_limit: Optional[Union[dict, "ScanWindowLowerLimit"]] = None
-    scan_window_upper_limit: Optional[Union[dict, "ScanWindowUpperLimit"]] = None
-    carried_out_by: Optional[Union[dict[Union[str, MassSpectrometerId], Union[dict, "MassSpectrometer"]], list[Union[dict, "MassSpectrometer"]]]] = empty_dict()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MassSpectrometryId):
-            self.id = MassSpectrometryId(self.id)
-
-        if self._is_empty(self.evaluated_entity):
-            self.MissingRequiredField("evaluated_entity")
-        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=MSSample, key_name="id", keyed=True)
-
-        if self.acquisition_mode is not None and not isinstance(self.acquisition_mode, AcquisitionMode):
-            self.acquisition_mode = AcquisitionMode(**as_dict(self.acquisition_mode))
-
-        if self.scan_polarity is not None and not isinstance(self.scan_polarity, ScanPolarity):
-            self.scan_polarity = ScanPolarity(**as_dict(self.scan_polarity))
-
-        if self.scan_window_lower_limit is not None and not isinstance(self.scan_window_lower_limit, ScanWindowLowerLimit):
-            self.scan_window_lower_limit = ScanWindowLowerLimit(**as_dict(self.scan_window_lower_limit))
-
-        if self.scan_window_upper_limit is not None and not isinstance(self.scan_window_upper_limit, ScanWindowUpperLimit):
-            self.scan_window_upper_limit = ScanWindowUpperLimit(**as_dict(self.scan_window_upper_limit))
-
-        self._normalize_inlined_as_list(slot_name="carried_out_by", slot_type=MassSpectrometer, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class SubstanceSampleCharacterization(DataGeneratingActivity):
     """
     A DataGeneratingActivity that produces data about a SubstanceSample, such as a spectroscopic measurement, a
@@ -1139,41 +1092,6 @@ class Dataset(YAMLRoot):
 
 
 @dataclass(repr=False)
-class MSSampleMeasurementDataset(Dataset):
-    """
-    A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
-    class_class_curie: ClassVar[str] = "dcat:Dataset"
-    class_name: ClassVar[str] = "MSSampleMeasurementDataset"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MSSampleMeasurementDataset
-
-    id: Union[str, MSSampleMeasurementDatasetId] = None
-    description: Union[str, list[str]] = None
-    title: Union[str, list[str]] = None
-    was_generated_by: Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]] = empty_dict()
-    is_about_entity: Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]] = empty_dict()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MSSampleMeasurementDatasetId):
-            self.id = MSSampleMeasurementDatasetId(self.id)
-
-        if self._is_empty(self.was_generated_by):
-            self.MissingRequiredField("was_generated_by")
-        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=MassSpectrometry, key_name="id", keyed=True)
-
-        if self._is_empty(self.is_about_entity):
-            self.MissingRequiredField("is_about_entity")
-        self._normalize_inlined_as_list(slot_name="is_about_entity", slot_type=MSSample, key_name="id", keyed=True)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class SubstanceSampleCharacterizationDataset(Dataset):
     """
     A Dataset about a SubstanceSample that was produced by a SubstanceSampleCharacterization activity. This is a
@@ -1396,49 +1314,6 @@ class Device(AgenticEntity):
         self._normalize_inlined_as_list(slot_name="has_part", slot_type=Device, key_name="id", keyed=True)
 
         self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class MassSpectrometer(Device):
-    """
-    A mass spectrometer used for the analysis of samples in mass spectrometry (MS).
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = CHMO["0000982"]
-    class_class_curie: ClassVar[str] = "CHMO:0000982"
-    class_name: ClassVar[str] = "MassSpectrometer"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassSpectrometer
-
-    id: Union[str, MassSpectrometerId] = None
-    manufacturer: Optional[Union[dict, "Manufacturer"]] = None
-    model: Optional[Union[dict, "Model"]] = None
-    mass_analyzer_type: Optional[Union[dict, "MassAnalyzerType"]] = None
-    ionization_type: Optional[Union[dict, "IonizationType"]] = None
-    detector_type: Optional[Union[dict, "DetectorType"]] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MassSpectrometerId):
-            self.id = MassSpectrometerId(self.id)
-
-        if self.manufacturer is not None and not isinstance(self.manufacturer, Manufacturer):
-            self.manufacturer = Manufacturer(**as_dict(self.manufacturer))
-
-        if self.model is not None and not isinstance(self.model, Model):
-            self.model = Model(**as_dict(self.model))
-
-        if self.mass_analyzer_type is not None and not isinstance(self.mass_analyzer_type, MassAnalyzerType):
-            self.mass_analyzer_type = MassAnalyzerType(**as_dict(self.mass_analyzer_type))
-
-        if self.ionization_type is not None and not isinstance(self.ionization_type, IonizationType):
-            self.ionization_type = IonizationType(**as_dict(self.ionization_type))
-
-        if self.detector_type is not None and not isinstance(self.detector_type, DetectorType):
-            self.detector_type = DetectorType(**as_dict(self.detector_type))
 
         super().__post_init__(**kwargs)
 
@@ -1774,119 +1649,6 @@ class MaterialSample(EvaluatedEntity):
 
 
 @dataclass(repr=False)
-class MSSample(MaterialSample):
-    """
-    Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume.
-    Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["MSSample"]
-    class_class_curie: ClassVar[str] = "ms_dcat_ap:MSSample"
-    class_name: ClassVar[str] = "MSSample"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MSSample
-
-    id: Union[str, MSSampleId] = None
-    solvent: Optional[Union[str, ChemicalEntityId]] = None
-    injection_volume: Optional[Union[dict, "Volume"]] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self.solvent is not None and not isinstance(self.solvent, ChemicalEntityId):
-            self.solvent = ChemicalEntityId(self.solvent)
-
-        if self.injection_volume is not None and not isinstance(self.injection_volume, Volume):
-            self.injection_volume = Volume(**as_dict(self.injection_volume))
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class SubstanceMSSample(MSSample):
-    """
-    A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry
-    (MS).
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000457"]
-    class_class_curie: ClassVar[str] = "MS:1000457"
-    class_name: ClassVar[str] = "SubstanceMSSample"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SubstanceMSSample
-
-    id: Union[str, SubstanceMSSampleId] = None
-    composed_of: Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]] = empty_dict()
-    has_qualitative_attribute: Optional[Union[Union[dict, "QualitativeAttribute"], list[Union[dict, "QualitativeAttribute"]]]] = empty_list()
-    has_quantitative_attribute: Optional[Union[Union[dict, "QuantitativeAttribute"], list[Union[dict, "QuantitativeAttribute"]]]] = empty_list()
-    has_part: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
-    part_of: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
-    was_generated_by: Optional[Union[dict[Union[str, ActivityId], Union[dict, Activity]], list[Union[dict, Activity]]]] = empty_dict()
-    title: Optional[str] = None
-    description: Optional[str] = None
-    other_identifier: Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]] = empty_list()
-    derived_from: Optional[Union[dict, Entity]] = None
-    has_concentration: Optional[Union[Union[dict, "Concentration"], list[Union[dict, "Concentration"]]]] = empty_list()
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, SubstanceMSSampleId):
-            self.id = SubstanceMSSampleId(self.id)
-
-        if self._is_empty(self.composed_of):
-            self.MissingRequiredField("composed_of")
-        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="has_qualitative_attribute", slot_type=QualitativeAttribute, key_name="value", keyed=False)
-
-        self._normalize_inlined_as_list(slot_name="has_quantitative_attribute", slot_type=QuantitativeAttribute, key_name="value", keyed=False)
-
-        self._normalize_inlined_as_list(slot_name="has_part", slot_type=Entity, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="part_of", slot_type=Entity, key_name="id", keyed=True)
-
-        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=Activity, key_name="id", keyed=True)
-
-        if self.title is not None and not isinstance(self.title, str):
-            self.title = str(self.title)
-
-        if self.description is not None and not isinstance(self.description, str):
-            self.description = str(self.description)
-
-        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
-
-        if self.derived_from is not None and not isinstance(self.derived_from, Entity):
-            self.derived_from = Entity(**as_dict(self.derived_from))
-
-        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class MaterialMSSample(MSSample):
-    """
-    A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry
-    (MS).
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000457"]
-    class_class_curie: ClassVar[str] = "MS:1000457"
-    class_name: ClassVar[str] = "MaterialMSSample"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MaterialMSSample
-
-    id: Union[str, MaterialMSSampleId] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.id):
-            self.MissingRequiredField("id")
-        if not isinstance(self.id, MaterialMSSampleId):
-            self.id = MaterialMSSampleId(self.id)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class AnalysisSourceData(EvaluatedEntity):
     """
     Information that was evaluated within a DataAnalysis.
@@ -2027,168 +1789,6 @@ class QualitativeAttribute(YAMLRoot):
 
 
 @dataclass(repr=False)
-class Manufacturer(QualitativeAttribute):
-    """
-    A manufacturer that produces MS instruments and/or their parts
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["Manufacturer"]
-    class_class_curie: ClassVar[str] = "ms_dcat_ap:Manufacturer"
-    class_name: ClassVar[str] = "Manufacturer"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Manufacturer
-
-    value: str = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class Model(QualitativeAttribute):
-    """
-    Instrument model name not including the vendor's name.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000031"]
-    class_class_curie: ClassVar[str] = "MS:1000031"
-    class_name: ClassVar[str] = "Model"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Model
-
-    value: str = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class MassAnalyzerType(QualitativeAttribute):
-    """
-    Type of mass analyzer used in a mass spectrometer (e.g. quadrupole, time-of-flight, etc.)
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000443"]
-    class_class_curie: ClassVar[str] = "MS:1000443"
-    class_name: ClassVar[str] = "MassAnalyzerType"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassAnalyzerType
-
-    value: str = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class IonizationType(QualitativeAttribute):
-    """
-    Type of ionization used in a mass spectrometer (e.g. ESI, MALDI, etc.)
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000008"]
-    class_class_curie: ClassVar[str] = "MS:1000008"
-    class_name: ClassVar[str] = "IonizationType"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.IonizationType
-
-    value: str = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class DetectorType(QualitativeAttribute):
-    """
-    Type of detector used in a mass spectrometer (e.g. electron multiplier, microchannel plate).
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000026"]
-    class_class_curie: ClassVar[str] = "MS:1000026"
-    class_name: ClassVar[str] = "DetectorType"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DetectorType
-
-    value: str = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class AcquisitionMode(QualitativeAttribute):
-    """
-    The instrument setting specifying how to collect data determining which ions are detected, whether and how they
-    are being fragmented and how their signals are recorded.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["AcquisitionMode"]
-    class_class_curie: ClassVar[str] = "ms_dcat_ap:AcquisitionMode"
-    class_name: ClassVar[str] = "AcquisitionMode"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.AcquisitionMode
-
-    value: str = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, str):
-            self.value = str(self.value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
-class ScanPolarity(QualitativeAttribute):
-    """
-    Scan polarity.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000465"]
-    class_class_curie: ClassVar[str] = "MS:1000465"
-    class_name: ClassVar[str] = "ScanPolarity"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanPolarity
-
-    value: Union[str, "ScanPolarityEnum"] = None
-
-    def __post_init__(self, *_: str, **kwargs: Any):
-        if self._is_empty(self.value):
-            self.MissingRequiredField("value")
-        if not isinstance(self.value, ScanPolarityEnum):
-            self.value = ScanPolarityEnum(self.value)
-
-        super().__post_init__(**kwargs)
-
-
-@dataclass(repr=False)
 class QuantitativeAttribute(YAMLRoot):
     """
     A quantifiable piece of information that is attributed to an Entity, Activity or AgenticEntity.
@@ -2236,36 +1836,6 @@ class QuantitativeAttribute(YAMLRoot):
 
         super().__post_init__(**kwargs)
 
-
-@dataclass(repr=False)
-class ScanWindowLowerLimit(QuantitativeAttribute):
-    """
-    Scan window lower limit (MS:1000501), typically expressed in m/z.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000501"]
-    class_class_curie: ClassVar[str] = "MS:1000501"
-    class_name: ClassVar[str] = "ScanWindowLowerLimit"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanWindowLowerLimit
-
-    value: float = None
-    has_quantity_type: Union[str, DefinedTermId] = None
-
-@dataclass(repr=False)
-class ScanWindowUpperLimit(QuantitativeAttribute):
-    """
-    Scan window upper limit (MS:1000500), typically expressed in m/z.
-    """
-    _inherited_slots: ClassVar[list[str]] = []
-
-    class_class_uri: ClassVar[URIRef] = MS["1000500"]
-    class_class_curie: ClassVar[str] = "MS:1000500"
-    class_name: ClassVar[str] = "ScanWindowUpperLimit"
-    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanWindowUpperLimit
-
-    value: float = None
-    has_quantity_type: Union[str, DefinedTermId] = None
 
 @dataclass(repr=False)
 class Temperature(QuantitativeAttribute):
@@ -3049,6 +2619,436 @@ class TimeInstant(SupportiveEntity):
 
         if self.description is not None and not isinstance(self.description, str):
             self.description = str(self.description)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MSSample(MaterialSample):
+    """
+    Abstract base class for mass spectrometry samples, providing common slots such as solvent and injection volume.
+    Concrete subclasses are SubstanceMSSample (known composition) and MaterialMSSample (unknown composition).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["MSSample"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:MSSample"
+    class_name: ClassVar[str] = "MSSample"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MSSample
+
+    id: Union[str, MSSampleId] = None
+    solvent: Optional[Union[str, ChemicalEntityId]] = None
+    injection_volume: Optional[Union[dict, Volume]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self.solvent is not None and not isinstance(self.solvent, ChemicalEntityId):
+            self.solvent = ChemicalEntityId(self.solvent)
+
+        if self.injection_volume is not None and not isinstance(self.injection_volume, Volume):
+            self.injection_volume = Volume(**as_dict(self.injection_volume))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class SubstanceMSSample(MSSample):
+    """
+    A mass spectrometry sample of known composition (substance) prepared for and investigated by Mass Spectrometry
+    (MS).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000457"]
+    class_class_curie: ClassVar[str] = "MS:1000457"
+    class_name: ClassVar[str] = "SubstanceMSSample"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.SubstanceMSSample
+
+    id: Union[str, SubstanceMSSampleId] = None
+    composed_of: Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]] = empty_dict()
+    has_qualitative_attribute: Optional[Union[Union[dict, QualitativeAttribute], list[Union[dict, QualitativeAttribute]]]] = empty_list()
+    has_quantitative_attribute: Optional[Union[Union[dict, QuantitativeAttribute], list[Union[dict, QuantitativeAttribute]]]] = empty_list()
+    has_part: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
+    part_of: Optional[Union[dict[Union[str, EntityId], Union[dict, Entity]], list[Union[dict, Entity]]]] = empty_dict()
+    was_generated_by: Optional[Union[dict[Union[str, ActivityId], Union[dict, Activity]], list[Union[dict, Activity]]]] = empty_dict()
+    title: Optional[str] = None
+    description: Optional[str] = None
+    other_identifier: Optional[Union[Union[dict, Identifier], list[Union[dict, Identifier]]]] = empty_list()
+    derived_from: Optional[Union[dict, Entity]] = None
+    has_concentration: Optional[Union[Union[dict, "Concentration"], list[Union[dict, "Concentration"]]]] = empty_list()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, SubstanceMSSampleId):
+            self.id = SubstanceMSSampleId(self.id)
+
+        if self._is_empty(self.composed_of):
+            self.MissingRequiredField("composed_of")
+        self._normalize_inlined_as_list(slot_name="composed_of", slot_type=ChemicalEntity, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="has_qualitative_attribute", slot_type=QualitativeAttribute, key_name="value", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="has_quantitative_attribute", slot_type=QuantitativeAttribute, key_name="value", keyed=False)
+
+        self._normalize_inlined_as_list(slot_name="has_part", slot_type=Entity, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="part_of", slot_type=Entity, key_name="id", keyed=True)
+
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=Activity, key_name="id", keyed=True)
+
+        if self.title is not None and not isinstance(self.title, str):
+            self.title = str(self.title)
+
+        if self.description is not None and not isinstance(self.description, str):
+            self.description = str(self.description)
+
+        self._normalize_inlined_as_list(slot_name="other_identifier", slot_type=Identifier, key_name="notation", keyed=False)
+
+        if self.derived_from is not None and not isinstance(self.derived_from, Entity):
+            self.derived_from = Entity(**as_dict(self.derived_from))
+
+        self._normalize_inlined_as_list(slot_name="has_concentration", slot_type=Concentration, key_name="value", keyed=False)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MaterialMSSample(MSSample):
+    """
+    A mass spectrometry sample of unknown composition (material) prepared for and investigated by Mass Spectrometry
+    (MS).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000457"]
+    class_class_curie: ClassVar[str] = "MS:1000457"
+    class_name: ClassVar[str] = "MaterialMSSample"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MaterialMSSample
+
+    id: Union[str, MaterialMSSampleId] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MaterialMSSampleId):
+            self.id = MaterialMSSampleId(self.id)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MassSpectrometer(Device):
+    """
+    A mass spectrometer used for the analysis of samples in mass spectrometry (MS).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = CHMO["0000982"]
+    class_class_curie: ClassVar[str] = "CHMO:0000982"
+    class_name: ClassVar[str] = "MassSpectrometer"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassSpectrometer
+
+    id: Union[str, MassSpectrometerId] = None
+    manufacturer: Optional[Union[dict, "Manufacturer"]] = None
+    model: Optional[Union[dict, "Model"]] = None
+    mass_analyzer_type: Optional[Union[dict, "MassAnalyzerType"]] = None
+    ionization_type: Optional[Union[dict, "IonizationType"]] = None
+    detector_type: Optional[Union[dict, "DetectorType"]] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MassSpectrometerId):
+            self.id = MassSpectrometerId(self.id)
+
+        if self.manufacturer is not None and not isinstance(self.manufacturer, Manufacturer):
+            self.manufacturer = Manufacturer(**as_dict(self.manufacturer))
+
+        if self.model is not None and not isinstance(self.model, Model):
+            self.model = Model(**as_dict(self.model))
+
+        if self.mass_analyzer_type is not None and not isinstance(self.mass_analyzer_type, MassAnalyzerType):
+            self.mass_analyzer_type = MassAnalyzerType(**as_dict(self.mass_analyzer_type))
+
+        if self.ionization_type is not None and not isinstance(self.ionization_type, IonizationType):
+            self.ionization_type = IonizationType(**as_dict(self.ionization_type))
+
+        if self.detector_type is not None and not isinstance(self.detector_type, DetectorType):
+            self.detector_type = DetectorType(**as_dict(self.detector_type))
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Manufacturer(QualitativeAttribute):
+    """
+    A manufacturer that produces MS instruments and/or their parts
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["Manufacturer"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:Manufacturer"
+    class_name: ClassVar[str] = "Manufacturer"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Manufacturer
+
+    value: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class Model(QualitativeAttribute):
+    """
+    Instrument model name not including the vendor's name.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000031"]
+    class_class_curie: ClassVar[str] = "MS:1000031"
+    class_name: ClassVar[str] = "Model"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.Model
+
+    value: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MassAnalyzerType(QualitativeAttribute):
+    """
+    Type of mass analyzer used in a mass spectrometer (e.g. quadrupole, time-of-flight, etc.)
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000443"]
+    class_class_curie: ClassVar[str] = "MS:1000443"
+    class_name: ClassVar[str] = "MassAnalyzerType"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassAnalyzerType
+
+    value: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class IonizationType(QualitativeAttribute):
+    """
+    Type of ionization used in a mass spectrometer (e.g. ESI, MALDI, etc.)
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000008"]
+    class_class_curie: ClassVar[str] = "MS:1000008"
+    class_name: ClassVar[str] = "IonizationType"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.IonizationType
+
+    value: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class DetectorType(QualitativeAttribute):
+    """
+    Type of detector used in a mass spectrometer (e.g. electron multiplier, microchannel plate).
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000026"]
+    class_class_curie: ClassVar[str] = "MS:1000026"
+    class_name: ClassVar[str] = "DetectorType"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.DetectorType
+
+    value: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class MassSpectrometry(DataGeneratingActivity):
+    """
+    A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["MassSpectrometry"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:MassSpectrometry"
+    class_name: ClassVar[str] = "MassSpectrometry"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MassSpectrometry
+
+    id: Union[str, MassSpectrometryId] = None
+    evaluated_entity: Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]] = empty_dict()
+    acquisition_mode: Optional[Union[dict, "AcquisitionMode"]] = None
+    scan_polarity: Optional[Union[dict, "ScanPolarity"]] = None
+    scan_window_lower_limit: Optional[Union[dict, "ScanWindowLowerLimit"]] = None
+    scan_window_upper_limit: Optional[Union[dict, "ScanWindowUpperLimit"]] = None
+    carried_out_by: Optional[Union[dict[Union[str, MassSpectrometerId], Union[dict, MassSpectrometer]], list[Union[dict, MassSpectrometer]]]] = empty_dict()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MassSpectrometryId):
+            self.id = MassSpectrometryId(self.id)
+
+        if self._is_empty(self.evaluated_entity):
+            self.MissingRequiredField("evaluated_entity")
+        self._normalize_inlined_as_list(slot_name="evaluated_entity", slot_type=MSSample, key_name="id", keyed=True)
+
+        if self.acquisition_mode is not None and not isinstance(self.acquisition_mode, AcquisitionMode):
+            self.acquisition_mode = AcquisitionMode(**as_dict(self.acquisition_mode))
+
+        if self.scan_polarity is not None and not isinstance(self.scan_polarity, ScanPolarity):
+            self.scan_polarity = ScanPolarity(**as_dict(self.scan_polarity))
+
+        if self.scan_window_lower_limit is not None and not isinstance(self.scan_window_lower_limit, ScanWindowLowerLimit):
+            self.scan_window_lower_limit = ScanWindowLowerLimit(**as_dict(self.scan_window_lower_limit))
+
+        if self.scan_window_upper_limit is not None and not isinstance(self.scan_window_upper_limit, ScanWindowUpperLimit):
+            self.scan_window_upper_limit = ScanWindowUpperLimit(**as_dict(self.scan_window_upper_limit))
+
+        self._normalize_inlined_as_list(slot_name="carried_out_by", slot_type=MassSpectrometer, key_name="id", keyed=True)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class AcquisitionMode(QualitativeAttribute):
+    """
+    The instrument setting specifying how to collect data determining which ions are detected, whether and how they
+    are being fragmented and how their signals are recorded.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS_DCAT_AP["AcquisitionMode"]
+    class_class_curie: ClassVar[str] = "ms_dcat_ap:AcquisitionMode"
+    class_name: ClassVar[str] = "AcquisitionMode"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.AcquisitionMode
+
+    value: str = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, str):
+            self.value = str(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ScanPolarity(QualitativeAttribute):
+    """
+    Scan polarity.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000465"]
+    class_class_curie: ClassVar[str] = "MS:1000465"
+    class_name: ClassVar[str] = "ScanPolarity"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanPolarity
+
+    value: Union[str, "ScanPolarityEnum"] = None
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.value):
+            self.MissingRequiredField("value")
+        if not isinstance(self.value, ScanPolarityEnum):
+            self.value = ScanPolarityEnum(self.value)
+
+        super().__post_init__(**kwargs)
+
+
+@dataclass(repr=False)
+class ScanWindowLowerLimit(QuantitativeAttribute):
+    """
+    Scan window lower limit (MS:1000501), typically expressed in m/z.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000501"]
+    class_class_curie: ClassVar[str] = "MS:1000501"
+    class_name: ClassVar[str] = "ScanWindowLowerLimit"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanWindowLowerLimit
+
+    value: float = None
+    has_quantity_type: Union[str, DefinedTermId] = None
+
+@dataclass(repr=False)
+class ScanWindowUpperLimit(QuantitativeAttribute):
+    """
+    Scan window upper limit (MS:1000500), typically expressed in m/z.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = MS["1000500"]
+    class_class_curie: ClassVar[str] = "MS:1000500"
+    class_name: ClassVar[str] = "ScanWindowUpperLimit"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.ScanWindowUpperLimit
+
+    value: float = None
+    has_quantity_type: Union[str, DefinedTermId] = None
+
+@dataclass(repr=False)
+class MSSampleMeasurementDataset(Dataset):
+    """
+    A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.
+    """
+    _inherited_slots: ClassVar[list[str]] = []
+
+    class_class_uri: ClassVar[URIRef] = DCAT["Dataset"]
+    class_class_curie: ClassVar[str] = "dcat:Dataset"
+    class_name: ClassVar[str] = "MSSampleMeasurementDataset"
+    class_model_uri: ClassVar[URIRef] = MS_DCAT_AP.MSSampleMeasurementDataset
+
+    id: Union[str, MSSampleMeasurementDatasetId] = None
+    description: Union[str, list[str]] = None
+    title: Union[str, list[str]] = None
+    was_generated_by: Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]] = empty_dict()
+    is_about_entity: Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]] = empty_dict()
+
+    def __post_init__(self, *_: str, **kwargs: Any):
+        if self._is_empty(self.id):
+            self.MissingRequiredField("id")
+        if not isinstance(self.id, MSSampleMeasurementDatasetId):
+            self.id = MSSampleMeasurementDatasetId(self.id)
+
+        if self._is_empty(self.was_generated_by):
+            self.MissingRequiredField("was_generated_by")
+        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=MassSpectrometry, key_name="id", keyed=True)
+
+        if self._is_empty(self.is_about_entity):
+            self.MissingRequiredField("is_about_entity")
+        self._normalize_inlined_as_list(slot_name="is_about_entity", slot_type=MSSample, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
 
@@ -3876,24 +3876,6 @@ class PercentageOfTotal(QuantitativeAttribute):
     has_quantity_type: Union[str, DefinedTermId] = None
 
 # Enumerations
-class ScanPolarityEnum(EnumDefinitionImpl):
-    """
-    Polarity of a mass spectrometry scan: either positive or negative ion mode.
-    """
-    negative_scan = PermissibleValue(
-        text="negative_scan",
-        description="Negative ion mode scan.",
-        meaning=MS["1000129"])
-    positive_scan = PermissibleValue(
-        text="positive_scan",
-        description="Positive ion mode scan.",
-        meaning=MS["1000130"])
-
-    _defn = EnumDefinition(
-        name="ScanPolarityEnum",
-        description="""Polarity of a mass spectrometry scan: either positive or negative ion mode.""",
-    )
-
 class PhysicalStateEnum(EnumDefinitionImpl):
 
     SOLID = PermissibleValue(
@@ -4016,42 +3998,27 @@ class QUDTUnitEnum(EnumDefinitionImpl):
         description="Possible kinds of QUDT unit instances.",
     )
 
+class ScanPolarityEnum(EnumDefinitionImpl):
+    """
+    Polarity of a mass spectrometry scan: either positive or negative ion mode.
+    """
+    negative_scan = PermissibleValue(
+        text="negative_scan",
+        description="Negative ion mode scan.",
+        meaning=MS["1000129"])
+    positive_scan = PermissibleValue(
+        text="positive_scan",
+        description="Positive ion mode scan.",
+        meaning=MS["1000130"])
+
+    _defn = EnumDefinition(
+        name="ScanPolarityEnum",
+        description="""Polarity of a mass spectrometry scan: either positive or negative ion mode.""",
+    )
+
 # Slots
 class slots:
     pass
-
-slots.solvent = Slot(uri=MS_DCAT_AP.solvent, name="solvent", curie=MS_DCAT_AP.curie('solvent'),
-                   model_uri=MS_DCAT_AP.solvent, domain=None, range=Optional[Union[str, ChemicalEntityId]])
-
-slots.injection_volume = Slot(uri=MS_DCAT_AP.injection_volume, name="injection_volume", curie=MS_DCAT_AP.curie('injection_volume'),
-                   model_uri=MS_DCAT_AP.injection_volume, domain=None, range=Optional[Union[dict, Volume]])
-
-slots.manufacturer = Slot(uri=MS_DCAT_AP.manufacturer, name="manufacturer", curie=MS_DCAT_AP.curie('manufacturer'),
-                   model_uri=MS_DCAT_AP.manufacturer, domain=None, range=Optional[Union[dict, Manufacturer]])
-
-slots.model = Slot(uri=MS_DCAT_AP.model, name="model", curie=MS_DCAT_AP.curie('model'),
-                   model_uri=MS_DCAT_AP.model, domain=None, range=Optional[Union[dict, Model]])
-
-slots.mass_analyzer_type = Slot(uri=MS_DCAT_AP.mass_analyzer_type, name="mass_analyzer_type", curie=MS_DCAT_AP.curie('mass_analyzer_type'),
-                   model_uri=MS_DCAT_AP.mass_analyzer_type, domain=None, range=Optional[Union[dict, MassAnalyzerType]])
-
-slots.ionization_type = Slot(uri=MS_DCAT_AP.ionization_type, name="ionization_type", curie=MS_DCAT_AP.curie('ionization_type'),
-                   model_uri=MS_DCAT_AP.ionization_type, domain=None, range=Optional[Union[dict, IonizationType]])
-
-slots.detector_type = Slot(uri=MS_DCAT_AP.detector_type, name="detector_type", curie=MS_DCAT_AP.curie('detector_type'),
-                   model_uri=MS_DCAT_AP.detector_type, domain=None, range=Optional[Union[dict, DetectorType]])
-
-slots.acquisition_mode = Slot(uri=MS_DCAT_AP.acquisition_mode, name="acquisition_mode", curie=MS_DCAT_AP.curie('acquisition_mode'),
-                   model_uri=MS_DCAT_AP.acquisition_mode, domain=None, range=Optional[Union[dict, AcquisitionMode]])
-
-slots.scan_polarity = Slot(uri=MS_DCAT_AP.scan_polarity, name="scan_polarity", curie=MS_DCAT_AP.curie('scan_polarity'),
-                   model_uri=MS_DCAT_AP.scan_polarity, domain=None, range=Optional[Union[dict, ScanPolarity]])
-
-slots.scan_window_lower_limit = Slot(uri=MS_DCAT_AP.scan_window_lower_limit, name="scan_window_lower_limit", curie=MS_DCAT_AP.curie('scan_window_lower_limit'),
-                   model_uri=MS_DCAT_AP.scan_window_lower_limit, domain=None, range=Optional[Union[dict, ScanWindowLowerLimit]])
-
-slots.scan_window_upper_limit = Slot(uri=MS_DCAT_AP.scan_window_upper_limit, name="scan_window_upper_limit", curie=MS_DCAT_AP.curie('scan_window_upper_limit'),
-                   model_uri=MS_DCAT_AP.scan_window_upper_limit, domain=None, range=Optional[Union[dict, ScanWindowUpperLimit]])
 
 slots.alternative_label = Slot(uri=SKOS.altLabel, name="alternative_label", curie=SKOS.curie('altLabel'),
                    model_uri=MS_DCAT_AP.alternative_label, domain=None, range=Optional[str])
@@ -4365,6 +4332,39 @@ slots.version_notes = Slot(uri=ADMS.versionNotes, name="version_notes", curie=AD
 slots.was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="was_generated_by", curie=PROV.curie('wasGeneratedBy'),
                    model_uri=MS_DCAT_AP.was_generated_by, domain=None, range=Optional[str])
 
+slots.solvent = Slot(uri=MS_DCAT_AP.solvent, name="solvent", curie=MS_DCAT_AP.curie('solvent'),
+                   model_uri=MS_DCAT_AP.solvent, domain=None, range=Optional[Union[str, ChemicalEntityId]])
+
+slots.injection_volume = Slot(uri=MS_DCAT_AP.injection_volume, name="injection_volume", curie=MS_DCAT_AP.curie('injection_volume'),
+                   model_uri=MS_DCAT_AP.injection_volume, domain=None, range=Optional[Union[dict, Volume]])
+
+slots.manufacturer = Slot(uri=MS_DCAT_AP.manufacturer, name="manufacturer", curie=MS_DCAT_AP.curie('manufacturer'),
+                   model_uri=MS_DCAT_AP.manufacturer, domain=None, range=Optional[Union[dict, Manufacturer]])
+
+slots.model = Slot(uri=MS_DCAT_AP.model, name="model", curie=MS_DCAT_AP.curie('model'),
+                   model_uri=MS_DCAT_AP.model, domain=None, range=Optional[Union[dict, Model]])
+
+slots.mass_analyzer_type = Slot(uri=MS_DCAT_AP.mass_analyzer_type, name="mass_analyzer_type", curie=MS_DCAT_AP.curie('mass_analyzer_type'),
+                   model_uri=MS_DCAT_AP.mass_analyzer_type, domain=None, range=Optional[Union[dict, MassAnalyzerType]])
+
+slots.ionization_type = Slot(uri=MS_DCAT_AP.ionization_type, name="ionization_type", curie=MS_DCAT_AP.curie('ionization_type'),
+                   model_uri=MS_DCAT_AP.ionization_type, domain=None, range=Optional[Union[dict, IonizationType]])
+
+slots.detector_type = Slot(uri=MS_DCAT_AP.detector_type, name="detector_type", curie=MS_DCAT_AP.curie('detector_type'),
+                   model_uri=MS_DCAT_AP.detector_type, domain=None, range=Optional[Union[dict, DetectorType]])
+
+slots.acquisition_mode = Slot(uri=MS_DCAT_AP.acquisition_mode, name="acquisition_mode", curie=MS_DCAT_AP.curie('acquisition_mode'),
+                   model_uri=MS_DCAT_AP.acquisition_mode, domain=None, range=Optional[Union[dict, AcquisitionMode]])
+
+slots.scan_polarity = Slot(uri=MS_DCAT_AP.scan_polarity, name="scan_polarity", curie=MS_DCAT_AP.curie('scan_polarity'),
+                   model_uri=MS_DCAT_AP.scan_polarity, domain=None, range=Optional[Union[dict, ScanPolarity]])
+
+slots.scan_window_lower_limit = Slot(uri=MS_DCAT_AP.scan_window_lower_limit, name="scan_window_lower_limit", curie=MS_DCAT_AP.curie('scan_window_lower_limit'),
+                   model_uri=MS_DCAT_AP.scan_window_lower_limit, domain=None, range=Optional[Union[dict, ScanWindowLowerLimit]])
+
+slots.scan_window_upper_limit = Slot(uri=MS_DCAT_AP.scan_window_upper_limit, name="scan_window_upper_limit", curie=MS_DCAT_AP.curie('scan_window_upper_limit'),
+                   model_uri=MS_DCAT_AP.scan_window_upper_limit, domain=None, range=Optional[Union[dict, ScanWindowUpperLimit]])
+
 slots.composed_of = Slot(uri=BFO['0000051'], name="composed_of", curie=BFO.curie('0000051'),
                    model_uri=MS_DCAT_AP.composed_of, domain=None, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, ChemicalEntity]], list[Union[dict, ChemicalEntity]]]])
 
@@ -4436,75 +4436,6 @@ slots.quantitativeAttribute__has_quantity_type = Slot(uri=QUDT.hasQuantityKind, 
 
 slots.quantitativeAttribute__unit = Slot(uri=QUDT.unit, name="quantitativeAttribute__unit", curie=QUDT.curie('unit'),
                    model_uri=MS_DCAT_AP.quantitativeAttribute__unit, domain=None, range=Optional[Union[str, DefinedTermId]])
-
-slots.SubstanceMSSample_composed_of = Slot(uri=BFO['0000051'], name="SubstanceMSSample_composed_of", curie=BFO.curie('0000051'),
-                   model_uri=MS_DCAT_AP.SubstanceMSSample_composed_of, domain=SubstanceMSSample, range=Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]])
-
-slots.SubstanceMSSample_has_concentration = Slot(uri=SIO['000008'], name="SubstanceMSSample_has_concentration", curie=SIO.curie('000008'),
-                   model_uri=MS_DCAT_AP.SubstanceMSSample_has_concentration, domain=SubstanceMSSample, range=Optional[Union[Union[dict, "Concentration"], list[Union[dict, "Concentration"]]]])
-
-slots.MaterialMSSample_id = Slot(uri=DCATAPPLUS.id, name="MaterialMSSample_id", curie=DCATAPPLUS.curie('id'),
-                   model_uri=MS_DCAT_AP.MaterialMSSample_id, domain=MaterialMSSample, range=Union[str, MaterialMSSampleId])
-
-slots.MassSpectrometer_manufacturer = Slot(uri=MS_DCAT_AP.manufacturer, name="MassSpectrometer_manufacturer", curie=MS_DCAT_AP.curie('manufacturer'),
-                   model_uri=MS_DCAT_AP.MassSpectrometer_manufacturer, domain=MassSpectrometer, range=Optional[Union[dict, "Manufacturer"]])
-
-slots.MassSpectrometer_model = Slot(uri=MS_DCAT_AP.model, name="MassSpectrometer_model", curie=MS_DCAT_AP.curie('model'),
-                   model_uri=MS_DCAT_AP.MassSpectrometer_model, domain=MassSpectrometer, range=Optional[Union[dict, "Model"]])
-
-slots.MassSpectrometer_mass_analyzer_type = Slot(uri=MS_DCAT_AP.mass_analyzer_type, name="MassSpectrometer_mass_analyzer_type", curie=MS_DCAT_AP.curie('mass_analyzer_type'),
-                   model_uri=MS_DCAT_AP.MassSpectrometer_mass_analyzer_type, domain=MassSpectrometer, range=Optional[Union[dict, "MassAnalyzerType"]])
-
-slots.MassSpectrometer_ionization_type = Slot(uri=MS_DCAT_AP.ionization_type, name="MassSpectrometer_ionization_type", curie=MS_DCAT_AP.curie('ionization_type'),
-                   model_uri=MS_DCAT_AP.MassSpectrometer_ionization_type, domain=MassSpectrometer, range=Optional[Union[dict, "IonizationType"]])
-
-slots.MassSpectrometer_detector_type = Slot(uri=MS_DCAT_AP.detector_type, name="MassSpectrometer_detector_type", curie=MS_DCAT_AP.curie('detector_type'),
-                   model_uri=MS_DCAT_AP.MassSpectrometer_detector_type, domain=MassSpectrometer, range=Optional[Union[dict, "DetectorType"]])
-
-slots.Manufacturer_value = Slot(uri=PROV.value, name="Manufacturer_value", curie=PROV.curie('value'),
-                   model_uri=MS_DCAT_AP.Manufacturer_value, domain=Manufacturer, range=str)
-
-slots.Model_value = Slot(uri=PROV.value, name="Model_value", curie=PROV.curie('value'),
-                   model_uri=MS_DCAT_AP.Model_value, domain=Model, range=str)
-
-slots.MassAnalyzerType_value = Slot(uri=PROV.value, name="MassAnalyzerType_value", curie=PROV.curie('value'),
-                   model_uri=MS_DCAT_AP.MassAnalyzerType_value, domain=MassAnalyzerType, range=str)
-
-slots.IonizationType_value = Slot(uri=PROV.value, name="IonizationType_value", curie=PROV.curie('value'),
-                   model_uri=MS_DCAT_AP.IonizationType_value, domain=IonizationType, range=str)
-
-slots.DetectorType_value = Slot(uri=PROV.value, name="DetectorType_value", curie=PROV.curie('value'),
-                   model_uri=MS_DCAT_AP.DetectorType_value, domain=DetectorType, range=str)
-
-slots.MSSampleMeasurementDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="MSSampleMeasurementDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_was_generated_by, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]])
-
-slots.MSSampleMeasurementDataset_is_about_entity = Slot(uri=DCTERMS.subject, name="MSSampleMeasurementDataset_is_about_entity", curie=DCTERMS.curie('subject'),
-                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_is_about_entity, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]])
-
-slots.MassSpectrometry_acquisition_mode = Slot(uri=MS_DCAT_AP.acquisition_mode, name="MassSpectrometry_acquisition_mode", curie=MS_DCAT_AP.curie('acquisition_mode'),
-                   model_uri=MS_DCAT_AP.MassSpectrometry_acquisition_mode, domain=MassSpectrometry, range=Optional[Union[dict, "AcquisitionMode"]])
-
-slots.MassSpectrometry_scan_polarity = Slot(uri=MS_DCAT_AP.scan_polarity, name="MassSpectrometry_scan_polarity", curie=MS_DCAT_AP.curie('scan_polarity'),
-                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_polarity, domain=MassSpectrometry, range=Optional[Union[dict, "ScanPolarity"]])
-
-slots.MassSpectrometry_scan_window_lower_limit = Slot(uri=MS_DCAT_AP.scan_window_lower_limit, name="MassSpectrometry_scan_window_lower_limit", curie=MS_DCAT_AP.curie('scan_window_lower_limit'),
-                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_window_lower_limit, domain=MassSpectrometry, range=Optional[Union[dict, "ScanWindowLowerLimit"]])
-
-slots.MassSpectrometry_scan_window_upper_limit = Slot(uri=MS_DCAT_AP.scan_window_upper_limit, name="MassSpectrometry_scan_window_upper_limit", curie=MS_DCAT_AP.curie('scan_window_upper_limit'),
-                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_window_upper_limit, domain=MassSpectrometry, range=Optional[Union[dict, "ScanWindowUpperLimit"]])
-
-slots.MassSpectrometry_carried_out_by = Slot(uri=PROV.wasAssociatedWith, name="MassSpectrometry_carried_out_by", curie=PROV.curie('wasAssociatedWith'),
-                   model_uri=MS_DCAT_AP.MassSpectrometry_carried_out_by, domain=MassSpectrometry, range=Optional[Union[dict[Union[str, MassSpectrometerId], Union[dict, "MassSpectrometer"]], list[Union[dict, "MassSpectrometer"]]]])
-
-slots.MassSpectrometry_evaluated_entity = Slot(uri=PROV.used, name="MassSpectrometry_evaluated_entity", curie=PROV.curie('used'),
-                   model_uri=MS_DCAT_AP.MassSpectrometry_evaluated_entity, domain=MassSpectrometry, range=Union[dict[Union[str, MSSampleId], Union[dict, "MSSample"]], list[Union[dict, "MSSample"]]])
-
-slots.AcquisitionMode_value = Slot(uri=PROV.value, name="AcquisitionMode_value", curie=PROV.curie('value'),
-                   model_uri=MS_DCAT_AP.AcquisitionMode_value, domain=AcquisitionMode, range=str)
-
-slots.ScanPolarity_value = Slot(uri=PROV.value, name="ScanPolarity_value", curie=PROV.curie('value'),
-                   model_uri=MS_DCAT_AP.ScanPolarity_value, domain=ScanPolarity, range=Union[str, "ScanPolarityEnum"])
 
 slots.SubstanceSampleCharacterizationDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="SubstanceSampleCharacterizationDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
                    model_uri=MS_DCAT_AP.SubstanceSampleCharacterizationDataset_was_generated_by, domain=SubstanceSampleCharacterizationDataset, range=Optional[Union[dict[Union[str, SubstanceSampleCharacterizationId], Union[dict, SubstanceSampleCharacterization]], list[Union[dict, SubstanceSampleCharacterization]]]])
@@ -5027,6 +4958,75 @@ slots.Software_has_part = Slot(uri=DCTERMS.hasPart, name="Software_has_part", cu
 
 slots.Software_other_identifier = Slot(uri=ADMS.identifier, name="Software_other_identifier", curie=ADMS.curie('identifier'),
                    model_uri=MS_DCAT_AP.Software_other_identifier, domain=Software, range=Optional[Union[Union[dict, "Identifier"], list[Union[dict, "Identifier"]]]])
+
+slots.SubstanceMSSample_composed_of = Slot(uri=BFO['0000051'], name="SubstanceMSSample_composed_of", curie=BFO.curie('0000051'),
+                   model_uri=MS_DCAT_AP.SubstanceMSSample_composed_of, domain=SubstanceMSSample, range=Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]])
+
+slots.SubstanceMSSample_has_concentration = Slot(uri=SIO['000008'], name="SubstanceMSSample_has_concentration", curie=SIO.curie('000008'),
+                   model_uri=MS_DCAT_AP.SubstanceMSSample_has_concentration, domain=SubstanceMSSample, range=Optional[Union[Union[dict, "Concentration"], list[Union[dict, "Concentration"]]]])
+
+slots.MaterialMSSample_id = Slot(uri=DCATAPPLUS.id, name="MaterialMSSample_id", curie=DCATAPPLUS.curie('id'),
+                   model_uri=MS_DCAT_AP.MaterialMSSample_id, domain=MaterialMSSample, range=Union[str, MaterialMSSampleId])
+
+slots.MassSpectrometer_manufacturer = Slot(uri=MS_DCAT_AP.manufacturer, name="MassSpectrometer_manufacturer", curie=MS_DCAT_AP.curie('manufacturer'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_manufacturer, domain=MassSpectrometer, range=Optional[Union[dict, "Manufacturer"]])
+
+slots.MassSpectrometer_model = Slot(uri=MS_DCAT_AP.model, name="MassSpectrometer_model", curie=MS_DCAT_AP.curie('model'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_model, domain=MassSpectrometer, range=Optional[Union[dict, "Model"]])
+
+slots.MassSpectrometer_mass_analyzer_type = Slot(uri=MS_DCAT_AP.mass_analyzer_type, name="MassSpectrometer_mass_analyzer_type", curie=MS_DCAT_AP.curie('mass_analyzer_type'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_mass_analyzer_type, domain=MassSpectrometer, range=Optional[Union[dict, "MassAnalyzerType"]])
+
+slots.MassSpectrometer_ionization_type = Slot(uri=MS_DCAT_AP.ionization_type, name="MassSpectrometer_ionization_type", curie=MS_DCAT_AP.curie('ionization_type'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_ionization_type, domain=MassSpectrometer, range=Optional[Union[dict, "IonizationType"]])
+
+slots.MassSpectrometer_detector_type = Slot(uri=MS_DCAT_AP.detector_type, name="MassSpectrometer_detector_type", curie=MS_DCAT_AP.curie('detector_type'),
+                   model_uri=MS_DCAT_AP.MassSpectrometer_detector_type, domain=MassSpectrometer, range=Optional[Union[dict, "DetectorType"]])
+
+slots.Manufacturer_value = Slot(uri=PROV.value, name="Manufacturer_value", curie=PROV.curie('value'),
+                   model_uri=MS_DCAT_AP.Manufacturer_value, domain=Manufacturer, range=str)
+
+slots.Model_value = Slot(uri=PROV.value, name="Model_value", curie=PROV.curie('value'),
+                   model_uri=MS_DCAT_AP.Model_value, domain=Model, range=str)
+
+slots.MassAnalyzerType_value = Slot(uri=PROV.value, name="MassAnalyzerType_value", curie=PROV.curie('value'),
+                   model_uri=MS_DCAT_AP.MassAnalyzerType_value, domain=MassAnalyzerType, range=str)
+
+slots.IonizationType_value = Slot(uri=PROV.value, name="IonizationType_value", curie=PROV.curie('value'),
+                   model_uri=MS_DCAT_AP.IonizationType_value, domain=IonizationType, range=str)
+
+slots.DetectorType_value = Slot(uri=PROV.value, name="DetectorType_value", curie=PROV.curie('value'),
+                   model_uri=MS_DCAT_AP.DetectorType_value, domain=DetectorType, range=str)
+
+slots.MassSpectrometry_acquisition_mode = Slot(uri=MS_DCAT_AP.acquisition_mode, name="MassSpectrometry_acquisition_mode", curie=MS_DCAT_AP.curie('acquisition_mode'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_acquisition_mode, domain=MassSpectrometry, range=Optional[Union[dict, "AcquisitionMode"]])
+
+slots.MassSpectrometry_scan_polarity = Slot(uri=MS_DCAT_AP.scan_polarity, name="MassSpectrometry_scan_polarity", curie=MS_DCAT_AP.curie('scan_polarity'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_polarity, domain=MassSpectrometry, range=Optional[Union[dict, "ScanPolarity"]])
+
+slots.MassSpectrometry_scan_window_lower_limit = Slot(uri=MS_DCAT_AP.scan_window_lower_limit, name="MassSpectrometry_scan_window_lower_limit", curie=MS_DCAT_AP.curie('scan_window_lower_limit'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_window_lower_limit, domain=MassSpectrometry, range=Optional[Union[dict, "ScanWindowLowerLimit"]])
+
+slots.MassSpectrometry_scan_window_upper_limit = Slot(uri=MS_DCAT_AP.scan_window_upper_limit, name="MassSpectrometry_scan_window_upper_limit", curie=MS_DCAT_AP.curie('scan_window_upper_limit'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_scan_window_upper_limit, domain=MassSpectrometry, range=Optional[Union[dict, "ScanWindowUpperLimit"]])
+
+slots.MassSpectrometry_carried_out_by = Slot(uri=PROV.wasAssociatedWith, name="MassSpectrometry_carried_out_by", curie=PROV.curie('wasAssociatedWith'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_carried_out_by, domain=MassSpectrometry, range=Optional[Union[dict[Union[str, MassSpectrometerId], Union[dict, MassSpectrometer]], list[Union[dict, MassSpectrometer]]]])
+
+slots.MassSpectrometry_evaluated_entity = Slot(uri=PROV.used, name="MassSpectrometry_evaluated_entity", curie=PROV.curie('used'),
+                   model_uri=MS_DCAT_AP.MassSpectrometry_evaluated_entity, domain=MassSpectrometry, range=Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]])
+
+slots.AcquisitionMode_value = Slot(uri=PROV.value, name="AcquisitionMode_value", curie=PROV.curie('value'),
+                   model_uri=MS_DCAT_AP.AcquisitionMode_value, domain=AcquisitionMode, range=str)
+
+slots.ScanPolarity_value = Slot(uri=PROV.value, name="ScanPolarity_value", curie=PROV.curie('value'),
+                   model_uri=MS_DCAT_AP.ScanPolarity_value, domain=ScanPolarity, range=Union[str, "ScanPolarityEnum"])
+
+slots.MSSampleMeasurementDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="MSSampleMeasurementDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
+                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_was_generated_by, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]])
+
+slots.MSSampleMeasurementDataset_is_about_entity = Slot(uri=DCTERMS.subject, name="MSSampleMeasurementDataset_is_about_entity", curie=DCTERMS.curie('subject'),
+                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_is_about_entity, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]])
 
 slots.ChemicalEntity_has_part = Slot(uri=BFO['0000051'], name="ChemicalEntity_has_part", curie=BFO.curie('0000051'),
                    model_uri=MS_DCAT_AP.ChemicalEntity_has_part, domain=ChemicalEntity, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]])

@@ -1,0 +1,41 @@
+id: https://w3id.org/NFDI4Chem/ms-dcat-ap/dataset
+name: ms_dataset
+title: ms_dataset
+description: |
+  Dataset definitions for mass spectrometry (MS) DCAT-AP.
+license: MIT
+default_prefix: ms_dcat_ap
+default_range: string
+
+prefixes:
+  ms_dcat_ap: https://w3id.org/NFDI4Chem/ms-dcat-ap/
+  linkml: https://w3id.org/linkml/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+  dcat: http://www.w3.org/ns/dcat#
+
+imports:
+  - linkml:types
+  - chem_dcat_ap
+  - dcatapplus:latest/schema/dcat_ap_plus
+  - ms_sample
+  - ms_measurement
+
+classes:
+  MSSampleMeasurementDataset:
+    is_a: Dataset
+    class_uri: dcat:Dataset
+    description: >
+      A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.
+    slot_usage:
+      was_generated_by:
+        range: MassSpectrometry
+        required: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      is_about_entity:
+        range: MSSample
+        required: true
+        multivalued: true
+        inlined: false
+        inlined_as_list: false

@@ -1,0 +1,120 @@
+id: https://w3id.org/NFDI4Chem/ms-dcat-ap/instrument
+name: ms_instrument
+title: ms_instrument
+description: |
+  Instrument and device definitions for mass spectrometry (MS) DCAT-AP.
+license: MIT
+default_prefix: ms_dcat_ap
+default_range: string
+
+prefixes:
+  ms_dcat_ap: https://w3id.org/NFDI4Chem/ms-dcat-ap/
+  linkml: https://w3id.org/linkml/
+  MS: http://purl.obolibrary.org/obo/MS_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+
+imports:
+  - linkml:types
+  - dcatapplus:latest/schema/dcat_ap_plus
+
+classes:
+  MassSpectrometer:
+    is_a: Device
+    class_uri: CHMO:0000982
+    description: >
+      A mass spectrometer used for the analysis of samples in mass spectrometry (MS).
+    slots:
+      - manufacturer
+      - model
+      - mass_analyzer_type
+      - ionization_type
+      - detector_type
+    slot_usage:
+      manufacturer:
+        multivalued: false
+        recommended: true
+      model:
+        multivalued: false
+        recommended: true
+      mass_analyzer_type:
+        multivalued: false
+        recommended: true
+      ionization_type:
+        multivalued: false
+        recommended: true
+      detector_type:
+        multivalued: false
+        required: false
+
+  Manufacturer:
+    is_a: QualitativeAttribute
+    description: A manufacturer that produces MS instruments and/or their parts
+    slot_usage:
+      value:
+        range: string
+        required: true
+  Model:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000031
+    description: Instrument model name not including the vendor's name.
+    slot_usage:
+      value:
+        range: string
+        required: true
+  MassAnalyzerType:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000443
+    description: Type of mass analyzer used in a mass spectrometer (e.g. quadrupole, time-of-flight, etc.)
+    slot_usage:
+      value:
+        range: string
+        required: true
+  IonizationType:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000008
+    description: Type of ionization used in a mass spectrometer (e.g. ESI, MALDI, etc.)
+    slot_usage:
+      value:
+        range: string
+        required: true
+  DetectorType:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000026
+    description: Type of detector used in a mass spectrometer (e.g. electron multiplier, microchannel plate).
+    slot_usage:
+      value:
+        range: string
+        required: true
+
+slots:
+  manufacturer:
+    is_a: has_qualitative_attribute
+    description: The manufacturer of the mass spectrometer.
+    range: Manufacturer
+    multivalued: false
+    recommended: true
+  model:
+    is_a: has_qualitative_attribute
+    description: The model designation of the mass spectrometer.
+    range: Model
+    multivalued: false
+    recommended: true
+  mass_analyzer_type:
+    is_a: has_qualitative_attribute
+    description: The type of mass analyzer used in the mass spectrometer.
+    range: MassAnalyzerType
+    multivalued: false
+    recommended: true
+  ionization_type:
+    is_a: has_qualitative_attribute
+    description: The type of ionization used in the mass spectrometer.
+    range: IonizationType
+    multivalued: false
+    recommended: true
+  detector_type:
+    is_a: has_qualitative_attribute
+    description: The type of detector used in the mass spectrometer.
+    range: DetectorType
+    multivalued: false
+    required: false

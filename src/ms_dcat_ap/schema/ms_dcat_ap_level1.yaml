@@ -34,6 +34,8 @@ classes:
   MSSample:
     abstract: true
     is_a: MaterialSample
+    description: >
+      Strict Level 1 mass spectrometry sample requiring solvent and injection volume.
     slots:
       - solvent
       - injection_volume
@@ -46,6 +48,8 @@ classes:
   MassSpectrometer:
     is_a: Device
     class_uri: CHMO:0000982
+    description: >
+      Strict Level 1 mass spectrometer requiring manufacturer, model, analyzer, and ionization.
     slots:
       - manufacturer
       - model
@@ -72,6 +76,8 @@ classes:
   MSSampleMeasurementDataset:
     is_a: Dataset
     class_uri: dcat:Dataset
+    description: >
+      Strict Level 1 mass spectrometry measurement dataset.
     slot_usage:
       was_generated_by:
         range: MassSpectrometry
@@ -88,6 +94,8 @@ classes:
 
   MassSpectrometry:
     is_a: DataGeneratingActivity
+    description: >
+      Strict Level 1 mass spectrometry activity requiring mode, polarity, and scan limits.
     slots:
       - acquisition_mode
       - scan_polarity

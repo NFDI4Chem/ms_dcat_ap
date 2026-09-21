@@ -1,0 +1,127 @@
+id: https://w3id.org/NFDI4Chem/ms-dcat-ap/measurement
+name: ms_measurement
+title: ms_measurement
+description: |
+  Activity and measurement definitions for mass spectrometry (MS) DCAT-AP.
+license: MIT
+default_prefix: ms_dcat_ap
+default_range: string
+
+prefixes:
+  ms_dcat_ap: https://w3id.org/NFDI4Chem/ms-dcat-ap/
+  linkml: https://w3id.org/linkml/
+  MS: http://purl.obolibrary.org/obo/MS_
+  CHMO: http://purl.obolibrary.org/obo/CHMO_
+  OBI: http://purl.obolibrary.org/obo/OBI_
+  qudt: http://qudt.org/schema/qudt/
+  unit: http://qudt.org/vocab/unit/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+
+imports:
+  - linkml:types
+  - dcatapplus:latest/schema/dcat_ap_plus
+  - ms_sample
+  - ms_instrument
+
+classes:
+  MassSpectrometry:
+    is_a: DataGeneratingActivity
+    description: >
+      A mass spectrometry (MS) assay for the analysis of samples using a mass spectrometer.
+    slots:
+      - acquisition_mode
+      - scan_polarity
+      - scan_window_lower_limit
+      - scan_window_upper_limit
+    slot_usage:
+      acquisition_mode:
+        multivalued: false
+        recommended: true
+      scan_polarity:
+        multivalued: false
+        recommended: true
+      scan_window_lower_limit:
+        multivalued: false
+        recommended: true
+      scan_window_upper_limit:
+        multivalued: false
+        recommended: true
+      carried_out_by:
+        range: MassSpectrometer
+        recommended: true
+        multivalued: true
+        inlined: true
+        inlined_as_list: true
+      evaluated_entity:
+        range: MSSample
+        required: true
+        multivalued: false
+        inlined: false
+        inlined_as_list: false
+
+  AcquisitionMode:
+    is_a: QualitativeAttribute
+    description: >
+      The instrument setting specifying how to collect data determining which ions
+      are detected, whether and how they are being fragmented and how their signals
+      are recorded.
+    slot_usage:
+      value:
+        range: string
+        required: true
+  ScanPolarity:
+    is_a: QualitativeAttribute
+    class_uri: MS:1000465
+    description: Scan polarity.
+    slot_usage:
+      value:
+        range: ScanPolarityEnum
+        required: true
+  ScanWindowLowerLimit:
+    is_a: QuantitativeAttribute
+    class_uri: MS:1000501
+    description: Scan window lower limit (MS:1000501), typically expressed in m/z.
+  ScanWindowUpperLimit:
+    is_a: QuantitativeAttribute
+    class_uri: MS:1000500
+    description: Scan window upper limit (MS:1000500), typically expressed in m/z.
+
+slots:
+  acquisition_mode:
+    is_a: has_qualitative_attribute
+    description: The acquisition mode used during the mass spectrometry measurement.
+    range: AcquisitionMode
+    multivalued: false
+    recommended: true
+  scan_polarity:
+    is_a: has_qualitative_attribute
+    description: The scan polarity used during the mass spectrometry measurement.
+    range: ScanPolarity
+    multivalued: false
+    recommended: true
+  scan_window_lower_limit:
+    is_a: has_quantitative_attribute
+    description: The lower limit of the scan window used during the measurement, typically expressed in m/z.
+    range: ScanWindowLowerLimit
+    multivalued: false
+    recommended: true
+  scan_window_upper_limit:
+    is_a: has_quantitative_attribute
+    description: The upper limit of the scan window used during the measurement, typically expressed in m/z.
+    range: ScanWindowUpperLimit
+    multivalued: false
+    recommended: true
+
+enums:
+  ScanPolarityEnum:
+    description: >
+      Polarity of a mass spectrometry scan: either positive or negative ion mode.
+    permissible_values:
+      negative_scan:
+        text: negative_scan
+        description: Negative ion mode scan.
+        meaning: MS:1000129
+      positive_scan:
+        text: positive_scan
+        description: Positive ion mode scan.
+        meaning: MS:1000130

@@ -1,0 +1,77 @@
+id: https://w3id.org/NFDI4Chem/ms-dcat-ap/sample
+name: ms_sample
+title: ms_sample
+description: |
+  Sample entity definitions for mass spectrometry (MS) DCAT-AP.
+license: MIT
+default_prefix: ms_dcat_ap
+default_range: string
+
+prefixes:
+  ms_dcat_ap: https://w3id.org/NFDI4Chem/ms-dcat-ap/
+  linkml: https://w3id.org/linkml/
+  MS: http://purl.obolibrary.org/obo/MS_
+  material_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/materials/
+  chemical_entities_ap: https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/entity/
+  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
+
+imports:
+  - linkml:types
+  - material_entities_ap
+  - chemical_entities_ap
+  - dcatapplus:latest/schema/dcat_ap_plus
+
+classes:
+  MSSample:
+    abstract: true
+    is_a: MaterialSample
+    description: >
+      Abstract base class for mass spectrometry samples, providing common
+      slots such as solvent and injection volume. Concrete subclasses are
+      SubstanceMSSample (known composition) and MaterialMSSample (unknown
+      composition).
+    slots:
+      - solvent
+      - injection_volume
+
+  SubstanceMSSample:
+    is_a: MSSample
+    mixins:
+      - SubstanceSample
+    class_uri: MS:1000457
+    description: >
+      A mass spectrometry sample of known composition (substance)
+      prepared for and investigated by Mass Spectrometry (MS).
+    slot_usage:
+      composed_of:
+        description: >
+          Analysed Compound : A compound analysed in an mass spectrometry (MS)
+          sample using data acquired from an mass spectrometry (MS) analysis.
+        required: true
+      has_concentration:
+        description: >
+          The concentration of the compound analysed in a mass spectrometry (MS)
+          sample using data acquired from a mass spectrometry (MS) analysis
+        recommended: true
+
+  MaterialMSSample:
+    is_a: MSSample
+    class_uri: MS:1000457
+    description: >
+      A mass spectrometry sample of unknown composition (material) prepared for and
+      investigated by Mass Spectrometry (MS).
+    slot_usage:
+      id:
+        description: >
+          Sample ID: The URI identifying a sample and leading to the sample history including its preparation.
+        required: true
+
+slots:
+  solvent:
+    description: >
+      A solvent used in liquid mass spectrometry (MS) for sample preparation.
+    range: ChemicalEntity
+  injection_volume:
+    description: >
+      The volume of liquid sample injected into the mass spectrometer for analysis.
+    range: Volume
