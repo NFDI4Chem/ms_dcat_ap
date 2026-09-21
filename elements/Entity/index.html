@@ -314,14 +314,14 @@
         click ClassifierMixin href "../ClassifierMixin/"
 
 
+      Entity &lt;|-- MaterialEntity
+        click MaterialEntity href "../MaterialEntity/"
       Entity &lt;|-- EvaluatedEntity
         click EvaluatedEntity href "../EvaluatedEntity/"
       Entity &lt;|-- ChemicalEntity
         click ChemicalEntity href "../ChemicalEntity/"
       Entity &lt;|-- Atom
         click Atom href "../Atom/"
-      Entity &lt;|-- MaterialEntity
-        click MaterialEntity href "../MaterialEntity/"
 
 
       Entity : description
@@ -411,10 +411,10 @@
 <h2 id="inheritance">Inheritance</h2>
 <ul>
 <li><strong>Entity</strong> [ <a href="../ClassifierMixin/">ClassifierMixin</a>]<ul>
+<li><a href="../MaterialEntity/">MaterialEntity</a> [ <a href="../MaterialisticMixin/">MaterialisticMixin</a>]</li>
 <li><a href="../EvaluatedEntity/">EvaluatedEntity</a></li>
 <li><a href="../ChemicalEntity/">ChemicalEntity</a></li>
 <li><a href="../Atom/">Atom</a></li>
-<li><a href="../MaterialEntity/">MaterialEntity</a> [ <a href="../MaterialisticMixin/">MaterialisticMixin</a>]</li>
 </ul>
 </li>
 </ul>
@@ -518,68 +518,50 @@
 </thead>
 <tbody>
 <tr>
-<td><a href="../MSSample/">MSSample</a></td>
-<td><a href="../derived_from/">derived_from</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MSSample/">MSSample</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MSSample/">MSSample</a></td>
-<td><a href="../part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
-<td><a href="../derived_from/">derived_from</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
-<td><a href="../part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
-<td><a href="../derived_from/">derived_from</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
-<td><a href="../part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
 <td><a href="../had_input_entity/">had_input_entity</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
-<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
 <td><a href="../had_output_entity/">had_output_entity</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
+<td><a href="../had_input_entity/">had_input_entity</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
+<td><a href="../had_output_entity/">had_output_entity</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialEntity/">MaterialEntity</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td><a href="../derived_from/">derived_from</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialSample/">MaterialSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
@@ -664,6 +646,72 @@
 <tr>
 <td><a href="../EvaluatedEntity/">EvaluatedEntity</a></td>
 <td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MSSample/">MSSample</a></td>
+<td><a href="../derived_from/">derived_from</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MSSample/">MSSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MSSample/">MSSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
+<td><a href="../derived_from/">derived_from</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../SubstanceMSSample/">SubstanceMSSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
+<td><a href="../derived_from/">derived_from</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
+<td><a href="../has_part/">has_part</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MaterialMSSample/">MaterialMSSample</a></td>
+<td><a href="../part_of/">part_of</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../had_input_entity/">had_input_entity</a></td>
+<td>range</td>
+<td><a href="./">Entity</a></td>
+</tr>
+<tr>
+<td><a href="../MassSpectrometry/">MassSpectrometry</a></td>
+<td><a href="../had_output_entity/">had_output_entity</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
@@ -722,30 +770,6 @@
 <td><a href="./">Entity</a></td>
 </tr>
 <tr>
-<td><a href="../MaterialEntity/">MaterialEntity</a></td>
-<td><a href="../part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td><a href="../derived_from/">derived_from</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td><a href="../has_part/">has_part</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../MaterialSample/">MaterialSample</a></td>
-<td><a href="../part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
 <td><a href="../ChemicalReaction/">ChemicalReaction</a></td>
 <td><a href="../had_input_entity/">had_input_entity</a></td>
 <td>range</td>
@@ -772,30 +796,6 @@
 <tr>
 <td><a href="../ChemicalProduct/">ChemicalProduct</a></td>
 <td><a href="../part_of/">part_of</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
-<td><a href="../had_input_entity/">had_input_entity</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../SubstanceSampleCharacterization/">SubstanceSampleCharacterization</a></td>
-<td><a href="../had_output_entity/">had_output_entity</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
-<td><a href="../had_input_entity/">had_input_entity</a></td>
-<td>range</td>
-<td><a href="./">Entity</a></td>
-</tr>
-<tr>
-<td><a href="../ReactionMonitoring/">ReactionMonitoring</a></td>
-<td><a href="../had_output_entity/">had_output_entity</a></td>
 <td>range</td>
 <td><a href="./">Entity</a></td>
 </tr>
