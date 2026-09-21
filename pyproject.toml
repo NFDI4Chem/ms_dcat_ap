@@ -1,5 +1,5 @@
 [build-system]
-requires = ["hatchling", "uv-dynamic-versioning"]
+requires = ["hatchling>=1.28,<1.32", "uv-dynamic-versioning"]
 build-backend = "hatchling.build"
 
 [project]
