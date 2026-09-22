@@ -1,6 +1,6 @@
 id: https://w3id.org/NFDI4Chem/ms-dcat-ap/measurement
-name: ms_measurement
-title: ms_measurement
+name: ms-measurement
+title: ms-measurement
 description: |
   Activity and measurement definitions for mass spectrometry (MS) DCAT-AP.
 license: MIT

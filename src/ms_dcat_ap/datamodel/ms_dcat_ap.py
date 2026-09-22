@@ -1,5 +1,5 @@
 # Auto generated from ms_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-10T10:23:15
+# Generation date: 2026-09-22T14:43:28
 # Schema: ms-dcat-ap
 #
 # id: https://w3id.org/NFDI4Chem/ms-dcat-ap
@@ -3034,7 +3034,7 @@ class MSSampleMeasurementDataset(Dataset):
     description: Union[str, list[str]] = None
     title: Union[str, list[str]] = None
     was_generated_by: Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]] = empty_dict()
-    is_about_entity: Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]] = empty_dict()
+    is_about_entity: Optional[Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
         if self._is_empty(self.id):
@@ -3046,8 +3046,6 @@ class MSSampleMeasurementDataset(Dataset):
             self.MissingRequiredField("was_generated_by")
         self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=MassSpectrometry, key_name="id", keyed=True)
 
-        if self._is_empty(self.is_about_entity):
-            self.MissingRequiredField("is_about_entity")
         self._normalize_inlined_as_list(slot_name="is_about_entity", slot_type=MSSample, key_name="id", keyed=True)
 
         super().__post_init__(**kwargs)
@@ -5026,7 +5024,7 @@ slots.MSSampleMeasurementDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy
                    model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_was_generated_by, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]])
 
 slots.MSSampleMeasurementDataset_is_about_entity = Slot(uri=DCTERMS.subject, name="MSSampleMeasurementDataset_is_about_entity", curie=DCTERMS.curie('subject'),
-                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_is_about_entity, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]])
+                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_is_about_entity, domain=MSSampleMeasurementDataset, range=Optional[Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]]])
 
 slots.ChemicalEntity_has_part = Slot(uri=BFO['0000051'], name="ChemicalEntity_has_part", curie=BFO.curie('0000051'),
                    model_uri=MS_DCAT_AP.ChemicalEntity_has_part, domain=ChemicalEntity, range=Optional[Union[dict[Union[str, ChemicalEntityId], Union[dict, "ChemicalEntity"]], list[Union[dict, "ChemicalEntity"]]]])

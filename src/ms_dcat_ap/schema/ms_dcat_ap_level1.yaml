@@ -1,5 +1,5 @@
 id: https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1
-name: ms_dcat_ap_level1
+name: ms-dcat-ap-level1
 title: ms-dcat-ap-level1
 description: |
   MIChI Level 1 strict profile for mass spectrometry (MS) DCAT-AP.
@@ -73,24 +73,6 @@ classes:
         multivalued: false
         required: false
 
-  MSSampleMeasurementDataset:
-    is_a: Dataset
-    class_uri: dcat:Dataset
-    description: >
-      Strict Level 1 mass spectrometry measurement dataset.
-    slot_usage:
-      was_generated_by:
-        range: MassSpectrometry
-        required: true
-        multivalued: true
-        inlined: true
-        inlined_as_list: true
-      is_about_entity:
-        range: MSSample
-        required: true
-        multivalued: true
-        inlined: false
-        inlined_as_list: false
 
   MassSpectrometry:
     is_a: DataGeneratingActivity

@@ -1,6 +1,6 @@
 id: https://w3id.org/NFDI4Chem/ms-dcat-ap/instrument
-name: ms_instrument
-title: ms_instrument
+name: ms-instrument
+title: ms-instrument
 description: |
   Instrument and device definitions for mass spectrometry (MS) DCAT-AP.
 license: MIT

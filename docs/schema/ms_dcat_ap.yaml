@@ -6924,7 +6924,6 @@ slots:
     is_usage_slot: true
     usage_slot_name: is_about_entity
     range: MSSample
-    required: true
     recommended: true
     multivalued: true
     inlined: true
@@ -10288,7 +10287,7 @@ classes:
       is_about_entity:
         name: is_about_entity
         range: MSSample
-        required: true
+        recommended: true
         multivalued: true
         inlined: false
         inlined_as_list: false
@@ -10995,5 +10994,5 @@ metamodel_version: 1.11.0
 source_file: ms_dcat_ap.yaml
 source_file_date: '2026-09-10T10:19:01'
 source_file_size: 1119
-generation_date: '2026-09-10T10:22:34'
+generation_date: '2026-09-22T14:42:40'
 

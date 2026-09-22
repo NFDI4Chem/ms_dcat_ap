@@ -12892,7 +12892,7 @@ class MSSampleMeasurementDataset(Dataset):
                                             'multivalued': True,
                                             'name': 'is_about_entity',
                                             'range': 'MSSample',
-                                            'required': True},
+                                            'recommended': True},
                         'was_generated_by': {'inlined': True,
                                              'inlined_as_list': True,
                                              'multivalued': True,
@@ -13048,7 +13048,7 @@ class MSSampleMeasurementDataset(Dataset):
                        'LicenseDocument',
                        'Resource'],
          'in_subset': ['domain_agnostic_core']} })
-    is_about_entity: list[str] = Field(default=..., description="""A slot to provide the EvaluatedEntity a Dataset is about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'],
+    is_about_entity: Optional[list[str]] = Field(default=None, description="""A slot to provide the EvaluatedEntity a Dataset is about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'],
          'exact_mappings': ['IAO:0000136'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,

@@ -77,7 +77,7 @@ linkml_meta = LinkMLMeta({'default_prefix': 'ms_dcat_ap',
                  'dcatapplus:latest/schema/dcat_ap_plus',
                  'ms_dcat_ap'],
      'license': 'MIT',
-     'name': 'ms_dcat_ap_level1',
+     'name': 'ms-dcat-ap-level1',
      'prefixes': {'CHEBI': {'prefix_prefix': 'CHEBI',
                             'prefix_reference': 'http://purl.obolibrary.org/obo/CHEBI_'},
                   'CHMO': {'prefix_prefix': 'CHMO',
@@ -12882,17 +12882,17 @@ class PercentageOfTotal(QuantitativeAttribute):
 
 class MSSampleMeasurementDataset(Dataset):
     """
-    Strict Level 1 mass spectrometry measurement dataset.
+    A dataset that is the result of a measurement of a MSSample using a MassSpectrometer.
 
     """
     linkml_meta: ClassVar[LinkMLMeta] = LinkMLMeta({'class_uri': 'dcat:Dataset',
-         'from_schema': 'https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1',
+         'from_schema': 'https://w3id.org/NFDI4Chem/ms-dcat-ap/dataset',
          'slot_usage': {'is_about_entity': {'inlined': False,
                                             'inlined_as_list': False,
                                             'multivalued': True,
                                             'name': 'is_about_entity',
                                             'range': 'MSSample',
-                                            'required': True},
+                                            'recommended': True},
                         'was_generated_by': {'inlined': True,
                                              'inlined_as_list': True,
                                              'multivalued': True,
@@ -13048,7 +13048,7 @@ class MSSampleMeasurementDataset(Dataset):
                        'LicenseDocument',
                        'Resource'],
          'in_subset': ['domain_agnostic_core']} })
-    is_about_entity: list[str] = Field(default=..., description="""A slot to provide the EvaluatedEntity a Dataset is about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'],
+    is_about_entity: Optional[list[str]] = Field(default=None, description="""A slot to provide the EvaluatedEntity a Dataset is about.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'],
          'exact_mappings': ['IAO:0000136'],
          'in_subset': ['domain_agnostic_core'],
          'recommended': True,

@@ -1,6 +1,6 @@
 id: https://w3id.org/NFDI4Chem/ms-dcat-ap/dataset
-name: ms_dataset
-title: ms_dataset
+name: ms-dataset
+title: ms-dataset
 description: |
   Dataset definitions for mass spectrometry (MS) DCAT-AP.
 license: MIT
@@ -35,7 +35,7 @@ classes:
         inlined_as_list: true
       is_about_entity:
         range: MSSample
-        required: true
+        recommended: true
         multivalued: true
         inlined: false
         inlined_as_list: false

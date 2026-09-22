@@ -1,6 +1,6 @@
 id: https://w3id.org/NFDI4Chem/ms-dcat-ap/sample
-name: ms_sample
-title: ms_sample
+name: ms-sample
+title: ms-sample
 description: |
   Sample entity definitions for mass spectrometry (MS) DCAT-AP.
 license: MIT

@@ -59,12 +59,20 @@ The project provides two primary schema entry points:
 
 ## Conventions & Rules for AI Agents
 
+- **Naming Conventions:**
+  - **Schema Names (`name:` and `title:` in YAML):** Use `kebab-case` (e.g., `ms-dcat-ap`, `ms-dataset`, `ms-sample`, `ms-instrument`, `ms-measurement`, `ms-dcat-ap-level1`) to conform with LinkML / DCAT-AP standards and produce clean documentation URLs.
+  - **Schema Files on Disk:** Use `snake_case` (e.g., `ms_dcat_ap.yaml`, `ms_dataset.yaml`, `ms_sample.yaml`, `ms_instrument.yaml`, `ms_measurement.yaml`, `ms_dcat_ap_level1.yaml`) for clean imports and file path consistency across Python and LinkML tooling.
+  - **Classes:** Use `CamelCase` / `PascalCase` (e.g., `MSSampleMeasurementDataset`, `MassSpectrometer`, `SubstanceMSSample`).
+  - **Slots & Attributes:** Use `snake_case` (e.g., `was_generated_by`, `is_about_entity`, `scan_polarity`, `mass_analyzer_type`).
+  - **Enums & Permissible Values:** Enum classes in `CamelCase` ending with `Enum` (e.g., `ScanPolarityEnum`); permissible values in `snake_case` (e.g., `positive_scan`, `negative_scan`).
 - **Modularity & Single Responsibility:**
   - Keep domain concepts modular. When adding or refactoring classes and slots, organize them by topic in modular schema files rather than monolithic definitions.
-- **Profile Consistency:**
+- **Profile Consistency & DCAT-AP+ Alignment:**
+  - All dataset classes inherit from `Dataset` (`dcat:Dataset`).
+  - Follow DCAT-AP+ / PROV-O patterns: `was_generated_by` links to the activity (`MassSpectrometry`) as `required: true`, while `is_about_entity` links to the sample (`MSSample`) as `recommended: true`.
   - Whenever slots or classes are introduced or updated:
-    - Define baseline slots and lenient constraints in the respective topic file or `ms_dcat_ap.yaml`.
-    - Apply strict Level 1 constraints (`required: true`) in `ms_dcat_ap_level1.yaml` under `slot_usage` where MIChI compliance requires it.
+    - Define baseline slots and lenient constraints in the respective topic file or `ms_dcat_ap.yaml` (`recommended: true` or `required: false` for experimental and instrument parameters) so legacy data remains valid.
+    - Apply strict Level 1 constraints (`required: true`) in `ms_dcat_ap_level1.yaml` under `slot_usage` where MIChI Level 1 compliance requires it.
 - **Single Source of Truth:**
   - Only edit schema YAML files in `src/ms_dcat_ap/schema/`. Never manually edit files in `src/ms_dcat_ap/datamodel/` or `project/`.
   - Always run `just gen-project` (or `just site`) and `just test` after schema modifications.
