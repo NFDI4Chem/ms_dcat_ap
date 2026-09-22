@@ -6924,7 +6924,6 @@ slots:
     is_usage_slot: true
     usage_slot_name: is_about_entity
     range: MSSample
-    required: true
     recommended: true
     multivalued: true
     inlined: true
@@ -10288,7 +10287,7 @@ classes:
       is_about_entity:
         name: is_about_entity
         range: MSSample
-        required: true
+        recommended: true
         multivalued: true
         inlined: false
         inlined_as_list: false
@@ -10993,7 +10992,7 @@ classes:
     class_uri: qudt:Quantity
 metamodel_version: 1.11.0
 source_file: ms_dcat_ap.yaml
-source_file_date: '2026-09-21T15:12:20'
+source_file_date: '2026-09-22T13:14:21'
 source_file_size: 1119
-generation_date: '2026-09-21T15:12:30'
+generation_date: '2026-09-22T13:14:32'
 
