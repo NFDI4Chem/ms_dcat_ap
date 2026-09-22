@@ -1,5 +1,5 @@
 # Auto generated from ms_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-22T14:43:28
+# Generation date: 2026-09-22T15:28:51
 # Schema: ms-dcat-ap
 #
 # id: https://w3id.org/NFDI4Chem/ms-dcat-ap

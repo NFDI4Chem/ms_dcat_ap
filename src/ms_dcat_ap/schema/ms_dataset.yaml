@@ -9,14 +9,10 @@ default_range: string
 
 prefixes:
   ms_dcat_ap: https://w3id.org/NFDI4Chem/ms-dcat-ap/
-  linkml: https://w3id.org/linkml/
-  dcatapplus: https://w3id.org/nfdi-de/dcat-ap-plus/
   dcat: http://www.w3.org/ns/dcat#
 
 imports:
-  - linkml:types
   - chem_dcat_ap
-  - dcatapplus:latest/schema/dcat_ap_plus
   - ms_sample
   - ms_measurement
 
