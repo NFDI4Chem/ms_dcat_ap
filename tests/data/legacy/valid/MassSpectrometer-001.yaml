@@ -1,0 +1,14 @@
+# Example: a standalone MassSpectrometer device used by `MassSpectrometry-001.yaml`.
+#
+# Derived from MassBank record MSBNK-IPB_Halle-PB001341.
+id: https://example.org/ms-dcat-ap/instruments/api-qstar-pulsar-i
+title: "API QSTAR Pulsar i"
+description: "Applied Biosystems / MDS Sciex API QSTAR Pulsar i hybrid LC-ESI-QTOF mass spectrometer."
+manufacturer:
+  value: "Applied Biosystems / MDS Sciex"
+model:
+  value: "API QSTAR Pulsar i"
+mass_analyzer_type:
+  value: "quadrupole time-of-flight"
+ionization_type:
+  value: "electrospray ionization"

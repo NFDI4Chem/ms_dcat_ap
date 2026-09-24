@@ -37,31 +37,7 @@ keyword:
 
 # Provenance: the activity (single MS run) that produced this dataset.
 was_generated_by:
-  - id: https://example.org/ms-dcat-ap/activities/MSBNK-IPB_Halle-PB001341
-    acquisition_mode:
-      value: "MS2"
-    scan_polarity:
-      value: positive_scan
-    scan_window_lower_limit:
-      value: 100.0
-      has_quantity_type: "qudt:DimensionlessRatio"
-      unit: "unit:NUM"
-    scan_window_upper_limit:
-      value: 700.0
-      has_quantity_type: "qudt:DimensionlessRatio"
-      unit: "unit:NUM"
-    carried_out_by:
-      - id: https://example.org/ms-dcat-ap/instruments/api-qstar-pulsar-i
-        manufacturer:
-          value: "Applied Biosystems / MDS Sciex"
-        model:
-          value: "API QSTAR Pulsar i"
-        mass_analyzer_type:
-          value: "quadrupole time-of-flight"
-        ionization_type:
-          value: "electrospray ionization"
-    evaluated_entity:
-      https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+  - https://example.org/ms-dcat-ap/activities/MSBNK-IPB_Halle-PB001341
 
 # Subject: which sample the dataset is about.
 is_about_entity:

@@ -1,5 +1,5 @@
 # Auto generated from ms_dcat_ap.yaml by pythongen.py version: 0.0.1
-# Generation date: 2026-09-22T15:28:51
+# Generation date: 2026-09-24T13:50:07
 # Schema: ms-dcat-ap
 #
 # id: https://w3id.org/NFDI4Chem/ms-dcat-ap
@@ -3033,7 +3033,7 @@ class MSSampleMeasurementDataset(Dataset):
     id: Union[str, MSSampleMeasurementDatasetId] = None
     description: Union[str, list[str]] = None
     title: Union[str, list[str]] = None
-    was_generated_by: Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]] = empty_dict()
+    was_generated_by: Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]] = None
     is_about_entity: Optional[Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]]] = empty_dict()
 
     def __post_init__(self, *_: str, **kwargs: Any):
@@ -3044,7 +3044,9 @@ class MSSampleMeasurementDataset(Dataset):
 
         if self._is_empty(self.was_generated_by):
             self.MissingRequiredField("was_generated_by")
-        self._normalize_inlined_as_list(slot_name="was_generated_by", slot_type=MassSpectrometry, key_name="id", keyed=True)
+        if not isinstance(self.was_generated_by, list):
+            self.was_generated_by = [self.was_generated_by] if self.was_generated_by is not None else []
+        self.was_generated_by = [v if isinstance(v, MassSpectrometryId) else MassSpectrometryId(v) for v in self.was_generated_by]
 
         self._normalize_inlined_as_list(slot_name="is_about_entity", slot_type=MSSample, key_name="id", keyed=True)
 
@@ -5021,7 +5023,7 @@ slots.ScanPolarity_value = Slot(uri=PROV.value, name="ScanPolarity_value", curie
                    model_uri=MS_DCAT_AP.ScanPolarity_value, domain=ScanPolarity, range=Union[str, "ScanPolarityEnum"])
 
 slots.MSSampleMeasurementDataset_was_generated_by = Slot(uri=PROV.wasGeneratedBy, name="MSSampleMeasurementDataset_was_generated_by", curie=PROV.curie('wasGeneratedBy'),
-                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_was_generated_by, domain=MSSampleMeasurementDataset, range=Union[dict[Union[str, MassSpectrometryId], Union[dict, MassSpectrometry]], list[Union[dict, MassSpectrometry]]])
+                   model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_was_generated_by, domain=MSSampleMeasurementDataset, range=Union[Union[str, MassSpectrometryId], list[Union[str, MassSpectrometryId]]])
 
 slots.MSSampleMeasurementDataset_is_about_entity = Slot(uri=DCTERMS.subject, name="MSSampleMeasurementDataset_is_about_entity", curie=DCTERMS.curie('subject'),
                    model_uri=MS_DCAT_AP.MSSampleMeasurementDataset_is_about_entity, domain=MSSampleMeasurementDataset, range=Optional[Union[dict[Union[str, MSSampleId], Union[dict, MSSample]], list[Union[dict, MSSample]]]])

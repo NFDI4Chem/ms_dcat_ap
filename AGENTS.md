@@ -45,7 +45,9 @@ The project provides two primary schema entry points:
     - `just gen-doc` (generates schema documentation in Markdown)
     - `just site` (generates project artifacts and schema documentation)
   - **Run tests:**
-    - `just test` (runs schema validation, pytest test suite, and example checks)
+    - `just test` (runs schema validation, pytest test suite, and example checks for both profiles)
+    - `just test-examples` (runs LinkML example validation for both `legacy` and `level1`)
+    - `just test-examples-legacy` / `just test-examples-level1` (runs example validation for a specific profile)
   - **Linter:**
     - `just lint` (runs LinkML linter on `src/ms_dcat_ap/schema/`)
   - **View docs locally:**
@@ -79,6 +81,14 @@ The project provides two primary schema entry points:
 - **Ontology & Vocabulary Referencing:**
   - All data classes should be derived from `chemdcatap`: `https://w3id.org/nfdi-de/dcat-ap-plus/chemistry/` whenever possible.
   - When defining slots, always prefer referencing terms from ontologies hosted at `https://terminology.nfdi4chem.de/ts/` (e.g., `MS:`, `CHMO:`, `OBI:`, `CHEBI:`) if a suitable term exists.
-- **Example Data & Tests:**
-  - Test data is located in `tests/data/` (valid/invalid examples).
-  - Python unit tests in `tests/` should test both lenient and strict Level 1 models where appropriate.
+- **Example Data & Test Structure:**
+  - **Profile-separated test data (`tests/data/`):**
+    - `tests/data/legacy/valid/` & `tests/data/legacy/invalid/`: Examples and counter-examples for the base schema (`ms_dcat_ap.yaml`).
+    - `tests/data/level1/valid/` & `tests/data/level1/invalid/`: Examples and counter-examples for strict MIChI Level 1 (`ms_dcat_ap_level1.yaml`).
+  - **File naming convention:**
+    - All example files must follow `ClassName-###.yaml` (e.g., `MSSampleMeasurementDataset-001.yaml`), where `ClassName` matches a schema class (required by `linkml-run-examples`).
+  - **Test configuration (`tests/profiles.py`):**
+    - Use `tests/profiles.py` (`LEGACY_PROFILE`, `LEVEL1_PROFILE`, `PROFILES`) as the single source of truth for profile models, data paths, and file discovery in unit tests.
+  - **Cross-profile validation:**
+    - Every valid Level 1 example must also validate against the legacy model.
+    - Python tests should cover both models and verify that legacy data missing recommended fields fails under Level 1.

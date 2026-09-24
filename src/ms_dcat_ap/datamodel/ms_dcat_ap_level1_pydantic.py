@@ -8923,8 +8923,8 @@ class MassSpectrometry(DataGeneratingActivity):
          'slot_usage': {'acquisition_mode': {'multivalued': False,
                                              'name': 'acquisition_mode',
                                              'required': True},
-                        'carried_out_by': {'inlined': True,
-                                           'inlined_as_list': True,
+                        'carried_out_by': {'inlined': False,
+                                           'inlined_as_list': False,
                                            'multivalued': True,
                                            'name': 'carried_out_by',
                                            'range': 'MassSpectrometer',
@@ -9081,7 +9081,7 @@ class MassSpectrometry(DataGeneratingActivity):
          'notes': ['not in DCAT-AP'],
          'recommended': True,
          'slot_uri': 'prov:wasInformedBy'} })
-    carried_out_by: list[MassSpectrometer] = Field(default=..., description="""The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity'],
+    carried_out_by: list[str] = Field(default=..., description="""The slot to specify the AgenticEntity that played a certain part in carrying out the Activity, either via having a specific role, function or disposition that was realized in the Activity.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity'],
          'in_subset': ['domain_agnostic_core'],
          'notes': ['not in DCAT-AP'],
          'recommended': True,
@@ -12893,8 +12893,8 @@ class MSSampleMeasurementDataset(Dataset):
                                             'name': 'is_about_entity',
                                             'range': 'MSSample',
                                             'recommended': True},
-                        'was_generated_by': {'inlined': True,
-                                             'inlined_as_list': True,
+                        'was_generated_by': {'inlined': False,
+                                             'inlined_as_list': False,
                                              'multivalued': True,
                                              'name': 'was_generated_by',
                                              'range': 'MassSpectrometry',
@@ -13035,7 +13035,7 @@ class MSSampleMeasurementDataset(Dataset):
          'slot_uri': 'dcterms:type'} })
     version: Optional[str] = Field(default=None, description="""The version indicator (name or identifier) of a resource.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'dcat:version'} })
     version_notes: Optional[list[str]] = Field(default=None, description="""A description of the differences between this version and a previous version of the Dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset'], 'slot_uri': 'adms:versionNotes'} })
-    was_generated_by: list[MassSpectrometry] = Field(default=..., description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'EvaluatedEntity'],
+    was_generated_by: list[str] = Field(default=..., description="""An activity that generated, or provides the business context for, the creation of the dataset.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Dataset', 'EvaluatedEntity'],
          'notes': ['stricter than DCAT-AP'],
          'slot_uri': 'prov:wasGeneratedBy'} })
     id: str = Field(default=..., description="""A slot to provide an URI for an entity within this schema.""", json_schema_extra = { "linkml_meta": {'domain_of': ['Activity',

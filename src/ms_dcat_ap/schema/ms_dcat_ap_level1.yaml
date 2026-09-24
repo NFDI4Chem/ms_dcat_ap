@@ -100,8 +100,8 @@ classes:
         range: MassSpectrometer
         required: true
         multivalued: true
-        inlined: true
-        inlined_as_list: true
+        inlined: false
+        inlined_as_list: false
       evaluated_entity:
         range: MSSample
         required: true

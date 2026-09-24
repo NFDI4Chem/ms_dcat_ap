@@ -222,16 +222,36 @@ _test-python: gen-python
   uv run python -m pytest
 
 # Run example tests
-_test-examples: _ensure_examples_output
+[group('model development')]
+test-examples: test-examples-legacy test-examples-level1
+
+# Run example tests for legacy profile
+[group('model development')]
+test-examples-legacy: _ensure_examples_output_legacy
   uv run linkml-run-examples \
     --input-formats json \
     --input-formats yaml \
     --output-formats json \
     --output-formats yaml \
-    --counter-example-input-directory tests/data/invalid \
-    --input-directory tests/data/valid \
-    --output-directory examples/output \
-    --schema {{source_schema_path}} > examples/output/README.md
+    --counter-example-input-directory tests/data/legacy/invalid \
+    --input-directory tests/data/legacy/valid \
+    --output-directory examples/output/legacy \
+    --schema {{source_schema_path}} > examples/output/legacy/README.md
+
+# Run example tests for level1 profile
+[group('model development')]
+test-examples-level1: _ensure_examples_output_level1
+  uv run linkml-run-examples \
+    --input-formats json \
+    --input-formats yaml \
+    --output-formats json \
+    --output-formats yaml \
+    --counter-example-input-directory tests/data/level1/invalid \
+    --input-directory tests/data/level1/valid \
+    --output-directory examples/output/level1 \
+    --schema {{source_schema_dir}}/{{schema_name}}_level1.yaml > examples/output/level1/README.md
+
+_test-examples: test-examples
 
 # Add the merged model to docs/schema.
 _gen-yaml:
@@ -279,9 +299,15 @@ _clean_project:
         else:
             d.unlink()
 
-_ensure_examples_output:  # Ensure a clean examples/output directory exists
-  -mkdir -p examples/output
-  -rm -rf examples/output/*.*
+_ensure_examples_output_legacy:  # Ensure clean examples/output/legacy directory exists
+  -mkdir -p examples/output/legacy
+  -rm -rf examples/output/legacy/*
+
+_ensure_examples_output_level1:  # Ensure clean examples/output/level1 directory exists
+  -mkdir -p examples/output/level1
+  -rm -rf examples/output/level1/*
+
+_ensure_examples_output: _ensure_examples_output_legacy _ensure_examples_output_level1
 
 # ============== Include project-specific recipes ==============
 

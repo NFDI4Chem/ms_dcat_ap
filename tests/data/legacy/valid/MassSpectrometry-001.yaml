@@ -1,0 +1,23 @@
+# Example: a standalone MassSpectrometry activity used by `MSSampleMeasurementDataset-001.yaml`.
+#
+# Derived from MassBank record MSBNK-IPB_Halle-PB001341.
+id: https://example.org/ms-dcat-ap/activities/MSBNK-IPB_Halle-PB001341
+title:
+  - "LC-ESI-QTOF MS2 acquisition of Rutin"
+description:
+  - "Tandem MS run of Rutin at 10 eV collision energy in positive ESI mode."
+acquisition_mode:
+  value: "MS2"
+scan_polarity:
+  value: positive_scan
+scan_window_lower_limit:
+  value: 100.0
+  has_quantity_type: "qudt:DimensionlessRatio"
+  unit: "unit:NUM"
+scan_window_upper_limit:
+  value: 700.0
+  has_quantity_type: "qudt:DimensionlessRatio"
+  unit: "unit:NUM"
+carried_out_by:
+  - https://example.org/ms-dcat-ap/instruments/api-qstar-pulsar-i
+evaluated_entity: https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341

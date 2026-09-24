@@ -52,7 +52,7 @@ def _build_activity() -> MassSpectrometry:
     """Construct the MassSpectrometry activity that produced the dataset."""
     return MassSpectrometry(
         id=ACTIVITY_IRI,
-        carried_out_by=[_build_instrument()],
+        carried_out_by=[INSTRUMENT_IRI],
         evaluated_entity=_sample_ref(),
         acquisition_mode=AcquisitionMode(value="DDA"),
         scan_polarity=ScanPolarity(value=ScanPolarityEnum.positive_scan),
@@ -84,7 +84,7 @@ def _build_dataset() -> MSSampleMeasurementDataset:
                 description="https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1",
             )
         ],
-        was_generated_by=[_build_activity()],
+        was_generated_by=[ACTIVITY_IRI],
         is_about_entity=[_sample_ref()],
     )
 
@@ -106,10 +106,11 @@ def test_instantiate_ms_sample_measurement_dataset() -> None:
         == "https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1"
     )
 
-    # Provenance: exactly one MassSpectrometry activity
-    assert len(ds.was_generated_by) == 1
-    activity = ds.was_generated_by[0]
-    assert isinstance(activity, MassSpectrometry)
+    # Provenance: exactly one MassSpectrometry activity IRI
+    assert ds.was_generated_by == [ACTIVITY_IRI]
+
+    # Instantiate activity and verify its properties
+    activity = _build_activity()
     assert activity.id == ACTIVITY_IRI
     assert activity.evaluated_entity == SAMPLE_IRI
 
@@ -119,10 +120,9 @@ def test_instantiate_ms_sample_measurement_dataset() -> None:
     assert activity.scan_window_lower_limit.value == pytest.approx(100.0)
     assert activity.scan_window_upper_limit.value == pytest.approx(1500.0)
 
-    # Instrument used in this run
-    assert len(activity.carried_out_by) == 1
-    instrument = activity.carried_out_by[0]
-    assert isinstance(instrument, MassSpectrometer)
+    # Instrument reference and instrument properties
+    assert activity.carried_out_by == [INSTRUMENT_IRI]
+    instrument = _build_instrument()
     assert instrument.id == INSTRUMENT_IRI
     assert instrument.manufacturer.value == "Thermo Fisher Scientific"
     assert instrument.model.value == "Q Exactive"
@@ -138,11 +138,7 @@ def test_dataset_round_trips_to_dict() -> None:
     dumped = ds.model_dump(exclude_none=True)
 
     assert dumped["id"] == DATASET_IRI
-    assert dumped["was_generated_by"][0]["acquisition_mode"]["value"] == "DDA"
-    assert (
-        dumped["was_generated_by"][0]["scan_window_upper_limit"]["unit"]
-        == "unit:NUM"
-    )
+    assert dumped["was_generated_by"] == [ACTIVITY_IRI]
     assert dumped["is_about_entity"] == [SAMPLE_IRI]
 
 
@@ -154,7 +150,7 @@ def test_instantiate_legacy_minimal_dataset() -> None:
     )
     minimal_activity = MassSpectrometry(
         id=ACTIVITY_IRI,
-        carried_out_by=[minimal_instrument],
+        carried_out_by=[INSTRUMENT_IRI],
         evaluated_entity=_sample_ref(),
     )
     minimal_dataset = MSSampleMeasurementDataset(
@@ -163,29 +159,24 @@ def test_instantiate_legacy_minimal_dataset() -> None:
         description=["Minimal legacy test dataset."],
         conforms_to=[
             Standard(
-                title="MIChI MS Legacy Profile",
-                description="https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/legacy",
+                title="MS DCAT-AP Profile",
+                description="https://w3id.org/NFDI4Chem/ms-dcat-ap",
             )
         ],
-        was_generated_by=[minimal_activity],
+        was_generated_by=[ACTIVITY_IRI],
         is_about_entity=[_sample_ref()],
     )
 
     assert minimal_dataset.id == DATASET_IRI
     assert minimal_dataset.conforms_to is not None
     assert len(minimal_dataset.conforms_to) == 1
-    assert minimal_dataset.conforms_to[0].title == "MIChI MS Legacy Profile"
-    assert (
-        minimal_dataset.conforms_to[0].description
-        == "https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/legacy"
-    )
+    assert minimal_dataset.conforms_to[0].title == "MS DCAT-AP Profile"
     assert len(minimal_dataset.was_generated_by) == 1
-    act = minimal_dataset.was_generated_by[0]
-    assert act.acquisition_mode is None
-    assert act.scan_polarity is None
-    assert act.scan_window_lower_limit is None
-    assert act.carried_out_by[0].mass_analyzer_type is None
-    assert act.carried_out_by[0].ionization_type is None
+    assert minimal_activity.acquisition_mode is None
+    assert minimal_activity.scan_polarity is None
+    assert minimal_activity.scan_window_lower_limit is None
+    assert minimal_instrument.mass_analyzer_type is None
+    assert minimal_instrument.ionization_type is None
 
 
 def test_missing_required_field_raises() -> None:
@@ -231,7 +222,7 @@ def test_level1_pydantic_model_validates_full_dataset() -> None:
     )
     activity = L1MassSpectrometry(
         id=ACTIVITY_IRI,
-        carried_out_by=[instrument],
+        carried_out_by=[INSTRUMENT_IRI],
         evaluated_entity=_sample_ref(),
         acquisition_mode=L1AcquisitionMode(value="DDA"),
         scan_polarity=L1ScanPolarity(value=L1ScanPolarityEnum.positive_scan),
@@ -256,12 +247,14 @@ def test_level1_pydantic_model_validates_full_dataset() -> None:
                 description="https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1",
             )
         ],
-        was_generated_by=[activity],
+        was_generated_by=[ACTIVITY_IRI],
         is_about_entity=[_sample_ref()],
     )
 
     assert ds.id == DATASET_IRI
     assert len(ds.was_generated_by) == 1
+    assert instrument.id == INSTRUMENT_IRI
+    assert activity.id == ACTIVITY_IRI
 
 
 def test_level1_pydantic_model_rejects_missing_recommended_fields() -> None:
@@ -271,7 +264,6 @@ def test_level1_pydantic_model_rejects_missing_recommended_fields() -> None:
         MassSpectrometer as L1MassSpectrometer,
         MassSpectrometry as L1MassSpectrometry,
         Model as L1Model,
-        MSSampleMeasurementDataset as L1MSSampleMeasurementDataset,
     )
 
     # In Level 1, manufacturer, mass_analyzer_type, ionization_type are required on MassSpectrometer
@@ -289,34 +281,21 @@ def test_level1_pydantic_model_rejects_missing_recommended_fields() -> None:
         )
 
 
-def test_yaml_examples_against_both_models() -> None:
-    """Test loading YAML example files against base (legacy) and Level 1 models."""
-    from pathlib import Path
+def test_yaml_example_dataset_against_both_models() -> None:
+    """Test loading the Rutin YAML example dataset against base and Level 1 models."""
     import yaml
-    from pydantic import ValidationError
     from ms_dcat_ap.datamodel.ms_dcat_ap_pydantic import (
         MSSampleMeasurementDataset as BaseDataset,
     )
     from ms_dcat_ap.datamodel.ms_dcat_ap_level1_pydantic import (
         MSSampleMeasurementDataset as Level1Dataset,
     )
+    from tests.profiles import LEGACY_PROFILE
 
-    valid_dir = Path("tests/data/valid")
-
-    with open(valid_dir / "MSSampleMeasurementDataset-001.yaml") as f:
+    with open(LEGACY_PROFILE.valid_dir / "MSSampleMeasurementDataset-001.yaml") as f:
         data_full = yaml.safe_load(f)
 
-    with open(valid_dir / "MSSampleMeasurementDataset-002.yaml") as f:
-        data_legacy = yaml.safe_load(f)
-
-    # 1. Complete dataset parses successfully with BOTH models
+    # Rutin dataset parses successfully with BOTH models
     assert BaseDataset(**data_full).id == data_full["id"]
     assert Level1Dataset(**data_full).id == data_full["id"]
-
-    # 2. Minimal legacy dataset parses successfully with base model
-    assert BaseDataset(**data_legacy).id == data_legacy["id"]
-
-    # 3. Minimal legacy dataset FAILS with Level 1 model due to missing fields
-    with pytest.raises(ValidationError):
-        Level1Dataset(**data_legacy)
 
