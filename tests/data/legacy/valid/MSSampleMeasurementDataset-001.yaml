@@ -5,40 +5,33 @@
 # an LC-ESI-QTOF MS2 spectrum of Rutin, [M+H]+, collision energy 10 eV,
 # acquired by Boettcher C., Institute of Plant Biochemistry, Halle (CC BY-SA).
 #
-# The dataset and activity are defined in this file; the referenced sample is
-# identified via its IRI and described separately in
-# `SubstanceMSSample-001.yaml`:
-#   - MSSampleMeasurementDataset  (top-level document)
-#     - MassSpectrometry          (was_generated_by[*])
-#       - MassSpectrometer        (carried_out_by[*])
-#       - MSSample IRI            (evaluated_entity, same as is_about_entity)
-#     - MSSample IRI              (is_about_entity)
-id: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341
+# All entities derived from this record share the base record URL and are
+# distinguished using hash fragments (#dataset, #activity, #sample):
+#   - MSSampleMeasurementDataset  (...#dataset)
+#     - was_generated_by: MassSpectrometry (...#activity)
+#     - is_about_entity: SubstanceMSSample (...#sample)
+id: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341#dataset
 title:
   - "Rutin; LC-ESI-QTOF; MS2; CE:10 eV; [M+H]+"
 description:
   - >
-    Tandem mass spectrum (MS2) of the flavonoid glycoside Rutin acquired in
-    positive electrospray ionization mode on an Applied Biosystems API QSTAR
-    Pulsar i (LC-ESI-QTOF) instrument. Precursor ion [M+H]+ at m/z 611.16,
-    fragmented at a collision energy of 10 eV. Recorded by C. Boettcher,
-    Institute of Plant Biochemistry, Halle, Germany. Original MassBank
-    accession: MSBNK-IPB_Halle-PB001341.
+    MS2 mass spectrum of Rutin acquired on API QSTAR Pulsar i (LC-ESI-QTOF) in POSITIVE
+    ionization mode with collision energy 10 eV. Authors: Boettcher C, Institute of Plant
+    Biochemistry, Halle, Germany. Accession: MSBNK-IPB_Halle-PB001341.
 conforms_to:
-  - title: "MIChI MS Level 1 Profile"
-    description: "https://w3id.org/NFDI4Chem/ms-dcat-ap/profiles/level-1"
+  - title: "MS DCAT-AP Profile"
+    description: "https://w3id.org/NFDI4Chem/ms-dcat-ap"
 release_date: "2008-05-22"
 modification_date: "2013-06-04"
 keyword:
   - rutin
-  - flavonoid
   - LC-ESI-QTOF
   - MS2
 
 # Provenance: the activity (single MS run) that produced this dataset.
 was_generated_by:
-  - https://example.org/ms-dcat-ap/activities/MSBNK-IPB_Halle-PB001341
+  - https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341#activity
 
 # Subject: which sample the dataset is about.
 is_about_entity:
-  - https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+  - https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341#sample

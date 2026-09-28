@@ -2,7 +2,7 @@
 #
 # This example describes the rutin sample that is referenced by IRI from the
 # dataset and the mass spectrometry activity.
-id: https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+id: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341#sample
 title: "Rutin sample for LC-MS/MS"
 description: "Prepared rutin sample analysed in the referenced MassBank record."
 solvent: "CHEBI:17790"

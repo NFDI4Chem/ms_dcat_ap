@@ -1,7 +1,7 @@
 # Example: a standalone MassSpectrometry activity used by `MSSampleMeasurementDataset-001.yaml`.
 #
 # Derived from MassBank record MSBNK-IPB_Halle-PB001341.
-id: https://example.org/ms-dcat-ap/activities/MSBNK-IPB_Halle-PB001341
+id: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341#activity
 title:
   - "LC-ESI-QTOF MS2 acquisition of Rutin"
 description:
@@ -20,4 +20,4 @@ scan_window_upper_limit:
   unit: "unit:NUM"
 carried_out_by:
   - https://example.org/ms-dcat-ap/instruments/api-qstar-pulsar-i
-evaluated_entity: https://example.org/ms-dcat-ap/samples/rutin-MSBNK-IPB_Halle-PB001341
+evaluated_entity: https://massbank.eu/MassBank/RecordDisplay?id=MSBNK-IPB_Halle-PB001341#sample
