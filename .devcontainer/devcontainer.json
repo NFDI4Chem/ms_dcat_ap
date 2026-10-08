@@ -1,0 +1,40 @@
+{
+  "name": "ms_dcat_ap Development",
+  "build": {
+    "dockerfile": "Dockerfile",
+    "context": "."
+  },
+  "workspaceFolder": "/workspaces/ms_dcat_ap",
+  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/ms_dcat_ap,type=bind,Z",
+  "runArgs": [
+    "--userns=keep-id"
+  ],
+  "remoteUser": "vscode",
+  "containerUser": "vscode",
+  "updateRemoteUserUID": false,
+  "forwardPorts": [
+    8000
+  ],
+  "portsAttributes": {
+    "8000": {
+      "label": "MkDocs Documentation Server",
+      "onAutoForward": "notify"
+    }
+  },
+  "postCreateCommand": "uv sync --group dev",
+  "customizations": {
+    "vscode": {
+      "extensions": [
+        "ms-python.python",
+        "charliermarsh.ruff",
+        "redhat.vscode-yaml",
+        "tamasfe.even-better-toml",
+        "skellock.just"
+      ],
+      "settings": {
+        "python.defaultInterpreterPath": "/workspaces/ms_dcat_ap/.venv/bin/python",
+        "editor.formatOnSave": true
+      }
+    }
+  }
+}
