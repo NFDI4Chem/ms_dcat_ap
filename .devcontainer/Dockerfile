@@ -51,5 +51,5 @@ RUN mkdir -p /etc/bash_completion.d \
     && just --completions bash > /etc/bash_completion.d/just \
     && git config --system --add safe.directory '*'
 
-WORKDIR /workspaces/ms_dcat_ap
+WORKDIR /home/vscode
 USER vscode

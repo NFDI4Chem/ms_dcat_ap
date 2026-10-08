@@ -4,11 +4,17 @@
     "dockerfile": "Dockerfile",
     "context": "."
   },
-  "workspaceFolder": "/workspaces/ms_dcat_ap",
-  "workspaceMount": "source=${localWorkspaceFolder},target=/workspaces/ms_dcat_ap,type=bind,Z",
-  "runArgs": [
-    "--userns=keep-id"
+  "workspaceFolder": "${localWorkspaceFolder}",
+  "workspaceMount": "source=${localWorkspaceFolder},target=${localWorkspaceFolder},type=bind,Z",
+  "mounts": [
+    "source=${localEnv:HOME}/.junie,target=/home/vscode/.junie,type=bind,Z"
   ],
+  "runArgs": [
+    "--userns=keep-id:uid=1000,gid=1000"
+  ],
+  "containerEnv": {
+    "UV_LINK_MODE": "copy"
+  },
   "remoteUser": "vscode",
   "containerUser": "vscode",
   "updateRemoteUserUID": false,
@@ -32,7 +38,7 @@
         "skellock.just"
       ],
       "settings": {
-        "python.defaultInterpreterPath": "/workspaces/ms_dcat_ap/.venv/bin/python",
+        "python.defaultInterpreterPath": "${localWorkspaceFolder}/.venv/bin/python",
         "editor.formatOnSave": true
       }
     }
