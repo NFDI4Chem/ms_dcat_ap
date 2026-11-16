@@ -17,9 +17,6 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
     make \
     nano \
     procps \
-    python3 \
-    python3-pip \
-    python3-venv \
     rsync \
     sudo \
     tar \
@@ -33,6 +30,11 @@ RUN apt-get update && apt-get install -y --no-install-recommends \
 
 # Install uv via official standalone installer (https://docs.astral.sh/uv/getting-started/installation/)
 RUN curl -LsSf https://astral.sh/uv/install.sh | env UV_INSTALL_DIR=/usr/local/bin UV_NO_MODIFY_PATH=1 sh
+
+# Install the latest available Python 3.14 and expose it as python and python3
+ENV UV_PYTHON_INSTALL_DIR=/usr/local/share/uv/python \
+    UV_PYTHON_BIN_DIR=/usr/local/bin
+RUN uv python install --default 3.14
 
 # Install tools recommended by linkml-project-copier via uv tool as system-wide tools
 ENV UV_TOOL_DIR=/usr/local/share/uv/tools \
