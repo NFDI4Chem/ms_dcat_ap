@@ -9,6 +9,7 @@
   "mounts": [
     "source=codex-devcontainer,target=/home/vscode/.codex,type=volume",
     "source=copilot-devcontainer,target=/home/vscode/.copilot,type=volume",
+    "source=copilot-auth-devcontainer,target=/home/vscode/.config/github-copilot,type=volume"
   ],
   "runArgs": [
     "--userns=keep-id:uid=1000,gid=1000"
@@ -28,20 +29,5 @@
       "onAutoForward": "notify"
     }
   },
-  "postCreateCommand": "uv sync --group dev",
-  "customizations": {
-    "vscode": {
-      "extensions": [
-        "ms-python.python",
-        "charliermarsh.ruff",
-        "redhat.vscode-yaml",
-        "tamasfe.even-better-toml",
-        "skellock.just"
-      ],
-      "settings": {
-        "python.defaultInterpreterPath": "${localWorkspaceFolder}/.venv/bin/python",
-        "editor.formatOnSave": true
-      }
-    }
-  }
+  "postCreateCommand": "uv sync --group dev"
 }
